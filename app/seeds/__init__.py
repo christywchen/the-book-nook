@@ -18,3 +18,11 @@ def seed():
 def undo():
     undo_users()
     # Add other undo functions here
+
+@seed_commands.command('reset')
+def reset():
+    # Undo seeds
+    undo_users()
+
+    # Redo seeds
+    seed_users()
