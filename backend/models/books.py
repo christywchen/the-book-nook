@@ -7,6 +7,7 @@ class Book(db.Model):
     title = db.Column(db.String(75), nullable=False)
     author = db.Column(db.String(75), nullable=False)
     description = db.Column(db.Text)
+    image_url = db.Column(db.Text)
     isbn = db.Column(db.BigInteger)
     isbn13 = db.Column(db.BigInteger)
     original_title = db.Column(db.String(75))

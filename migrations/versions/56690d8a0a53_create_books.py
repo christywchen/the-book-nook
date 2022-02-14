@@ -23,6 +23,7 @@ def upgrade():
     sa.Column('title', sa.String(length=75), nullable=False),
     sa.Column('author', sa.String(length=75), nullable=False),
     sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('isbn', sa.BigInteger(), nullable=True),
     sa.Column('isbn13', sa.BigInteger(), nullable=True),
     sa.Column('original_title', sa.String(length=75), nullable=True),
