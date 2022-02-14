@@ -14,3 +14,4 @@ class BookClub(db.Model):
 
     book_club_chatrooms = db.relationship('BookClubChatroom', backref='book_club', cascade='all, delete')
     book_club_members = db.relationship('BookClubMember', backref='book_club', cascade='all, delete')
+    book_club_books = db.relationship('BookClubBook', backref='book_club', cascade='all, delete')

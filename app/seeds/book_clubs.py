@@ -5,7 +5,7 @@ def seed_book_clubs():
     book_club_1 = BookClub(
         name='The Quarantine Club', host_id=1, description='Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun. Reading is so fun.', capacity=5, public=False, created_at=datetime.now(), updated_at=datetime.now())
     book_club_2 = BookClub(
-        name='Westside Stories', host_id=1, capacity=5, public=False, created_at=datetime.now(), updated_at=datetime.now())
+        name='Westside Stories', host_id=2, capacity=5, public=False, created_at=datetime.now(), updated_at=datetime.now())
 
     db.session.add(book_club_1)
     db.session.add(book_club_2)

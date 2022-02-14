@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import db, User, Book
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,14 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/stuff')
+def stuff():
+    item = User.query.get(1)
+
+    print(item.first_name, 'TESTETSETT')
+
+    db.session.delete(item)
+    db.session.commit()
+
+    return {}
