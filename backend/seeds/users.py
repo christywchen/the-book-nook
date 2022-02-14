@@ -1,4 +1,4 @@
-from app.models import db, User
+from backend.models import db, User
 from datetime import datetime
 
 # Adds a demo user, you can add other users here if you want

@@ -1,4 +1,4 @@
-from app.models import db, ChatroomMessage
+from backend.models import db, ChatroomMessage
 from datetime import datetime
 
 def seed_chatroom_messages():

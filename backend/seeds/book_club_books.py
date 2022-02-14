@@ -1,4 +1,4 @@
-from app.models import db, BookClubBook
+from backend.models import db, BookClubBook
 from datetime import datetime
 
 def seed_book_club_books():
