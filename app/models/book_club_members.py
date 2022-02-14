@@ -2,7 +2,7 @@ from .db import db
 from sqlalchemy import UniqueConstraint
 
 class BookClubMember(db.Model):
-    __tablename__ = 'book_clubs_members'
+    __tablename__ = 'book_club_members'
     __table_args__ = (
         UniqueConstraint('book_club_id', 'user_id', name='book_club_member'),
     )
