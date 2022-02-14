@@ -12,15 +12,3 @@ class BookClubMember(db.Model):
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
     created_at = db.Column('created_at', db.DateTime, nullable=False)
     updated_at = db.Column('updated_at', db.DateTime, nullable=False)
-
-    book_club = db.relationship('BookClub', backref='members')
-    member = db.relationship('User', backref='book_clubs')
-
-
-# book_clubs_members = db.Table(
-#     'book_clubs_members',
-#     db.Column('book_club_id', db.Integer, db.ForeignKey('book_clubs.id'), primary_key=True),
-#     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
-#     db.Column('created_at', db.DateTime, nullable=False),
-#     db.Column('updated_at', db.DateTime, nullable=False),
-# )

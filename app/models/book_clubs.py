@@ -12,5 +12,5 @@ class BookClub(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
-    # users = db.relationship('User', back_populates='book_clubs', secondary=book_clubs_members)
-    # chatrooms = db.relationship('BookClubChatroom', back_populates='book_club')
+    book_club_chatrooms = db.relationship('BookClubChatroom', backref='book_club', cascade='all, delete')
+    book_club_members = db.relationship('BookClubMember', backref='book_club', cascade='all, delete')

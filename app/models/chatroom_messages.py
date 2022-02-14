@@ -9,5 +9,3 @@ class ChatroomMessage(db.Model):
     chatroom_id = db.Column(db.Integer, db.ForeignKey('book_club_chatrooms.id'), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
-
-    chatroom = db.relationship('BookClubChatroom', backref='messages')

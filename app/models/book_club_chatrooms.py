@@ -10,4 +10,4 @@ class BookClubChatroom(db.Model):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
-    book_club = db.relationship('BookClub', backref='chatroom')
+    chatroom_messages = db.relationship('ChatroomMessage', backref='book_club_chatroom', cascade='all, delete')

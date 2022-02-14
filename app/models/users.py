@@ -25,8 +25,8 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
-    # book_clubs = db.relationship('BookClub', back_populates='users', secondary=book_clubs_members)
-    # messages = db.relationship('ChatroomMessage', back_populates='user')
+    book_clubs_owned = db.relationship('BookClub', backref='Users', cascade='all, delete-orphan')
+    book_club_members = db.relationship('BookClubMember', backref='Users', cascade='all, delete-orphan')
 
 
     @property
