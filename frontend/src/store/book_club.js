@@ -25,7 +25,7 @@ const removeBookClub = (bookClubId) => {
     }
 };
 
-// thunks middleware
+// thunk middlewares
 export const getAllBookClubs = () => async (dispatch) => {
     const res = await fetch('/api/book-clubs');
 
@@ -69,7 +69,7 @@ export const deleteBookClub = (id) => async (dispatch) => {
 // initial state
 const initialState = { byId: {}, allIds: [] };
 
-// event reducer
+// book club reducer
 const bookClubReducer = (state = initialState, action) => {
     let newState;
 
