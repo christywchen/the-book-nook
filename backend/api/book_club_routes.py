@@ -20,6 +20,10 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
+"""
+The below routes are for creating, reading, updating, and deleting book clubs.
+"""
+
 @book_club_routes.route('')
 def get_all_book_clubs():
     """
@@ -105,7 +109,7 @@ def update_book_club(id):
         book_club = BookClub.query.get(id)
         data = form.data
 
-        book_club.name =data['name'],
+        book_club.name = data['name'],
         book_club.description = data['description'],
         book_club.host_id = data['host_id'],
         book_club.capacity = data['capacity'],
@@ -128,3 +132,37 @@ def delete_book_club(id):
     db.session.commit()
 
     return {"message": "Book Club successfully deleted."}
+
+
+"""
+The below routes are for creating and deleting book club memberships.
+"""
+@book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['POST'])
+def create_book_club_member(book_club_id, user_id):
+    """
+    Creates a new book club member record and returns the record.
+    """
+    book_club_member = BookClubMember(
+        book_club_id=book_club_id,
+        user_id=user_id,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    )
+
+    db.session.add(book_club_member)
+    db.session.commit()
+
+    return {"book club member": [book_club_member.to_dict()]}
+
+
+@book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['DELETE'])
+def delete_book_club_member(book_club_id, user_id):
+    """
+    Deletes a book club member record.
+    """
+    book_club_member = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id, BookClubMember.user_id == user_id).first()
+
+    db.session.delete(book_club_member)
+    db.session.commit()
+
+    return {"message": "Book club member successfully deleted."}

@@ -1,5 +1,4 @@
 from flask_wtf import FlaskForm
-from sqlalchemy import Integer
 from wtforms import StringField, BooleanField, TextAreaField, IntegerField
 from wtforms.validators import DataRequired
 

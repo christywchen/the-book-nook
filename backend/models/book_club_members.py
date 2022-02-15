@@ -13,3 +13,12 @@ class BookClubMember(db.Model):
     is_active = db.Column('is_active', db.Integer, nullable=False, default=1)
     created_at = db.Column('created_at', db.DateTime, nullable=False)
     updated_at = db.Column('updated_at', db.DateTime, nullable=False)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "book_club_id": self.book_club_id,
+            "user_id": self.user_id,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }
