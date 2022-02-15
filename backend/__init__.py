@@ -8,6 +8,7 @@ from flask_login import LoginManager
 from backend.models import db, User
 from backend.api.user_routes import user_routes
 from backend.api.auth_routes import auth_routes
+from backend.api.book_club_routes import book_club_routes
 from backend.socket import socketio
 
 from backend.seeds import seed_commands
@@ -32,6 +33,7 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(book_club_routes, url_prefix='/api/book-clubs')
 db.init_app(app)
 Migrate(app, db)
 socketio.init_app(app)

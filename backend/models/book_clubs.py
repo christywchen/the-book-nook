@@ -15,3 +15,14 @@ class BookClub(db.Model):
     book_club_chatrooms = db.relationship('BookClubChatroom', backref='book_club', cascade='all, delete')
     book_club_members = db.relationship('BookClubMember', backref='book_club', cascade='all, delete')
     book_club_books = db.relationship('BookClubBook', backref='book_club', cascade='all, delete')
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "name": self.description,
+            "host_id": self.host_id,
+            "capacity": self.capacity,
+            "public": self.public,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }

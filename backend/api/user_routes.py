@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from backend.models import db, User, Book
+from backend.models import db, User
 
 user_routes = Blueprint('users', __name__)
 
@@ -13,7 +13,7 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-# @login_required
+@login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
