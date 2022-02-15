@@ -23,7 +23,7 @@ def upgrade():
     sa.Column('book_id', sa.Integer(), nullable=False),
     sa.Column('book_club_id', sa.Integer(), nullable=False),
     sa.Column('added_by_id', sa.Integer(), nullable=True),
-    sa.Column('status', sa.String(length=20), nullable=False),
+    sa.Column('status', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['added_by_id'], ['users.id'], ),

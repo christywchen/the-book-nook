@@ -11,6 +11,6 @@ class BookClubBook(db.Model):
     book_id = db.Column(db.Integer, db.ForeignKey('books.id'), nullable=False)
     book_club_id = db.Column(db.Integer, db.ForeignKey('book_clubs.id'), nullable=False)
     added_by_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    status = db.Column(db.String(20), nullable=False, default='Upcoming')
+    status = db.Column(db.Integer, nullable=False, default=1)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
