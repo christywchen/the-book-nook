@@ -20,7 +20,8 @@ class BookClub(db.Model):
     def to_dict(self):
         return {
             "id": self.id,
-            "name": self.description,
+            "name": self.name,
+            "description": self.description,
             "host_id": self.host_id,
             "capacity": self.capacity,
             "public": self.public,
@@ -30,4 +31,4 @@ class BookClub(db.Model):
 
 
     def __repr__(self):
-        return f"<class 'Book Club', id: {self.id}, name: {self.name}, host_id: {self.host_id}, capacity: {self.capacity}, public: {self.public}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
+        return f"<class 'Book Club', id: {self.id}, name: {self.name}, description: {self.description}, host_id: {self.host_id}, capacity: {self.capacity}, public: {self.public}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
