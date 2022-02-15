@@ -10,6 +10,6 @@ class BookClubMember(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     book_club_id = db.Column('book_club_id', db.Integer, db.ForeignKey('book_clubs.id'), primary_key=True)
     user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-    status = db.Column(db.String(20), nullable=False, default='Pending')
+    is_active = db.Column('is_active', db.Integer, nullable=False, default=1)
     created_at = db.Column('created_at', db.DateTime, nullable=False)
     updated_at = db.Column('updated_at', db.DateTime, nullable=False)
