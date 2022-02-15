@@ -11,6 +11,7 @@ import User from './components/User';
 import Chat from './components/Chat';
 
 import { authenticate } from './store/session';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,7 +45,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <Dashboard />
         </ProtectedRoute>
         <ProtectedRoute path='/chat' exact={true} >
           <Chat />
