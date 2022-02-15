@@ -37,7 +37,7 @@ const bookClubMemberReducer = (state = initialState, action) => {
                 newState.allUserMembershipIds.push(userMembership.id);
                 userMemberships[userMembership.id] = userMembership;
                 return userMemberships;
-            });
+            }, {});
             return newState;
         default:
             return state;
