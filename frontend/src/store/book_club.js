@@ -1,7 +1,6 @@
 // constants
-const ADD_BOOK_CLUB = 'bookClub/addBookClub';
 const LOAD_BOOK_CLUBS = 'bookClub/loadBookClubs';
-const EDIT_BOOK_CLUBS = 'bookClub/editBookClub';
+const ADD_BOOK_CLUB = 'bookClub/addBookClub';
 const REMOVE_BOOK_CLUB = 'bookClub/removeBookClub';
 
 // action creators
@@ -63,7 +62,7 @@ export const deleteBookClub = (id) => async (dispatch) => {
     });
 
     if (res.ok) {
-        dispatch(deleteBookClub(id))
+        dispatch(removeBookClub(id))
     }
 }
 
