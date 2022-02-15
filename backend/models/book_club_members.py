@@ -14,6 +14,7 @@ class BookClubMember(db.Model):
     created_at = db.Column('created_at', db.DateTime, nullable=False)
     updated_at = db.Column('updated_at', db.DateTime, nullable=False)
 
+
     def to_dict(self):
         return {
             "id": self.id,
@@ -22,3 +23,7 @@ class BookClubMember(db.Model):
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
+
+
+    def __repr__(self):
+        return f"<class 'Book Club Member', id: {self.id}, book_club_id: {self.book_club_id}, user_id: {self.user_id}, created_at: {self.created_at}, updated_at: {self.updated_at}>"

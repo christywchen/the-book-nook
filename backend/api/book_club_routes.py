@@ -31,7 +31,7 @@ def get_all_book_clubs():
     """
     all_book_clubs = BookClub.query.all()
 
-    return {"book clubs": [book_club.to_dict() for book_club in all_book_clubs]}
+    return {'book clubs': [book_club.to_dict() for book_club in all_book_clubs]}
 
 
 @book_club_routes.route('/<int:id>')
@@ -41,7 +41,7 @@ def get_book_club(id):
     """
     book_club = BookClub.query.get(id)
 
-    return { "book club": [book_club.to_dict()]}
+    return {'book club': [book_club.to_dict()]}
 
 
 @book_club_routes.route('', methods=['POST'])
@@ -59,40 +59,53 @@ def create_book_club():
     if form.validate_on_submit():
         data = form.data
 
-        book_club = BookClub(
-            name=data['name'],
-            description=data['description'],
-            host_id=data['host_id'],
-            capacity=data['capacity'],
-            created_at=datetime.now(),
-            updated_at=datetime.now()
-        )
+        try:
+            book_club = BookClub(
+                name=data['name'],
+                description=data['description'],
+                host_id=data['host_id'],
+                capacity=data['capacity'],
+                public=data['public'],
+                created_at=datetime.now(),
+                updated_at=datetime.now()
+            )
 
-        db.session.add(book_club)
-        db.session.commit()
+            db.session.add(book_club)
+            db.session.commit()
 
-        book_club_id = book_club.to_dict()['id']
+            book_club_id = book_club.to_dict()['id']
 
-        #
-        #
-        #
-        # instantiate two chatrooms
-        #
-        #
-        #
+            # instantiate two chatrooms for the book club
+            general_chat = BookClubChatroom(
+                name='General',
+                book_club_id=book_club_id,
+                created_at=datetime.now(),
+                updated_at=datetime.now()
+            )
 
-        # add host user as book club member
-        new_member = BookClubMember(
-            book_club_id=book_club_id,
-            user_id=data['host_id'],
-            created_at=datetime.now(),
-            updated_at=datetime.now()
-        )
+            spoilers_chat = BookClubChatroom(
+                name='Spoilers',
+                book_club_id=book_club_id,
+                created_at=datetime.now(),
+                updated_at=datetime.now()
+            )
 
-        db.session.add(new_member)
-        db.session.commit()
+            # add host user as book club member
+            new_member = BookClubMember(
+                book_club_id=book_club_id,
+                user_id=data['host_id'],
+                created_at=datetime.now(),
+                updated_at=datetime.now()
+            )
 
-        return { "book club": [book_club.to_dict()]}
+            db.session.add(general_chat)
+            db.session.add(spoilers_chat)
+            db.session.add(new_member)
+            db.session.commit()
+
+            return { 'book club': [book_club.to_dict()], 'book club chatrooms': [general_chat.to_dict(), spoilers_chat.to_dict()], 'book_club_members': [new_member.to_dict()]}
+        except:
+            return {'errors': 'There was an error during Book Club creation.'}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -117,9 +130,10 @@ def update_book_club(id):
 
         db.session.commit()
 
-        return {"book club": [book_club.to_dict()]}
+        return {'book club': [book_club.to_dict()]}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
 
 @book_club_routes.route('/<int:id>', methods=['DELETE'])
 def delete_book_club(id):
@@ -131,12 +145,23 @@ def delete_book_club(id):
     db.session.delete(book_club)
     db.session.commit()
 
-    return {"message": "Book Club successfully deleted."}
+    return {'message': 'Book Club successfully deleted.'}
 
 
 """
-The below routes are for creating and deleting book club memberships.
+The below routes are for creating, reading, and deleting book club memberships.
 """
+
+@book_club_routes.route('/<int:book_club_id>/users')
+def get_book_club_members(book_club_id):
+    """
+    Gets all members of a book club.
+    """
+    book_club_members = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id).all()
+
+    return {'book club members': [member.to_dict() for member in book_club_members]}
+
+
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['POST'])
 def create_book_club_member(book_club_id, user_id):
     """
@@ -152,7 +177,7 @@ def create_book_club_member(book_club_id, user_id):
     db.session.add(book_club_member)
     db.session.commit()
 
-    return {"book club member": [book_club_member.to_dict()]}
+    return {'book club member': [book_club_member.to_dict()]}
 
 
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['DELETE'])
@@ -165,4 +190,4 @@ def delete_book_club_member(book_club_id, user_id):
     db.session.delete(book_club_member)
     db.session.commit()
 
-    return {"message": "Book club member successfully deleted."}
+    return {'message': 'Book club member successfully deleted.'}
