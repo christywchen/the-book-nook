@@ -1,22 +1,32 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllBookClubs } from '../../../store/book_club';
 
 function Sidebar({ userBookClubs }) {
 
     return (
         <>
-            My Book Clubs
-            <ul>
-                {userBookClubs && userBookClubs.map(bookClub =>
-                (<li key={bookClub.id}>
-                    <Link to={`/dashboard/book-clubs/${bookClub.id}/general`}>
+            <h5>
+                My Book Clubs
+            </h5>
+            {userBookClubs && userBookClubs.map(bookClub =>
+            (<>
+                <div key={bookClub.id}>
+                    <h4>
                         {bookClub.name}
-                    </Link>
-                </li>)
-                )}
-            </ul>
+                    </h4>
+                    <p>
+                        <Link to={`/dashboard/clubs/${bookClub.id}/general`}>
+                            General Chat
+                        </Link>
+                    </p>
+                    <p>
+                        <Link to={`/dashboard/clubs/${bookClub.id}/spoilers`}>
+                            Spoilers Chat
+                        </Link>
+                    </p>
+                </div>
+            </>
+            )
+            )}
 
         </>
     )

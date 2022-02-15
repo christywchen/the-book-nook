@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
 
 function Chatroom() {
-    const { bookClubId } = useParams();
+    const { bookClubId, chatType } = useParams();
 
     return (
         <>
             <div>
-                My Chatroom. Book Club Id: {bookClubId}
+                My Chatroom. Book Club Id: {bookClubId}. {chatType}.
             </div>
         </>
     )

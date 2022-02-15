@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Chatroom from "./Chatroom/Chatroom";
+import Chatroom from './Chatroom/Chatroom';
 import Sidebar from "./Sidebar/Sidebar";
 import DetailsBar from "./DetailsBar/DetailsBar";
 
@@ -44,14 +44,11 @@ function Dashboard() {
                 </div>
 
                 <Switch>
-                    <Route path='/dashboard/book-clubs/:bookClubId/general'>
+                    <Route path='/dashboard/clubs/:bookClubId/:chatType'>
                         <Chatroom />
+                        <DetailsBar />
                     </Route>
                 </Switch>
-
-                <div>
-                    <DetailsBar />
-                </div>
 
             </div>
         </>
