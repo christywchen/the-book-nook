@@ -1,11 +1,14 @@
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import LogoutButton from '../Auth/LogoutButton';
 
 import './Navigation.css';
 
 const Navigation = () => {
+  const sessionUser = useSelector(state => state.session.user);
+
   return (
     <nav id="nav__container">
       <div id="nav__title">
@@ -15,19 +18,22 @@ const Navigation = () => {
         <NavLink to='/' exact={true} activeClassName='active'>
           Home
         </NavLink>
-        <NavLink to='/book-clubs' exact={true} activeClassName='active'>
+        <NavLink to='/about' exact={true} activeClassName='active'>
+          About
+        </NavLink>
+        {sessionUser && (<NavLink to='/book-clubs' exact={true} activeClassName='active'>
           My Book Clubs
+        </NavLink>)}
+        <NavLink to='/signup' exact={true} activeClassName='active'>
+          Join Us
         </NavLink>
         <NavLink to='/login' exact={true} activeClassName='active'>
-          Login
+          Log In
         </NavLink>
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Sign Up
-        </NavLink>
-        <NavLink to='/users' exact={true} activeClassName='active'>
+        {/* <NavLink to='/users' exact={true} activeClassName='active'>
           Users
-        </NavLink>
-        <LogoutButton />
+        </NavLink> */}
+        {sessionUser && (<LogoutButton />)}
       </div>
     </nav>
   );

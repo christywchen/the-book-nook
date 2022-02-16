@@ -8,7 +8,7 @@ function BookClubItem({ bookClub }) {
         <>
             <div className="book__club--item" key={bookClub.id}>
                 <div onClick={() => setShowLinks(!showLinks)} className="sidebar__title">
-                    {bookClub.name} <i class="fa-regular fa-angle-down"></i>
+                    {bookClub.name} <i class="fa-solid fa-angle-down"></i>
                 </div>
                 {showLinks ? (
                     <div className="sidebar__links--group">

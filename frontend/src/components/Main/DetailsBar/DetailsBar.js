@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
 import { getAllBookClubs } from "../../../store/book_club";
@@ -11,6 +11,7 @@ import './DetailsBar.css';
 function DetailsBar() {
     const dispatch = useDispatch();
     const { bookClubId } = useParams();
+    const sessionUser = useSelector(state => state.session.user);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.byBookClubMemberId);
@@ -34,6 +35,8 @@ function DetailsBar() {
             return usersObj[member.user_id];
         });
     }
+
+    // console.log(sessionUser.id, bookClub.host_id)
 
     return (
         <>
@@ -70,6 +73,11 @@ function DetailsBar() {
                         }
                         )}
                         </ul>
+
+                        {bookClub.host_id === sessionUser.id ?
+                            (<Link to='/'>Delete Book Club</Link>) :
+                            (<Link to='/'>Leave Book Club</Link>)
+                        }
                     </>)}
             </div>
         </>

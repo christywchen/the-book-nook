@@ -4,9 +4,10 @@
     --body-font: aktiv-grotesk, sans-serif;
     --main-color: rgba(255, 255, 255, 1);
     --background-color: #e17e7d;
-    --dash-bg: rgba(255, 255, 255, 0.09);
-    --sidebar-bg: rgba(255, 255, 255, 0.18);
     --accent-bg: rgba(255, 255, 255, 0.48);
+    --input-bg: rgba(255, 255, 255, 0.28);
+    --sidebar-bg: rgba(255, 255, 255, 0.18);
+    --dash-bg: rgba(255, 255, 255, 0.08);
     --body-height: calc(100vh - 110px);
     --body-width: calc(100vw - 75px);
 
@@ -18,18 +19,29 @@
     --h3-size: 1.6em;
     --h4-size: 1.3em;
     --h5-size: 1.2em;
+
+    --border-radius: 12px;
+    --input-radius: 4px;
+}
+
+*,
+body {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+    text-decoration: none;
 }
 
 body {
+    margin: 25px 40px;
     position: absolute;
-    /* height: var(--body-height);
-    width: var(--body-width); */
+    height: var(--body-height);
+    width: var(--body-width);
     color: var(--main-color);
     font-family: var(--body-font);
     font-size: 15px;
     background: no-repeat fixed url("./assets/background.jpg");
-    margin: 25px 40px;
-    display: flex;
+    overflow: hidden;
 }
 
 h1 {
@@ -50,4 +62,36 @@ h4 {
 
 h5 {
     font-size: var(--h5-size);
+}
+
+hr {
+    margin: 8px 0;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+}
+
+.button {
+    box-sizing: border-box;
+    margin: 6px 0;
+
+    padding: 8px 10px;
+
+    color: white;
+    font-weight: 600;
+
+    border: none;
+    background-color: var(--sidebar-bg);
+    border-radius: 3px;
+    outline: none;
+}
+
+.button:hover {
+    background-color: var(--input-bg);
+    transition: 0.3s;
+}
+
+.button__auth {
+    width: 100%;
 }

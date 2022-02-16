@@ -7,3 +7,9 @@
     background-color: var(--dash-bg);
     border-radius: 12px;
 }
+
+#body__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
