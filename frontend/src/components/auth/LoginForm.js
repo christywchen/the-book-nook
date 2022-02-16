@@ -86,7 +86,9 @@ const LoginForm = () => {
                   onChange={updatePassword}
                 />
               </label>
-              <button className='button button__auth' type='submit'>Submit</button>
+              <button
+                disabled={!email || !password}
+                className='button button__auth' type='submit'>Submit</button>
               <hr />
             </div>
           </form>

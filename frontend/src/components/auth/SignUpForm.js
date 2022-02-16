@@ -7,7 +7,6 @@ import { login } from '../../store/session';
 const SignUpForm = () => {
   const history = useHistory();
   const [errors, setErrors] = useState([]);
-  const [passwordError, setPasswordError] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -20,16 +19,10 @@ const SignUpForm = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
 
-    // if (password === repeatPassword) {
-    const data = await dispatch(signUp(username, email, password));
+    const data = await dispatch(signUp(username, firstName, lastName, email, password, confirmPassword));
+
     if (data) {
       setErrors(data)
-
-      if (password !== confirmPassword) {
-        setPasswordError('Passwords must match.');
-      } else {
-        setPasswordError('');
-      }
     }
   };
 
@@ -86,15 +79,18 @@ const SignUpForm = () => {
         <div id="auth__form">
 
           <form onSubmit={handleSignup}>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-              {passwordError}
-            </div>
+            {errors.length > 0 && (
+              <ul className="auth__container--errors">{
+                errors.map((error, ind) => (
+                  <li key={ind}>{error}</li>
+                ))
+              }
+              </ul>
+            )}
             <div>
               <label>
                 <input
+                  labelText='Username'
                   name='username'
                   type='text'
                   placeholder='Username'
@@ -106,6 +102,7 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
+                  labelText='First Name'
                   name='first_name'
                   type='text'
                   placeholder='First Name'
@@ -117,6 +114,7 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
+                  labelText='Last Name'
                   name='last_name'
                   type='text'
                   placeholder='Last Name'
@@ -128,6 +126,7 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
+                  labelText='Email'
                   name='email'
                   type='text'
                   placeholder='Email'
@@ -139,6 +138,7 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
+                  labelText='Password'
                   name='password'
                   type='password'
                   placeholder='Password'
@@ -150,17 +150,21 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
+                  labelText='Confirm Password'
                   name='confirm_password'
                   type='password'
                   placeholder='Confirm Password'
                   value={confirmPassword}
                   onChange={updateConfirmPassword}
-                // required={true}
+                  required={true}
                 ></input>
               </label>
             </div>
-            <button className='button button__auth' type='submit'>Submit</button>
+            <button
+              disabled={!username || !firstName || !lastName || !email || !password || !confirmPassword}
+              className='button button__auth' type='submit'>Submit</button>
           </form>
+          <hr />
           <form onSubmit={handleDemo}>
             <button className='button button__auth' type="submit">Demo User</button>
           </form>

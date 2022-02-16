@@ -74,7 +74,13 @@ hr {
     border-left: none;
 }
 
-.button {
+button:disabled {
+    color: var(--accent-bg);
+    background-color: var(--dash-bg);
+    border: 1px solid var(--input-bg);
+}
+
+button {
     box-sizing: border-box;
     margin: 6px 0;
 
@@ -89,7 +95,8 @@ hr {
     outline: none;
 }
 
-.button:hover {
+button:enabled:hover,
+button:active:hover {
     background-color: var(--input-bg);
     transition: 0.3s;
 }

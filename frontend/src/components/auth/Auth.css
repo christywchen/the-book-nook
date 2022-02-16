@@ -4,7 +4,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 50px 60px;
+    padding: 30px 60px;
     margin: auto auto;
     text-align: center;
 }
@@ -14,8 +14,8 @@
     height: 500px;
     height: fit-content;
 
-    margin: 10px auto;
-    padding: 50px 60px;
+    margin: 0 auto;
+    padding: 40px 60px;
 
     border-radius: var(--border-radius);
     background-color: var(--dash-bg);
@@ -31,7 +31,7 @@
 #auth__container input {
     width: 100%;
     padding: 8px 10px;
-    margin: 8px 0;
+    margin: 6px 0;
 
     color: var(--main-color);
     border: none;
@@ -52,7 +52,7 @@
 }
 
 ul.auth__container--errors {
-    margin: 8px 0 18px;
+    margin: 8px 0 12px;
     padding: 10px 0 6px 0;
 
     color: white;
