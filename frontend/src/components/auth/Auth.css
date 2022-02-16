@@ -1,0 +1,74 @@
+#auth__container {
+    position: inherit;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 60px;
+    margin: auto auto;
+    text-align: center;
+}
+
+#auth__form {
+    width: 400px;
+    height: 500px;
+    height: fit-content;
+    margin: 0 auto;
+    padding: 45px 60px;
+    border-radius: var(--border-radius);
+    background-color: var(--dash-bg);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
+}
+
+#auth__container--title {
+    margin: 0 0 20px 0;
+    font-size: var(--h1-size);
+    font-weight: 600;
+}
+
+#auth__container input {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 6px 0;
+
+    color: var(--main-color);
+    border: none;
+    border-bottom: 1px solid var(--body-color);
+    caret-color: var(--main-color);
+    background: var(--sidebar-bg);
+    border-radius: var(--input-radius);
+}
+
+#auth__container input:focus {
+    background-color: var(--input-bg);
+    color: var(--main-color);
+    outline: none;
+}
+
+#auth__container input::placeholder {
+    color: var(--main-color);
+}
+
+ul.auth__container--errors {
+    margin: 8px 0 12px;
+    padding: 10px 0 6px 0;
+
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 1.3em;
+
+    border-radius: 3px;
+    border: 1px solid var(--error-color);
+    background-color: var(--error-color);
+}
+
+ul.auth__container--errors li {
+    margin: 0 0 4px 0;
+    list-style-type: none;
+}
+
+.auth__passwords {
+    display: flex;
+    gap: 10px;
+}

@@ -25,6 +25,12 @@ python-dateutil = "==2.8.1"
 python-editor = "==1.0.4"
 greenlet = "==1.1.0"
 Mako = "==1.1.4"
+Flask-SocketIO = "==5.1.1"
+bidict = "==0.21.4"
+python-engineio = "==4.3.1"
+python-socketio = "==5.5.1"
+eventlet = "==0.30.2"
+dnspython = "==1.16.0"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"

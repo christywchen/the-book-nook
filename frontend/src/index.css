@@ -1,0 +1,103 @@
+@import url("https://use.typekit.net/qqr7rbe.css");
+
+:root {
+    --body-font: aktiv-grotesk, sans-serif;
+    --body-height: calc(100vh - 110px);
+    --body-width: calc(100vw - 75px);
+
+    --main-color: rgba(255, 255, 255, 1);
+    --background-color: #e17e7d;
+    --accent-bg: rgba(255, 255, 255, 0.48);
+    --input-bg: rgba(255, 255, 255, 0.28);
+    --sidebar-bg: rgba(255, 255, 255, 0.18);
+    --dash-bg: rgba(255, 255, 255, 0.08);
+    --error-color: rgba(242, 64, 76, 0.5);
+
+    --body-size: 16px;
+    --small-size: 0.9em;
+    --logo-size: 1.8em;
+    --h1-size: 2em;
+    --h2-size: 1.8em;
+    --h3-size: 1.6em;
+    --h4-size: 1.3em;
+    --h5-size: 1.2em;
+
+    --border-radius: 12px;
+    --input-radius: 4px;
+}
+
+*,
+body {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+    text-decoration: none;
+}
+
+body {
+    margin: 25px 40px;
+    position: absolute;
+    height: var(--body-height);
+    width: var(--body-width);
+    color: var(--main-color);
+    font-family: var(--body-font);
+    font-size: 15px;
+    background: no-repeat fixed url("./assets/background.jpg");
+    overflow: hidden;
+}
+
+h1 {
+    font-size: var(--h1-size);
+}
+
+h2 {
+    font-size: var(--h2-size);
+}
+
+h3 {
+    font-size: var(--h3-size);
+}
+
+h4 {
+    font-size: var(--h4-size);
+}
+
+h5 {
+    font-size: var(--h5-size);
+}
+
+hr {
+    margin: 8px 0;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+}
+
+button:disabled {
+    color: var(--accent-bg);
+    background-color: var(--dash-bg);
+    border: 1px solid var(--sidebar-bg);
+}
+
+button {
+    box-sizing: border-box;
+    margin: 6px 0;
+    padding: 8px 10px;
+    color: white;
+    font-weight: 600;
+    background-color: var(--dash-bg);
+    border: 1px solid var(--accent-bg);
+    border-radius: 3px;
+    outline: none;
+    transition: 0.3s;
+}
+
+button:enabled:hover,
+button:active:hover {
+    background-color: var(--input-bg);
+}
+
+.button__auth {
+    width: 100%;
+}
