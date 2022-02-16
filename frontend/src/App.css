@@ -1,0 +1,9 @@
+#content__container {
+    position: relative;
+    height: var(--body-height);
+    width: var(--body-width);
+    display: flex;
+    margin: 20px 0;
+    background-color: var(--dash-bg);
+    border-radius: 12px;
+}

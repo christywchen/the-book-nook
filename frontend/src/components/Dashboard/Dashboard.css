@@ -1,7 +1,0 @@
-#dashboard__container {
-    display: flex;
-}
-
-#dashboard_container > div {
-    flex-basis: 25%;
-}

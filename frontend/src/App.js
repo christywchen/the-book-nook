@@ -4,14 +4,18 @@ import { useDispatch } from 'react-redux';
 
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
+import Navigation from './components/Navigation/Navigation';
 import User from './components/User';
 import Chat from './components/Chat';
 
 import { authenticate } from './store/session';
-import Dashboard from './components/Dashboard/Dashboard';
+
+import Main from './components/Main/Main';
+import Sidebar from './components/Sidebar/Sidebar';
+
+import './App.css';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,27 +34,30 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/dashboard/*' exact={true} >
-          <Dashboard />
-        </ProtectedRoute>
-        <ProtectedRoute path='/chat' exact={true} >
-          <Chat />
-        </ProtectedRoute>
-      </Switch>
+      <Navigation />
+      <div id="content__container">
+        <Sidebar />
+        <Switch>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/*' exact={true} >
+            {/* <Main /> */}
+          </ProtectedRoute>
+          <ProtectedRoute path='/chat' exact={true} >
+            <Chat />
+          </ProtectedRoute>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }
