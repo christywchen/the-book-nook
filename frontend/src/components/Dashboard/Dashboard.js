@@ -22,23 +22,14 @@ function Dashboard() {
         dispatch(getUserMemberships(sessionUser.id));
     }, [dispatch, sessionUser.id]);
 
-    function getUserBookClubs(userId) {
-        // loop through user's memberships and return the book club object corresponding to that membership
-        const userMemberships = Object.values(userMembershipsObj);
-
-        return userMemberships.map(membership => {
-            return allBookClubsObj[membership.book_club_id];
-        });
-    }
+    const bookClubs = Object.values(allBookClubsObj);
+    const userMemberships = Object.values(userMembershipsObj);
 
     let userBookClubs;
-    if (userMembershipsObj) {
-        userBookClubs = getUserBookClubs(sessionUser.id);
-    }
-
-    let bookClubs;
-    if (allBookClubsObj) {
-        bookClubs = Object.values(allBookClubsObj);
+    if (userMemberships) {
+        userBookClubs = userMemberships.map(membership => {
+            return allBookClubsObj[membership.book_club_id];
+        });
     }
 
     return (
@@ -51,7 +42,7 @@ function Dashboard() {
                 <Switch>
                     <Route path='/dashboard/clubs/:bookClubId/:chatType'>
                         <Chatroom />
-                        <DetailsBar bookClubs={bookClubs} />
+                        <DetailsBar allBookClubsObj={allBookClubsObj} />
                     </Route>
                 </Switch>
 

@@ -35,7 +35,6 @@ export const getBookClubMembers = (id) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        console.log(data['book club members'])
         dispatch(loadBookClubMembers(data['book club members']));
     }
 }
