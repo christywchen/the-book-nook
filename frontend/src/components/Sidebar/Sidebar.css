@@ -4,13 +4,24 @@
     /* top: -18px; */
     min-width: 230px;
     height: 100%;
-    padding: 15px 18px;
+    padding: 15px 20px;
     background-color: var(--sidebar-bg);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
 }
 
 .sidebar__title {
-    font-size: var(--h4-size);
+    margin: 0 0 10px 0;
+    font-size: var(--h5-size);
     font-weight: 600;
+}
+
+.sidebar__links--group {
+    border-bottom: 1px solid var(--accent-bg);
+    margin: 15px 0;
+}
+
+.sidebar__links--group a {
+    font-size: var(--small-size);
+    padding: 0 8px;
 }

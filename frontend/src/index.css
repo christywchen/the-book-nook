@@ -6,10 +6,12 @@
     --background-color: #e17e7d;
     --dash-bg: rgba(255, 255, 255, 0.09);
     --sidebar-bg: rgba(255, 255, 255, 0.18);
+    --accent-bg: rgba(255, 255, 255, 0.48);
     --body-height: calc(100vh - 110px);
     --body-width: calc(100vw - 75px);
 
     --body-size: 16px;
+    --small-size: 0.9em;
     --logo-size: 1.8em;
     --h1-size: 2em;
     --h2-size: 1.8em;

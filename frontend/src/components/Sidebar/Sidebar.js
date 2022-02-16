@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,6 +8,7 @@ import { getAllBookClubs } from '../../store/book_club';
 import { getUserMemberships } from '../../store/book_club_member';
 
 import './Sidebar.css';
+import BookClubItem from './BookClubItem/BookClubItem';
 
 function Sidebar() {
     const dispatch = useDispatch();
@@ -33,33 +34,10 @@ function Sidebar() {
     return (
         <>
             <div id="sidebar__container">
-                {userBookClubs && userBookClubs.map(bookClub => {
-                    if (bookClub.id) {
-                        return (<>
-                            <div key={bookClub.id}>
-                                <div className="sidebar__title">
-                                    {bookClub.name}
-                                    {/* <div className="sidebar_caret"> */}
-                                    {/* </div> */}
-                                </div>
-                                <i class="fa-solid fa-angle-down"></i>
-                                <p>
-                                    <Link to={`/book-clubs/${bookClub.id}/rooms/general`}>
-                                        General Chat
-                                    </Link>
-                                </p>
-                                <p>
-                                    <Link to={`/book-clubs/${bookClub.id}/rooms/spoilers`}>
-                                        Spoilers Chat
-                                    </Link>
-                                </p>
-                            </div>
-                        </>
-                        )
-                    }
-                })
-                }
-                <Link to='/'>Start Your Own Club</Link>
+                {userBookClubs && userBookClubs.map(bookClub =>
+                    (<BookClubItem bookClub={bookClub} />)
+                )}
+                {userMemberships.length < 5 && (<Link to='/'>Start Your Own Club</Link>)}
             </div>
 
             <Switch>

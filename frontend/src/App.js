@@ -12,7 +12,6 @@ import Chat from './components/Chat';
 
 import { authenticate } from './store/session';
 
-import Main from './components/Main/Main';
 import Sidebar from './components/Sidebar/Sidebar';
 
 import './App.css';

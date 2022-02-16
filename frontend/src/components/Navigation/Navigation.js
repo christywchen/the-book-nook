@@ -12,8 +12,11 @@ const Navigation = () => {
         The Book Nook
       </div>
       <div id="nav__links">
-        <NavLink to='/dashboard' exact={true} activeClassName='active'>
+        <NavLink to='/' exact={true} activeClassName='active'>
           Home
+        </NavLink>
+        <NavLink to='/book-clubs' exact={true} activeClassName='active'>
+          My Book Clubs
         </NavLink>
         <NavLink to='/login' exact={true} activeClassName='active'>
           Login
