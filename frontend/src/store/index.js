@@ -1,11 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import bookClubReducer from './book_club';
-import bookClubMemberReducer from './book_club_members';
+import bookClubMemberReducer from './book_club_member';
 import session from './session'
+import userReducer from './user';
 
 const rootReducer = combineReducers({
   session,
+  user: userReducer,
   bookClub: bookClubReducer,
   bookClubMember: bookClubMemberReducer
 });

@@ -13,6 +13,13 @@ const loadUserMemberships = (bookClubMemberships) => {
     }
 }
 
+const loadBookClubMembers = (bookClubMembers) => {
+    return {
+        type: LOAD_BOOK_CLUB_MEMBERS,
+        bookClubMembers
+    }
+}
+
 // thunk middlewares
 export const getUserMemberships = (id) => async (dispatch) => {
     const res = await fetch(`/api/users/${id}/book-clubs`);
@@ -23,8 +30,22 @@ export const getUserMemberships = (id) => async (dispatch) => {
     }
 }
 
+export const getBookClubMembers = (id) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${id}/users`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBookClubMembers(data['book club members']));
+    }
+}
+
 // initial state
-const initialState = { byUserMembershipId: {}, allUserMembershipIds: [] };
+const initialState = {
+    byUserMembershipId: {},
+    allUserMembershipIds: [],
+    byBookClubMemberId: {},
+    allBookClubMemberIds: []
+};
 
 // book club member reducer
 const bookClubMemberReducer = (state = initialState, action) => {
@@ -39,6 +60,13 @@ const bookClubMemberReducer = (state = initialState, action) => {
                 return userMemberships;
             }, {});
             return newState;
+        case LOAD_BOOK_CLUB_MEMBERS:
+            newState = { ...state };
+            newState.byBookClubMemberIds = action.bookClubMembers.reduce((bookClubMembers, bookClubMember) => {
+                newState.allBookClubMemberIds.push(bookClubMember.id);
+                bookClubMembers[bookClubMember.id] = bookClubMember;
+                return bookClubMembers;
+            }, {})
         default:
             return state;
     }
