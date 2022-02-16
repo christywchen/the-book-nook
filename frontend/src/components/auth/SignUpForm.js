@@ -135,7 +135,7 @@ const SignUpForm = () => {
                 ></input>
               </label>
             </div>
-            <div>
+            <div className='auth__passwords'>
               <label>
                 <input
                   labelText='Password'
@@ -146,8 +146,6 @@ const SignUpForm = () => {
                   value={password}
                 ></input>
               </label>
-            </div>
-            <div>
               <label>
                 <input
                   labelText='Confirm Password'
