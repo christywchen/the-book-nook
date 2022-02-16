@@ -15,6 +15,8 @@ import { authenticate } from './store/session';
 import Sidebar from './components/Sidebar/Sidebar';
 
 import './App.css';
+import About from './components/About/About';
+import Home from './components/Home/Home';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +38,12 @@ function App() {
       <Navigation />
       {/* <div id="body__container"> */}
       <Switch>
+        <Route path='/' exact={true}>
+          <Home />
+        </Route>
+        <Route path='/about' exact={true}>
+          <About />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -50,9 +58,9 @@ function App() {
           <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute>
-          <ProtectedRoute path='/*' exact={true} >
-            {/* <Main /> */}
-          </ProtectedRoute>
+          {/* <ProtectedRoute path='/*' exact={true} >
+            <Main />
+          </ProtectedRoute> */}
           <ProtectedRoute path='/chat' exact={true} >
             <Chat />
           </ProtectedRoute>

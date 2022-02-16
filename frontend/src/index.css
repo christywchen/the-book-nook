@@ -93,12 +93,12 @@ button {
     background-color: var(--dash-bg);
     border-radius: 3px;
     outline: none;
+    transition: 0.3s;
 }
 
 button:enabled:hover,
 button:active:hover {
     background-color: var(--input-bg);
-    transition: 0.3s;
 }
 
 .button__auth {

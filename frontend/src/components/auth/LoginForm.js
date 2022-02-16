@@ -52,14 +52,14 @@ const LoginForm = () => {
 
   return (
     <>
-      <div id="auth__container">
+      <div id='auth__container'>
 
         <div id='auth__container--title'>Log In</div>
-        <div id="auth__form">
+        <div id='auth__form'>
 
           <form onSubmit={handleLogin}>
             {errors.length > 0 &&
-              (<ul className="auth__container--errors">
+              (<ul className='auth__container--errors'>
                 <li>
                   Login credentials invalid.
                 </li>
@@ -93,10 +93,10 @@ const LoginForm = () => {
             </div>
           </form>
           <form onSubmit={handleDemo}>
-            <button className='button button__auth' type="submit">Demo User</button>
+            <button className='button button__auth' type='submit'>Demo User</button>
           </form>
           <form onSubmit={handleRedirect}>
-            <button className='button button__auth button__modal' type="submit">Don't have an account?</button>
+            <button className='button button__auth button__modal' type='submit'>Don't have an account?</button>
           </form>
         </div>
       </div>

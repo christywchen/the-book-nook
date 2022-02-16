@@ -21,15 +21,19 @@ const Navigation = () => {
         <NavLink to='/about' exact={true} activeClassName='active'>
           About
         </NavLink>
-        {sessionUser && (<NavLink to='/book-clubs' exact={true} activeClassName='active'>
+        {sessionUser && (<NavLink to='/dashboard' exact={true} activeClassName='active'>
           My Book Clubs
         </NavLink>)}
-        <NavLink to='/signup' exact={true} activeClassName='active'>
-          Join Us
-        </NavLink>
-        <NavLink to='/login' exact={true} activeClassName='active'>
-          Log In
-        </NavLink>
+        {!sessionUser && (
+          <>
+            <NavLink to='/signup' exact={true} activeClassName='active'>
+              Join Us
+            </NavLink>
+            <NavLink to='/login' exact={true} activeClassName='active'>
+              Log In
+            </NavLink>
+          </>
+        )}
         {/* <NavLink to='/users' exact={true} activeClassName='active'>
           Users
         </NavLink> */}
