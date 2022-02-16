@@ -75,7 +75,7 @@ const SignUpForm = () => {
     <>
       <div id='auth__container'>
 
-        <div id='auth__container--title'>Join Us</div>
+        <div id='auth__container--title'>Sign Up</div>
         <div id='auth__form'>
 
           <form onSubmit={handleSignup}>

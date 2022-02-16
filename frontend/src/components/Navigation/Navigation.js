@@ -27,7 +27,7 @@ const Navigation = () => {
         {!sessionUser && (
           <>
             <NavLink to='/signup' exact={true} activeClassName='active'>
-              Join Us
+              Get Started
             </NavLink>
             <NavLink to='/login' exact={true} activeClassName='active'>
               Log In
