@@ -2,14 +2,16 @@
 
 :root {
     --body-font: aktiv-grotesk, sans-serif;
+    --body-height: calc(100vh - 110px);
+    --body-width: calc(100vw - 75px);
+
     --main-color: rgba(255, 255, 255, 1);
     --background-color: #e17e7d;
     --accent-bg: rgba(255, 255, 255, 0.48);
     --input-bg: rgba(255, 255, 255, 0.28);
     --sidebar-bg: rgba(255, 255, 255, 0.18);
     --dash-bg: rgba(255, 255, 255, 0.08);
-    --body-height: calc(100vh - 110px);
-    --body-width: calc(100vw - 75px);
+    --error-color: rgba(242, 64, 76, 0.5);
 
     --body-size: 16px;
     --small-size: 0.9em;
@@ -81,8 +83,8 @@ hr {
     color: white;
     font-weight: 600;
 
-    border: none;
-    background-color: var(--sidebar-bg);
+    border: 1px solid var(--accent-bg);
+    background-color: var(--dash-bg);
     border-radius: 3px;
     outline: none;
 }

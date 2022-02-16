@@ -58,11 +58,13 @@ const LoginForm = () => {
         <div id="auth__form">
 
           <form onSubmit={handleLogin}>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div>
+            {errors.length > 0 &&
+              (<ul className="auth__container--errors">
+                <li>
+                  Login credentials invalid.
+                </li>
+              </ul>
+              )}
             <div>
               <label htmlFor='email'>
                 <input
@@ -84,7 +86,7 @@ const LoginForm = () => {
                   onChange={updatePassword}
                 />
               </label>
-              <button className='button button__auth' type='submit'>Log In</button>
+              <button className='button button__auth' type='submit'>Submit</button>
               <hr />
             </div>
           </form>

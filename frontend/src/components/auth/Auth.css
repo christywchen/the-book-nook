@@ -35,18 +35,36 @@
     color: var(--main-color);
     border: none;
     border-bottom: 1px solid var(--body-color);
-    caret-color: var(--accent-color-2);
+    caret-color: var(--main-color);
     background: var(--sidebar-bg);
     border-radius: var(--input-radius);
 }
 
 #auth__container input:focus {
     background-color: var(--input-bg);
-    color: var(--accent-color-2);
-    border-bottom: 1px solid var(--accent-color-2);
+    color: var(--main-color);
     outline: none;
 }
 
 #auth__container input::placeholder {
-    color: var(--medium-grey);
+    color: var(--main-color);
+}
+
+ul.auth__container--errors {
+    margin: 8px 0 18px;
+    padding: 10px 0 6px 0;
+
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+    line-height: 1.3em;
+
+    border-radius: 3px;
+    border: 1px solid var(--error-color);
+    background-color: var(--error-color);
+}
+
+ul.auth__container--errors li {
+    margin: 0 0 4px 0;
+    list-style-type: none;
 }
