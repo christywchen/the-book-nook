@@ -4,14 +4,14 @@ function Sidebar({ userBookClubs }) {
 
     return (
         <>
-            <h5>
+            <h3>
                 My Book Clubs
-            </h5>
+            </h3>
             {userBookClubs && userBookClubs.map(bookClub =>
             (<>
-                <div key={bookClub.id}>
+                <div>
                     <h4>
-                        {bookClub.name}
+                        {bookClub?.name}
                     </h4>
                     <p>
                         <Link to={`/dashboard/clubs/${bookClub.id}/general`}>

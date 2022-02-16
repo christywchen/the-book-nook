@@ -6,7 +6,10 @@ function Chatroom() {
     return (
         <>
             <div>
-                My Chatroom. Book Club Id: {bookClubId}. {chatType}.
+                <h3>
+                    My Chatroom
+                </h3>
+                Book Club Id: {bookClubId}. {chatType}.
             </div>
         </>
     )

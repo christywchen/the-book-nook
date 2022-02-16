@@ -35,6 +35,7 @@ export const getBookClubMembers = (id) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
+        console.log(data['book club members'])
         dispatch(loadBookClubMembers(data['book club members']));
     }
 }
@@ -62,11 +63,12 @@ const bookClubMemberReducer = (state = initialState, action) => {
             return newState;
         case LOAD_BOOK_CLUB_MEMBERS:
             newState = { ...state };
-            newState.byBookClubMemberIds = action.bookClubMembers.reduce((bookClubMembers, bookClubMember) => {
+            newState.byBookClubMemberId = action.bookClubMembers.reduce((bookClubMembers, bookClubMember) => {
                 newState.allBookClubMemberIds.push(bookClubMember.id);
                 bookClubMembers[bookClubMember.id] = bookClubMember;
                 return bookClubMembers;
-            }, {})
+            }, {});
+            return newState;
         default:
             return state;
     }

@@ -6,7 +6,7 @@ from backend.models.book_club_members import BookClubMember
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+@user_routes.route('')
 @login_required
 def users():
     users = User.query.all()
@@ -18,6 +18,7 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
 
 @user_routes.route('/<int:id>/book-clubs')
 @login_required

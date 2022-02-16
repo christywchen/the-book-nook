@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import DetailsBar from "./DetailsBar/DetailsBar";
 
 import { getAllBookClubs } from '../../store/book_club';
-import { getUserMemberships } from '../../store/book_club_members';
+import { getUserMemberships } from '../../store/book_club_member';
 
 import './Dashboard.css';
 
@@ -20,7 +20,7 @@ function Dashboard() {
     useEffect(() => {
         dispatch(getAllBookClubs());
         dispatch(getUserMemberships(sessionUser.id));
-    }, []);
+    }, [dispatch, sessionUser.id]);
 
     function getUserBookClubs(userId) {
         // loop through user's memberships and return the book club object corresponding to that membership
@@ -36,6 +36,11 @@ function Dashboard() {
         userBookClubs = getUserBookClubs(sessionUser.id);
     }
 
+    let bookClubs;
+    if (allBookClubsObj) {
+        bookClubs = Object.values(allBookClubsObj);
+    }
+
     return (
         <>
             <div id="dashboard__container">
@@ -46,7 +51,7 @@ function Dashboard() {
                 <Switch>
                     <Route path='/dashboard/clubs/:bookClubId/:chatType'>
                         <Chatroom />
-                        <DetailsBar />
+                        <DetailsBar bookClubs={bookClubs} />
                     </Route>
                 </Switch>
 
