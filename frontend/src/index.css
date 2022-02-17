@@ -6,10 +6,10 @@
     --body-width: calc(100vw - 75px);
 
     --main-color: rgba(255, 255, 255, 1);
-    --background-color: rgba(226, 58, 80, 0.4);
+    --background-color: rgba(226, 58, 80, 0.3);
     --accent-bg: rgba(255, 255, 255, 0.48);
     --input-bg: rgba(255, 255, 255, 0.28);
-    --sidebar-bg: rgba(255, 255, 255, 0.18);
+    --sidebar-bg: rgba(255, 255, 255, 0.12);
     --dash-bg: rgba(255, 255, 255, 0.08);
     --error-color: rgba(242, 64, 76, 0.774);
 
@@ -65,6 +65,10 @@ h4 {
 
 h5 {
     font-size: var(--h5-size);
+}
+
+p {
+    line-height: 1.5em;
 }
 
 hr {

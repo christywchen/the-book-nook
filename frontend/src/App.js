@@ -20,6 +20,7 @@ import './App.css';
 import About from './components/About/About';
 import Home from './components/Home/Home';
 import { getAllBookClubs } from './store/book_club';
+import BookClubCreate from './components/BookClubs/BookClubCreate/BookClubCreate';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,6 +67,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/book-clubs/all' exact={true} >
             <BookClubList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/book-clubs/new' exact={true} >
+            <BookClubCreate />
           </ProtectedRoute>
           {/* <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
