@@ -4,7 +4,7 @@ import { useParams, Link, useHistory } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
 import { getAllBookClubs, deleteBookClub } from "../../../store/book_club";
-import { getBookClubMembers } from "../../../store/book_club_member";
+import { removeUserMembership, getBookClubMembers, deleteBookClubMember } from "../../../store/book_club_member";
 
 import './DetailsBar.css';
 
@@ -13,9 +13,11 @@ function DetailsBar() {
     const dispatch = useDispatch();
     const { bookClubId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+    const userMemberships = useSelector(state => state.bookClubMember.byUserMembershipId);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.byBookClubMemberId);
+
 
     const bookClub = allBookClubsObj[bookClubId];
     const users = Object.values(usersObj);
@@ -30,12 +32,24 @@ function DetailsBar() {
         dispatch(getBookClubMembers(bookClubId));
     }, [dispatch, bookClubId]);
 
+    console.log(userMemberships, 'MEMBERSHIPPPPS')
+
     async function handleDeleteClub(e) {
         e.preventDefault();
         await dispatch(deleteBookClub(bookClub.id));
+        await dispatch(removeUserMembership(bookClub.id));
 
         return history.push('/');
     }
+
+    async function handleLeaveClub(e) {
+        e.preventDefault();
+        await dispatch(removeUserMembership(bookClub.id));
+        await dispatch(deleteBookClubMember(bookClub.id));
+
+        return history.push('/');
+    }
+
 
     let members;
     if (bookClubMembers && users) {
@@ -84,7 +98,7 @@ function DetailsBar() {
 
                         {bookClub.host_id === sessionUser.id ?
                             (<Link onClick={handleDeleteClub}>Delete Book Club</Link>) :
-                            (<Link to='/'>Leave Book Club</Link>)
+                            (<Link onClick={handleLeaveClub} to='/'>Leave Book Club</Link>)
                         }
                     </>)}
             </div>

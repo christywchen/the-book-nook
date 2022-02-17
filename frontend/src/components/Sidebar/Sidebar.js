@@ -16,12 +16,12 @@ function Sidebar() {
     const location = useLocation();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const userMembershipsObj = useSelector(state => state.bookClubMember.byUserMembershipId);
+    const userMembershipsObj = useSelector(state => state.bookClubMember.userMembershipsByClubId);
     const userMemberships = Object.values(userMembershipsObj);
 
     useEffect(() => {
         if (sessionUser) {
-            console.log(sessionUser, 'sidebar sessionuser')
+            // console.log(sessionUser, 'sidebar sessionuser')
             dispatch(getUserMemberships(sessionUser.id));
         }
     }, [dispatch]);

@@ -21,21 +21,20 @@ function JoinedClubs({ userMemberships }) {
         return history.push('/book-clubs/new');
     }
 
-    console.log('ALL BOOK CLUBS', allBookClubsObj);
+    // console.log('ALL BOOK CLUBS', allBookClubsObj);
     let userBookClubs;
     if (userMemberships.length && bookClubs.length) {
         userBookClubs = userMemberships.map(membership => {
-            console.log('MEMBERSHIP', membership)
-            console.log('MEMBER THING', allBookClubsObj[membership.book_club_id])
+            // console.log('MEMBERSHIP', membership)
+            // console.log('MEMBER THING', allBookClubsObj[membership.book_club_id])
             return allBookClubsObj[membership.book_club_id];
         });
     }
 
-
-    console.log('USER BOOK CLUBS ARRAY', userBookClubs);
+    // console.log('USER BOOK CLUBS ARRAY', userBookClubs);
     return (
         <>
-            {userBookClubs && (<div class='sidebar__bookclubs'>
+            {userBookClubs && (<div className='sidebar__bookclubs'>
                 <div className='sidebar__bookclub--items'> {
                     userBookClubs?.map(bookClub => (
                         <BookClubItem key={bookClub.id} bookClub={bookClub} />

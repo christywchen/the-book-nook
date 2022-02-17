@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { createBookClub } from "../../../store/book_club";
 import { getUserMemberships } from "../../../store/book_club_member";
 
 function BookClubForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
     const [name, setName] = useState('');
@@ -24,6 +26,7 @@ function BookClubForm() {
         if (data) {
             setErrors(data);
         }
+
         // else {
         //     await dispatch(getUserMemberships(hostId));
         // }
