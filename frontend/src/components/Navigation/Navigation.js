@@ -27,7 +27,7 @@ const Navigation = () => {
               My Book Clubs
             </NavLink>
             <span className='nav__text'>Explore:
-              <NavLink className='nav__sublink' to='/book-clubs' exact={true} activeClassName='active'>
+              <NavLink className='nav__sublink' to='/book-clubs/all' exact={true} activeClassName='active'>
                 Book Clubs
               </NavLink>
             </span>

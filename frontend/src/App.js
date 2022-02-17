@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import LoginForm from './components/Auth/LoginForm';
@@ -62,6 +62,9 @@ function App() {
             <Main />
           </ProtectedRoute>
           <ProtectedRoute path='/book-clubs' exact={true} >
+            <Redirect to="/book-clubs/all" />
+          </ProtectedRoute>
+          <ProtectedRoute path='/book-clubs/all' exact={true} >
             <BookClubList />
           </ProtectedRoute>
           {/* <ProtectedRoute path='/users/:userId' exact={true} >
