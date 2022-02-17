@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { createBookClub, getAllBookClubs } from "../../../store/book_club";
+import { createBookClub, getAllBookClubs, updateBookClub } from "../../../store/book_club";
 import { getBookClubMembers, getUserMemberships } from "../../../store/book_club_member";
 
 function BookClubForm({ formType, formProps }) {
@@ -9,10 +9,10 @@ function BookClubForm({ formType, formProps }) {
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
 
-    const [name, setName] = useState(formProps.name || '');
-    const [description, setDescription] = useState(formProps.description || '');
-    const [imageUrl, setImageUrl] = useState(formProps.image_url || '');
-    const [capacity, setCapacity] = useState(formProps.capacity || '');
+    const [name, setName] = useState(formProps?.name || '');
+    const [description, setDescription] = useState(formProps?.description || '');
+    const [imageUrl, setImageUrl] = useState(formProps?.image_url || '');
+    const [capacity, setCapacity] = useState(formProps?.capacity || '');
     const [errors, setErrors] = useState([]);
 
     async function handleSubmit(e) {
@@ -22,20 +22,27 @@ function BookClubForm({ formType, formProps }) {
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
 
-            console.log(data, 'DATATATATAT')
             if (data.errors) {
                 setErrors(data.errors);
             } else {
                 const bookClub = data;
-                console.log(bookClub)
                 await dispatch(getUserMemberships(sessionUser.id));
                 await dispatch(getAllBookClubs());
                 return history.push(`/dashboard/book-clubs/${bookClub.id}/rooms/general`);
             }
         }
 
-        if (formType === 'edit') {
+        if (formType === 'editRecord') {
+            let id = formProps.id;
+            let hostId = formProps.host_id
 
+            const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
+
+            if (data.errors) {
+                setErrors(data.errors);
+            } else {
+                return history.goBack();
+            }
         }
     }
 

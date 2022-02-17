@@ -119,7 +119,7 @@ def create_book_club():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@book_club_routes.route('/<int:id>', methods=['PUT'])
+@book_club_routes.route('/<int:id>', methods=['PATCH'])
 @login_required
 def update_book_club(id):
     """

@@ -1,7 +1,6 @@
 FROM node:12 AS build-stage
 
 WORKDIR /frontend
-RUN pwd
 COPY frontend/. .
 
 # You have to set this because it should be set during build time.
