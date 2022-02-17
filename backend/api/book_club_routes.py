@@ -4,7 +4,6 @@ from datetime import datetime
 
 from backend.models import db, BookClub, BookClubChatroom, BookClubMember
 from backend.forms.book_club_form import BookClubForm
-from backend.models.books import Book
 
 book_club_routes = Blueprint('book_clubs', __name__)
 
@@ -65,8 +64,8 @@ def create_book_club():
         book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == data['host_id']).all()
         joined_club_count = len(book_clubs_joined)
 
-        if (joined_club_count >= 5):
-            return {'errors': ['Alloted count of 5 joined or hosted book clubs has been exceeded.']}, 401
+        if joined_club_count >= 5:
+            return {'errors': ['Users may only join or host up to 5 book clubs.']}, 401
 
         try:
             book_club = BookClub(
@@ -132,6 +131,12 @@ def update_book_club(id):
         book_club = BookClub.query.get(id)
         data = form.data
 
+        book_club_members = BookClubMember.query.filter(BookClubMember.book_club_id == id).all()
+        member_count = len(book_club_members)
+
+        if data['capacity'] < member_count:
+            return {'errors': ['Member capacity may not be less than the current member count.']}, 401
+
         book_club.name = data['name'],
         book_club.description = data['description'],
         book_club.host_id = data['host_id'],
@@ -140,7 +145,7 @@ def update_book_club(id):
 
         db.session.commit()
 
-        return {'book club': [book_club.to_dict()]}
+        return {'book club': book_club.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -184,7 +189,7 @@ def create_book_club_member(book_club_id, user_id):
     joined_club_count = len(book_clubs_joined)
 
     if (joined_club_count >= 5):
-        return {'errors': ['Alloted count of 5 joined or hosted book clubs has been exceeded.']}
+        return {'errors': ['Users may only join or host up to 5 book clubs.']}, 401
 
     book_club_member = BookClubMember(
         book_club_id=book_club_id,
@@ -196,7 +201,7 @@ def create_book_club_member(book_club_id, user_id):
     db.session.add(book_club_member)
     db.session.commit()
 
-    return {'book club member': [book_club_member.to_dict()]}
+    return {'book club member': book_club_member.to_dict()}
 
 
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['DELETE'])
