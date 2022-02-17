@@ -5,7 +5,7 @@ class BookClub(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
-    description = db.Column(db.Text)
+    description = db.Column(db.String(100))
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     image_url = db.Column(db.Text)
     capacity = db.Column(db.Integer)

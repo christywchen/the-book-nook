@@ -21,7 +21,7 @@ def upgrade():
     op.create_table('book_clubs',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=40), nullable=False),
-    sa.Column('description', sa.Text(), nullable=True),
+    sa.Column('description', sa.String(length=100), nullable=True),
     sa.Column('host_id', sa.Integer(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=True),
