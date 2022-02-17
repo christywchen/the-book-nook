@@ -1,20 +1,27 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
-import { getAllBookClubs } from "../../../store/book_club";
-import { getBookClubMembers } from "../../../store/book_club_member";
+import { getAllBookClubs, deleteBookClub } from "../../../store/book_club";
+import { removeUserMembership, getBookClubMembers, deleteBookClubMember } from "../../../store/book_club_member";
 
 import './DetailsBar.css';
 
 function DetailsBar() {
+    const history = useHistory();
     const dispatch = useDispatch();
     const { bookClubId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
+    const userMemberships = useSelector(state => state.bookClubMember.byUserMembershipId);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.byBookClubMemberId);
+
+
+    const bookClub = allBookClubsObj[bookClubId];
+    const users = Object.values(usersObj);
+    const bookClubMembers = Object.values(bookClubMembersObj);
 
     useEffect(() => {
         dispatch(getAllBookClubs());
@@ -25,9 +32,30 @@ function DetailsBar() {
         dispatch(getBookClubMembers(bookClubId));
     }, [dispatch, bookClubId]);
 
-    const bookClub = allBookClubsObj[bookClubId];
-    const users = Object.values(usersObj);
-    const bookClubMembers = Object.values(bookClubMembersObj);
+    console.log(userMemberships, 'MEMBERSHIPPPPS')
+
+    async function handleEditClub(e) {
+        e.preventDefault();
+
+        return history.push(`/book-clubs/${bookClubId}/edit`);
+    }
+
+    async function handleDeleteClub(e) {
+        e.preventDefault();
+        await dispatch(deleteBookClub(bookClub.id));
+        await dispatch(removeUserMembership(bookClub.id));
+
+        return history.push('/dashboard');
+    }
+
+    async function handleLeaveClub(e) {
+        e.preventDefault();
+        await dispatch(removeUserMembership(bookClub.id));
+        await dispatch(deleteBookClubMember(bookClub.id, sessionUser.id));
+
+        return history.push('/dashboard');
+    }
+
 
     let members;
     if (bookClubMembers && users) {
@@ -43,9 +71,15 @@ function DetailsBar() {
             <div id="details__container">
                 {bookClub && (
                     <>
-                        <h3>
-                            Book Club Details
-                        </h3>
+                        <div className='details__heading'>
+                            <div className='details__title'>
+                                {bookClub.name}
+                            </div>
+                            {bookClub.host_id === sessionUser.id && (
+                                <form className='details__edit--form' onSubmit={handleEditClub}>
+                                    <button className='button button__details--edit' type='submit'>Edit</button>
+                                </form>)}
+                        </div>
                         <ul>
                             <li>
                                 Name: {bookClub.name}
@@ -60,9 +94,9 @@ function DetailsBar() {
                                 Created At: {bookClub.created_at}
                             </li>
                         </ul>
-                        <h3>
-                            Book Club Members
-                        </h3>
+                        <div className='details__title'>
+                            Members
+                        </div>
                         <ul>{members && members.map(member => {
                             if (member) {
                                 return (<>
@@ -75,8 +109,8 @@ function DetailsBar() {
                         </ul>
 
                         {bookClub.host_id === sessionUser.id ?
-                            (<Link to='/'>Delete Book Club</Link>) :
-                            (<Link to='/'>Leave Book Club</Link>)
+                            (<Link onClick={handleDeleteClub}>Delete Book Club</Link>) :
+                            (<Link onClick={handleLeaveClub} to='/'>Leave Book Club</Link>)
                         }
                     </>)}
             </div>

@@ -5,3 +5,32 @@
     background-color: var(--sidebar-bg);
     border-radius: 12px;
 }
+
+.details__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    /* line-height: 1em; */
+    /* background-color: red; */
+}
+
+.details__title {
+    font-size: var(--h5-size);
+    font-weight: 600;
+}
+
+.details__edit--form {
+    margin: 0;
+    padding: 0;
+}
+
+.button__details--edit {
+    /* box-sizing: content-box; */
+    margin: 0;
+    font-size: 0.7em;
+    padding: 3px 5px;
+    border-radius: 2px;
+    /* padding: 3px 8px; */
+    /* background-color: red; */
+}

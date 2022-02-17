@@ -26,32 +26,9 @@
     font-weight: 600;
 }
 
-#auth__container input {
-    width: 100%;
-    padding: 8px 10px;
-    margin: 6px 0;
-
-    color: var(--main-color);
-    border: none;
-    border-bottom: 1px solid var(--body-color);
-    caret-color: var(--main-color);
-    background: var(--sidebar-bg);
-    border-radius: var(--input-radius);
-}
-
-#auth__container input:focus {
-    background-color: var(--input-bg);
-    color: var(--main-color);
-    outline: none;
-}
-
-#auth__container input::placeholder {
-    color: var(--main-color);
-}
-
 ul.auth__container--errors {
     margin: 8px 0 12px;
-    padding: 10px 0 6px 0;
+    padding: 10px 10px 6px;
 
     color: white;
     font-size: 0.8em;

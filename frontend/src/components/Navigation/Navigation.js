@@ -15,21 +15,30 @@ const Navigation = () => {
         The Book Nook
       </div>
       <div id="nav__links">
-        <NavLink to='/' exact={true} activeClassName='active'>
+        <NavLink className='nav__mainlink' to='/' exact={true} activeClassName='active'>
           Home
         </NavLink>
-        <NavLink to='/about' exact={true} activeClassName='active'>
+        <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
           About
         </NavLink>
-        {sessionUser && (<NavLink to='/dashboard' exact={true} activeClassName='active'>
-          My Book Clubs
-        </NavLink>)}
+        {sessionUser && (
+          <>
+            <NavLink className='nav__mainlink' to='/dashboard' exact={true} activeClassName='active'>
+              My Book Clubs
+            </NavLink>
+            <span className='nav__text'>Explore:
+              <NavLink className='nav__sublink' to='/book-clubs/all' exact={true} activeClassName='active'>
+                Book Clubs
+              </NavLink>
+            </span>
+          </>
+        )}
         {!sessionUser && (
           <>
-            <NavLink to='/signup' exact={true} activeClassName='active'>
+            <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active'>
               Get Started
             </NavLink>
-            <NavLink to='/login' exact={true} activeClassName='active'>
+            <NavLink className='nav__mainlink' to='/login' exact={true} activeClassName='active'>
               Log In
             </NavLink>
           </>

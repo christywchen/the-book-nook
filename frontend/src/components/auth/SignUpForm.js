@@ -90,7 +90,6 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
-                  labelText='Username'
                   name='username'
                   type='text'
                   placeholder='Username'
@@ -99,10 +98,9 @@ const SignUpForm = () => {
                 ></input>
               </label>
             </div>
-            <div>
+            {/*<div>
               <label>
                 <input
-                  labelText='First Name'
                   name='first_name'
                   type='text'
                   placeholder='First Name'
@@ -114,7 +112,6 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
-                  labelText='Last Name'
                   name='last_name'
                   type='text'
                   placeholder='Last Name'
@@ -122,11 +119,10 @@ const SignUpForm = () => {
                   onChange={updateLastName}
                 ></input>
               </label>
-            </div>
+            </div>*/}
             <div>
               <label>
                 <input
-                  labelText='Email'
                   name='email'
                   type='text'
                   placeholder='Email'
@@ -138,7 +134,6 @@ const SignUpForm = () => {
             <div className='auth__passwords'>
               <label>
                 <input
-                  labelText='Password'
                   name='password'
                   type='password'
                   placeholder='Password'
@@ -148,7 +143,6 @@ const SignUpForm = () => {
               </label>
               <label>
                 <input
-                  labelText='Confirm Password'
                   name='confirm_password'
                   type='password'
                   placeholder='Confirm Password'
@@ -159,7 +153,7 @@ const SignUpForm = () => {
               </label>
             </div>
             <button
-              disabled={!username || !firstName || !lastName || !email || !password || !confirmPassword}
+              disabled={!username || !email || !password || !confirmPassword}
               className='button button__auth' type='submit'>Submit</button>
           </form>
           <hr />

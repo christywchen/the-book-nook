@@ -16,7 +16,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -25,6 +25,7 @@ The below routes are for creating, reading, updating, and deleting book clubs.
 """
 
 @book_club_routes.route('')
+@login_required
 def get_all_book_clubs():
     """
     Returns all book clubs in the database.
@@ -35,6 +36,7 @@ def get_all_book_clubs():
 
 
 @book_club_routes.route('/<int:id>')
+@login_required
 def get_book_club(id):
     """
     Returns one book club.
@@ -45,6 +47,7 @@ def get_book_club(id):
 
 
 @book_club_routes.route('', methods=['POST'])
+@login_required
 def create_book_club():
     """
     Instantiates a book club and two chatrooms for the book club.
@@ -58,6 +61,12 @@ def create_book_club():
     # instantiate a book club
     if form.validate_on_submit():
         data = form.data
+
+        book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == data['host_id']).all()
+        joined_club_count = len(book_clubs_joined)
+
+        if (joined_club_count >= 5):
+            return {'errors': ['Alloted count of 5 joined or hosted book clubs has been exceeded.']}, 401
 
         try:
             book_club = BookClub(
@@ -103,14 +112,15 @@ def create_book_club():
             db.session.add(new_member)
             db.session.commit()
 
-            return { 'book club': [book_club.to_dict()], 'book club chatrooms': [general_chat.to_dict(), spoilers_chat.to_dict()], 'book_club_members': [new_member.to_dict()]}
+            return { 'book club': book_club.to_dict()}
         except:
-            return {'errors': 'There was an error during Book Club creation.'}
+            return {'errors': ['There was an error during Book Club creation.']}, 401
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@book_club_routes.route('/<int:id>', methods=['PUT'])
+@book_club_routes.route('/<int:id>', methods=['PATCH'])
+@login_required
 def update_book_club(id):
     """
     Updates a book club record and returns it.
@@ -136,6 +146,7 @@ def update_book_club(id):
 
 
 @book_club_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_book_club(id):
     """
     Deletes a book club record.
@@ -153,6 +164,7 @@ The below routes are for creating, reading, and deleting book club memberships.
 """
 
 @book_club_routes.route('/<int:book_club_id>/users')
+@login_required
 def get_book_club_members(book_club_id):
     """
     Gets all members of a book club.
@@ -163,10 +175,17 @@ def get_book_club_members(book_club_id):
 
 
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['POST'])
+@login_required
 def create_book_club_member(book_club_id, user_id):
     """
     Creates a new book club member record and returns the record.
     """
+    book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == user_id).all()
+    joined_club_count = len(book_clubs_joined)
+
+    if (joined_club_count >= 5):
+        return {'errors': ['Alloted count of 5 joined or hosted book clubs has been exceeded.']}
+
     book_club_member = BookClubMember(
         book_club_id=book_club_id,
         user_id=user_id,
@@ -181,13 +200,15 @@ def create_book_club_member(book_club_id, user_id):
 
 
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['DELETE'])
+@login_required
 def delete_book_club_member(book_club_id, user_id):
     """
     Deletes a book club member record.
     """
     book_club_member = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id, BookClubMember.user_id == user_id).first()
+    membership_id = book_club_member.id
 
     db.session.delete(book_club_member)
     db.session.commit()
 
-    return {'message': 'Book club member successfully deleted.'}
+    return {'message': 'Book club member successfully deleted.', 'membership id': membership_id}

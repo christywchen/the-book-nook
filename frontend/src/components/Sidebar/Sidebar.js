@@ -1,50 +1,44 @@
-import { useEffect, useState } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Main from '../Main/Main';
-
-import { getAllBookClubs } from '../../store/book_club';
 import { getUserMemberships } from '../../store/book_club_member';
 
+import JoinedClubs from './JoinedClubs/JoinedClubs';
+import BrowseClubs from './BrowseClubs/BrowseClubs';
+import CreateClub from './CreateClub/CreateClub';
+import EditClub from './EditClub/EditClub';
+
+import { getAllBookClubs } from '../../store/book_club';
+
 import './Sidebar.css';
-import BookClubItem from './BookClubItem/BookClubItem';
 
 function Sidebar() {
+    const location = useLocation();
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
-    const allBookClubsObj = useSelector(state => state.bookClub.byId);
-    const userMembershipsObj = useSelector(state => state.bookClubMember.byUserMembershipId);
-
-    useEffect(() => {
-        dispatch(getAllBookClubs());
-        if (sessionUser) dispatch(getUserMemberships(sessionUser.id));
-    }, [dispatch]);
-
-    const bookClubs = Object.values(allBookClubsObj);
+    const userMembershipsObj = useSelector(state => state.bookClubMember.userMembershipsByClubId);
     const userMemberships = Object.values(userMembershipsObj);
 
-    let userBookClubs;
-    if (userMemberships) {
-        userBookClubs = userMemberships.map(membership => {
-            return allBookClubsObj[membership.book_club_id];
-        });
-    }
+    useEffect(() => {
+        if (sessionUser) {
+            dispatch(getUserMemberships(sessionUser.id));
+        }
+    }, [dispatch]);
+
+    const isDashboard = location.pathname.startsWith('/dashboard');
+    const isBookClubList = location.pathname.startsWith('/book-clubs/all');
+    const isBookClubCreate = location.pathname.startsWith('/book-clubs/new');
+    const isBookClubEdit = location.pathname.startsWith('/book-clubs') && location.pathname.endsWith('/edit');
 
     return (
         <>
             <div id="sidebar__container">
-                {userBookClubs && userBookClubs.map(bookClub =>
-                    (<BookClubItem bookClub={bookClub} />)
-                )}
-                {userMemberships.length < 5 && (<Link to='/'>Start Your Own Club</Link>)}
+                {isDashboard && <JoinedClubs userMemberships={userMemberships} />}
+                {isBookClubList && <BrowseClubs userMemberships={userMemberships} />}
+                {isBookClubCreate && <CreateClub userMemberships={userMemberships} />}
+                {isBookClubEdit && <EditClub userMemberships={userMemberships} />}
             </div>
-
-            <Switch>
-                <Route path='/book-clubs/:bookClubId/rooms/:chatType'>
-                    <Main />
-                </Route>
-            </Switch>
         </>
     )
 }

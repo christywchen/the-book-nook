@@ -6,12 +6,12 @@
     --body-width: calc(100vw - 75px);
 
     --main-color: rgba(255, 255, 255, 1);
-    --background-color: #e17e7d;
+    --background-color: rgba(226, 58, 80, 0.3);
     --accent-bg: rgba(255, 255, 255, 0.48);
-    --input-bg: rgba(255, 255, 255, 0.28);
-    --sidebar-bg: rgba(255, 255, 255, 0.18);
+    --input-bg: rgba(255, 255, 255, 0.24);
+    --sidebar-bg: rgba(255, 255, 255, 0.12);
     --dash-bg: rgba(255, 255, 255, 0.08);
-    --error-color: rgba(242, 64, 76, 0.5);
+    --error-color: rgba(242, 64, 76, 0.774);
 
     --body-size: 16px;
     --small-size: 0.9em;
@@ -23,6 +23,7 @@
     --h5-size: 1.2em;
 
     --border-radius: 12px;
+    --card-radius: 8px;
     --input-radius: 4px;
 }
 
@@ -66,6 +67,10 @@ h5 {
     font-size: var(--h5-size);
 }
 
+p {
+    line-height: 1.5em;
+}
+
 hr {
     margin: 8px 0;
     border-top: none;
@@ -74,6 +79,60 @@ hr {
     border-left: none;
 }
 
+/* container for normal internal pages */
+#wide__container {
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+    scrollbar-width: auto;
+    scrollbar-color: #727272;
+    overflow-y: scroll;
+}
+
+#wide__title {
+    font-size: var(--h2-size);
+    font-weight: 600;
+    text-align: center;
+}
+
+/* container for internal form pages */
+#form__container {
+    position: inherit;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 60px;
+    margin: auto auto;
+}
+
+#form__container button {
+    width: 100%;
+    margin: 6px 0;
+    padding: 8px 40px;
+}
+
+.form__buttons {
+    width: 100%;
+    margin: 12px 0 !important;
+    gap: 20px;
+}
+
+/* scrollbar styling */
+::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+/* forms and buttons */
 button:disabled {
     color: var(--accent-bg);
     background-color: var(--dash-bg);
@@ -100,4 +159,50 @@ button:active:hover {
 
 .button__auth {
     width: 100%;
+}
+
+#form__container label {
+    margin: 0 5px;
+}
+
+#form__container div {
+    margin: 8px 0;
+}
+
+#auth__container input,
+#form__container input,
+#form__container textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 6px 0;
+
+    color: var(--main-color);
+    border: none;
+    border-bottom: 1px solid var(--body-color);
+    caret-color: var(--main-color);
+    background: var(--sidebar-bg);
+    border-radius: var(--input-radius);
+}
+
+#form__container textarea {
+    margin: 6px 0 2px 0;
+}
+
+#form__container textarea {
+    resize: none;
+    overflow: auto;
+}
+
+#auth__container input:focus,
+#form__container input:focus,
+#form__container textarea:focus {
+    background-color: var(--input-bg);
+    color: var(--main-color);
+    outline: none;
+}
+
+#auth__container input::placeholder,
+#form__container input::placeholder,
+#form__container textarea::placeholder {
+    color: var(--main-color);
 }

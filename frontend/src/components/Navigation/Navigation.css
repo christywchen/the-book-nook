@@ -1,6 +1,6 @@
 #nav__container {
     display: flex;
-    padding-left: 20px;
+    padding-left: 35px;
 }
 
 #nav__title {
@@ -15,10 +15,20 @@
     margin: 8px 50px 0;
 }
 
-#nav__links a {
-    margin: 18px;
+#nav__links a,
+.nav__text {
     color: var(--main-color);
-    font-size: var(--h5-size);
-    font-weight: 500;
     text-decoration: none;
+}
+
+.nav__mainlink,
+.nav__text {
+    margin: 18px;
+    font-weight: 500;
+    font-size: var(--h5-size);
+}
+
+.nav__sublink {
+    margin: 10px;
+    font-weight: 200;
 }

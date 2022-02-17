@@ -26,6 +26,35 @@ const removeBookClub = (bookClubId) => {
 };
 
 // thunk middlewares
+export const createBookClub = (name, description, hostId, imageUrl, capacity) => async (dispatch) => {
+    const res = await fetch('/api/book-clubs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            description: description,
+            host_id: hostId,
+            image_url: imageUrl,
+            capacity: capacity
+        }),
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addBookClub(data['book club']));
+        return data['book club'];
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
+    }
+}
+
 export const getAllBookClubs = () => async (dispatch) => {
     const res = await fetch('/api/book-clubs');
 
@@ -44,20 +73,37 @@ export const getBookClub = (id) => async (dispatch) => {
     }
 }
 
-export const updateBookClub = (id, updatedBookClub) => async (dispatch) => {
+export const updateBookClub = (id, name, description, hostId, imageUrl, capacity) => async (dispatch) => {
     const res = await fetch(`/api/book-clubs/${id}`, {
         method: 'PATCH',
-        body: JSON.stringify(updatedBookClub)
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            description: description,
+            host_id: hostId,
+            image_url: imageUrl,
+            capacity: capacity
+        }),
     });
 
     if (res.ok) {
         const data = await res.json();
         dispatch(addBookClub(data['book club']));
+        return data['book club'];
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
 export const deleteBookClub = (id) => async (dispatch) => {
-    const res = await fetch(`/api/events/${id}`, {
+    const res = await fetch(`/api/book-clubs/${id}`, {
         method: 'DELETE'
     });
 
@@ -84,7 +130,6 @@ const bookClubReducer = (state = initialState, action) => {
             return newState;
         case ADD_BOOK_CLUB:
             newState = { ...state };
-            console.log(action)
             newState.byId = { ...state.byId, [action.bookClub.id]: action.bookClub };
             newState.allIds.push(action.bookClub.id);
             return newState;

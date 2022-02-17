@@ -1,10 +1,10 @@
 #sidebar__container {
     position: relative;
     box-sizing: border-box;
-    /* top: -18px; */
-    min-width: 230px;
+    min-width: 240px;
+    max-width: 240px;
     height: 100%;
-    padding: 15px 20px;
+    padding: 25px 20px;
     background-color: var(--sidebar-bg);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
@@ -24,4 +24,45 @@
 .sidebar__links--group a {
     font-size: var(--small-size);
     padding: 0 8px;
+}
+
+.sidebar__caret {
+    margin: 0 0 0 5px;
+}
+
+.sidebar__para {
+    text-align: center;
+    margin: 60px 25px 0;
+}
+
+.create__club--link {
+    display: flex;
+    justify-content: center;
+}
+
+.no__memberships--link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button__sidebar--center {
+    position: relative;
+    margin: 20px auto;
+}
+
+.button__sidebar--center-first {
+    margin: 20px auto 5px;
+}
+
+.button__sidebar--center-second {
+    margin: 10px auto;
+}
+
+.sidebar__bookclubs {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
