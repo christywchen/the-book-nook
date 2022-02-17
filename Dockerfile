@@ -4,7 +4,7 @@ WORKDIR /frontend
 COPY frontend/. .
 
 # You have to set this because it should be set during build time.
-ENV REACT_APP_BASE_URL=https://book-nook-app.herokuapp.com
+ENV REACT_APP_BASE_URL=https://book-nook-app.herokuapp.com/
 
 # Build our React App
 RUN npm install
@@ -21,7 +21,7 @@ EXPOSE 8000
 
 WORKDIR /var/www
 COPY . .
-COPY --from=build-stage /react-app/build/* app/static/
+COPY --from=build-stage /frontend/build/* backend/static/
 
 # Install Python Dependencies
 RUN pip install -r requirements.txt
