@@ -1,7 +1,7 @@
 """create users
 
 Revision ID: e3461b48a721
-Revises: 
+Revises:
 Create Date: 2022-02-13 14:11:58.189315
 
 """
@@ -23,7 +23,7 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('first_name', sa.String(length=40), nullable=False),
-    sa.Column('last_name', sa.String(length=255), nullable=False),
+    sa.Column('last_name', sa.String(length=40), nullable=False),
     sa.Column('dob', sa.Date(), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),

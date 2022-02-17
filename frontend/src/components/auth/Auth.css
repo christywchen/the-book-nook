@@ -51,7 +51,7 @@
 
 ul.auth__container--errors {
     margin: 8px 0 12px;
-    padding: 10px 0 6px 0;
+    padding: 10px 10px 6px;
 
     color: white;
     font-size: 0.8em;
