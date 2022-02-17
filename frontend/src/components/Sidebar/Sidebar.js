@@ -35,16 +35,10 @@ function Sidebar() {
         <>
             <div id="sidebar__container">
                 {userBookClubs && userBookClubs.map(bookClub =>
-                    (<BookClubItem bookClub={bookClub} />)
+                    (<BookClubItem key={bookClub.id} bookClub={bookClub} />)
                 )}
                 {userMemberships.length < 5 && (<Link to='/'>Start Your Own Club</Link>)}
             </div>
-
-            <Switch>
-                <Route path='/book-clubs/:bookClubId/rooms/:chatType'>
-                    <Main />
-                </Route>
-            </Switch>
         </>
     )
 }

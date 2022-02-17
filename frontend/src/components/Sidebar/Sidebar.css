@@ -1,10 +1,9 @@
 #sidebar__container {
     position: relative;
     box-sizing: border-box;
-    /* top: -18px; */
-    min-width: 230px;
+    min-width: 240px;
     height: 100%;
-    padding: 15px 20px;
+    padding: 25px 20px;
     background-color: var(--sidebar-bg);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;

@@ -101,3 +101,13 @@ button:active:hover {
 .button__auth {
     width: 100%;
 }
+
+#wide__container {
+    width: 100%;
+    margin: 20px 20px 20px 20px;
+}
+
+#wide__title {
+    font-size: var(--h2-size);
+    font-weight: 600;
+}
