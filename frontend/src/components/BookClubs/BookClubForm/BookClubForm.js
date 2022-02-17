@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { createBookClub } from "../../../store/book_club";
+import { createBookClub, getAllBookClubs } from "../../../store/book_club";
 import { getBookClubMembers, getUserMemberships } from "../../../store/book_club_member";
 
-function BookClubForm() {
+function BookClubForm({ formType }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
@@ -19,20 +19,17 @@ function BookClubForm() {
         e.preventDefault();
         const hostId = sessionUser.id;
 
-        console.log(name, description, hostId, imageUrl, capacity, 'HANDLE SUBMIT')
+        if (formType === 'createNew') {
+            const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
 
-        const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
-
-        if (data) {
-            setErrors(data);
-        } else {
-            await dispatch(getUserMemberships(sessionUser.id));
-            return history.push('/dashboard');
+            if (data) {
+                setErrors(data);
+            } else {
+                await dispatch(getUserMemberships(sessionUser.id));
+                await dispatch(getAllBookClubs());
+                return history.push('/dashboard');
+            }
         }
-
-        // else {
-        //     await dispatch(getUserMemberships(hostId));
-        // }
     }
 
     async function handleReset(e) {

@@ -23,7 +23,7 @@ function JoinedClubs({ userMemberships }) {
 
     // console.log('ALL BOOK CLUBS', allBookClubsObj);
     let userBookClubs;
-    if (userMemberships.length && bookClubs.length) {
+    if (userMemberships && bookClubs) {
         userBookClubs = userMemberships.map(membership => {
             // console.log('MEMBERSHIP', membership)
             // console.log('MEMBER THING', allBookClubsObj[membership.book_club_id])
@@ -34,7 +34,7 @@ function JoinedClubs({ userMemberships }) {
     // console.log('USER BOOK CLUBS ARRAY', userBookClubs);
     return (
         <>
-            {userBookClubs && (<div className='sidebar__bookclubs'>
+            {userMemberships && bookClubs && (<div className='sidebar__bookclubs'>
                 <div className='sidebar__bookclub--items'> {
                     userBookClubs?.map(bookClub => (
                         <BookClubItem key={bookClub.id} bookClub={bookClub} />
