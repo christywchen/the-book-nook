@@ -90,7 +90,6 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
-                  labelText='Username'
                   name='username'
                   type='text'
                   placeholder='Username'
@@ -102,7 +101,6 @@ const SignUpForm = () => {
             {/*<div>
               <label>
                 <input
-                  labelText='First Name'
                   name='first_name'
                   type='text'
                   placeholder='First Name'
@@ -114,7 +112,6 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
-                  labelText='Last Name'
                   name='last_name'
                   type='text'
                   placeholder='Last Name'
@@ -126,7 +123,6 @@ const SignUpForm = () => {
             <div>
               <label>
                 <input
-                  labelText='Email'
                   name='email'
                   type='text'
                   placeholder='Email'
@@ -138,7 +134,6 @@ const SignUpForm = () => {
             <div className='auth__passwords'>
               <label>
                 <input
-                  labelText='Password'
                   name='password'
                   type='password'
                   placeholder='Password'
@@ -148,7 +143,6 @@ const SignUpForm = () => {
               </label>
               <label>
                 <input
-                  labelText='Confirm Password'
                   name='confirm_password'
                   type='password'
                   placeholder='Confirm Password'

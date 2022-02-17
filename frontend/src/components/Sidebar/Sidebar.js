@@ -18,6 +18,9 @@ function Sidebar() {
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const userMembershipsObj = useSelector(state => state.bookClubMember.byUserMembershipId);
 
+    const bookClubs = Object.values(allBookClubsObj);
+    const userMemberships = Object.values(userMembershipsObj);
+
     useEffect(() => {
         dispatch(getAllBookClubs());
         if (sessionUser) dispatch(getUserMemberships(sessionUser.id));
@@ -28,9 +31,6 @@ function Sidebar() {
 
         return history.push('/book-clubs/new');
     }
-
-    const bookClubs = Object.values(allBookClubsObj);
-    const userMemberships = Object.values(userMembershipsObj);
 
     let userBookClubs;
     if (userMemberships) {
@@ -86,13 +86,10 @@ function Sidebar() {
                 {isBookClubCreate && (
                     <div className='sidebar__para'>
                         <p>
-                            Something about how to start a book club.
+                            Tell us and other users a little about the book club you want to create.
                         </p>
                         <p>
-                            Once you find one that you like, click to join and get to chatting with your new book club members!
-                        </p>
-                        <p>
-                            You can also create a new community by hosting your own.
+                            As the host, you'll be in charge of making sure the book club runs smoothly.
                         </p>
                     </div>
                 )}

@@ -13,7 +13,7 @@ def description_length(form, field):
     # Check that description is not more than 100 characters
     description = field.data
 
-    if len(description) > 100:
+    if description and len(description) > 100:
         raise ValidationError('Description cannot be more than 100 characters.')
 
 def minimum_capacity(form, field):
@@ -26,7 +26,7 @@ def minimum_capacity(form, field):
 
 class BookClubForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
-    description = TextAreaField('description', validators=[DataRequired()])
+    description = TextAreaField('description', validators=[description_length])
     host_id = IntegerField('host_id', validators=[DataRequired()])
     capacity = IntegerField('capacity')
     public = BooleanField('public')

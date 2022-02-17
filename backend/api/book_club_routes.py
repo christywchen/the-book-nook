@@ -25,6 +25,7 @@ The below routes are for creating, reading, updating, and deleting book clubs.
 """
 
 @book_club_routes.route('')
+@login_required
 def get_all_book_clubs():
     """
     Returns all book clubs in the database.
@@ -35,6 +36,7 @@ def get_all_book_clubs():
 
 
 @book_club_routes.route('/<int:id>')
+@login_required
 def get_book_club(id):
     """
     Returns one book club.
@@ -45,6 +47,7 @@ def get_book_club(id):
 
 
 @book_club_routes.route('', methods=['POST'])
+@login_required
 def create_book_club():
     """
     Instantiates a book club and two chatrooms for the book club.
@@ -117,6 +120,7 @@ def create_book_club():
 
 
 @book_club_routes.route('/<int:id>', methods=['PUT'])
+@login_required
 def update_book_club(id):
     """
     Updates a book club record and returns it.
@@ -142,6 +146,7 @@ def update_book_club(id):
 
 
 @book_club_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_book_club(id):
     """
     Deletes a book club record.
@@ -159,6 +164,7 @@ The below routes are for creating, reading, and deleting book club memberships.
 """
 
 @book_club_routes.route('/<int:book_club_id>/users')
+@login_required
 def get_book_club_members(book_club_id):
     """
     Gets all members of a book club.
@@ -169,6 +175,7 @@ def get_book_club_members(book_club_id):
 
 
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['POST'])
+@login_required
 def create_book_club_member(book_club_id, user_id):
     """
     Creates a new book club member record and returns the record.
@@ -193,6 +200,7 @@ def create_book_club_member(book_club_id, user_id):
 
 
 @book_club_routes.route('/<int:book_club_id>/users/<int:user_id>', methods=['DELETE'])
+@login_required
 def delete_book_club_member(book_club_id, user_id):
     """
     Deletes a book club member record.

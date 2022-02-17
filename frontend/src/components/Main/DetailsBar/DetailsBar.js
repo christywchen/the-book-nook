@@ -1,20 +1,25 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
-import { getAllBookClubs } from "../../../store/book_club";
+import { getAllBookClubs, deleteBookClub } from "../../../store/book_club";
 import { getBookClubMembers } from "../../../store/book_club_member";
 
 import './DetailsBar.css';
 
 function DetailsBar() {
+    const history = useHistory();
     const dispatch = useDispatch();
     const { bookClubId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.byBookClubMemberId);
+
+    const bookClub = allBookClubsObj[bookClubId];
+    const users = Object.values(usersObj);
+    const bookClubMembers = Object.values(bookClubMembersObj);
 
     useEffect(() => {
         dispatch(getAllBookClubs());
@@ -25,9 +30,12 @@ function DetailsBar() {
         dispatch(getBookClubMembers(bookClubId));
     }, [dispatch, bookClubId]);
 
-    const bookClub = allBookClubsObj[bookClubId];
-    const users = Object.values(usersObj);
-    const bookClubMembers = Object.values(bookClubMembersObj);
+    async function handleDeleteClub(e) {
+        e.preventDefault();
+        await dispatch(deleteBookClub(bookClub.id));
+
+        return history.push('/');
+    }
 
     let members;
     if (bookClubMembers && users) {
@@ -75,7 +83,7 @@ function DetailsBar() {
                         </ul>
 
                         {bookClub.host_id === sessionUser.id ?
-                            (<Link to='/'>Delete Book Club</Link>) :
+                            (<Link onClick={handleDeleteClub}>Delete Book Club</Link>) :
                             (<Link to='/'>Leave Book Club</Link>)
                         }
                     </>)}

@@ -8,7 +8,7 @@
     --main-color: rgba(255, 255, 255, 1);
     --background-color: rgba(226, 58, 80, 0.3);
     --accent-bg: rgba(255, 255, 255, 0.48);
-    --input-bg: rgba(255, 255, 255, 0.28);
+    --input-bg: rgba(255, 255, 255, 0.2);
     --sidebar-bg: rgba(255, 255, 255, 0.12);
     --dash-bg: rgba(255, 255, 255, 0.08);
     --error-color: rgba(242, 64, 76, 0.774);
@@ -79,6 +79,61 @@ hr {
     border-left: none;
 }
 
+/* container for normal internal pages */
+#wide__container {
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+    scrollbar-width: auto;
+    scrollbar-color: #727272;
+    overflow-y: scroll;
+}
+
+#wide__title {
+    font-size: var(--h2-size);
+    font-weight: 600;
+}
+
+/* container for internal form pages */
+#form__container {
+    position: inherit;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 25px 60px;
+    margin: auto auto;
+    text-align: center;
+}
+
+#form__container button {
+    width: 100%;
+    margin: 6px 0;
+    padding: 8px 40px;
+}
+
+.form__buttons {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+/* scrollbar styling */
+::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+/* forms and buttons */
 button:disabled {
     color: var(--accent-bg);
     background-color: var(--dash-bg);
@@ -107,29 +162,36 @@ button:active:hover {
     width: 100%;
 }
 
-#wide__container {
+#auth__container input,
+#form__container input,
+#form__container textarea {
     width: 100%;
-    margin: 5px;
-    padding: 15px;
-    scrollbar-width: auto;
-    scrollbar-color: #727272;
-    overflow-y: scroll;
+    padding: 8px 10px;
+    margin: 6px 0;
+
+    color: var(--main-color);
+    border: none;
+    border-bottom: 1px solid var(--body-color);
+    caret-color: var(--main-color);
+    background: var(--sidebar-bg);
+    border-radius: var(--input-radius);
 }
 
-#wide__title {
-    font-size: var(--h2-size);
-    font-weight: 600;
+#form__container textarea {
+    resize: none;
+    overflow: auto;
 }
 
-#wide__container::-webkit-scrollbar {
-    width: 10px;
+#auth__container input:focus,
+#form__container input:focus,
+#form__container textarea:focus {
+    background-color: var(--input-bg);
+    color: var(--main-color);
+    outline: none;
 }
 
-#wide__container::-webkit-scrollbar-track {
-    background: none;
-}
-
-#wide__container::-webkit-scrollbar-thumb {
-    background-color: var(--background-color);
-    border-radius: 10px;
+#auth__container input::placeholder,
+#form__container input::placeholder,
+#form__container textarea::placeholder {
+    color: var(--main-color);
 }

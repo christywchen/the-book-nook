@@ -26,6 +26,27 @@ const removeBookClub = (bookClubId) => {
 };
 
 // thunk middlewares
+export const createBookClub = (name, description, hostId, imageUrl, capacity) => async (dispatch) => {
+    const res = await fetch('/api/book-clubs', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: name,
+            description: description,
+            host_id: hostId,
+            image_url: imageUrl,
+            capacity: capacity
+        }),
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addBookClub(data['book club']));
+    }
+}
+
 export const getAllBookClubs = () => async (dispatch) => {
     const res = await fetch('/api/book-clubs');
 
@@ -57,7 +78,7 @@ export const updateBookClub = (id, updatedBookClub) => async (dispatch) => {
 }
 
 export const deleteBookClub = (id) => async (dispatch) => {
-    const res = await fetch(`/api/events/${id}`, {
+    const res = await fetch(`/api/book-clubs/${id}`, {
         method: 'DELETE'
     });
 
