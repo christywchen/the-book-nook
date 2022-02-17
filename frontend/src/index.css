@@ -6,12 +6,12 @@
     --body-width: calc(100vw - 75px);
 
     --main-color: rgba(255, 255, 255, 1);
-    --background-color: #e17e7d;
+    --background-color: rgba(226, 58, 80, 0.4);
     --accent-bg: rgba(255, 255, 255, 0.48);
     --input-bg: rgba(255, 255, 255, 0.28);
     --sidebar-bg: rgba(255, 255, 255, 0.18);
     --dash-bg: rgba(255, 255, 255, 0.08);
-    --error-color: rgba(242, 64, 76, 0.5);
+    --error-color: rgba(242, 64, 76, 0.774);
 
     --body-size: 16px;
     --small-size: 0.9em;
@@ -104,10 +104,27 @@ button:active:hover {
 
 #wide__container {
     width: 100%;
-    margin: 20px 20px 20px 20px;
+    margin: 5px;
+    padding: 15px;
+    scrollbar-width: auto;
+    scrollbar-color: #727272;
+    overflow-y: scroll;
 }
 
 #wide__title {
     font-size: var(--h2-size);
     font-weight: 600;
+}
+
+#wide__container::-webkit-scrollbar {
+    width: 10px;
+}
+
+#wide__container::-webkit-scrollbar-track {
+    background: none;
+}
+
+#wide__container::-webkit-scrollbar-thumb {
+    background-color: var(--background-color);
+    border-radius: 10px;
 }

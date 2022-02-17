@@ -24,3 +24,7 @@
     font-size: var(--small-size);
     padding: 0 8px;
 }
+
+.sidebar__caret {
+    margin: 0 0 0 5px;
+}

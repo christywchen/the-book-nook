@@ -1,0 +1,7 @@
+.bookclub__card {
+    width: 20%;
+    height: 200px;
+    background-color: var(--card-background);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
+    border: 1px solid red;
+}
