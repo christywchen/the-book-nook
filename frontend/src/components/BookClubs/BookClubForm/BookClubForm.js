@@ -22,13 +22,20 @@ function BookClubForm({ formType }) {
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
 
-            if (data) {
-                setErrors(data);
+            console.log(data, 'DATATATATAT')
+            if (data.errors) {
+                setErrors(data.errors);
             } else {
+                const bookClub = data;
+                console.log(bookClub)
                 await dispatch(getUserMemberships(sessionUser.id));
                 await dispatch(getAllBookClubs());
-                return history.push('/dashboard');
+                return history.push(`/dashboard/book-clubs/${bookClub.id}/rooms/general`);
             }
+        }
+
+        if (formType === 'edit') {
+
         }
     }
 

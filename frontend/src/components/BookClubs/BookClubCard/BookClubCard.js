@@ -27,12 +27,15 @@ function BookClubCard({ bookClub }) {
             <div className="bookclub__card">
                 {/* <div className='event__card--image event__card--image-default' style={image_url ? backgroundImage : null}>
                 </div> */}
-                <div className='event__card--body'>
+                <div className='bookclub__card--body'>
                     <div className='bookclub__card--title'>
                         {bookClub.name}
                     </div>
-                    <div className='event__card--date'>{availableSpace} {availableSpace === 1 ? 'Spot' : 'Spots'} Left</div>
-                    <div className='event__card--location'>
+                    <div className='bookclub__card--capacity'>{availableSpace} {availableSpace === 1 ? 'Spot' : 'Spots'} Left</div>
+                    <div className='bookclub__card--description'>
+                        <div className='bookclub__card--description-title'>
+                            About:
+                        </div>
                         {bookClub.description}
 
                     </div>

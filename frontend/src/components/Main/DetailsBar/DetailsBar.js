@@ -34,6 +34,12 @@ function DetailsBar() {
 
     console.log(userMemberships, 'MEMBERSHIPPPPS')
 
+    async function handleEditClub(e) {
+        e.preventDefault();
+
+        return history.push(`/dashboard/book-clubs/${bookClubId}/edit`);
+    }
+
     async function handleDeleteClub(e) {
         e.preventDefault();
         await dispatch(deleteBookClub(bookClub.id));
@@ -65,9 +71,15 @@ function DetailsBar() {
             <div id="details__container">
                 {bookClub && (
                     <>
-                        <h3>
-                            Book Club Details
-                        </h3>
+                        <div className='details__heading'>
+                            <div className='details__title'>
+                                {bookClub.name}
+                            </div>
+                            {bookClub.host_id === sessionUser.id && (
+                                <form className='details__edit--form' onSubmit={handleEditClub}>
+                                    <button className='button button__details--edit' type='submit'>Edit</button>
+                                </form>)}
+                        </div>
                         <ul>
                             <li>
                                 Name: {bookClub.name}
@@ -82,9 +94,9 @@ function DetailsBar() {
                                 Created At: {bookClub.created_at}
                             </li>
                         </ul>
-                        <h3>
-                            Book Club Members
-                        </h3>
+                        <div className='details__title'>
+                            Members
+                        </div>
                         <ul>{members && members.map(member => {
                             if (member) {
                                 return (<>

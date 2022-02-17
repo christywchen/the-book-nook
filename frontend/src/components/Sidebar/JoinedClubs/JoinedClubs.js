@@ -31,8 +31,6 @@ function JoinedClubs({ userMemberships }) {
     let userBookClubs;
     if (userMemberships && bookClubs) {
         userBookClubs = userMemberships.map(membership => {
-            // console.log('MEMBERSHIP', membership)
-            // console.log('MEMBER THING', allBookClubsObj[membership.book_club_id])
             return allBookClubsObj[membership.book_club_id];
         });
     }
