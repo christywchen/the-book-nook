@@ -12,14 +12,14 @@ function JoinedClubs({ userMemberships }) {
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubs = Object.values(allBookClubsObj);
 
-    useEffect(() => {
-        dispatch(getAllBookClubs());
-    }, [dispatch]);
-
     async function handleCreateClub(e) {
         e.preventDefault();
         return history.push('/book-clubs/new');
     }
+
+    useEffect(() => {
+        dispatch(getAllBookClubs());
+    }, [dispatch]);
 
     // console.log('ALL BOOK CLUBS', allBookClubsObj);
     let userBookClubs;

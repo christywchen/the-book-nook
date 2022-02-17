@@ -43,12 +43,11 @@ export const createBookClub = (name, description, hostId, imageUrl, capacity) =>
 
     if (res.ok) {
         const data = await res.json();
-        console.log('testtttttt redux')
+        console.log(data['book club'], 'testtttttt redux')
         dispatch(addBookClub(data['book club']));
         return null;
     } else if (res.status < 500) {
         const data = await res.json();
-        console.log('DATATATA', data.errors)
         if (data.errors) {
             console.log(data.errors)
             return data.errors;

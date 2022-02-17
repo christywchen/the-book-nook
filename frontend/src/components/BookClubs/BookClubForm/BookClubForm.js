@@ -27,7 +27,7 @@ function BookClubForm() {
             setErrors(data);
         } else {
             await dispatch(getUserMemberships(sessionUser.id));
-            return <Redirect to='/dashboard' />
+            return history.push('/dashboard');
         }
 
         // else {

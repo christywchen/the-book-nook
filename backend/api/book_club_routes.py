@@ -112,7 +112,7 @@ def create_book_club():
             db.session.add(new_member)
             db.session.commit()
 
-            return { 'book club': [book_club.to_dict()], 'book club chatrooms': [general_chat.to_dict(), spoilers_chat.to_dict()], 'book_club_members': [new_member.to_dict()]}
+            return { 'book club': book_club.to_dict()}
         except:
             return {'errors': ['There was an error during Book Club creation.']}, 401
 
