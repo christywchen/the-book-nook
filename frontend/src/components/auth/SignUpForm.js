@@ -99,7 +99,7 @@ const SignUpForm = () => {
                 ></input>
               </label>
             </div>
-            <div>
+            {/*<div>
               <label>
                 <input
                   labelText='First Name'
@@ -122,7 +122,7 @@ const SignUpForm = () => {
                   onChange={updateLastName}
                 ></input>
               </label>
-            </div>
+            </div>*/}
             <div>
               <label>
                 <input
@@ -159,7 +159,7 @@ const SignUpForm = () => {
               </label>
             </div>
             <button
-              disabled={!username || !firstName || !lastName || !email || !password || !confirmPassword}
+              disabled={!username || !email || !password || !confirmPassword}
               className='button button__auth' type='submit'>Submit</button>
           </form>
           <hr />
