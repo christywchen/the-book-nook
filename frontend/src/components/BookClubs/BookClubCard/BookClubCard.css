@@ -5,7 +5,7 @@
     text-align: center;
     background-color: var(--sidebar-bg);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
-    border-radius: var(--border-radius);
+    border-radius: var(--card-radius);
 }
 
 .bookclub__card--title {

@@ -59,6 +59,12 @@ def create_book_club():
     if form.validate_on_submit():
         data = form.data
 
+        book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == data['host_id']).all()
+        joined_club_count = len(book_clubs_joined)
+
+        if (joined_club_count >= 5):
+            return {'message': 'User has exceeded alloted count of 5 book club memberships.'}
+
         try:
             book_club = BookClub(
                 name=data['name'],
@@ -167,6 +173,12 @@ def create_book_club_member(book_club_id, user_id):
     """
     Creates a new book club member record and returns the record.
     """
+    book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == user_id).all()
+    joined_club_count = len(book_clubs_joined)
+
+    if (joined_club_count >= 5):
+        return {'message': 'User has exceeded alloted count of 5 book club memberships.'}
+
     book_club_member = BookClubMember(
         book_club_id=book_club_id,
         user_id=user_id,
