@@ -54,8 +54,15 @@ export const getBookClubMembers = (id) => async (dispatch) => {
     }
 }
 
-export const deleteBookClubMember = (id) => async (dispatch) => {
+export const deleteBookClubMember = (id, userId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${id}/users/${userId}`, {
+        method: 'DELETE'
+    });
 
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(removeBookClubMember(data['membership id']));
+    }
 }
 
 // initial state

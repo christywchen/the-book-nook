@@ -39,15 +39,15 @@ function DetailsBar() {
         await dispatch(deleteBookClub(bookClub.id));
         await dispatch(removeUserMembership(bookClub.id));
 
-        return history.push('/');
+        return history.push('/dashboard');
     }
 
     async function handleLeaveClub(e) {
         e.preventDefault();
         await dispatch(removeUserMembership(bookClub.id));
-        await dispatch(deleteBookClubMember(bookClub.id));
+        await dispatch(deleteBookClubMember(bookClub.id, sessionUser.id));
 
-        return history.push('/');
+        return history.push('/dashboard');
     }
 
 

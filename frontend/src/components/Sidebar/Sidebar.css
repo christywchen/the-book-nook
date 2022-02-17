@@ -40,10 +40,23 @@
     justify-content: center;
 }
 
+.no__memberships--link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .button__sidebar--center {
     position: relative;
     margin: 20px auto;
-    /* margin-top: 0px; */
+}
+
+.button__sidebar--center-first {
+    margin: 20px auto 5px;
+}
+
+.button__sidebar--center-second {
+    margin: 10px auto;
 }
 
 .sidebar__bookclubs {

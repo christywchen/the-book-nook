@@ -206,8 +206,9 @@ def delete_book_club_member(book_club_id, user_id):
     Deletes a book club member record.
     """
     book_club_member = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id, BookClubMember.user_id == user_id).first()
+    membership_id = book_club_member.id
 
     db.session.delete(book_club_member)
     db.session.commit()
 
-    return {'message': 'Book club member successfully deleted.'}
+    return {'message': 'Book club member successfully deleted.', 'membership id': membership_id}
