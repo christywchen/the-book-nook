@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { createBookClub } from "../../../store/book_club";
-import { getUserMemberships } from "../../../store/book_club_member";
+import { getBookClubMembers, getUserMemberships } from "../../../store/book_club_member";
 
 function BookClubForm() {
     const dispatch = useDispatch();
@@ -25,6 +25,9 @@ function BookClubForm() {
 
         if (data) {
             setErrors(data);
+        } else {
+            await dispatch(getUserMemberships(sessionUser.id));
+            return <Redirect to='/dashboard' />
         }
 
         // else {

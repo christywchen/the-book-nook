@@ -66,7 +66,7 @@ def create_book_club():
         joined_club_count = len(book_clubs_joined)
 
         if (joined_club_count >= 5):
-            return {'message': 'User has exceeded alloted count of 5 book club memberships.'}, 401
+            return {'errors': ['Alloted count of 5 joined or hosted book clubs has been exceeded.']}, 401
 
         try:
             book_club = BookClub(
@@ -114,7 +114,7 @@ def create_book_club():
 
             return { 'book club': [book_club.to_dict()], 'book club chatrooms': [general_chat.to_dict(), spoilers_chat.to_dict()], 'book_club_members': [new_member.to_dict()]}
         except:
-            return {'errors': 'There was an error during Book Club creation.'}, 401
+            return {'errors': ['There was an error during Book Club creation.']}, 401
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -184,7 +184,7 @@ def create_book_club_member(book_club_id, user_id):
     joined_club_count = len(book_clubs_joined)
 
     if (joined_club_count >= 5):
-        return {'message': 'User has exceeded alloted count of 5 book club memberships.'}
+        return {'errors': ['Alloted count of 5 joined or hosted book clubs has been exceeded.']}
 
     book_club_member = BookClubMember(
         book_club_id=book_club_id,

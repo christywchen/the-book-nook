@@ -61,9 +61,7 @@ export const deleteBookClubMember = (id) => async (dispatch) => {
 // initial state
 const initialState = {
     userMembershipsByClubId: {},
-    allUserMembershipsByClubIds: [],
-    byBookClubMemberId: {},
-    allBookClubMemberIds: []
+    byBookClubMemberId: {}
 };
 
 // book club member reducer
@@ -74,7 +72,6 @@ const bookClubMemberReducer = (state = initialState, action) => {
         case LOAD_USER_MEMBERSHIPS:
             newState = { ...state };
             newState.userMembershipsByClubId = action.bookClubMemberships.reduce((userMemberships, userMembership) => {
-                newState.allUserMembershipsByClubIds.push(userMembership.id);
                 userMemberships[userMembership.book_club_id] = userMembership;
                 return userMemberships;
             }, {});
@@ -82,12 +79,10 @@ const bookClubMemberReducer = (state = initialState, action) => {
         case REMOVE_USER_MEMBERSHIP:
             newState = { ...state };
             delete newState.userMembershipsByClubId[action.bookClubId];
-            newState.allUserMembershipsByClubIds = newState.allUserMembershipsByClubIds.filter(userMembership => userMembership.book_club_id !== action.bookClubId);
             return newState;
         case LOAD_BOOK_CLUB_MEMBERS:
             newState = { ...state };
             newState.byBookClubMemberId = action.bookClubMembers.reduce((bookClubMembers, bookClubMember) => {
-                newState.allBookClubMemberIds.push(bookClubMember.id);
                 bookClubMembers[bookClubMember.id] = bookClubMember;
                 return bookClubMembers;
             }, {});
@@ -95,7 +90,6 @@ const bookClubMemberReducer = (state = initialState, action) => {
         case REMOVE_BOOK_CLUB_MEMBER:
             newState = { ...state };
             delete newState.byBookClubMemberId[action.membershipId];
-            newState.allIds = newState.allBookClubMemberIds.filter(userMembership => userMembership.id !== userMembership.membershipId);
             return newState;
         default:
             return state;
