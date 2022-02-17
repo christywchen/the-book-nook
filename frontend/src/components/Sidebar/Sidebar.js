@@ -28,8 +28,12 @@ function Sidebar() {
 
     async function handleCreateClub(e) {
         e.preventDefault();
-
         return history.push('/book-clubs/new');
+    }
+
+    async function handleBrowseClubs(e) {
+        e.preventDefault();
+        return history.push('/book-clubs');
     }
 
     let userBookClubs;
@@ -91,6 +95,14 @@ function Sidebar() {
                         <p>
                             As the host, you'll be in charge of making sure the book club runs smoothly.
                         </p>
+                        <p>
+                            Or, you can simply browse existing book clubs and join one that you like.
+                        </p>
+                        <div className='create__club--link'>
+                            <form onSubmit={handleBrowseClubs}>
+                                <button className='button button__sidebar--center' type='submit'>Explore Book Clubs</button>
+                            </form>
+                        </div>
                     </div>
                 )}
                 {/* <div className='create__club--link'>

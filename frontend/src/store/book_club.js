@@ -44,6 +44,15 @@ export const createBookClub = (name, description, hostId, imageUrl, capacity) =>
     if (res.ok) {
         const data = await res.json();
         dispatch(addBookClub(data['book club']));
+        return null;
+    } else if (res.status < 500) {
+        const data = await res.json();
+        console.log('DATATATA', data)
+        if (data.errors) {
+            return data.errors;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 

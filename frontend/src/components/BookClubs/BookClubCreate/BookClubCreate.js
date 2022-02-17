@@ -7,9 +7,9 @@ function BookClubCreate() {
         <>
             <div id='wide__container'>
                 <div id='wide__title'>Start a Book Club</div>
-                <div id='form__content'>
-                    <BookClubForm formType={formType} />
-                </div>
+
+                <BookClubForm formType={formType} />
+
             </div>
         </>
     )

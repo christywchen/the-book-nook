@@ -10,7 +10,7 @@
 }
 
 #about__container--title {
-    margin: 0 0 20px 0;
+    margin: 12px 0 20px 0;
     font-size: var(--h1-size);
     font-weight: 600;
 }

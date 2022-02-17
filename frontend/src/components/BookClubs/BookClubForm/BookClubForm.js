@@ -23,9 +23,10 @@ function BookClubForm() {
 
         if (data) {
             setErrors(data);
-        } else {
-            dispatch(getUserMemberships(hostId));
         }
+        // else {
+        //     await dispatch(getUserMemberships(hostId));
+        // }
     }
 
     async function handleReset(e) {
@@ -35,6 +36,7 @@ function BookClubForm() {
         setDescription('');
         setImageUrl('');
         setCapacity('');
+        setErrors([])
     }
 
     return (

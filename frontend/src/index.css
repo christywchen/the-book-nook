@@ -92,6 +92,7 @@ hr {
 #wide__title {
     font-size: var(--h2-size);
     font-weight: 600;
+    text-align: center;
 }
 
 /* container for internal form pages */
@@ -103,7 +104,6 @@ hr {
     flex-direction: column;
     padding: 25px 60px;
     margin: auto auto;
-    text-align: center;
 }
 
 #form__container button {
@@ -175,6 +175,10 @@ button:active:hover {
     caret-color: var(--main-color);
     background: var(--sidebar-bg);
     border-radius: var(--input-radius);
+}
+
+#form__container textarea {
+    margin: 6px 0 2px 0;
 }
 
 #form__container textarea {
