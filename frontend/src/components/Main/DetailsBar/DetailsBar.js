@@ -37,7 +37,7 @@ function DetailsBar() {
     async function handleEditClub(e) {
         e.preventDefault();
 
-        return history.push(`/dashboard/book-clubs/${bookClubId}/edit`);
+        return history.push(`/book-clubs/${bookClubId}/edit`);
     }
 
     async function handleDeleteClub(e) {

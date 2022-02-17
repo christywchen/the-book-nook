@@ -1,4 +1,4 @@
-import BookClubForm from "../BookClubForm/BookClubForm";
+import BookClubForm from "../../Forms/BookClubForm/BookClubForm";
 
 function BookClubCreate() {
     const formType = 'createNew';

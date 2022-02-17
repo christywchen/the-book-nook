@@ -7,6 +7,7 @@ import { getUserMemberships } from '../../store/book_club_member';
 import JoinedClubs from './JoinedClubs/JoinedClubs';
 import BrowseClubs from './BrowseClubs/BrowseClubs';
 import CreateClub from './CreateClub/CreateClub';
+import EditClub from './EditClub/EditClub';
 
 import { getAllBookClubs } from '../../store/book_club';
 
@@ -21,7 +22,6 @@ function Sidebar() {
 
     useEffect(() => {
         if (sessionUser) {
-            // console.log(sessionUser, 'sidebar sessionuser')
             dispatch(getUserMemberships(sessionUser.id));
         }
     }, [dispatch]);
@@ -29,6 +29,7 @@ function Sidebar() {
     const isDashboard = location.pathname.startsWith('/dashboard');
     const isBookClubList = location.pathname.startsWith('/book-clubs/all');
     const isBookClubCreate = location.pathname.startsWith('/book-clubs/new');
+    const isBookClubEdit = location.pathname.startsWith('/book-clubs') && location.pathname.endsWith('/edit');
 
     return (
         <>
@@ -36,6 +37,7 @@ function Sidebar() {
                 {isDashboard && <JoinedClubs userMemberships={userMemberships} />}
                 {isBookClubList && <BrowseClubs userMemberships={userMemberships} />}
                 {isBookClubCreate && <CreateClub userMemberships={userMemberships} />}
+                {isBookClubEdit && <EditClub userMemberships={userMemberships} />}
             </div>
         </>
     )

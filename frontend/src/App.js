@@ -5,22 +5,24 @@ import { useDispatch } from 'react-redux';
 import LoginForm from './components/Auth/LoginForm';
 import SignUpForm from './components/Auth/SignUpForm';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+
+import About from './components/About/About';
+import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
-import BookClubList from './components/BookClubs/BookClubList/BookClubList';
-import User from './components/User';
 import Main from './components/Main/Main';
+import Sidebar from './components/Sidebar/Sidebar';
+import BookClubList from './components/BookClubs/BookClubList/BookClubList';
+import BookClubCreate from './components/BookClubs/BookClubCreate/BookClubCreate';
+import BookClubEdit from './components/BookClubs/BookClubEdit/BookClubEdit';
+
+import UsersList from './components/UsersList';
+import User from './components/User';
 import Chat from './components/Chat';
 
 import { authenticate } from './store/session';
 
-import Sidebar from './components/Sidebar/Sidebar';
 
 import './App.css';
-import About from './components/About/About';
-import Home from './components/Home/Home';
-import { getAllBookClubs } from './store/book_club';
-import BookClubCreate from './components/BookClubs/BookClubCreate/BookClubCreate';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -70,6 +72,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path='/book-clubs/new' exact={true} >
             <BookClubCreate />
+          </ProtectedRoute>
+          <ProtectedRoute path='/book-clubs/:id/edit' exact={true} >
+            <BookClubEdit />
           </ProtectedRoute>
           {/* <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
