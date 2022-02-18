@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError, EqualTo
-from backend.models import User
+from app.models import User
 
 
 def name_length(form, field):

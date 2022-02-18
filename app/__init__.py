@@ -5,15 +5,15 @@ from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
 
-from backend.models import db, User
-from backend.api.user_routes import user_routes
-from backend.api.auth_routes import auth_routes
-from backend.api.book_club_routes import book_club_routes
-from backend.socket import socketio
+from app.models import db, User
+from app.api.user_routes import user_routes
+from app.api.auth_routes import auth_routes
+from app.api.book_club_routes import book_club_routes
+from app.socket import socketio
 
-from backend.seeds import seed_commands
+from app.seeds import seed_commands
 
-from backend.config import Config
+from app.config import Config
 
 app = Flask(__name__)
 
