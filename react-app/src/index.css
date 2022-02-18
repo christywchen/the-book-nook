@@ -7,10 +7,12 @@
 
     --main-color: rgba(255, 255, 255, 1);
     --background-color: rgba(226, 58, 80, 0.3);
+    --nav-accent: rgba(219, 83, 74, 0.9);
     --accent-bg: rgba(255, 255, 255, 0.48);
     --input-bg: rgba(255, 255, 255, 0.24);
     --sidebar-bg: rgba(255, 255, 255, 0.12);
-    --dash-bg: rgba(255, 255, 255, 0.08);
+    --button-bg: rgba(221, 221, 221, 0.12);
+    --dash-bg: rgba(233, 143, 143, 0.1);
     --error-color: rgba(242, 64, 76, 0.774);
 
     --body-size: 16px;
@@ -145,7 +147,7 @@ button {
     padding: 8px 10px;
     color: white;
     font-weight: 600;
-    background-color: var(--dash-bg);
+    background-color: var(--button-bg);
     border: 1px solid var(--accent-bg);
     border-radius: 3px;
     outline: none;

@@ -8,7 +8,6 @@
     font-size: var(--logo-size);
     font-weight: 500;
     text-transform: lowercase;
-    letter-spacing: -0.5px;
 }
 
 #nav__links {
@@ -21,6 +20,11 @@
     text-decoration: none;
 }
 
+#nav__links a:hover {
+    padding-bottom: 1px;
+    border-bottom: 1px solid var(--main-color);
+}
+
 .nav__mainlink,
 .nav__text {
     margin: 18px;
@@ -28,7 +32,15 @@
     font-size: var(--h5-size);
 }
 
+.nav__text--heavy {
+    margin-right: 5px;
+}
+
+.nav__text--light {
+    font-weight: 200;
+}
+
 .nav__sublink {
-    margin: 10px;
+    margin: 5px;
     font-weight: 200;
 }

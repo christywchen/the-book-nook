@@ -26,6 +26,24 @@ const removeBookClub = (bookClubId) => {
 };
 
 // thunk middlewares
+export const getAllBookClubs = () => async (dispatch) => {
+    const res = await fetch('/api/book-clubs');
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBookClubs(data['book clubs']));
+    }
+}
+
+export const getBookClub = (id) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${id}`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBookClubs(data['book club']));
+    }
+}
+
 export const createBookClub = (name, description, hostId, imageUrl, capacity) => async (dispatch) => {
     const res = await fetch('/api/book-clubs', {
         method: 'POST',
@@ -52,24 +70,6 @@ export const createBookClub = (name, description, hostId, imageUrl, capacity) =>
         }
     } else {
         return ['An error occurred. Please try again.']
-    }
-}
-
-export const getAllBookClubs = () => async (dispatch) => {
-    const res = await fetch('/api/book-clubs');
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(loadBookClubs(data['book clubs']));
-    }
-}
-
-export const getBookClub = (id) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${id}`);
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(loadBookClubs(data['book club']));
     }
 }
 
@@ -108,7 +108,7 @@ export const deleteBookClub = (id) => async (dispatch) => {
     });
 
     if (res.ok) {
-        dispatch(removeBookClub(id))
+        dispatch(removeBookClub(id));
     }
 }
 

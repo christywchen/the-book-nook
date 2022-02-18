@@ -21,7 +21,11 @@ function DetailsBar() {
 
     const bookClub = allBookClubsObj[bookClubId];
     const users = Object.values(usersObj);
-    const bookClubMembers = Object.values(bookClubMembersObj);
+
+    let bookClubMembers;
+    if (bookClubMembersObj) {
+        bookClubMembers = Object.values(bookClubMembersObj);
+    }
 
     useEffect(() => {
         dispatch(getAllBookClubs());

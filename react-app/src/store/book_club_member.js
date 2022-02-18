@@ -22,6 +22,7 @@ export const addUserMembership = (userMembership) => {
     }
 }
 
+
 export const removeUserMembership = (bookClubId) => {
     return {
         type: REMOVE_USER_MEMBERSHIP,
@@ -44,6 +45,7 @@ const addBookClubMember = (bookClubId, membership) => {
         membership
     }
 }
+
 export const removeBookClubMember = (bookClubId, membershipId) => {
     return {
         type: REMOVE_BOOK_CLUB_MEMBER,
@@ -59,15 +61,6 @@ export const getUserMemberships = (id) => async (dispatch) => {
     if (res.ok) {
         const data = await res.json();
         dispatch(loadUserMemberships(data['book club memberships']));
-    }
-}
-
-export const getBookClubMembers = (id) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${id}/users`);
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(loadBookClubMembers(id, data['book club members']));
     }
 }
 
@@ -88,6 +81,15 @@ export const createBookClubMember = (id, userId) => async (dispatch) => {
         const data = await res.json();
         dispatch(addBookClubMember(id, data['book club member']));
         return data['book club member'];
+    }
+}
+
+export const getBookClubMembers = (id) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${id}/users`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBookClubMembers(id, data['book club members']));
     }
 }
 

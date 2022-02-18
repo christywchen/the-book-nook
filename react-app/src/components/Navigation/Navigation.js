@@ -26,9 +26,14 @@ const Navigation = () => {
             <NavLink className='nav__mainlink' to='/dashboard' exact={true} activeClassName='active'>
               My Book Clubs
             </NavLink>
-            <span className='nav__text'>Explore:
+            <span className='nav__text'>
+              <span className='nav__text--heavy'>Explore:</span>
               <NavLink className='nav__sublink' to='/book-clubs/all' exact={true} activeClassName='active'>
                 Book Clubs
+              </NavLink>
+              <span className='nav__text--light'>//</span>
+              <NavLink className='nav__sublink' to='/books/all' exact={true} activeClassName='active'>
+                Books
               </NavLink>
             </span>
           </>
