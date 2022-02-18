@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserMemberships } from '../../store/book_club_member';
 
-import JoinedClubs from './JoinedClubs/JoinedClubs';
-import BrowseClubs from './BrowseClubs/BrowseClubs';
-import CreateClub from './CreateClub/CreateClub';
-import EditClub from './EditClub/EditClub';
+import JoinedClubs from './Dashboard/JoinedClubs/JoinedClubs';
+import BrowseClubs from './BookClubs/BrowseClubs/BrowseClubs';
+import CreateClub from './BookClubs/CreateClub/CreateClub';
+import EditClub from './BookClubs/EditClub/EditClub';
+import BrowseBooks from './Books/BrowseBooks/BrowseBooks';
+import CreateBook from './Books/CreateBook/CreateBook';
 
 import { getAllBookClubs } from '../../store/book_club';
 
@@ -30,6 +32,8 @@ function Sidebar() {
     const isBookClubList = location.pathname.startsWith('/book-clubs/all');
     const isBookClubCreate = location.pathname.startsWith('/book-clubs/new');
     const isBookClubEdit = location.pathname.startsWith('/book-clubs') && location.pathname.endsWith('/edit');
+    const isBookList = location.pathname.startsWith('/books/all');
+    const isBookCreate = location.pathname.startsWith('/books/new');
 
     return (
         <>
@@ -38,6 +42,8 @@ function Sidebar() {
                 {isBookClubList && <BrowseClubs userMemberships={userMemberships} />}
                 {isBookClubCreate && <CreateClub userMemberships={userMemberships} />}
                 {isBookClubEdit && <EditClub userMemberships={userMemberships} />}
+                {isBookList && <BrowseBooks />}
+                {isBookCreate && <CreateBook />}
             </div>
         </>
     )

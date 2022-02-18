@@ -131,7 +131,7 @@ const SignUpForm = () => {
                 ></input>
               </label>
             </div>
-            <div className='auth__passwords'>
+            <div className='input__split'>
               <label>
                 <input
                   name='password'

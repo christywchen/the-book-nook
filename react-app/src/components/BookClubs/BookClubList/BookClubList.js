@@ -12,13 +12,14 @@ import './BookClubList.css'
 function BookClubList() {
     const dispatch = useDispatch();
     const bookClubsObj = useSelector(state => state.bookClub.byId);
-    const bookClubs = Object.values(bookClubsObj);
+
+    let bookClubs;
+    if (bookClubsObj) bookClubs = Object.values(bookClubsObj);
 
     useEffect(() => {
         dispatch(getAllBookClubs());
         dispatch(getUsers());
     }, [dispatch]);
-
 
     return (
         <>

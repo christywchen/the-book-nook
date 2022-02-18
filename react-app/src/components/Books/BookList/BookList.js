@@ -1,9 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { getAllBooks } from '../../../store/book';
+
+import BookCard from '../BookCard/BookCard';
+
+import './BookList.css';
+
 function BookList() {
     const dispatch = useDispatch();
-    const booksObj = useSelector(state => state.book.id);
+    const booksObj = useSelector(state => state.book.byId);
     const books = Object.values(booksObj);
 
     useEffect(() => {

@@ -61,9 +61,8 @@ def create_book():
         book = Book(
             title=data['title'],
             author=data['author'],
-            description=data['description'],
+            synopsis=data['synopsis'],
             image_url=data['image_url'],
-            isbn=data['isbn'],
             isbn13=data['isbn13'],
             original_title=data['original_title'],
             language=data['original_language'],
@@ -96,9 +95,8 @@ def update_book(id):
 
         book.title = data['title']
         book.author = data['author']
-        book.description = data['description']
+        book.synopsis = data['synopsis']
         book.image_url = data['image_url']
-        book.isbn = data['isbn']
         book.isbn13 = data['isbn13']
         book.original_title = data['original_title']
         book.language = data['original_language']

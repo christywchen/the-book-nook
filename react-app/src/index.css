@@ -100,10 +100,10 @@ hr {
 /* container for internal form pages */
 #form__container {
     position: inherit;
-    width: 50%;
+    width: min(500px, 50%);
     display: flex;
     flex-direction: column;
-    padding: 25px 60px;
+    padding: 20px 60px 0;
     margin: auto auto;
 }
 
@@ -168,7 +168,7 @@ button:active:hover {
 }
 
 #form__container div {
-    margin: 8px 0;
+    margin: 5px 0;
 }
 
 #auth__container input,
@@ -180,10 +180,10 @@ button:active:hover {
 
     color: var(--main-color);
     border: none;
-    border-bottom: 1px solid var(--body-color);
     caret-color: var(--main-color);
     background: var(--sidebar-bg);
     border-radius: var(--input-radius);
+    border: 1px solid var(--sidebar-bg);
 }
 
 #form__container textarea {
@@ -201,10 +201,26 @@ button:active:hover {
     background-color: var(--input-bg);
     color: var(--main-color);
     outline: none;
+    border: 1px solid var(--input-bg);
 }
 
 #auth__container input::placeholder,
 #form__container input::placeholder,
 #form__container textarea::placeholder {
     color: var(--main-color);
+}
+
+.input__split {
+    display: flex;
+    gap: 10px;
+}
+
+.input__split div {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+}
+
+.form__textarea--lg {
+    height: 70px;
 }

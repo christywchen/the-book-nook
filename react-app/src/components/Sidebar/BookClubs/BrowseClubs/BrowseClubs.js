@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 
-function BrowseClubs({ membershipCount }) {
+function ClubsBrowse({ membershipCount }) {
     const history = useHistory();
 
     async function handleCreateClub(e) {
@@ -33,4 +33,4 @@ function BrowseClubs({ membershipCount }) {
     )
 }
 
-export default BrowseClubs;
+export default ClubsBrowse;

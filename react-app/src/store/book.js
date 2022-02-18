@@ -26,7 +26,7 @@ const removeBook = (bookId) => {
 }
 
 // thunk middlewares
-export const createBook = (title, author, description, imageUrl, isbn, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
+export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch('/api/books', {
         method: 'POST',
         heads: {
@@ -35,9 +35,8 @@ export const createBook = (title, author, description, imageUrl, isbn, isbn13, o
         body: JSON.stringify({
             title: title,
             author: author,
-            description: description,
+            synopsis: synopsis,
             image_url: imageUrl,
-            isbn: isbn,
             isbn13: isbn13,
             original_title: originalTitle,
             language: language,
@@ -78,7 +77,7 @@ export const getBook = (id) => async (dispatch) => {
     }
 }
 
-export const updateBook = (id, title, author, description, imageUrl, isbn, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
+export const updateBook = (id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch(`/api/books/${id}`, {
         method: 'PATCH',
         heads: {
@@ -87,9 +86,8 @@ export const updateBook = (id, title, author, description, imageUrl, isbn, isbn1
         body: JSON.stringify({
             title: title,
             author: author,
-            description: description,
+            synopsis: synopsis,
             image_url: imageUrl,
-            isbn: isbn,
             isbn13: isbn13,
             original_title: originalTitle,
             language: language,
@@ -132,9 +130,11 @@ const bookReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_BOOKS:
             newState = { ...state };
+            console.log(action.books)
             newState.byId = action.books.reduce((books, book) => {
                 newState.allIds.push(book.id);
                 books[book.id] = book;
+                return books;
             }, {});
             return newState;
         case ADD_BOOK:

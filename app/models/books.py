@@ -6,10 +6,9 @@ class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(75), nullable=False)
     author = db.Column(db.String(75), nullable=False)
-    description = db.Column(db.Text)
+    synopsis = db.Column(db.Text)
     image_url = db.Column(db.Text)
-    isbn = db.Column(db.String(10))
-    isbn13 = db.Column(db.String(13))
+    isbn13 = db.Column(db.String(17))
     original_title = db.Column(db.String(75))
     language = db.Column(db.String(20), nullable=False)
     publication_year = db.Column(db.Integer)
@@ -25,9 +24,8 @@ class Book(db.Model):
             "id": self.id,
             "title": self.title,
             "author": self.author,
-            "description": self.description,
-            "image_url": self.host_id,
-            "isbn": self.isbn,
+            "synopsis": self.synopsis,
+            "image_url": self.image_url,
             "isbn13": self.isbn13,
             "original_title": self.original_title,
             "language": self.language,
@@ -39,4 +37,4 @@ class Book(db.Model):
 
 
     def __repr__(self):
-        return f"<class 'Book', id: {self.id}, name: {self.title}, author: {self.author}, description: {self.description}, image_url: {self.image_url}, isbn: {self.isbn}, isbn13: {self.isbn13}, original_title: {self.original_title}, language: {self.language}, publication_year: {self.publication_year}, pages: {self.pages}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
+        return f"<class 'Book', id: {self.id}, name: {self.title}, author: {self.author}, synopsis: {self.synopsis}, image_url: {self.image_url}, isbn13: {self.isbn13}, original_title: {self.original_title}, language: {self.language}, publication_year: {self.publication_year}, pages: {self.pages}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
