@@ -3,8 +3,8 @@ from flask_login import login_required
 from datetime import datetime
 from app.api.auth_routes import login
 
-from app.models import db, Book, BookClubBook
-from app.forms.book_form import BookForm, orig_title_length
+from app.models import db, Book
+from app.forms.book_form import BookForm
 
 book_routes = Blueprint('books', __name__)
 

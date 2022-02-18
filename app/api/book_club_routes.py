@@ -4,6 +4,7 @@ from datetime import datetime
 
 from app.models import db, BookClub, BookClubChatroom, BookClubMember
 from app.forms.book_club_form import BookClubForm
+from app.models.book_club_books import BookClubBook
 from app.models.books import Book
 
 book_club_routes = Blueprint('book_clubs', __name__)
@@ -218,3 +219,18 @@ def delete_book_club_member(book_club_id, user_id):
     db.session.commit()
 
     return {'message': 'Book club member successfully deleted.', 'membership id': membership_id}
+
+
+"""
+The below routes are for creating, reading, updating, and deleting book club books.
+"""
+
+@book_club_routes.route('/<int:book_club_id>/books')
+@login_required
+def get_book_club_books(book_club_id):
+    """
+    Gets all of a book club's books.
+    """
+    book_club_books = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id)
+
+    return {'book club book': [book_club_book.to_dict() for book_club_book in book_club_books]}
