@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from backend.models import db, User, BookClub
-from backend.models.book_club_members import BookClubMember
+from app.models import db, User, BookClub
+from app.models.book_club_members import BookClubMember
 
 user_routes = Blueprint('users', __name__)
 
