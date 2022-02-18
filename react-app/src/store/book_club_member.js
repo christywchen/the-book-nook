@@ -1,5 +1,6 @@
 // constants
 const LOAD_USER_MEMBERSHIPS = 'bookClubMember/loadUserMemberships';
+const ADD_USER_MEMBERSHIP = 'bookClubMember/addUserMembership';
 const REMOVE_USER_MEMBERSHIP = 'bookClubMember/removeUserMembership'
 
 const LOAD_BOOK_CLUB_MEMBERS = 'bookClubMember/loadBookClubMembers';
@@ -14,6 +15,13 @@ const loadUserMemberships = (bookClubMemberships) => {
     }
 }
 
+export const addUserMembership = (userMembership) => {
+    return {
+        type: ADD_USER_MEMBERSHIP,
+        userMembership
+    }
+}
+
 export const removeUserMembership = (bookClubId) => {
     return {
         type: REMOVE_USER_MEMBERSHIP,
@@ -21,16 +29,25 @@ export const removeUserMembership = (bookClubId) => {
     }
 }
 
-const loadBookClubMembers = (bookClubMembers) => {
+const loadBookClubMembers = (bookClubId, memberships) => {
     return {
         type: LOAD_BOOK_CLUB_MEMBERS,
-        bookClubMembers
+        bookClubId,
+        memberships
     }
 }
 
-export const removeBookClubMember = (membershipId) => {
+const addBookClubMember = (bookClubId, membership) => {
+    return {
+        type: ADD_BOOK_CLUB_MEMBER,
+        bookClubId,
+        membership
+    }
+}
+export const removeBookClubMember = (bookClubId, membershipId) => {
     return {
         type: REMOVE_BOOK_CLUB_MEMBER,
+        bookClubId,
         membershipId
     }
 }
@@ -50,7 +67,27 @@ export const getBookClubMembers = (id) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(loadBookClubMembers(data['book club members']));
+        dispatch(loadBookClubMembers(id, data['book club members']));
+    }
+}
+
+export const createBookClubMember = (id, userId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${id}/users/${userId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user_id: userId,
+            book_club_id: id,
+            user_id: userId
+        }),
+    });
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(addBookClubMember(id, data['book club member']));
+        return data['book club member'];
     }
 }
 
@@ -61,14 +98,14 @@ export const deleteBookClubMember = (id, userId) => async (dispatch) => {
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(removeBookClubMember(data['membership id']));
+        dispatch(removeBookClubMember(id, data['membership id']));
     }
 }
 
 // initial state
 const initialState = {
     userMembershipsByClubId: {},
-    byBookClubMemberId: {}
+    allMembershipsByClubId: {}
 };
 
 // book club member reducer
@@ -83,20 +120,27 @@ const bookClubMemberReducer = (state = initialState, action) => {
                 return userMemberships;
             }, {});
             return newState;
+        case ADD_USER_MEMBERSHIP:
+            newState = { ...state };
+            newState.userMembershipsByClubId = { ...state.userMembershipsByClubId, [action.userMembership.book_club_id]: action.userMembership }
+            return newState;
         case REMOVE_USER_MEMBERSHIP:
             newState = { ...state };
             delete newState.userMembershipsByClubId[action.bookClubId];
             return newState;
         case LOAD_BOOK_CLUB_MEMBERS:
             newState = { ...state };
-            newState.byBookClubMemberId = action.bookClubMembers.reduce((bookClubMembers, bookClubMember) => {
-                bookClubMembers[bookClubMember.id] = bookClubMember;
-                return bookClubMembers;
+            newState.allMembershipsByClubId[action.bookClubId] = action.memberships.reduce((memberships, membership) => {
+                memberships[membership.id] = membership;
+                return memberships;
             }, {});
             return newState;
+        case ADD_BOOK_CLUB_MEMBER:
+            newState = { ...state };
+            newState.allMembershipsByClubId[action.bookClubId] = { ...state.allMembershipsByClubId[action.book_club_id], [action.membership.id]: action.membership }
         case REMOVE_BOOK_CLUB_MEMBER:
             newState = { ...state };
-            delete newState.byBookClubMemberId[action.membershipId];
+            delete newState.allMembershipsByClubId[action.bookClubId][action.membershipId];
             return newState;
         default:
             return state;
