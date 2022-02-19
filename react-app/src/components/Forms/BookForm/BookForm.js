@@ -104,7 +104,7 @@ function BookForm({ formType, formProps }) {
                             <input
                                 name='isbn13'
                                 type='text'
-                                placeholder='Ex. 978-2-1234-5680-3'
+                                placeholder='Ex. 9782123456803'
                                 value={isbn13}
                                 onChange={e => setIsbn13(e.target.value)}
                             ></input>

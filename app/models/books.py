@@ -8,7 +8,7 @@ class Book(db.Model):
     author = db.Column(db.String(75), nullable=False)
     synopsis = db.Column(db.Text)
     image_url = db.Column(db.Text)
-    isbn13 = db.Column(db.String(17))
+    isbn13 = db.Column(db.String(13))
     original_title = db.Column(db.String(75))
     language = db.Column(db.String(20), nullable=False)
     publication_year = db.Column(db.Integer)
