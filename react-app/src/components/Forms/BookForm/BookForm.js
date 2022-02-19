@@ -163,7 +163,7 @@ function BookForm({ formType, formProps }) {
                     </div>
                     <div className='form__buttons'>
                         <button
-                            disabled={!title || !author || !language}
+                            disabled={!title || !author || !language || !imageUrl}
                             className='button' type='submit'>Submit</button>
                         <hr />
                         <button

@@ -84,8 +84,11 @@ hr {
 /* container for normal internal pages */
 #wide__container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 5px;
-    padding: 15px;
+    padding: 15px 0 10px;
     scrollbar-width: auto;
     scrollbar-color: #727272;
     overflow-y: scroll;

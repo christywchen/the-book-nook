@@ -1,6 +1,6 @@
 .book__card--container {
     position: relative;
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
