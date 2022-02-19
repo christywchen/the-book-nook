@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
+import { createBook, getAllBooks } from '../../../store/book';
 
 function BookForm({ formType, formProps }) {
-    const [errors, setErrors] = useState('');
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
     const [synopsis, setSynopsis] = useState('');
@@ -12,19 +16,51 @@ function BookForm({ formType, formProps }) {
     const [language, setLanguage] = useState('');
     const [publicationYear, setPublicationYear] = useState('');
     const [pages, setPages] = useState('');
+    const [errors, setErrors] = useState([]);
 
     async function handleSubmit(e) {
         e.preventDefault();
+
+        if (formType === 'createNew') {
+            const data = await dispatch(createBook(title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
+
+            if (data.errors) {
+                setErrors(data.errors);
+            } else {
+                const book = data;
+                return history.push(`/books/all`)
+            }
+            console.log('HIIIII')
+        }
     }
 
     async function handleReset(e) {
         e.preventDefault();
+
+        setTitle('');
+        setAuthor('');
+        setSynopsis('');
+        setImageUrl('');
+        setIsbn13('');
+        setOriginalTitle('');
+        setLanguage('');
+        setPublicationYear('');
+        setPages('');
+        setErrors([]);
     }
 
     return (
         <>
             <div id='form__container'>
                 <form onSubmit={handleSubmit} onReset={handleReset}>
+                    {errors.length > 0 && (
+                        <ul className='auth__container--errors'>{
+                            errors.map((error, ind) => (
+                                <li key={ind}>{error}</li>
+                            ))
+                        }
+                        </ul>
+                    )}
                     <div>
                         <label>Book Title</label>
                         <input
@@ -78,6 +114,7 @@ function BookForm({ formType, formProps }) {
                             <input
                                 name='publication_year'
                                 type='number'
+                                placeholder='Ex. 1984'
                                 value={publicationYear}
                                 onChange={e => setPublicationYear(e.target.value)}
                             ></input>
@@ -114,7 +151,7 @@ function BookForm({ formType, formProps }) {
                     </div>
                     <div className='form__buttons'>
                         <button
-                            // disabled={!name || !capacity}
+                            disabled={!title || !author || !language}
                             className='button' type='submit'>Submit</button>
                         <hr />
                         <button

@@ -65,9 +65,9 @@ def create_book():
             image_url=data['image_url'],
             isbn13=data['isbn13'],
             original_title=data['original_title'],
-            language=data['original_language'],
+            language=data['language'],
             publication_year=data['publication_year'],
-            pages=data['publication_year'],
+            pages=data['pages'],
             created_at=datetime.now(),
             updated_at=datetime.now()
         )
@@ -99,7 +99,7 @@ def update_book(id):
         book.image_url = data['image_url']
         book.isbn13 = data['isbn13']
         book.original_title = data['original_title']
-        book.language = data['original_language']
+        book.language = data['language']
         book.publication_year = data['publication_year']
         book.pages = data['publication_year']
 

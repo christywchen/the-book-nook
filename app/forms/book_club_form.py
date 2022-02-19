@@ -25,7 +25,7 @@ def minimum_capacity(form, field):
 
 
 class BookClubForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired()])
+    name = StringField('name', validators=[DataRequired(), name_length])
     description = TextAreaField('description', validators=[description_length])
     host_id = IntegerField('host_id', validators=[DataRequired()])
     capacity = IntegerField('capacity', validators=[minimum_capacity])

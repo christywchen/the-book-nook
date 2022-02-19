@@ -110,7 +110,7 @@ function BookClubForm({ formType, formProps }) {
                             className='button' type='submit'>Submit</button>
                         <hr />
                         <button
-                            // disabled={!name || !capacity}
+                            disabled={!(name || capacity || description || imageUrl)}
                             className='button' type='reset'>Reset</button>
                     </div>
                 </form>

@@ -69,7 +69,9 @@ export const createBookClub = (name, description, hostId, imageUrl, capacity) =>
             return data;
         }
     } else {
-        return ['An error occurred. Please try again.']
+        const data = {};
+        data.errors = ['An error occurred. Please try again.']
+        return data;
     }
 }
 

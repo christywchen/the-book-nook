@@ -29,7 +29,7 @@ const removeBook = (bookId) => {
 export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch('/api/books', {
         method: 'POST',
-        heads: {
+        headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -47,15 +47,17 @@ export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTi
 
     if (res.ok) {
         const data = await res.json();
-        dispatchEvent(addBook(data['book']));
+        dispatch(addBook(data['book']));
         return data['book'];
     } else if (res.status < 500) {
         const data = await res.json();
         if (data.errors) {
             return data;
-        } else {
-            return ['An error occured. Please try again.']
         }
+    } else {
+        const data = {};
+        data.errors = ['An error occurred. Please try again.']
+        return data;
     }
 }
 
@@ -80,7 +82,7 @@ export const getBook = (id) => async (dispatch) => {
 export const updateBook = (id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch(`/api/books/${id}`, {
         method: 'PATCH',
-        heads: {
+        headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -98,7 +100,7 @@ export const updateBook = (id, title, author, synopsis, imageUrl, isbn13, origin
 
     if (res.ok) {
         const data = await res.json();
-        dispatchEvent(addBook(data['book']));
+        dispatch(addBook(data['book']));
         return data['book'];
     } else if (res.status < 500) {
         const data = await res.json();

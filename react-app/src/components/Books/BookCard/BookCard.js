@@ -21,7 +21,7 @@ function BookCard({ book }) {
                         <div className='bookclub__card--text-title'>
                             About:
                         </div>
-                        {book.description}
+                        {book.synopsis}
 
                     </div>
                     <div className='no__memberships--links'>
