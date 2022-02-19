@@ -155,7 +155,7 @@ function BookForm({ formType, formProps }) {
                             className='button' type='submit'>Submit</button>
                         <hr />
                         <button
-                            // disabled={!name || !capacity}
+                            disabled={!(title || author || synopsis || imageUrl || isbn13 || originalTitle || language || publicationYear || pages)}
                             className='button' type='reset'>Reset</button>
                     </div>
                 </form>

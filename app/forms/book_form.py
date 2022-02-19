@@ -1,7 +1,7 @@
 from tabnanny import check
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField, ValidationError
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Optional
 from datetime import datetime
 
 def title_length(form, field):
@@ -54,5 +54,5 @@ class BookForm(FlaskForm):
     isbn13 = StringField('isbn13', validators=[isbn13_length])
     original_title = StringField('original_title', validators=[orig_title_length])
     language = StringField('language', validators=[DataRequired(), lang_length])
-    publication_year = IntegerField('publication_year', validators=[check_year])
-    pages = IntegerField('pages')
+    publication_year = IntegerField('publication_year', validators=[Optional(), check_year])
+    pages = IntegerField('pages', validators=[Optional()])
