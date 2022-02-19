@@ -15,7 +15,7 @@ function CreateBook({ membershipCount }) {
                     Tell us a little bit about the book you want to share. Title, author, and language are required.
                 </p>
                 <p>
-                    This way, other users can find out more about it and maybe even suggest it to their book clubs!
+                    This way, other users can learn more about it and maybe even suggest it to their book clubs!
                 </p>
                 <p>
                     Otherwise, you can keep on browsing books shared by our community.

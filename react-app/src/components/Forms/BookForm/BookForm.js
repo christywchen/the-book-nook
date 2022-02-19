@@ -2,20 +2,21 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { createBook, getAllBooks } from '../../../store/book';
+import { createBook, getAllBooks, updateBook } from '../../../store/book';
 
 function BookForm({ formType, formProps }) {
     const history = useHistory();
     const dispatch = useDispatch();
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [synopsis, setSynopsis] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [isbn13, setIsbn13] = useState('');
-    const [originalTitle, setOriginalTitle] = useState('');
-    const [language, setLanguage] = useState('');
-    const [publicationYear, setPublicationYear] = useState('');
-    const [pages, setPages] = useState('');
+
+    const [title, setTitle] = useState(formProps?.title || '');
+    const [author, setAuthor] = useState(formProps?.author || '');
+    const [synopsis, setSynopsis] = useState(formProps?.synopsis || '');
+    const [imageUrl, setImageUrl] = useState(formProps?.imageUrl || '');
+    const [isbn13, setIsbn13] = useState(formProps?.isbn13 || '');
+    const [originalTitle, setOriginalTitle] = useState(formProps?.originalTitle || '');
+    const [language, setLanguage] = useState(formProps?.language || '');
+    const [publicationYear, setPublicationYear] = useState(formProps?.publicationYear || '');
+    const [pages, setPages] = useState(formProps?.pages || '');
     const [errors, setErrors] = useState([]);
 
     async function handleSubmit(e) {
@@ -28,9 +29,20 @@ function BookForm({ formType, formProps }) {
                 setErrors(data.errors);
             } else {
                 const book = data;
-                return history.push(`/books/all`)
+                return history.push(`/books/${book.id}`)
             }
-            console.log('HIIIII')
+        }
+
+        if (formType = 'editRecord') {
+            let id = formProps.id;
+
+            const data = await dispatch(updateBook(id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
+
+            if (data.errors) {
+                setErrors(data.errors);
+            } else {
+                return history.goBack();
+            }
         }
     }
 

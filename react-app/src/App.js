@@ -64,6 +64,7 @@ function App() {
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
+
         <div id="content__container">
           <Sidebar />
           <ProtectedRoute path='/dashboard/*' exact={true} >
@@ -96,6 +97,7 @@ function App() {
           <ProtectedRoute path={'/books/:id(\\d+)/edit'} exact={true} >
             <BookEdit />
           </ProtectedRoute>
+
           {/* <ProtectedRoute path='/users/:userId' exact={true} >
             <User />
           </ProtectedRoute> */}

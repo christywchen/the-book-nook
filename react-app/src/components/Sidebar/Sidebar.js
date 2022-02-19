@@ -14,6 +14,7 @@ import CreateBook from './Books/CreateBook/CreateBook';
 import { getAllBookClubs } from '../../store/book_club';
 
 import './Sidebar.css';
+import EditBook from './Books/EditBook/EditBook';
 
 function Sidebar() {
     const location = useLocation();
@@ -34,6 +35,7 @@ function Sidebar() {
     const isBookClubEdit = location.pathname.startsWith('/book-clubs') && location.pathname.endsWith('/edit');
     const isBookList = location.pathname.startsWith('/books/all');
     const isBookCreate = location.pathname.startsWith('/books/new');
+    const isBookEdit = location.pathname.startsWith('/books') && location.pathname.endsWith('/edit');
 
     return (
         <>
@@ -44,6 +46,7 @@ function Sidebar() {
                 {isBookClubEdit && <EditClub userMemberships={userMemberships} />}
                 {isBookList && <BrowseBooks />}
                 {isBookCreate && <CreateBook />}
+                {isBookEdit && <EditBook />}
             </div>
         </>
     )

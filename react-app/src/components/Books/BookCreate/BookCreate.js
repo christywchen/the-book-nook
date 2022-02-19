@@ -9,7 +9,6 @@ function BookCreate() {
                 <div id='wide__title'>Add a Book</div>
                 <BookForm formType={formType} />
             </div>
-
         </>
     )
 }

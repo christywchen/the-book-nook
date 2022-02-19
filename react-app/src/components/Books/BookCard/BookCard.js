@@ -1,10 +1,14 @@
+import { useHistory } from 'react-router-dom';
+
 import './BookCard.css';
 
 function BookCard({ book }) {
-
+    const history = useHistory();
 
     async function handleClick(e) {
         e.preventDefault();
+
+        return history.push(`/books/${book.id}`);
     }
 
     return (
