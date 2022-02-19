@@ -9,28 +9,28 @@ def title_length(form, field):
     title = field.data
 
     if len(title) > 75:
-        raise ValidationError('Title should be 75 characters or less.')
+        raise ValidationError('Title should be 150 characters or less.')
 
 def author_length(form, field):
     # Check that author is not more than 75 characters
     author = field.data
 
     if len(author) > 75:
-        raise ValidationError('Author should be 75 characters or less.')
+        raise ValidationError('Author should be 150 characters or less.')
 
 def orig_title_length(form, field):
     # Check that original title is not more than 75 characters
     orig_title = field.data
 
     if len(orig_title) > 75:
-        raise ValidationError('Original should be 75 characters or less.')
+        raise ValidationError('Original should be 150 characters or less.')
 
 def lang_length(form, field):
     # Check that language is not more than 20 characters
     lang = field.data
 
     if len(lang) > 20:
-        raise ValidationError('Language should be 20 characters or less.')
+        raise ValidationError('Language should be 50 characters or less.')
 
 def isbn13_length(form, field):
     # Check that isbn13 is 17 characters exactly.

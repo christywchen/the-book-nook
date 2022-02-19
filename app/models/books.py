@@ -4,13 +4,13 @@ class Book(db.Model):
     __tablename__ = 'books'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(75), nullable=False)
-    author = db.Column(db.String(75), nullable=False)
+    title = db.Column(db.String(150), nullable=False)
+    author = db.Column(db.String(150), nullable=False)
     synopsis = db.Column(db.Text)
     image_url = db.Column(db.Text)
     isbn13 = db.Column(db.String(13))
-    original_title = db.Column(db.String(75))
-    language = db.Column(db.String(20), nullable=False)
+    original_title = db.Column(db.String(150))
+    language = db.Column(db.String(50), nullable=False)
     publication_year = db.Column(db.Integer)
     pages = db.Column(db.Integer)
     created_at = db.Column(db.DateTime, nullable=False)
