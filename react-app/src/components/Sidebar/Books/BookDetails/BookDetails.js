@@ -12,10 +12,10 @@ function BookDetails() {
         <>
             <div className='sidebar__para'>
                 <p>
-                    To suggest this book to your book club, select the book club you want to recommend the novel to using the dropdown.
+                    To suggest this book to your book club, use the dropdown to select the book club whose reading list you want to add the book to.
                 </p>
                 <p>
-                    Don't forget to let your book club members know that you've added something to the reading list!
+                    Don't forget to let other book club members know that you've added something to the reading list!
                 </p>
                 <p>
                     Or, you can head back to the library to continue browsing.
