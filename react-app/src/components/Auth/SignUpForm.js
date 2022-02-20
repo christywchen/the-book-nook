@@ -53,7 +53,7 @@ const SignUpForm = () => {
   const handleDemo = (e) => {
     e.preventDefault();
 
-    const credential = 'demo@aa.io';
+    const credential = 'demo@demo.io';
     const password = 'password';
 
     return dispatch(login(credential, password))
