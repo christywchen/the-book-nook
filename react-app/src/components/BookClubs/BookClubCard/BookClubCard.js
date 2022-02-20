@@ -42,9 +42,10 @@ function BookClubCard({ bookClub }) {
 
             if (!data.errors) {
                 await dispatch(addUserMembership(data));
-                return history.push(`/dashboard/book-clubs/${bookClub.id}`);
             }
         }
+
+        return history.push(`/dashboard/book-clubs/${bookClub.id}`);
     }
 
     return (
