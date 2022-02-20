@@ -3,7 +3,7 @@
     width: 70%;
     display: grid;
     grid-template-columns: 175px 1.5fr;
-    margin: 30px 0px;
+    margin: 20px 0px;
     padding: 30px;
     transition: all ease-in-out 0.3s;
     background-color: var(--button-bg);
@@ -23,14 +23,30 @@
 
 .book__details--title {
     font-size: var(--h2-size);
-    font-weight: 600;
+    font-weight: var(--weight-heavy);
+}
+
+.book__details--subtitle {
+    font-size: var(--h6-size);
+    margin: 0 0 10px;
 }
 
 .book__details--synopsis {
     margin: 10px 0;
     padding: 15px;
     font-size: var(--body-small);
-    font-weight: 400;
+    font-weight: var(--weight-light);
     background-color: var(--sidebar-bg);
     border-radius: var(--input-radius);
+}
+
+.book__details--synopsis-title {
+    font-size: var(--h6-size);
+    margin: 0 0 10px;
+    padding: 2px;
+}
+
+.book__details--text-small {
+    font-size: var(--body-small);
+    margin: 3px 0;
 }

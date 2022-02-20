@@ -132,7 +132,6 @@ const bookReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_BOOKS:
             newState = { ...state };
-            console.log(action.books)
             newState.byId = action.books.reduce((books, book) => {
                 newState.allIds.push(book.id);
                 books[book.id] = book;

@@ -10,11 +10,12 @@ import CreateClub from './BookClubs/CreateClub/CreateClub';
 import EditClub from './BookClubs/EditClub/EditClub';
 import BrowseBooks from './Books/BrowseBooks/BrowseBooks';
 import CreateBook from './Books/CreateBook/CreateBook';
+import EditBook from './Books/EditBook/EditBook';
 
 import { getAllBookClubs } from '../../store/book_club';
 
 import './Sidebar.css';
-import EditBook from './Books/EditBook/EditBook';
+import BookDetails from './Books/BookDetails/BookDetails';
 
 function Sidebar() {
     const location = useLocation();
@@ -30,12 +31,14 @@ function Sidebar() {
     }, [dispatch]);
 
     const isDashboard = location.pathname.startsWith('/dashboard');
-    const isBookClubList = location.pathname.startsWith('/book-clubs/all');
-    const isBookClubCreate = location.pathname.startsWith('/book-clubs/new');
-    const isBookClubEdit = location.pathname.startsWith('/book-clubs') && location.pathname.endsWith('/edit');
-    const isBookList = location.pathname.startsWith('/books/all');
-    const isBookCreate = location.pathname.startsWith('/books/new');
-    const isBookEdit = location.pathname.startsWith('/books') && location.pathname.endsWith('/edit');
+    const isBookClubList = location.pathname.match(/\/book\-clubs\/all$/);
+    const isBookClubCreate = location.pathname.match(/\/book\-clubs\/new$/);
+    const isBookClubEdit = location.pathname.match(/\/book-clubs\/\d+\/edit$/)
+
+    const isBookList = location.pathname.match(/\/books\/all$/);
+    const isBookCreate = location.pathname.match(/\/books\/new$/);
+    const isBookEdit = location.pathname.match(/\/books\/\d+\/edit$/);
+    const isBookDetails = location.pathname.match(/\/books\/\d+$/)
 
     return (
         <>
@@ -47,6 +50,7 @@ function Sidebar() {
                 {isBookList && <BrowseBooks />}
                 {isBookCreate && <CreateBook />}
                 {isBookEdit && <EditBook />}
+                {isBookDetails && <BookDetails />}
             </div>
         </>
     )

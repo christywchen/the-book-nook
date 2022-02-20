@@ -11,6 +11,8 @@ function BookDetails() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
+    const userMembershipsObj = useSelector(state => state.userMembershipsByClubId);
+    const bookClubs = useSelector(state => state.bookClub.byId);
     const book = useSelector(state => state.book.byId[id]);
 
     const backgroundImage = { backgroundImage: `url("${book?.image_url}")` }
@@ -34,48 +36,55 @@ function BookDetails() {
     return (
         <>
             <div id='wide__container'>
-                <div className='book__details--container'>
-                    <div className='book__details--image-container'>
-                        <div className='book__details--image' style={backgroundImage}>
-                        </div>
+                <div id='wide__subcontainer--centered'>
+                    <div id='wide__title'>{book.title}</div>
+                    <div id='wide__subtitle'>by {book.author}</div>
+                    <div className='book__details--container'>
+                        <div className='book__details--image-container'>
+                            <div className='book__details--image' style={backgroundImage}>
+                            </div>
 
-                        <div className='create__club--link'>
-                            <form onSubmit={handleEditBook}>
-                                <button className='button button__sidebar--center' type='submit'>Edit Book</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div className='book__details--text-container'>
-                        {/* <span id='wide__title'>The Diving Bell and the Butterfly</span> */}
-                        <div className='book__details--title'>
-                            {book.title}
-                        </div>
-                        {book.original_title && (
-                            <div>Original Title: {book.original_title}</div>
-                        )}
-                        <div>
-                            by {book.author}
-                        </div>
-                        {book.synopsis && (
-                            <div className='book__details--synopsis'>
-                                {book.synopsis}
+                            <div className='create__club--link'>
+                                <form onSubmit={handleEditBook}>
+                                    <button className='button button__sidebar--center' type='submit'>Edit Book</button>
+                                </form>
                             </div>
-                        )}
-                        <div>
-                            {book.language}
+                        </div>
+                        <div className='book__details--text-container'>
+                            {book.synopsis && (
+                                <>
+                                    <span className='weight__med book__details--synopsis-title'>
+                                        Synopsis
+                                    </span>
+                                    <div className='book__details--synopsis'>
+                                        {book.synopsis}
+                                    </div>
+                                </>
+                            )}
+                            {book.original_title && (
+                                <div className='book__details--text-small'>
+                                    <span className='weight__med'>Original Title:</span>  {book.original_title}
+                                </div>
+                            )}
                             {book.pages && (
-                                <>, {book.pages} Pages</>)}
+                                <div className='book__details--text-small'>
+                                    {book.pages} Pages
+                                </div>
+                            )}
+                            <div className='book__details--text-small'>
+                                <span className='weight__med'>Language:</span>  {book.language}
+                            </div>
+                            {book.publication_year && (
+                                <div className='book__details--text-small'>
+                                    <span className='weight__med'>Publication Year:</span> {book.publication_year}
+                                </div>
+                            )}
+                            {book.isbn13 && (
+                                <div className='book__details--text-small'>
+                                    <span className='weight__med'>ISBN13:</span> {book.isbn13}
+                                </div>
+                            )}
                         </div>
-                        {book.publication_year && (
-                            <div>
-                                Publication Year: {book.publication_year}
-                            </div>
-                        )}
-                        {book.isbn13 && (
-                            <div>
-                                ISBN13: {book.isbn13}
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>
