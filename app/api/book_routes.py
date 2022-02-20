@@ -101,7 +101,8 @@ def update_book(id):
         book.original_title = data['original_title']
         book.language = data['language']
         book.publication_year = data['publication_year']
-        book.pages = data['publication_year']
+        book.pages = data['pages']
+        book.updated_at=datetime.now()
 
         db.session.commit()
 
