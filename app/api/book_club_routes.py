@@ -189,7 +189,7 @@ def create_book_club_member(book_club_id, user_id):
     book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == user_id).all()
     joined_club_count = len(book_clubs_joined)
 
-    if (joined_club_count >= 5):
+    if joined_club_count >= 5:
         return {'errors': ['Users may only join or host up to 5 book clubs.']}, 401
 
     book_club_member = BookClubMember(
@@ -237,19 +237,25 @@ def get_book_club_books(book_club_id):
 
 @book_club_routes.route('/<int:book_club_id>/books/<int:book_id>', methods=['POST'])
 @login_required
-def add_book_club_book(book_club_id, book_id):
+def add_book_club_book():
     """
     Adds a book to a book club.
     """
+
     form = BookClubBookForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         data = form.data
+        book_club_book = BookClubBook.query.filter(BookClubBook.book_id == data['book_id'], BookClubBook.book_club_id == data['book_club_id']).first()
+
+        if book_club_book:
+            return {'errors': ['This book is already on this club\'s reading list.']}, 401
+
 
         book_club_book = BookClubBook(
-            book_id=data['book_id'],
             book_club_id=data['book_club_id'],
+            book_id=data['book_id'],
             added_by_id=data['added_by_id'],
             status=data['status'],
             created_at=datetime.now(),
