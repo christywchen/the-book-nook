@@ -7,9 +7,9 @@ function Dashboard() {
     return (
         <>
             <Switch>
-                <Route path='/dashboard/book-clubs/:bookClubId'>
-                    {/* <Redirect to='/dashboard/book-clubs/:bookClubId/reading-list' /> */}
-                </Route>
+                {/* <Route path='/dashboard/book-clubs/:bookClubId'>
+                    <Redirect to='/dashboard/book-clubs/:bookClubId/reading-list' />
+                </Route> */}
                 <Route path='/dashboard/book-clubs/:bookClubId/reading-list'>
                     <Chatroom />
                     <DetailsBar />
