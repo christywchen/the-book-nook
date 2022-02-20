@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, useParams } from 'react-router-dom';
 
 import { getBook } from '../../../store/book';
+import AddBookClubBook from '../../Forms/AddBookClubBook/AddBookClubBook';
 
 import './BookDetails.css';
 
@@ -84,6 +85,8 @@ function BookDetails() {
                                     <span className='weight__med'>ISBN13:</span> {book.isbn13}
                                 </div>
                             )}
+
+                            <AddBookClubBook book={book} />
                         </div>
                     </div>
                 </div>

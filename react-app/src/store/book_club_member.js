@@ -139,7 +139,7 @@ const bookClubMemberReducer = (state = initialState, action) => {
             return newState;
         case ADD_BOOK_CLUB_MEMBER:
             newState = { ...state };
-            newState.allMembershipsByClubId[action.bookClubId] = { ...state.allMembershipsByClubId[action.book_club_id], [action.membership.id]: action.membership }
+            newState.allMembershipsByClubId[action.bookClubId] = { ...state.allMembershipsByClubId[action.bookClubId], [action.membership.id]: action.membership }
         case REMOVE_BOOK_CLUB_MEMBER:
             newState = { ...state };
             delete newState.allMembershipsByClubId[action.bookClubId][action.membershipId];

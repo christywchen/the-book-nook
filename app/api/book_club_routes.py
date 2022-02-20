@@ -268,7 +268,7 @@ def add_book_club_book(book_club_id, book_id):
 @login_required
 def update_book_club_book(book_club_id, book_id):
     """
-    Updates a book club record and returns it.
+    Updates a book club book record and returns it.
     """
     form = BookClubBookForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -290,7 +290,7 @@ def update_book_club_book(book_club_id, book_id):
 @login_required
 def delete_book_club_book(book_club_id, book_id):
     """
-    Deletes a book club member record.
+    Deletes a book club book record.
     """
     book_club_book = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id, BookClubBook.book_id == book_id).first()
     book_club_book_id = book_club_book.id
