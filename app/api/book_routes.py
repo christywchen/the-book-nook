@@ -3,7 +3,7 @@ from flask_login import login_required
 from datetime import datetime
 from app.api.auth_routes import login
 
-from app.models import db, Book
+from app.models import db, Book, BookClubBook
 from app.forms.book_form import BookForm
 
 book_routes = Blueprint('books', __name__)
@@ -123,3 +123,22 @@ def delete_book(id):
     db.session.commit()
 
     return {'message': 'Book successfully deleted.'}
+
+
+"""
+The below route is for deleting a given book from a book club.
+"""
+
+@book_routes.route('/<int:book_id>/book-clubs/<int:book_club_id>', methods=['DELETE'])
+@login_required
+def delete_book_club_book(book_id, book_club_id):
+    """
+    Deletes a book club member record.
+    """
+    book_club_book = BookClubBook.query.filter(BookClubBook.book_id == book_id, BookClubBook.book_club_id == book_club_id).first()
+    book_club_book_id = book_club_book.id
+
+    db.session.delete(book_club_book)
+    db.session.commit()
+
+    return {'message': 'Book club book successfully deleted.', 'book club id': book_club_book_id}

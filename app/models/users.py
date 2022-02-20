@@ -1,3 +1,4 @@
+from app.models import book_club_members
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -32,7 +33,7 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def to_dict(self):
+    def to_dict(self, *args):
         return {
             'id': self.id,
             'username': self.username,
@@ -41,5 +42,5 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'dob': self.dob,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
         }

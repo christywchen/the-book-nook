@@ -2,10 +2,9 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from datetime import datetime
 
-from app.models import db, BookClub, BookClubChatroom, BookClubMember
+from app.models import db, BookClub, BookClubChatroom, BookClubMember, Book, BookClubBook
 from app.forms.book_club_form import BookClubForm
-from app.models.book_club_books import BookClubBook
-from app.models.books import Book
+from app.forms.book_club_book_form import BookClubBookForm
 
 book_club_routes = Blueprint('book_clubs', __name__)
 
@@ -17,7 +16,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{error}')
+            errorMessages.append(f'{field}:{error}')
     return errorMessages
 
 
@@ -222,7 +221,7 @@ def delete_book_club_member(book_club_id, user_id):
 
 
 """
-The below routes are for creating, reading, updating, and deleting book club books.
+The below routes are for creating, reading, and updating book club books.
 """
 
 @book_club_routes.route('/<int:book_club_id>/books')
@@ -233,4 +232,55 @@ def get_book_club_books(book_club_id):
     """
     book_club_books = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id)
 
-    return {'book club book': [book_club_book.to_dict() for book_club_book in book_club_books]}
+    return {'book club books': [book_club_book.to_dict() for book_club_book in book_club_books]}
+
+
+@book_club_routes.route('/<int:book_club_id>/books', methods=['POST'])
+@login_required
+def add_book_club_book(book_club_id):
+    """
+    Adds a book to a book club.
+    """
+    form = BookClubBookForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        data = form.data
+
+        book_club_book = BookClubBook(
+            book_id=data['book_id'],
+            book_club_id=data['book_club_id'],
+            added_by_id=data['added_by_id'],
+            status=data['status'],
+            created_at=datetime.now(),
+            updated_at=datetime.now()
+        )
+
+        db.session.add(book_club_book)
+        db.session.commit()
+
+        return {'book club book': book_club_book.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@book_club_routes.route('/<int:book_club_id>/books/<int:book_club_book_id>', methods=['PATCH'])
+@login_required
+def update_book_club_book(book_club_id, book_club_book_id):
+    """
+    Updates a book club record and returns it.
+    """
+    form = BookClubBookForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        book_club_book = BookClubBook.query.get(book_club_book_id)
+        data = form.data
+
+        book_club_book.status = data['status']
+
+        db.session.commit()
+
+        return {'book club book': book_club_book.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
