@@ -221,7 +221,7 @@ def delete_book_club_member(book_club_id, user_id):
 
 
 """
-The below routes are for creating, reading, and updating book club books.
+The below routes are for creating, reading, updating, and deleting book club books.
 """
 
 @book_club_routes.route('/<int:book_club_id>/books')
@@ -284,3 +284,18 @@ def update_book_club_book(book_club_id, book_club_book_id):
         return {'book club book': book_club_book.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@book_club_routes.route('/<int:book_club_id>/books/<int:book_id>', methods=['DELETE'])
+@login_required
+def delete_book_club_book(book_club_id, book_id):
+    """
+    Deletes a book club member record.
+    """
+    book_club_book = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id, BookClubBook.book_id == book_id).first()
+    book_club_book_id = book_club_book.id
+
+    db.session.delete(book_club_book)
+    db.session.commit()
+
+    return {'message': 'Book club book successfully deleted.', 'book club book id': book_club_book_id}
