@@ -1,5 +1,6 @@
-#book__clubs--icon-container {
+.book__details--clubs-container {
     display: flex;
+    margin: 10px 0 0;
     gap: 5px;
 }
 
@@ -11,10 +12,10 @@
     align-items: center;
     padding: 2px;
     text-align: center;
-    color: var(--acce);
-    font-size: var(--body-small);
+    color: var(--main-color);
+    font-size: 0.8em;
     font-weight: var(--weight-bold);
-    background-color: var(--input-bg);
+    background-color: var(--accent-bg);
     border-radius: 100%;
     border: solid 1px var(--input-bg);
     background-clip: content-box;
@@ -39,6 +40,38 @@
     background-clip: content-box;
 }
 
+.book__details--divider {
+    margin: 10px 0;
+}
+
+.book__details--mini-title {
+    margin: 0;
+    letter-spacing: 0.2px;
+    font-size: var(--body-small);
+    font-weight: var(--weight-med);
+}
+
 .form__add--book-to-club {
     display: flex;
+    gap: 10px;
+}
+
+ul.form__add--book-to-club--errors,
+.form__add--book-to-club--message {
+    margin: 0;
+    color: var(--main-color);
+    font-style: italic;
+    font-size: 0.9em;
+    font-weight: var(--weight-xlight);
+}
+
+.form__add--book-to-club--errors li {
+    margin: 0 0 2px 0;
+    list-style-type: none;
+}
+
+.form__add--book-to-club--message,
+.form__add--book-to-club--message a:hover {
+    color: var(--main-color);
+    transition: 0.3s;
 }
