@@ -16,9 +16,16 @@ function BookClubItem({ bookClub }) {
                 </div>
                 {showLinks ? (
                     <div className="sidebar__links--group">
-                        <Link to={`/dashboard/book-clubs/${bookClub.id}/rooms/general`}>
-                            General Chat
-                        </Link>
+                        <p>
+                            <Link to={`/dashboard/book-clubs/${bookClub.id}/reading-list`}>
+                                Reading List
+                            </Link>
+                        </p>
+                        <p>
+                            <Link to={`/dashboard/book-clubs/${bookClub.id}/rooms/general`}>
+                                General Chat
+                            </Link>
+                        </p>
                         <p>
                             <Link to={`/dashboard/book-clubs/${bookClub.id}/rooms/spoilers`}>
                                 Spoilers Chat

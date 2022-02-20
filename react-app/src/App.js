@@ -9,7 +9,7 @@ import ProtectedRoute from './components/Auth/ProtectedRoute';
 import About from './components/About/About';
 import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
-import Main from './components/Main/Main';
+import Dashboard from './components/Dashboard/Dashboard';
 import Sidebar from './components/Sidebar/Sidebar';
 
 import BookClubList from './components/BookClubs/BookClubList/BookClubList';
@@ -68,7 +68,7 @@ function App() {
         <div id="content__container">
           <Sidebar />
           <ProtectedRoute path='/dashboard/*' exact={true} >
-            <Main />
+            <Dashboard />
           </ProtectedRoute>
           <ProtectedRoute path='/book-clubs' exact={true} >
             <Redirect to='/book-clubs/all' />
