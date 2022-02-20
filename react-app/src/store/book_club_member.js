@@ -55,8 +55,8 @@ export const removeBookClubMember = (bookClubId, membershipId) => {
 }
 
 // thunk middlewares
-export const getUserMemberships = (id) => async (dispatch) => {
-    const res = await fetch(`/api/users/${id}/book-clubs`);
+export const getUserMemberships = (bookClubId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${bookClubId}/book-clubs`);
 
     if (res.ok) {
         const data = await res.json();
@@ -64,43 +64,43 @@ export const getUserMemberships = (id) => async (dispatch) => {
     }
 }
 
-export const createBookClubMember = (id, userId) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${id}/users/${userId}`, {
+export const createBookClubMember = (bookClubId, userId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${bookClubId}/users/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             user_id: userId,
-            book_club_id: id,
+            book_club_id: bookClubId,
             user_id: userId
         }),
     });
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(addBookClubMember(id, data['book club member']));
+        dispatch(addBookClubMember(bookClubId, data['book club member']));
         return data['book club member'];
     }
 }
 
-export const getBookClubMembers = (id) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${id}/users`);
+export const getBookClubMembers = (bookClubId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${bookClubId}/users`);
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(loadBookClubMembers(id, data['book club members']));
+        dispatch(loadBookClubMembers(bookClubId, data['book club members']));
     }
 }
 
-export const deleteBookClubMember = (id, userId) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${id}/users/${userId}`, {
+export const deleteBookClubMember = (bookClubId, userId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${bookClubId}/users/${userId}`, {
         method: 'DELETE'
     });
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(removeBookClubMember(id, data['membership id']));
+        dispatch(removeBookClubMember(bookClubId, data['membership id']));
     }
 }
 

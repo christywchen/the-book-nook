@@ -235,9 +235,9 @@ def get_book_club_books(book_club_id):
     return {'book club books': [book_club_book.to_dict() for book_club_book in book_club_books]}
 
 
-@book_club_routes.route('/<int:book_club_id>/books', methods=['POST'])
+@book_club_routes.route('/<int:book_club_id>/books/<int:book_id>', methods=['POST'])
 @login_required
-def add_book_club_book(book_club_id):
+def add_book_club_book(book_club_id, book_id):
     """
     Adds a book to a book club.
     """
@@ -264,9 +264,9 @@ def add_book_club_book(book_club_id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@book_club_routes.route('/<int:book_club_id>/books/<int:book_club_book_id>', methods=['PATCH'])
+@book_club_routes.route('/<int:book_club_id>/books/<int:book_id>', methods=['PATCH'])
 @login_required
-def update_book_club_book(book_club_id, book_club_book_id):
+def update_book_club_book(book_club_id, book_id):
     """
     Updates a book club record and returns it.
     """
@@ -274,7 +274,7 @@ def update_book_club_book(book_club_id, book_club_book_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        book_club_book = BookClubBook.query.get(book_club_book_id)
+        book_club_book = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id, BookClubBook.book_id == book_id).first()
         data = form.data
 
         book_club_book.status = data['status']
