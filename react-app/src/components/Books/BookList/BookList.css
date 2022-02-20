@@ -1,0 +1,11 @@
+.book__card--container {
+    position: relative;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px 0px;
+    transition: all ease-in-out 0.3s;
+    border-radius: 3px;
+    grid-gap: 50px;
+}

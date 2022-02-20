@@ -8,6 +8,7 @@
     background-color: var(--sidebar-bg);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
+    overflow-y: scroll;
 }
 
 .sidebar__title {
@@ -22,7 +23,7 @@
 }
 
 .sidebar__links--group a {
-    font-size: var(--small-size);
+    font-size: var(--body-small);
     padding: 0 8px;
 }
 

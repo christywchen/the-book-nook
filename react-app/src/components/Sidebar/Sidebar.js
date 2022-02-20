@@ -4,14 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserMemberships } from '../../store/book_club_member';
 
-import JoinedClubs from './JoinedClubs/JoinedClubs';
-import BrowseClubs from './BrowseClubs/BrowseClubs';
-import CreateClub from './CreateClub/CreateClub';
-import EditClub from './EditClub/EditClub';
+import JoinedClubs from './Dashboard/JoinedClubs/JoinedClubs';
+import BrowseClubs from './BookClubs/BrowseClubs/BrowseClubs';
+import CreateClub from './BookClubs/CreateClub/CreateClub';
+import EditClub from './BookClubs/EditClub/EditClub';
+import BrowseBooks from './Books/BrowseBooks/BrowseBooks';
+import CreateBook from './Books/CreateBook/CreateBook';
+import EditBook from './Books/EditBook/EditBook';
 
 import { getAllBookClubs } from '../../store/book_club';
 
 import './Sidebar.css';
+import BookDetails from './Books/BookDetails/BookDetails';
 
 function Sidebar() {
     const location = useLocation();
@@ -27,9 +31,14 @@ function Sidebar() {
     }, [dispatch]);
 
     const isDashboard = location.pathname.startsWith('/dashboard');
-    const isBookClubList = location.pathname.startsWith('/book-clubs/all');
-    const isBookClubCreate = location.pathname.startsWith('/book-clubs/new');
-    const isBookClubEdit = location.pathname.startsWith('/book-clubs') && location.pathname.endsWith('/edit');
+    const isBookClubList = location.pathname.match(/\/book\-clubs\/all$/);
+    const isBookClubCreate = location.pathname.match(/\/book\-clubs\/new$/);
+    const isBookClubEdit = location.pathname.match(/\/book-clubs\/\d+\/edit$/)
+
+    const isBookList = location.pathname.match(/\/books\/all$/);
+    const isBookCreate = location.pathname.match(/\/books\/new$/);
+    const isBookEdit = location.pathname.match(/\/books\/\d+\/edit$/);
+    const isBookDetails = location.pathname.match(/\/books\/\d+$/)
 
     return (
         <>
@@ -38,6 +47,10 @@ function Sidebar() {
                 {isBookClubList && <BrowseClubs userMemberships={userMemberships} />}
                 {isBookClubCreate && <CreateClub userMemberships={userMemberships} />}
                 {isBookClubEdit && <EditClub userMemberships={userMemberships} />}
+                {isBookList && <BrowseBooks />}
+                {isBookCreate && <CreateBook />}
+                {isBookEdit && <EditBook />}
+                {isBookDetails && <BookDetails />}
             </div>
         </>
     )

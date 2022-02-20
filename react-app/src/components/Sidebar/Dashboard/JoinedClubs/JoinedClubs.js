@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllBookClubs } from '../../../store/book_club';
+import { getAllBookClubs } from '../../../../store/book_club';
 
 import BookClubItem from '../BookClubItem/BookClubItem';
 

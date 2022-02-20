@@ -1,26 +1,48 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 import { getAllBookClubs } from '../../../store/book_club';
-import { getBookClubMembers } from '../../../store/book_club_member';
+import { getBookClubMembers, getUserMemberships, removeUserMembership, deleteBookClubMember, addUserMembership, createBookClubMember } from '../../../store/book_club_member';
 
 import './BookClubCard.css';
 
 function BookClubCard({ bookClub }) {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id, name, description, host_id, image_url, capacity } = bookClub;
     const backgroundImage = { backgroundImage: `url("${image_url}")` }
 
-    const bookClubMembersObj = useSelector(state => state.bookClubMember.byBookClubMemberId);
-    const memberCount = Object.values(bookClubMembersObj).length;
+    const sessionUser = useSelector(state => state.session.user);
+    const userMembershipsObj = useSelector(state => state.bookClubMember.userMembershipsByClubId);
+    const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[bookClub.id]);
+
+    const userMemberships = Object.values(userMembershipsObj);
+    const userMembership = userMembershipsObj[id];
+
+    const [buttonText, setButtonText] = useState(userMembership ? 'Go to Club' : 'Join Now');
+
+    let memberCount;
+    if (bookClubMembersObj) memberCount = Object.values(bookClubMembersObj).length;
+
     const availableSpace = bookClub.capacity - memberCount;
 
     useEffect(() => {
         dispatch(getBookClubMembers(id));
+        dispatch(getUserMemberships(sessionUser.id));
     }, [dispatch]);
 
-    useEffect(() => { }, [availableSpace]);
+    useEffect(() => { }, [availableSpace, memberCount]);
+
+    async function handleMembership(e) {
+        e.preventDefault();
+
+        if (buttonText == 'Join Now') {
+            const membership = await dispatch(createBookClubMember(bookClub.id, sessionUser.id));
+            await dispatch(addUserMembership(membership));
+        }
+        return history.push(`/dashboard/book-clubs/${bookClub.id}`);
+    }
 
     return (
         <>
@@ -38,6 +60,11 @@ function BookClubCard({ bookClub }) {
                         </div>
                         {bookClub.description}
 
+                    </div>
+                    <div className='no__memberships--links'>
+                        <form onSubmit={handleMembership}>
+                            <button className='button button__sidebar--center-first' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
+                        </form>
                     </div>
                 </div>
             </div>

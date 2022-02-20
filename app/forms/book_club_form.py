@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, BooleanField, TextAreaField, IntegerField, ValidationError
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Optional
 
 def name_length(form, field):
     # Check that name is not more than 40 characters
@@ -13,7 +13,7 @@ def description_length(form, field):
     # Check that description is not more than 100 characters
     description = field.data
 
-    if description and len(description) > 100:
+    if len(description) > 100:
         raise ValidationError('Description should be 100 characters or less.')
 
 def minimum_capacity(form, field):
@@ -25,8 +25,8 @@ def minimum_capacity(form, field):
 
 
 class BookClubForm(FlaskForm):
-    name = StringField('name', validators=[DataRequired()])
-    description = TextAreaField('description', validators=[description_length])
+    name = StringField('name', validators=[DataRequired(), name_length])
+    description = TextAreaField('description', validators=[Optional(), description_length])
     host_id = IntegerField('host_id', validators=[DataRequired()])
-    capacity = IntegerField('capacity', validators=[minimum_capacity])
+    capacity = IntegerField('capacity', validators=[DataRequired(), minimum_capacity])
     public = BooleanField('public')

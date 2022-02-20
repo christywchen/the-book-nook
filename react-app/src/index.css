@@ -7,20 +7,27 @@
 
     --main-color: rgba(255, 255, 255, 1);
     --background-color: rgba(226, 58, 80, 0.3);
+    --nav-accent: rgba(219, 83, 74, 0.9);
+    --accent-bg: rgba(255, 255, 255, 0.48);
     --accent-bg: rgba(255, 255, 255, 0.48);
     --input-bg: rgba(255, 255, 255, 0.24);
     --sidebar-bg: rgba(255, 255, 255, 0.12);
-    --dash-bg: rgba(255, 255, 255, 0.08);
+    --button-bg: rgba(221, 221, 221, 0.12);
+    --dash-bg: rgba(240, 187, 187, 0.199);
     --error-color: rgba(242, 64, 76, 0.774);
 
     --body-size: 16px;
-    --small-size: 0.9em;
+    --body-small: 0.9em;
     --logo-size: 1.8em;
     --h1-size: 2em;
     --h2-size: 1.8em;
     --h3-size: 1.6em;
     --h4-size: 1.3em;
     --h5-size: 1.2em;
+
+    --weight-bold: 600;
+    --weight-med: 500;
+    --weight-light: 400;
 
     --border-radius: 12px;
     --card-radius: 8px;
@@ -79,11 +86,23 @@ hr {
     border-left: none;
 }
 
+.weight__heavy {
+    font-weight: var(--weight-heavy);
+}
+
+.weight__med {
+    font-weight: var(--weight-med);
+}
+
+.weight__light {
+    font-weight: var(--weight-light);
+}
+
 /* container for normal internal pages */
 #wide__container {
     width: 100%;
     margin: 5px;
-    padding: 15px;
+    padding: 15px 0 10px;
     scrollbar-width: auto;
     scrollbar-color: #727272;
     overflow-y: scroll;
@@ -95,13 +114,19 @@ hr {
     text-align: center;
 }
 
+#wide__subcontainer--centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* container for internal form pages */
 #form__container {
     position: inherit;
-    width: 50%;
+    width: min(500px, 50%);
     display: flex;
     flex-direction: column;
-    padding: 25px 60px;
+    padding: 20px 60px 0;
     margin: auto auto;
 }
 
@@ -113,7 +138,6 @@ hr {
 
 .form__buttons {
     width: 100%;
-    margin: 12px 0 !important;
     gap: 20px;
 }
 
@@ -145,7 +169,7 @@ button {
     padding: 8px 10px;
     color: white;
     font-weight: 600;
-    background-color: var(--dash-bg);
+    background-color: var(--button-bg);
     border: 1px solid var(--accent-bg);
     border-radius: 3px;
     outline: none;
@@ -166,7 +190,7 @@ button:active:hover {
 }
 
 #form__container div {
-    margin: 8px 0;
+    margin: 5px 0;
 }
 
 #auth__container input,
@@ -178,10 +202,10 @@ button:active:hover {
 
     color: var(--main-color);
     border: none;
-    border-bottom: 1px solid var(--body-color);
     caret-color: var(--main-color);
     background: var(--sidebar-bg);
     border-radius: var(--input-radius);
+    border: 1px solid var(--sidebar-bg);
 }
 
 #form__container textarea {
@@ -199,10 +223,26 @@ button:active:hover {
     background-color: var(--input-bg);
     color: var(--main-color);
     outline: none;
+    border: 1px solid var(--input-bg);
 }
 
 #auth__container input::placeholder,
 #form__container input::placeholder,
 #form__container textarea::placeholder {
     color: var(--main-color);
+}
+
+.input__split {
+    display: flex;
+    gap: 10px;
+}
+
+.input__split div {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+}
+
+.form__textarea--lg {
+    height: 70px;
 }

@@ -2,31 +2,28 @@ from app.models import db, BookClubChatroom
 from datetime import datetime
 
 def seed_book_club_chatrooms():
-    book_club_1_chatroom_1 = BookClubChatroom(
-        name='General',
-        book_club_id=1,
-        created_at=datetime.now(),
-        updated_at=datetime.now())
-    book_club_1_chatroom_2 = BookClubChatroom(
-        name='Spoilers',
-        book_club_id=1,
-        created_at=datetime.now(),
-        updated_at=datetime.now())
-    book_club_2_chatroom_1 = BookClubChatroom(
-        name='General',
-        book_club_id=2,
-        created_at=datetime.now(),
-        updated_at=datetime.now())
-    book_club_2_chatroom_2 = BookClubChatroom(
-        name='Spoilers',
-        book_club_id=2,
-        created_at=datetime.now(),
-        updated_at=datetime.now())
 
-    db.session.add(book_club_1_chatroom_1)
-    db.session.add(book_club_1_chatroom_2)
-    db.session.add(book_club_2_chatroom_1)
-    db.session.add(book_club_2_chatroom_2)
+    general_rooms = {i: BookClubChatroom(
+        name='General',
+        book_club_id=i,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    ) for i in range(1, 11)}
+
+    spoiler_rooms = {i: BookClubChatroom(
+        name='Spoilers',
+        book_club_id=i,
+        created_at=datetime.now(),
+        updated_at=datetime.now()
+    ) for i in range(1, 11)}
+
+    for key, val in general_rooms.items():
+        key = val
+        db.session.add(key)
+
+    for key, val in spoiler_rooms.items():
+        key = val
+        db.session.add(key)
 
     db.session.commit()
 

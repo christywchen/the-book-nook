@@ -44,8 +44,3 @@ ul.auth__container--errors li {
     margin: 0 0 4px 0;
     list-style-type: none;
 }
-
-.auth__passwords {
-    display: flex;
-    gap: 10px;
-}

@@ -16,12 +16,16 @@ function DetailsBar() {
     const userMemberships = useSelector(state => state.bookClubMember.byUserMembershipId);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
-    const bookClubMembersObj = useSelector(state => state.bookClubMember.byBookClubMemberId);
+    const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[bookClubId]);
 
 
     const bookClub = allBookClubsObj[bookClubId];
     const users = Object.values(usersObj);
-    const bookClubMembers = Object.values(bookClubMembersObj);
+
+    let bookClubMembers;
+    if (bookClubMembersObj) {
+        bookClubMembers = Object.values(bookClubMembersObj);
+    }
 
     useEffect(() => {
         dispatch(getAllBookClubs());
