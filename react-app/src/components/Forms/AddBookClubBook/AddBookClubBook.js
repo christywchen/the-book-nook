@@ -1,20 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getAllBookClubs } from '../../../store/book_club';
-import { getAllBookClubBooks } from '../../../store/book_club_book';
+import { createBookClubBook, getAllBookClubBooks } from '../../../store/book_club_book';
 import { getUserMemberships } from '../../../store/book_club_member';
 
 import './AddBookClubBook.css';
 
 function AddBookClubBook({ book }) {
     const dispatch = useDispatch();
-    const [bookClub, setBookClub] = useState();
-    const sessionUser = useSelector(state => state.session.id);
+    const [errors, setErrors] = useState([]);
+    const [bookClubId, setBookClubId] = useState('');
+    const sessionUser = useSelector(state => state.session.user);
     const userMembershipsObj = useSelector(state => state.bookClubMember.userMembershipsByClubId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
 
     const userMemberships = Object.values(userMembershipsObj);
+    const allBookClubs = Object.values(allBookClubsObj);
     const allBookClubBooks = Object.values(allBookClubBooksObj);
 
     useEffect(() => {
@@ -22,6 +25,19 @@ function AddBookClubBook({ book }) {
         dispatch(getAllBookClubBooks());
         if (sessionUser) dispatch(getUserMemberships(sessionUser.id))
     }, [dispatch]);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const data = await dispatch(createBookClubBook(bookClubId, book.id, sessionUser.id))
+
+        if (data.errors) {
+            setErrors(data.errors);
+        } else {
+            const bookClubBook = data;
+            setErrors([]);
+        }
+        // console.log(bookClubId)
+    }
 
     let bookClubsWithBookObj;
     let bookClubsWithBook;
@@ -36,9 +52,6 @@ function AddBookClubBook({ book }) {
         bookClubsWithBook = Object.values(bookClubsWithBookObj)
     }
 
-    console.log(bookClubsWithBookObj)
-    console.log(bookClubsWithBook)
-
     let userBookClubs;
     if (userMemberships && allBookClubsObj) {
         userBookClubs = userMemberships.map(membership => {
@@ -46,28 +59,55 @@ function AddBookClubBook({ book }) {
         });
     }
 
-    console.log(userBookClubs)
-
     return (
         <>
             <div>
-                Add to Your Book Club:
-                {/* {userBookClubs && userBookClubs.map(bookClub => {
-                    if (bookClub.id)
-                })} */}
-            </div>
-            <div>
-                Book Clubs Currently Reading This:
-                <div id='book__clubs--icon-container'>
-                    {bookClubsWithBook.length && allBookClubBooksObj && bookClubsWithBook.map(bookClub => (
-                        <div
-                            key={bookClub.id}
-                            className="book__club--icon-mini"
-                            title={bookClub.name}>
-                            {bookClub.image_url ? (<img src={bookClub.image_url} className='book__club--icon-img' />) : bookClub.name.slice(0, 1)}
-
-                        </div>
-                    ))}
+                {userMemberships.length > 0 && allBookClubs.length && (
+                    <>
+                        Add to Your Book Club:
+                        <form onSubmit={handleSubmit}>
+                            <div>
+                                <select
+                                    name='book-club'
+                                    value={bookClubId}
+                                    onChange={(e) => setBookClubId(e.target.value)}>
+                                    <option value=''>Select</option>
+                                    {userBookClubs.length && allBookClubs.length && userBookClubs.map(bookClub => (
+                                        <option key={bookClub.id} value={bookClub.id}>{bookClub.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className='form__buttons'>
+                                <button
+                                    disabled={!bookClubId}
+                                    className='button' type='submit'>Submit</button>
+                            </div>
+                            {errors.length > 0 && (
+                                <ul className='auth__container--errors'>{
+                                    errors.map((error, ind) => (
+                                        <li key={ind}>{error}</li>
+                                    ))
+                                }
+                                </ul>
+                            )}
+                        </form>
+                    </>
+                )}
+                <div>
+                    <div id='book__clubs--icon-container'>
+                        {bookClubsWithBook.length > 0 && allBookClubs.length && (
+                            <>
+                                Book Clubs Currently Reading This:
+                                {bookClubsWithBook.map(bookClub => (
+                                    <div
+                                        key={bookClub.id}
+                                        className="book__club--icon-mini"
+                                        title={bookClub.name}>
+                                        {bookClub.image_url ? (<img src={bookClub.image_url} className='book__club--icon-img' />) : bookClub.name.slice(0, 1)}
+                                    </div>))}
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </>

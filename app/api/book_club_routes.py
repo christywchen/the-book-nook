@@ -237,7 +237,7 @@ def get_book_club_books(book_club_id):
 
 @book_club_routes.route('/<int:book_club_id>/books/<int:book_id>', methods=['POST'])
 @login_required
-def add_book_club_book():
+def add_book_club_book(book_club_id, book_id):
     """
     Adds a book to a book club.
     """
@@ -251,7 +251,6 @@ def add_book_club_book():
 
         if book_club_book:
             return {'errors': ['This book is already on this club\'s reading list.']}, 401
-
 
         book_club_book = BookClubBook(
             book_club_id=data['book_club_id'],
