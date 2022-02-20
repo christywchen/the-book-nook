@@ -165,10 +165,14 @@ function BookForm({ formType, formProps }) {
                         <button
                             disabled={!title || !author || !language || !imageUrl}
                             className='button' type='submit'>Submit</button>
-                        <hr />
-                        <button
-                            disabled={!(title || author || synopsis || imageUrl || isbn13 || originalTitle || language || publicationYear || pages)}
-                            className='button' type='reset'>Reset</button>
+                        {formType == 'createNew' && (
+                            <>
+                                <hr />
+                                <button
+                                    disabled={!(title || author || synopsis || imageUrl || isbn13 || originalTitle || language || publicationYear || pages)}
+                                    className='button' type='reset'>Reset</button>
+                            </>
+                        )}
                     </div>
                 </form>
             </div >

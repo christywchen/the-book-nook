@@ -1,6 +1,6 @@
 .book__card {
     width: 350px;
-    height: 290px;
+    height: fit-content;
     display: flex;
     /* flex-direction: column; */
     /* align-items: center; */
@@ -31,14 +31,18 @@
 
 .book__card--author {
     margin: 5px 0;
-    font-size: var(--small-size);
+    font-size: var(--body-small);
     font-weight: 400;
+    overflow-wrap: break-word;
 }
 
 .book__card--synopsis {
-    margin: 10px;
+    margin: 10px 5px 5px;
+    padding: 10px;
     font-size: 0.8em;
     font-weight: 400;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--input-radius);
 }
 
 .book__card--body {
@@ -46,4 +50,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    inline-size: 145px;
+    overflow-wrap: break-word;
 }

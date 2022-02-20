@@ -22,7 +22,7 @@
 }
 
 .sidebar__links--group a {
-    font-size: var(--small-size);
+    font-size: var(--body-small);
     padding: 0 8px;
 }
 

@@ -24,9 +24,15 @@ function BookClubList() {
     return (
         <>
             <div id='wide__container'>
-                <div id='wide__title'>Explore Book Clubs</div>
-                <div className='bookclub__card--container'>
-                    {bookClubs.length > 0 && bookClubs.map(bookClub => (<BookClubCard bookClub={bookClub} />))}
+                <div id='wide__subcontainer--centered'>
+                    <div id='wide__title'>Explore Book Clubs</div>
+                    <div className='bookclub__card--container'>
+                        {bookClubs.length > 0 ? (
+                            <>
+                                {bookClubs.map(bookClub => (<BookClubCard bookClub={bookClub} />))}
+                            </>
+                        ) : (<>No book clubs at the moment. Maybe you start one of your own?</>)}
+                    </div>
                 </div>
             </div>
         </>
