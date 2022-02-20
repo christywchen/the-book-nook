@@ -189,6 +189,15 @@ def create_book_club_member(book_club_id, user_id):
     book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == user_id).all()
     joined_club_count = len(book_clubs_joined)
 
+    book_club_members = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id).all()
+    book_club_member_count = len(book_club_members)
+
+    book_club = BookClub.query.get(book_club_id)
+    book_club_capacity = book_club.capacity
+
+    if book_club_member_count >= book_club_capacity:
+        return {'errors': ['This book club has reached maximum capacity.']}, 401
+
     if joined_club_count >= 5:
         return {'errors': ['Users may only join or host up to 5 book clubs.']}, 401
 

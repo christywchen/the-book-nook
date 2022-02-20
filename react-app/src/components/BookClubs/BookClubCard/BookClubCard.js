@@ -38,10 +38,13 @@ function BookClubCard({ bookClub }) {
         e.preventDefault();
 
         if (buttonText == 'Join Now') {
-            const membership = await dispatch(createBookClubMember(bookClub.id, sessionUser.id));
-            await dispatch(addUserMembership(membership));
+            const data = await dispatch(createBookClubMember(bookClub.id, sessionUser.id));
+
+            if (!data.errors) {
+                await dispatch(addUserMembership(data));
+                return history.push(`/dashboard/book-clubs/${bookClub.id}`);
+            }
         }
-        return history.push(`/dashboard/book-clubs/${bookClub.id}`);
     }
 
     return (
@@ -61,11 +64,11 @@ function BookClubCard({ bookClub }) {
                         {bookClub.description}
 
                     </div>
-                    <div className='no__memberships--links'>
+                    {(availableSpace >= 1 || buttonText == 'Go to Club') && (<div className='no__memberships--links'>
                         <form onSubmit={handleMembership}>
                             <button className='button button__sidebar--center-first' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
                         </form>
-                    </div>
+                    </div>)}
                 </div>
             </div>
         </>

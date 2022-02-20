@@ -81,6 +81,13 @@ export const createBookClubMember = (bookClubId, userId) => async (dispatch) => 
         const data = await res.json();
         dispatch(addBookClubMember(bookClubId, data['book club member']));
         return data['book club member'];
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
