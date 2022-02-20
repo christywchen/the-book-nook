@@ -38,3 +38,7 @@
     border: solid 1px var(--input-bg);
     background-clip: content-box;
 }
+
+.form__add--book-to-club {
+    display: flex;
+}

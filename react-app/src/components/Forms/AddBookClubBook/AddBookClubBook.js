@@ -68,23 +68,25 @@ function AddBookClubBook({ book }) {
                 {userMemberships.length > 0 && allBookClubs.length && (
                     <>
                         Add to Your Book Club:
-                        <form onSubmit={handleSubmit}>
-                            <div>
-                                <select
-                                    name='book-club'
-                                    value={bookClubId}
-                                    onChange={(e) => setBookClubId(e.target.value)}>
-                                    <option value=''>Select</option>
-                                    {userBookClubs.length && allBookClubs.length && userBookClubs.map(bookClub => (
-                                        <option key={bookClub.id} value={bookClub.id}>{bookClub.name}</option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className='form__buttons'>
-                                <button
-                                    disabled={!bookClubId}
-                                    className='button' type='submit'>Submit</button>
-                            </div>
+                        <div>
+                            <form className='form__add--book-to-club' onSubmit={handleSubmit}>
+                                <div>
+                                    <select
+                                        name='book-club'
+                                        value={bookClubId}
+                                        onChange={(e) => setBookClubId(e.target.value)}>
+                                        <option value=''>Select</option>
+                                        {userBookClubs.length && allBookClubs.length && userBookClubs.map(bookClub => (
+                                            <option key={bookClub.id} value={bookClub.id}>{bookClub.name}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className='form__buttons'>
+                                    <button
+                                        disabled={!bookClubId}
+                                        className='button' type='submit'>Submit</button>
+                                </div>
+                            </form>
                             {errors.length > 0 && (
                                 <ul className='auth__container--errors'>{
                                     errors.map((error, ind) => (
@@ -96,7 +98,7 @@ function AddBookClubBook({ book }) {
                             {message && (
                                 <Link to={`/dashboard/book-clubs/${bookClubId}`}>{message}</Link>
                             )}
-                        </form>
+                        </div>
                     </>
                 )}
                 <div>
