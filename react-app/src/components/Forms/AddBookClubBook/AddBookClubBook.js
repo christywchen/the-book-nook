@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { getAllBookClubs } from '../../../store/book_club';
 import { createBookClubBook, getAllBookClubBooks } from '../../../store/book_club_book';
@@ -10,6 +11,7 @@ import './AddBookClubBook.css';
 function AddBookClubBook({ book }) {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([]);
+    const [message, setMessage] = useState('')
     const [bookClubId, setBookClubId] = useState('');
     const sessionUser = useSelector(state => state.session.user);
     const userMembershipsObj = useSelector(state => state.bookClubMember.userMembershipsByClubId);
@@ -34,6 +36,7 @@ function AddBookClubBook({ book }) {
             setErrors(data.errors);
         } else {
             const bookClubBook = data;
+            setMessage('Successfully added. Go to your book club\'s reading list?')
             setErrors([]);
         }
         // console.log(bookClubId)
@@ -89,6 +92,9 @@ function AddBookClubBook({ book }) {
                                     ))
                                 }
                                 </ul>
+                            )}
+                            {message && (
+                                <Link to={`/dashboard/book-clubs/${bookClubId}`}>{message}</Link>
                             )}
                         </form>
                     </>
