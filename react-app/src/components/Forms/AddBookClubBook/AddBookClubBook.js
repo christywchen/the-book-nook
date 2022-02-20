@@ -26,7 +26,7 @@ function AddBookClubBook({ book }) {
         dispatch(getAllBookClubs());
         dispatch(getAllBookClubBooks());
         if (sessionUser) dispatch(getUserMemberships(sessionUser.id))
-    }, [dispatch]);
+    }, [dispatch, sessionUser]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -36,11 +36,9 @@ function AddBookClubBook({ book }) {
             setErrors(data.errors);
             setMessage('');
         } else {
-            const bookClubBook = data;
             setMessage('Successfully added. Go to your book club\'s reading list?')
             setErrors([]);
         }
-        // console.log(bookClubId)
     }
 
     let bookClubsWithBookObj;
@@ -116,7 +114,7 @@ function AddBookClubBook({ book }) {
                                         key={bookClub.id}
                                         className="book__club--icon-mini"
                                         title={bookClub.name}>
-                                        {bookClub.image_url ? (<img src={bookClub.image_url} className='book__club--icon-img' />) : bookClub.name.slice(0, 1)}
+                                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='book__club--icon-img' />) : bookClub.name.slice(0, 1)}
                                     </div>))}
                             </div>
                         </>

@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import './BookCard.css';
 
 function BookCard({ book }) {
-    const { id, title, author, synopsis, image_url, isbn13, original_title, language, publication_year, pages } = book;
+    const { id, title, author, synopsis, image_url } = book;
     const history = useHistory();
     const backgroundImage = { backgroundImage: `url("${image_url}")` }
 

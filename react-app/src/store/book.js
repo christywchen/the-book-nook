@@ -146,7 +146,7 @@ const bookReducer = (state = initialState, action) => {
         case REMOVE_BOOK:
             newState = { ...state };
             delete newState.byId[action.bookId];
-            newState.allIds = newState.allIds.filter(book => book.id != action.bookId);
+            newState.allIds = newState.allIds.filter(book => book.id !== action.bookId);
             return newState;
         default:
             return state;

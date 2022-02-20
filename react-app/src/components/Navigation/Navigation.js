@@ -48,9 +48,6 @@ const Navigation = () => {
             </NavLink>
           </>
         )}
-        {/* <NavLink to='/users' exact={true} activeClassName='active'>
-          Users
-        </NavLink> */}
         {sessionUser && (<LogoutButton />)}
       </div>
     </nav>

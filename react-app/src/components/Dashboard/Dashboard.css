@@ -1,6 +1,4 @@
-#main__container {
-    position: relative;
-    width: 100%;
-    display: flex;
-    margin: 5px;
+#center__container {
+    width: 80%;
+    margin: 0 10px 20px 20px;
 }

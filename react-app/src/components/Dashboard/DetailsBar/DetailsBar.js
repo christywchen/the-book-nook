@@ -108,8 +108,7 @@ function DetailsBar() {
                                 </>
                                 )
                             }
-                        }
-                        )}
+                        })}
                         </ul>
 
                         {bookClub.host_id === sessionUser.id ?

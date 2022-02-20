@@ -12,8 +12,6 @@ import BrowseBooks from './Books/BrowseBooks/BrowseBooks';
 import CreateBook from './Books/CreateBook/CreateBook';
 import EditBook from './Books/EditBook/EditBook';
 
-import { getAllBookClubs } from '../../store/book_club';
-
 import './Sidebar.css';
 import BookDetails from './Books/BookDetails/BookDetails';
 
@@ -28,11 +26,11 @@ function Sidebar() {
         if (sessionUser) {
             dispatch(getUserMemberships(sessionUser.id));
         }
-    }, [dispatch]);
+    }, [dispatch, sessionUser]);
 
     const isDashboard = location.pathname.startsWith('/dashboard');
-    const isBookClubList = location.pathname.match(/\/book\-clubs\/all$/);
-    const isBookClubCreate = location.pathname.match(/\/book\-clubs\/new$/);
+    const isBookClubList = location.pathname.match(/\/book-clubs\/all$/);
+    const isBookClubCreate = location.pathname.match(/\/book-clubs\/new$/);
     const isBookClubEdit = location.pathname.match(/\/book-clubs\/\d+\/edit$/)
 
     const isBookList = location.pathname.match(/\/books\/all$/);

@@ -2,6 +2,9 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Chatroom from './Chatroom/Chatroom';
 import DetailsBar from './DetailsBar/DetailsBar';
+import ReadingList from './ReadingList/ReadingList';
+
+import './Dashboard.css';
 
 function Dashboard() {
     return (
@@ -11,7 +14,7 @@ function Dashboard() {
                     <Redirect to='/dashboard/book-clubs/:bookClubId/reading-list' />
                 </Route> */}
                 <Route path='/dashboard/book-clubs/:bookClubId/reading-list'>
-                    <Chatroom />
+                    <ReadingList />
                     <DetailsBar />
                 </Route>
                 <Route path='/dashboard/book-clubs/:bookClubId/rooms/:chatType'>

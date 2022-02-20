@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import BookClubForm from '../../Forms/BookClubForm/BookClubForm';
 import { useEffect } from 'react';
-import { getAllBookClubs, getBookClub } from '../../../store/book_club';
+import { getAllBookClubs } from '../../../store/book_club';
 
 function BookClubEdit() {
     const formType = 'editRecord';

@@ -72,8 +72,7 @@ export const createBookClubMember = (bookClubId, userId) => async (dispatch) => 
         },
         body: JSON.stringify({
             user_id: userId,
-            book_club_id: bookClubId,
-            user_id: userId
+            book_club_id: bookClubId
         }),
     });
 
@@ -147,6 +146,7 @@ const bookClubMemberReducer = (state = initialState, action) => {
         case ADD_BOOK_CLUB_MEMBER:
             newState = { ...state };
             newState.allMembershipsByClubId[action.bookClubId] = { ...state.allMembershipsByClubId[action.bookClubId], [action.membership.id]: action.membership }
+            return newState;
         case REMOVE_BOOK_CLUB_MEMBER:
             newState = { ...state };
             delete newState.allMembershipsByClubId[action.bookClubId][action.membershipId];
