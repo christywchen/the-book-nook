@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import './Chatroom.css';
 
 function Chatroom() {
-    const { id, chatType } = useParams();
+    const { bookClubId, chatType } = useParams();
 
     return (
         <>
@@ -11,7 +11,7 @@ function Chatroom() {
                 <h3>
                     My Chatroom
                 </h3>
-                Book Club Id: {id}. {chatType}.
+                Book Club Id: {bookClubId}. {chatType}.
             </div>
         </>
     )

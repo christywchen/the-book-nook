@@ -41,7 +41,6 @@ function BookCard({ book }) {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

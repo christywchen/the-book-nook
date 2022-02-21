@@ -239,7 +239,7 @@ def get_book_club_books(book_club_id):
     """
     Gets all of a book club's books.
     """
-    book_club_books = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id)
+    book_club_books = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id).all()
 
     return {'book club books': [book_club_book.to_dict() for book_club_book in book_club_books]}
 

@@ -7,20 +7,17 @@ import ReadingList from './ReadingList/ReadingList';
 import './Dashboard.css';
 
 function Dashboard() {
-    const { id } = useParams();
-
-    console.log('DASDHBOSJLSDKFJARD', id)
     return (
         <>
             <Switch>
-                <Route path='/dashboard/book-clubs/:id' exact={true}>
+                <Route path='/dashboard/book-clubs/:bookClubId' exact={true}>
                     {/* <Redirect to='/dashboard/book-clubs/:bookClubId/reading-list' /> */}
                 </Route>
-                <Route path='/dashboard/book-clubs/:id/reading-list'>
+                <Route path='/dashboard/book-clubs/:bookClubId/reading-list'>
                     <ReadingList />
                     <DetailsBar />
                 </Route>
-                <Route path='/dashboard/book-clubs/:id/rooms/:chatType'>
+                <Route path='/dashboard/book-clubs/:bookClubId/rooms/:chatType'>
                     <Chatroom />
                     <DetailsBar />
                 </Route>

@@ -11,15 +11,15 @@ import './DetailsBar.css';
 function DetailsBar() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { id } = useParams();
+    const { bookClubId } = useParams();
     const sessionUser = useSelector(state => state.session.user);
     const userMemberships = useSelector(state => state.bookClubMember.byUserMembershipId);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
-    const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[id]);
+    const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[bookClubId]);
 
 
-    const bookClub = allBookClubsObj[id];
+    const bookClub = allBookClubsObj[bookClubId];
     const users = Object.values(usersObj);
 
     let bookClubMembers;
@@ -33,15 +33,15 @@ function DetailsBar() {
     }, [dispatch]);
 
     useEffect(() => {
-        dispatch(getBookClubMembers(id));
-    }, [dispatch, id]);
+        dispatch(getBookClubMembers(bookClubId));
+    }, [dispatch, bookClubId]);
 
     // console.log(userMemberships, 'MEMBERSHIPPPPS')
 
     async function handleEditClub(e) {
         e.preventDefault();
 
-        return history.push(`/book-clubs/${id}/edit`);
+        return history.push(`/book-clubs/${bookClubId}/edit`);
     }
 
     async function handleDeleteClub(e) {

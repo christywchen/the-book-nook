@@ -98,8 +98,8 @@ export const updateBookClubBook = (bookClubId, bookId, status) => async (dispatc
     }
 }
 
-export const deleteBookClub = (bookClubId, bookId) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${bookClubId}/${bookId}`, {
+export const deleteBookClubBook = (bookClubId, bookId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${bookClubId}/books/${bookId}`, {
         method: 'DELETE'
     });
 

@@ -3,32 +3,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { getAllBooks } from '../../../store/book';
-import { getBookClubBooks, getAllBookClubBooks } from '../../../store/book_club_book';
+import { getBookClubBooks } from '../../../store/book_club_book';
 
-import ReadingListCard from './ReadingListCard/ReadingListCard';
+import ReadingListCard from '../ReadingListCard/ReadingListCard';
+
+import './ReadingList.css';
 
 function ReadingList() {
-    const { id } = useParams();
+    const { bookClubId } = useParams();
     const dispatch = useDispatch();
     const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
     const allBooksObj = useSelector(state => state.book.byId);
     const allBookClubBooks = Object.values(allBookClubBooksObj);
 
     useEffect(() => {
-        dispatch(getAllBookClubBooks(id))
+        dispatch(getBookClubBooks(bookClubId));
         dispatch(getAllBooks());
-    }, [dispatch, id]);
+    }, [dispatch, bookClubId]);
 
     // get all books club book records for this book club by filtering
     // and then map them into book records
     let bookClubBooks;
     if (allBookClubBooks && allBooksObj) {
-        console.log(allBookClubBooks, 'BOOK CLUB BOOKS')
-        console.log(allBooksObj[1])
         bookClubBooks = allBookClubBooks.reduce((books, bookClubBook) => {
-            if (bookClubBook.book_club_id === parseInt(id, 10)) {
+            if (bookClubBook.book_club_id === parseInt(bookClubId, 10)) {
                 const bookId = bookClubBook['book_id'];
-                books.push(allBooksObj[bookId]);
+                books.push([allBooksObj[bookId], bookClubBook]);
             }
             return books;
         }, []);
@@ -37,15 +37,15 @@ function ReadingList() {
     return (
         <>
             <div id="center__container">
-                <h3>
-                    Reading List
-                </h3>
+                <div id='center__container--title'>Reading List</div>
 
-                {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
-                    <>
-                        <ReadingListCard book={book} />
-                    </>
-                )) : <>Nothing</>}
+                <div className='readinglist__card--container'>
+                    {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
+                        <>
+                            <ReadingListCard bookInfo={book} />
+                        </>
+                    )) : <>No books at the moment. Maybe you could add some to this book club's reading list?</>}
+                </div>
             </div>
         </>
     )
