@@ -4,27 +4,37 @@
     min-width: 240px;
     max-width: 240px;
     height: 100%;
-    padding: 25px 20px;
+    padding: 20px 20px;
     background-color: var(--sidebar-bg);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
-    overflow-y: scroll;
 }
 
 .sidebar__title {
     margin: 0 0 10px 0;
-    font-size: var(--h5-size);
+    font-size: var(--h4-size);
     font-weight: 600;
 }
 
 .sidebar__links--group {
     border-bottom: 1px solid var(--accent-bg);
-    margin: 15px 0;
+    margin: 5px 0 15px;
+    padding: 0 0 15px;
+}
+
+.sidebar__links--group div {
+    margin: 6px 12px;
 }
 
 .sidebar__links--group a {
-    font-size: var(--body-small);
-    padding: 0 8px;
+    color: var(--main-color);
+    font-size: var(--body-size);
+    font-weight: var(--weight-bold);
+    padding: 2px 1px;
+}
+
+.sidebar__links--group a:hover {
+    border-bottom: 1px solid var(--main-color);
 }
 
 .sidebar__caret {
@@ -63,6 +73,7 @@
 .sidebar__bookclubs {
     position: relative;
     height: 100%;
+    margin: 5px 0 0;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -41,7 +41,9 @@ function Sidebar() {
     return (
         <>
             <div id="sidebar__container">
-                {isDashboard && <JoinedClubs userMemberships={userMemberships} />}
+                <div className="sidebar__subcontainer">
+                    {isDashboard && <JoinedClubs userMemberships={userMemberships} />}
+                </div>
                 {isBookClubList && <BrowseClubs userMemberships={userMemberships} />}
                 {isBookClubCreate && <CreateClub userMemberships={userMemberships} />}
                 {isBookClubEdit && <EditClub userMemberships={userMemberships} />}
