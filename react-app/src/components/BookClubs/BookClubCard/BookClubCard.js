@@ -62,11 +62,10 @@ function BookClubCard({ bookClub }) {
                         {bookClub.name}
                     </div>
                     <div className='bookclub__card--capacity'>{availableSpace || 'No'} {availableSpace === 1 ? 'Space' : 'Spaces'} Available</div>
-                    <hr />
+                    <div className='bookclub__card--description-title'>
+                        Description:
+                    </div>
                     <div className='bookclub__card--description'>
-                        <div className='bookclub__card--description-title'>
-                            Description:
-                        </div>
                         {bookClub.description || (
                             <span className='bookclub__card--description-none'>No description provided.</span>
                         )}

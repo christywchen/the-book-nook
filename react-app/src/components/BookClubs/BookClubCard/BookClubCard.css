@@ -1,6 +1,6 @@
 .bookclub__card {
     width: 260px;
-    height: 355px;
+    height: 362px;
     padding: 25px 20px 15px;
     text-align: center;
     display: flex;
@@ -58,18 +58,37 @@
 }
 
 .bookclub__card--capacity {
+    width: 100%;
     margin: 0 0 6px;
+    padding: 0 0 12px;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--input-bg);
 }
 
 .bookclub__card--description-title {
     font-weight: var(--weight-bold);
-    margin: 0 0 6px;
+    margin: 4px 0 2px;
 }
 
 .bookclub__card--description {
-    margin: 0 0 6px;
+    width: 100%;
+    margin: 5px 5px 5px;
+    padding: 10px;
+    font-size: 0.9em;
+    font-weight: 400;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--input-radius);
 }
 
 .bookclub__card--description-none {
     font-style: italic;
+}
+
+.book__card--synopsis {
+    margin: 10px 5px 5px;
+    padding: 10px;
+    font-size: 0.8em;
+    font-weight: 400;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--input-radius);
 }
