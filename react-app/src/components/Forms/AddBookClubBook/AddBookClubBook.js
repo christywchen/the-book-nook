@@ -99,7 +99,7 @@ function AddBookClubBook({ book }) {
                             </ul>
                         )}
                         {message && (
-                            <Link className='form__add--book-to-club--message' to={`/dashboard/book-clubs/${bookClubId}`}>{message}</Link>
+                            <Link className='form__add--book-to-club--message' to={`/dashboard/book-clubs/${bookClubId}/reading-list`}>{message}</Link>
                         )}
                     </>
                 )}

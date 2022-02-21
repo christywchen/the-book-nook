@@ -23,11 +23,8 @@ function ReadingListCard({ bookInfo }) {
     async function handleSelect(e) {
         e.preventDefault();
         setCurrStatus(e.target.value)
-        console.log(bookClubId, book.id, currStatus)
-        // const data = await dispatch(updateBookClubBook(bookClubId, book.id, currStatus));
-        // console.log(data)
 
-        // console.log(data)
+        const data = await dispatch(updateBookClubBook(bookClubId, book.id, e.target.value));
     }
 
     async function handleRemove(e) {
@@ -54,7 +51,7 @@ function ReadingListCard({ bookInfo }) {
                         <div className='readinglist__card--body'>
                             <div>
                                 {book.title && (<div className='readinglist__card--title'>
-                                    {book.title.length > 28 ? book.title.slice(0, 28) + '...' : book.title}
+                                    {book.title.length > 28 ? book.title.slice(0, 23) + '...' : book.title}
                                 </div>)}
                                 {book.author && (<div className='readinglist__card--author'>
                                     by {book.author.length > 30 ? book.author.slice(0, 30) + '...' : book.author}
@@ -68,9 +65,9 @@ function ReadingListCard({ bookInfo }) {
                             name='book-club'
                             value={currStatus}
                             onChange={handleSelect}>
-                            <option value={'Upcoming'}>Upcoming</option>
-                            <option value={'Reading'}>Reading</option>
-                            <option value={'Finished'}>Finished</option>
+                            <option value={1}>Upcoming</option>
+                            <option value={2}>Reading</option>
+                            <option value={3}>Finished</option>
                         </select>
                         {/* </form> */}
                     </div>

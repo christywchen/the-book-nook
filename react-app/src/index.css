@@ -167,7 +167,7 @@ button:disabled {
 button {
     box-sizing: border-box;
     margin: 6px 0;
-    padding: 8px 10px;
+    padding: 6px 10px;
     color: white;
     font-weight: 600;
     background-color: var(--button-bg);
@@ -200,7 +200,7 @@ button:active:hover {
 #form__container select,
 select {
     width: 100%;
-    padding: 8px 10px;
+    padding: 6px 10px;
     margin: 6px 0;
 
     color: var(--main-color);
