@@ -8,10 +8,8 @@ function Chatroom() {
     return (
         <>
             <div id="center__container">
-                <h3>
-                    My Chatroom
-                </h3>
-                Book Club Id: {bookClubId}. {chatType}.
+                <div id='center__container--title'>{chatType.slice(0, 1).toUpperCase() + chatType.slice(1)} Chat</div>
+                Book Club: {bookClubId}.
             </div>
         </>
     )

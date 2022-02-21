@@ -15,7 +15,7 @@ function BrowseBooks() {
                     Here are some books that have been added by our community members.
                 </p>
                 <p>
-                    Choose some that interest you to add them to your book club's reading list.
+                    Choose some that interest you and add them to your book club's reading list.
                 </p>
                 <p>
                     If you don't see anything you like, help us expand our community library by adding some more books!

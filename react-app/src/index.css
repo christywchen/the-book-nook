@@ -8,10 +8,11 @@
     --main-color: rgba(255, 255, 255, 1);
     --background-color: rgba(226, 58, 80, 0.3);
     --nav-accent: rgba(219, 83, 74, 0.9);
+    --border-bottom: rgba(255, 255, 255, 0.25);
     --lighter-bg: rgba(255, 255, 255, 0.88);
     --accent-bg: rgba(255, 255, 255, 0.48);
     --input-bg: rgba(255, 255, 255, 0.24);
-    --sidebar-bg: rgba(255, 255, 255, 0.18);
+    --sidebar-bg: rgba(255, 255, 255, 0.1);
     --button-bg: rgba(221, 221, 221, 0.12);
     --dash-bg: rgba(240, 187, 187, 0.2);
     --error-color: rgba(242, 64, 76, 0.774);
@@ -24,6 +25,7 @@
     --h3-size: 1.6em;
     --h4-size: 1.3em;
     --h5-size: 1.2em;
+    --h6-size: 1.1em;
 
     --weight-bold: 600;
     --weight-med: 500;
@@ -75,6 +77,10 @@ h5 {
     font-size: var(--h5-size);
 }
 
+h5 {
+    font-size: var(--h6-size);
+}
+
 p {
     line-height: 1.5em;
 }
@@ -83,7 +89,7 @@ hr {
     margin: 8px 0;
     border-top: none;
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid var(--border-bottom);
     border-left: none;
 }
 
