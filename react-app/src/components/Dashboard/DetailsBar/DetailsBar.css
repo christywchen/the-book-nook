@@ -10,19 +10,105 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 15px 0;
+    margin: 15px 0 2px;
     /* line-height: 1em; */
     /* background-color: red; */
 }
 
 .details__title {
-    font-size: var(--h5-size);
+    font-size: var(--h4-size);
     font-weight: 600;
+}
+.details__subtitle {
+    font-size: var(--body-size);
+    font-weight: var(--weight-bold);
+}
+
+.details__subdesc {
+    margin: 0 0 12px 0;
+    font-size: 0.8em;
+    /* font-style: italic; */
+}
+
+.details__subsec {
+    margin: 15px 0;
 }
 
 .details__edit--form {
     margin: 0;
     padding: 0;
+}
+
+.details__subbox {
+    width: 100%;
+    margin: 5px 0px 5px;
+    padding: 10px;
+    font-size: 0.9em;
+    font-weight: 400;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--input-radius);
+}
+
+.details__members {
+    height: fit-content;
+    max-height: 104px;
+    padding: 5px;
+}
+
+.details__members--list {
+    position: inherit;
+    padding: 5px;
+    height: 100%;
+    overflow-y: scroll;
+    height: fit-content;
+    max-height: 94px;
+}
+
+.details__members--list {
+    /* overflow: scroll; */
+    position: inherit;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 3px 10px;
+    margin: 0px;
+    height: fit-content;
+}
+
+.details__members--list li {
+    list-style-type: none;
+    /* margin: 0px; */
+}
+
+.details__currentreads {
+    font-size: 0.8em;
+    /* padding: 5px 0 5px; */
+}
+
+.details__currentreads ul {
+    margin: 0;
+}
+
+.details__currentreads li {
+    list-style-type: none;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border-bottom);
+}
+
+.details__currentreads li:first-child {
+    list-style-type: none;
+    padding: 0 0 5px;
+}
+
+.details__currentreads li:last-child {
+    list-style-type: none;
+    padding: 5px 0 0;
+    border-bottom: 0px solid var(--border-bottom);
+}
+
+.details__currentreads--title {
+    margin: 0 2px 0 0;
+    font-weight: var(--weight-med);
+    font-style: italic;
 }
 
 .button__details--edit {
@@ -33,4 +119,26 @@
     border-radius: 2px;
     /* padding: 3px 8px; */
     /* background-color: red; */
+}
+
+.details__deleteleave {
+    font-weight: var(--weight-bold);
+    color: var(--main-color);
+    opacity: 0.8;
+}
+
+.details__deleteleave--confirm {
+    margin: 8px 0;
+    font-size: 0.8em;
+    opacity: 0.8;
+    border: 1px solid var(--error-color);
+    background-color: var(--error-color);
+}
+
+.details__deleteleave--link {
+    font-weight: var(--weight-bold);
+}
+
+.details__deleteleave--link:hover {
+    border-bottom: 1px solid var(--main-color);
 }

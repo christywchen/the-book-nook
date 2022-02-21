@@ -48,3 +48,25 @@
     margin: 5px;
     font-weight: 200;
 }
+
+.nav__social {
+    position: absolute;
+    display: flex;
+    right: 50px;
+    margin: 2px 0 0 40px;
+    display: flex;
+    gap: 40px;
+}
+
+.social__icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+    transition: 0.3s;
+    fill: white;
+}
+
+.social__icon:hover {
+    opacity: 0.9;
+}

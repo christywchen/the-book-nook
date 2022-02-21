@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useHistory } from "react-router-dom";
 
@@ -12,15 +12,18 @@ function DetailsBar() {
     const history = useHistory();
     const dispatch = useDispatch();
     const { bookClubId } = useParams();
+    const [showDelete, setShowDelete] = useState(false);
+    const [showLeave, setShowLeave] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
-    const userMemberships = useSelector(state => state.bookClubMember.byUserMembershipId);
     const usersObj = useSelector(state => state.user.byUserId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[bookClubId]);
-
+    const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
+    const allBooksObj = useSelector(state => state.book.byId);
 
     const bookClub = allBookClubsObj[bookClubId];
     const users = Object.values(usersObj);
+    const allBookClubBooks = Object.values(allBookClubBooksObj);
 
     let bookClubMembers;
     if (bookClubMembersObj) {
@@ -36,11 +39,9 @@ function DetailsBar() {
         dispatch(getBookClubMembers(bookClubId));
     }, [dispatch, bookClubId]);
 
-    // console.log(userMemberships, 'MEMBERSHIPPPPS')
 
     async function handleEditClub(e) {
         e.preventDefault();
-
         return history.push(`/book-clubs/${bookClubId}/edit`);
     }
 
@@ -48,7 +49,6 @@ function DetailsBar() {
         e.preventDefault();
         await dispatch(deleteBookClub(bookClub.id));
         await dispatch(removeUserMembership(bookClub.id));
-
         return history.push('/dashboard');
     }
 
@@ -56,19 +56,31 @@ function DetailsBar() {
         e.preventDefault();
         await dispatch(removeUserMembership(bookClub.id));
         await dispatch(deleteBookClubMember(bookClub.id, sessionUser.id));
-
         return history.push('/dashboard');
     }
 
-
-    let members;
+    let members, host;
     if (bookClubMembers && users) {
         members = bookClubMembers.map(member => {
             return usersObj[member.user_id];
         });
+
+        host = usersObj[bookClub?.host_id];
     }
 
-    // console.log(sessionUser.id, bookClub.host_id)
+    let currentBooks;
+    if (allBookClubBooks && allBooksObj) {
+
+        const currentBookClubBooks = allBookClubBooks.filter(bookClubBook => bookClubBook.book_club_id === parseInt(bookClubId, 10) && bookClubBook.status === 2);
+        currentBooks = currentBookClubBooks.map(bookClubBook => {
+            const bookId = bookClubBook.book_id;
+            return allBooksObj[bookId]
+
+        });
+
+        // console.log(currentBooks)
+    }
+
 
     return (
         <>
@@ -84,36 +96,68 @@ function DetailsBar() {
                                     <button className='button button__details--edit' type='submit'>Edit</button>
                                 </form>)}
                         </div>
-                        <ul>
-                            <li>
-                                Name: {bookClub.name}
-                            </li>
-                            <li>
-                                Description: {bookClub.description}
-                            </li>
-                            <li>
-                                Host: {bookClub.host_id}
-                            </li>
-                            <li>
-                                Created At: {bookClub.created_at}
-                            </li>
-                        </ul>
-                        <div className='details__title'>
-                            Members
+                        <div className='details__subdesc'>
+                            Since {bookClub.created_at.split(' ')[3]} // Hosted by {host?.username}
                         </div>
-                        <ul>{members && members.map(member => {
-                            if (member) {
-                                return (<>
-                                    <li key={member.id}>{member.first_name}</li>
-                                </>
-                                )
-                            }
-                        })}
-                        </ul>
-
+                        {bookClub.description && (<div className='details__subsec'>
+                            <div className='details__subtitle'>
+                                Description
+                            </div>
+                            <div className='details__subbox details__description'>
+                                {bookClub.description}
+                            </div>
+                        </div>)}
+                        <div className='details__subsec'>
+                            <div className='details__subtitle'>
+                                Members
+                            </div>
+                            <div className='details__subbox details__members'>
+                                <div className='details__members--list'>
+                                    {members && members.map(member => {
+                                        if (member) {
+                                            return (<>
+                                                <div key={member.id}>{member.first_name}</div>
+                                            </>
+                                            )
+                                        }
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                        {currentBooks.length > 0 && (<div className='details__subsec'>
+                            <div className='details__subtitle'>
+                                Currently Reading
+                            </div>
+                            <div className='details__subbox details__currentreads'>
+                                <ul>
+                                    {currentBooks.map(book => (
+                                        <li>
+                                            <span className='details__currentreads--title'>
+                                                {book?.title}
+                                            </span> by {book?.author}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>)}
                         {bookClub.host_id === sessionUser.id ?
-                            (<Link onClick={handleDeleteClub}>Delete Book Club</Link>) :
-                            (<Link onClick={handleLeaveClub} to='/'>Leave Book Club</Link>)
+                            (<>
+                                <Link className='details__deleteleave' onClick={() => setShowDelete(!showDelete)}>Delete Book Club</Link>
+                                {showDelete && (
+                                    <div className='details__subbox details__description details__deleteleave--confirm'>
+                                        Are you sure? This cannot be undone. <span className='details__deleteleave--link' onClick={handleDeleteClub}>Yes</span> // <span className='details__deleteleave--link' onClick={() => setShowDelete(false)}>No</span>
+                                    </div>
+                                )}
+                            </>) :
+                            (<>
+                                <Link className='details__deleteleave' onClick={() => setShowLeave(!showLeave)}>Leave Book Club</Link>
+                                {showLeave && (
+                                    <div className='details__subbox details__description details__deleteleave--confirm'>
+                                        Are you sure you want to leave? <span className='details__deleteleave--link' onClick={handleLeaveClub}>Yes</span> // <span className='details__deleteleave--link' onClick={() => setShowLeave(false)}>No</span>
+                                    </div>
+                                )}
+                            </>
+                            )
                         }
                     </>)}
             </div>

@@ -62,10 +62,10 @@
 }
 
 .readinglist__card--delete a {
-    color: var(--lighter-bg);
+    color: var(--accent-bg);
     transition: 0.3s;
 }
 
 .readinglist__card--delete a:hover {
-    color: var(--main-color);
+    color: var(--sidebar-color);
 }

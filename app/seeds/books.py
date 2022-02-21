@@ -185,6 +185,31 @@ def seed_books():
         created_at=datetime.now(),
         updated_at=datetime.now())
 
+    book_16 = Book(
+        title='On Earth We\'re Briefly Gorgeous',
+        author='Ocean Vuong',
+        synopsis="On Earth We're Briefly Gorgeous is a letter from a son to a mother who cannot read. Written when the speaker, Little Dog, is in his late twenties, the letter unearths a family's history that began before he was born — a history whose epicenter is rooted in Vietnam — and serves as a doorway into parts of his life his mother has never known, all of it leading to an unforgettable revelation. At once a witness to the fraught yet undeniable love between a single mother and her son, it is also a brutally honest exploration of race, class, and masculinity. Asking questions central to our American moment, immersed as we are in addiction, violence, and trauma, but undergirded by compassion and tenderness, On Earth We're Briefly Gorgeous is as much about the power of telling one's own story as it is about the obliterating silence of not being heard.\n With stunning urgency and grace, Ocean Vuong writes of people caught between disparate worlds, and asks how we heal and rescue one another without forsaking who we are. The question of how to survive, and how to make of it a kind of joy, powers the most important debut novel of many years.",
+        image_url='https://i.imgur.com/6QfyuOR.png',
+        isbn13='9780525562023',
+        publication_year=2013,
+        language='English',
+        pages=256,
+        created_at=datetime.now(),
+        updated_at=datetime.now())
+
+    book_17 = Book(
+        title='Hard-Boiled Wonderland and the End of the World',
+        author='Haruki Murakami',
+        synopsis="Across two parallel narratives, Murakami draws readers into a mind-bending universe in which Lauren Bacall, Bob Dylan, a split-brained data processor, a deranged scientist, his shockingly undemure granddaughter, and various thugs, librarians, and subterranean monsters collide to dazzling effect. What emerges is a novel that is at once hilariously funny and a deeply serious meditation on the nature and uses of the mind.",
+        image_url='https://i.imgur.com/m149Upr.jpg',
+        isbn13='9780679743460',
+        publication_year=1993,
+        language='English',
+        original_title='世界の終りとハードボイルド・ワンダーランド [Sekai no Owari to Hādo-Boirudo Wandārando]',
+        pages=256,
+        created_at=datetime.now(),
+        updated_at=datetime.now())
+
     db.session.add(book_1)
     db.session.add(book_2)
     db.session.add(book_3)
@@ -200,6 +225,8 @@ def seed_books():
     db.session.add(book_13)
     db.session.add(book_14)
     db.session.add(book_15)
+    db.session.add(book_16)
+    db.session.add(book_17)
 
     db.session.commit()
 

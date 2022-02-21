@@ -17,7 +17,7 @@
 }
 
 .sidebar__links--group {
-    border-bottom: 1px solid var(--accent-bg);
+    border-bottom: 1px solid var(--border-bottom);
     margin: 5px 0 15px;
     padding: 0 0 15px;
 }

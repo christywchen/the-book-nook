@@ -62,7 +62,7 @@
     margin: 0 0 6px;
     padding: 0 0 12px;
     font-size: 0.9em;
-    border-bottom: 1px solid var(--input-bg);
+    border-bottom: 1px solid var(--border-bottom);
 }
 
 .bookclub__card--description-title {
@@ -81,6 +81,7 @@
 }
 
 .bookclub__card--description-none {
+    color: var(--accent-bg);
     font-style: italic;
 }
 

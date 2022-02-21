@@ -11,7 +11,7 @@ def seed_book_clubs():
     book_club_4 = BookClub(
         name='Tequila Mockingbird', host_id=2, description='BYOB. Weekly meetings, happy hour included.', capacity=5, created_at=datetime.now(), updated_at=datetime.now())
     book_club_5 = BookClub(
-        name='Reader\'s Dozen', host_id=3, description='Twelve people maximum please.', capacity=12, created_at=datetime.now(), updated_at=datetime.now())
+        name='The Reader\'s Dozen', host_id=3, description='Twelve people maximum please.', capacity=12, created_at=datetime.now(), updated_at=datetime.now())
     book_club_6 = BookClub(
         name='The Final Chapter', host_id=3, capacity=5, created_at=datetime.now(), updated_at=datetime.now())
     book_club_7 = BookClub(
