@@ -7,7 +7,7 @@ function Chatroom() {
 
     return (
         <>
-            <div id="chatroom__container">
+            <div id="center__container">
                 <h3>
                     My Chatroom
                 </h3>

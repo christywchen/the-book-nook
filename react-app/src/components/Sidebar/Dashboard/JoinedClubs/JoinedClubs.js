@@ -35,7 +35,6 @@ function JoinedClubs({ userMemberships }) {
         });
     }
 
-    // console.log('USER BOOK CLUBS ARRAY', userBookClubs);
     return (
         <>
             {userMemberships.length && bookClubs.length ?

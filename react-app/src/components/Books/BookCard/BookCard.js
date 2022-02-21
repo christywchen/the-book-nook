@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import './BookCard.css';
 
 function BookCard({ book }) {
-    const { id, title, author, synopsis, image_url, isbn13, original_title, language, publication_year, pages } = book;
+    const { id, title, author, synopsis, image_url } = book;
     const history = useHistory();
     const backgroundImage = { backgroundImage: `url("${image_url}")` }
 
@@ -15,7 +15,7 @@ function BookCard({ book }) {
 
     return (
         <>
-            <div className="book__card">
+            <div className='book__card'>
                 <Link to={`/books/${id}`}>
                     <div className='book__card--image' style={backgroundImage}>
                     </div>
@@ -41,7 +41,6 @@ function BookCard({ book }) {
                     </div>
                 </div>
             </div>
-
         </>
     )
 }

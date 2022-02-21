@@ -27,19 +27,20 @@ const removeBookClubBook = (bookClubBookId) => {
 
 // thunk middlewares
 export const getAllBookClubBooks = () => async (dispatch) => {
-    const res = await fetch(`/api/book-club-books`);
+    const res = await fetch('/api/book-club-books');
 
     if (res.ok) {
         const data = await res.json();
         dispatch(loadBookClubBooks(data['book club books']));
     }
 }
+
 export const getBookClubBooks = (bookClubId) => async (dispatch) => {
     const res = await fetch(`/api/book-clubs/${bookClubId}/books`);
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(loadBookClubBooks(bookClubId, data['book club books']));
+        dispatch(loadBookClubBooks(data['book club books']));
     }
 }
 
@@ -97,8 +98,8 @@ export const updateBookClubBook = (bookClubId, bookId, status) => async (dispatc
     }
 }
 
-export const deleteBookClub = (bookClubId, bookId) => async (dispatch) => {
-    const res = await fetch(`/api/book-clubs/${bookClubId}/${bookId}`, {
+export const deleteBookClubBook = (bookClubId, bookId) => async (dispatch) => {
+    const res = await fetch(`/api/book-clubs/${bookClubId}/books/${bookId}`, {
         method: 'DELETE'
     });
 

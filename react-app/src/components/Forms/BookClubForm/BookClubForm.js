@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createBookClub, getAllBookClubs, updateBookClub } from "../../../store/book_club";
-import { getBookClubMembers, getUserMemberships } from "../../../store/book_club_member";
+import { getUserMemberships } from "../../../store/book_club_member";
 
 function BookClubForm({ formType, formProps }) {
     const dispatch = useDispatch();
@@ -108,7 +108,7 @@ function BookClubForm({ formType, formProps }) {
                         <button
                             disabled={!name || !capacity}
                             className='button' type='submit'>Submit</button>
-                        {formType == 'createNew' && (
+                        {formType === 'createNew' && (
                             <>
                                 <hr />
                                 <button

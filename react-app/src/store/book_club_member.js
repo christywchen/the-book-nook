@@ -72,8 +72,7 @@ export const createBookClubMember = (bookClubId, userId) => async (dispatch) => 
         },
         body: JSON.stringify({
             user_id: userId,
-            book_club_id: bookClubId,
-            user_id: userId
+            book_club_id: bookClubId
         }),
     });
 
@@ -81,6 +80,13 @@ export const createBookClubMember = (bookClubId, userId) => async (dispatch) => 
         const data = await res.json();
         dispatch(addBookClubMember(bookClubId, data['book club member']));
         return data['book club member'];
+    } else if (res.status < 500) {
+        const data = await res.json();
+        if (data.errors) {
+            return data;
+        }
+    } else {
+        return ['An error occurred. Please try again.']
     }
 }
 
@@ -140,6 +146,7 @@ const bookClubMemberReducer = (state = initialState, action) => {
         case ADD_BOOK_CLUB_MEMBER:
             newState = { ...state };
             newState.allMembershipsByClubId[action.bookClubId] = { ...state.allMembershipsByClubId[action.bookClubId], [action.membership.id]: action.membership }
+            return newState;
         case REMOVE_BOOK_CLUB_MEMBER:
             newState = { ...state };
             delete newState.allMembershipsByClubId[action.bookClubId][action.membershipId];

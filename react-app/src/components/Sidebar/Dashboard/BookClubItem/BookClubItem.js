@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 function BookClubItem({ bookClub }) {
+    const { id } = useParams();
+    const location = useLocation();
     const [showLinks, setShowLinks] = useState(false);
 
     if (!bookClub) {
@@ -16,14 +18,21 @@ function BookClubItem({ bookClub }) {
                 </div>
                 {showLinks ? (
                     <div className="sidebar__links--group">
-                        <Link to={`/dashboard/book-clubs/${bookClub.id}/rooms/general`}>
-                            General Chat
-                        </Link>
-                        <p>
+                        <div>
+                            <Link to={`/dashboard/book-clubs/${bookClub.id}/reading-list`}>
+                                Reading List
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to={`/dashboard/book-clubs/${bookClub.id}/rooms/general`}>
+                                General Chat
+                            </Link>
+                        </div>
+                        <div>
                             <Link to={`/dashboard/book-clubs/${bookClub.id}/rooms/spoilers`}>
                                 Spoilers Chat
                             </Link>
-                        </p>
+                        </div>
                     </div>
                 ) : ''}
             </div>

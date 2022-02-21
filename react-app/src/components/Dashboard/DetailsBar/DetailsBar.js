@@ -36,7 +36,7 @@ function DetailsBar() {
         dispatch(getBookClubMembers(bookClubId));
     }, [dispatch, bookClubId]);
 
-    console.log(userMemberships, 'MEMBERSHIPPPPS')
+    // console.log(userMemberships, 'MEMBERSHIPPPPS')
 
     async function handleEditClub(e) {
         e.preventDefault();
@@ -108,8 +108,7 @@ function DetailsBar() {
                                 </>
                                 )
                             }
-                        }
-                        )}
+                        })}
                         </ul>
 
                         {bookClub.host_id === sessionUser.id ?

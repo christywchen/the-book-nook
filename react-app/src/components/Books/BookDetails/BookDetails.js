@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import { getBook } from '../../../store/book';
 import AddBookClubBook from '../../Forms/AddBookClubBook/AddBookClubBook';
@@ -11,16 +11,13 @@ function BookDetails() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
-    const sessionUser = useSelector(state => state.session.user);
-    const userMembershipsObj = useSelector(state => state.userMembershipsByClubId);
-    const bookClubs = useSelector(state => state.bookClub.byId);
     const book = useSelector(state => state.book.byId[id]);
 
     const backgroundImage = { backgroundImage: `url("${book?.image_url}")` }
 
     useEffect(() => {
         dispatch(getBook(id));
-    }, [dispatch])
+    }, [dispatch, id])
 
     if (!book) {
         return (

@@ -1,0 +1,71 @@
+.readinglist__card {
+    width: 130px;
+    height: 318px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--sidebar-bg);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
+    border-radius: var(--card-radius);
+    /* gap: 8px; */
+}
+
+.readinglist__card--image {
+    background-size: cover;
+    background-position: center;
+    width: 110px;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 3px 3px 0 0;
+    background-color: var(--sidebar-bg);
+}
+
+.readinglist__card--title {
+    margin: 10px 0 0;
+    font-style: italic;
+    font-size: var(--body-small);
+    font-weight: 600;
+}
+
+.readinglist__card--author {
+    margin: 5px 0;
+    font-size: 0.8em;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.book__card--synopsis {
+    margin: 10px 5px 5px;
+    padding: 10px;
+    font-size: 0.8em;
+    font-weight: 400;
+    background-color: var(--sidebar-bg);
+    border-radius: var(--input-radius);
+}
+
+.book__card--body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    inline-size: 145px;
+    overflow-wrap: break-word;
+}
+
+.readinglist__card--delete {
+    margin: 6px 0 0;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.readinglist__card--delete a {
+    color: var(--lighter-bg);
+    transition: 0.3s;
+}
+
+.readinglist__card--delete a:hover {
+    color: var(--main-color);
+}

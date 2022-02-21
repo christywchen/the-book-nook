@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { createBook, getAllBooks, updateBook } from '../../../store/book';
+import { createBook, updateBook } from '../../../store/book';
 
 function BookForm({ formType, formProps }) {
     const history = useHistory();
@@ -33,7 +33,7 @@ function BookForm({ formType, formProps }) {
             }
         }
 
-        if (formType = 'editRecord') {
+        if (formType === 'editRecord') {
             let id = formProps.id;
 
             const data = await dispatch(updateBook(id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
@@ -165,7 +165,7 @@ function BookForm({ formType, formProps }) {
                         <button
                             disabled={!title || !author || !language || !imageUrl}
                             className='button' type='submit'>Submit</button>
-                        {formType == 'createNew' && (
+                        {formType === 'createNew' && (
                             <>
                                 <hr />
                                 <button

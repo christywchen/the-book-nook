@@ -14,7 +14,7 @@ function BookEdit() {
 
     useEffect(() => {
         dispatch(getBook(id));
-    }, [dispatch]);
+    }, [dispatch, id]);
 
     let formProps;
     if (book) {

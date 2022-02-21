@@ -1,0 +1,11 @@
+#center__container {
+    width: 80%;
+    margin: 20px 0px 20px 20px;
+    overflow-y: scroll;
+}
+
+#center__container--title {
+    font-size: var(--h2-size);
+    font-weight: 600;
+    position: sticky;
+}

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import { getAllBookClubs } from '../../../store/book_club';
 import { getBookClubMembers, getUserMemberships, removeUserMembership, deleteBookClubMember, addUserMembership, createBookClubMember } from '../../../store/book_club_member';
 
 import './BookClubCard.css';
@@ -37,10 +36,14 @@ function BookClubCard({ bookClub }) {
     async function handleMembership(e) {
         e.preventDefault();
 
-        if (buttonText == 'Join Now') {
-            const membership = await dispatch(createBookClubMember(bookClub.id, sessionUser.id));
-            await dispatch(addUserMembership(membership));
+        if (buttonText === 'Join Now') {
+            const data = await dispatch(createBookClubMember(bookClub.id, sessionUser.id));
+
+            if (!data.errors) {
+                await dispatch(addUserMembership(data));
+            }
         }
+
         return history.push(`/dashboard/book-clubs/${bookClub.id}`);
     }
 
@@ -61,11 +64,11 @@ function BookClubCard({ bookClub }) {
                         {bookClub.description}
 
                     </div>
-                    <div className='no__memberships--links'>
+                    {(availableSpace >= 1 || buttonText === 'Go to Club') && (<div className='no__memberships--links'>
                         <form onSubmit={handleMembership}>
                             <button className='button button__sidebar--center-first' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
                         </form>
-                    </div>
+                    </div>)}
                 </div>
             </div>
         </>

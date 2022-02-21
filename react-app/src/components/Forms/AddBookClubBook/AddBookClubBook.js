@@ -26,7 +26,7 @@ function AddBookClubBook({ book }) {
         dispatch(getAllBookClubs());
         dispatch(getAllBookClubBooks());
         if (sessionUser) dispatch(getUserMemberships(sessionUser.id))
-    }, [dispatch]);
+    }, [dispatch, sessionUser]);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -34,27 +34,28 @@ function AddBookClubBook({ book }) {
 
         if (data.errors) {
             setErrors(data.errors);
+            setMessage('');
         } else {
-            const bookClubBook = data;
             setMessage('Successfully added. Go to your book club\'s reading list?')
             setErrors([]);
         }
-        // console.log(bookClubId)
     }
 
+    // get all book clubs that have this book by filtering all book club books and
+    // mapping to the book club that is on record for that book club book
     let bookClubsWithBookObj;
     let bookClubsWithBook;
     if (allBookClubBooks && allBookClubsObj) {
-        bookClubsWithBookObj = allBookClubBooks.reduce((bookClubs, bookClubBook) => {
+        bookClubsWithBook = allBookClubBooks.reduce((bookClubs, bookClubBook) => {
             if (bookClubBook.book_id === book.id) {
-                bookClubs[bookClubBook.book_club_id] = allBookClubsObj[bookClubBook.book_club_id];
+                bookClubs.push(allBookClubsObj[bookClubBook.book_club_id]);
             }
             return bookClubs;
-        }, {});
-
-        bookClubsWithBook = Object.values(bookClubsWithBookObj)
+        }, []);
     }
 
+    // get all of the book clubs that a user belongs to
+    // so they can be shown in the add book club book form
     let userBookClubs;
     if (userMemberships && allBookClubsObj) {
         userBookClubs = userMemberships.map(membership => {
@@ -67,55 +68,59 @@ function AddBookClubBook({ book }) {
             <div>
                 {userMemberships.length > 0 && allBookClubs.length && (
                     <>
-                        Add to Your Book Club:
-                        <div>
-                            <form className='form__add--book-to-club' onSubmit={handleSubmit}>
-                                <div>
-                                    <select
-                                        name='book-club'
-                                        value={bookClubId}
-                                        onChange={(e) => setBookClubId(e.target.value)}>
-                                        <option value=''>Select</option>
-                                        {userBookClubs.length && allBookClubs.length && userBookClubs.map(bookClub => (
-                                            <option key={bookClub.id} value={bookClub.id}>{bookClub.name}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                <div className='form__buttons'>
-                                    <button
-                                        disabled={!bookClubId}
-                                        className='button' type='submit'>Submit</button>
-                                </div>
-                            </form>
-                            {errors.length > 0 && (
-                                <ul className='auth__container--errors'>{
-                                    errors.map((error, ind) => (
-                                        <li key={ind}>{error}</li>
-                                    ))
-                                }
-                                </ul>
-                            )}
-                            {message && (
-                                <Link to={`/dashboard/book-clubs/${bookClubId}`}>{message}</Link>
-                            )}
+                        <hr className='book__details--divider' />
+                        <div className='book__details--mini-title'>
+                            Recommend this to Your Book Club:
                         </div>
+                        <form className='form__add--book-to-club' onSubmit={handleSubmit}>
+                            <div>
+                                <select
+                                    name='book-club'
+                                    value={bookClubId}
+                                    onChange={(e) => setBookClubId(e.target.value)}>
+                                    <option value=''>Select</option>
+                                    {userBookClubs.length && allBookClubs.length && userBookClubs.map(bookClub => (
+                                        <option key={bookClub.id} value={bookClub.id}>{bookClub.name}</option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div className='form__buttons'>
+                                <button
+                                    disabled={!bookClubId}
+                                    className='button' type='submit'>Add</button>
+                            </div>
+                        </form>
+                        {errors.length > 0 && (
+                            <ul className='form__add--book-to-club--errors'>{
+                                errors.map((error, ind) => (
+                                    <li key={ind}>{error}</li>
+                                ))
+                            }
+                            </ul>
+                        )}
+                        {message && (
+                            <Link className='form__add--book-to-club--message' to={`/dashboard/book-clubs/${bookClubId}/reading-list`}>{message}</Link>
+                        )}
                     </>
                 )}
                 <div>
-                    <div id='book__clubs--icon-container'>
-                        {bookClubsWithBook.length > 0 && allBookClubs.length && (
-                            <>
+                    {bookClubsWithBook.length > 0 && allBookClubs.length && (
+                        <>
+                            <hr className='book__details--divider' />
+                            <div className='book__details--mini-title'>
                                 Book Clubs Currently Reading This:
+                            </div>
+                            <div className='book__details--mini-container book__details--clubs-container'>
                                 {bookClubsWithBook.map(bookClub => (
                                     <div
                                         key={bookClub.id}
                                         className="book__club--icon-mini"
                                         title={bookClub.name}>
-                                        {bookClub.image_url ? (<img src={bookClub.image_url} className='book__club--icon-img' />) : bookClub.name.slice(0, 1)}
+                                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='book__club--icon-img' />) : bookClub.name.slice(0, 1)}
                                     </div>))}
-                            </>
-                        )}
-                    </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </>
