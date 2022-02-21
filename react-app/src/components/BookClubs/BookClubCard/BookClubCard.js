@@ -50,27 +50,35 @@ function BookClubCard({ bookClub }) {
     return (
         <>
             <div className="bookclub__card">
-                {/* <div className='event__card--image event__card--image-default' style={image_url ? backgroundImage : null}>
-                </div> */}
+                {/* <div> */}
                 <div className='bookclub__card--body'>
+                    <div
+                        key={bookClub.id}
+                        className="bookclub__card--icon"
+                        title={bookClub.name}>
+                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='bookclub__card--icon-img' />) : bookClub.name.slice(0, 1)}
+                    </div>
                     <div className='bookclub__card--title'>
                         {bookClub.name}
                     </div>
-                    <div className='bookclub__card--capacity'>{availableSpace} {availableSpace === 1 ? 'Spot' : 'Spots'} Left</div>
+                    <div className='bookclub__card--capacity'>{availableSpace || 'No'} {availableSpace === 1 ? 'Space' : 'Spaces'} Available</div>
+                    <hr />
                     <div className='bookclub__card--description'>
                         <div className='bookclub__card--description-title'>
-                            About:
+                            Description:
                         </div>
-                        {bookClub.description}
-
+                        {bookClub.description || (
+                            <span className='bookclub__card--description-none'>No description provided.</span>
+                        )}
                     </div>
-                    {(availableSpace >= 1 || buttonText === 'Go to Club') && (<div className='no__memberships--links'>
-                        <form onSubmit={handleMembership}>
-                            <button className='button button__sidebar--center-first' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
-                        </form>
-                    </div>)}
                 </div>
+                {(availableSpace >= 1 || buttonText === 'Go to Club') && (<div className='no__memberships--links'>
+                    <form onSubmit={handleMembership}>
+                        <button className='button' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
+                    </form>
+                </div>)}
             </div>
+            {/* </div> */}
         </>
     )
 }

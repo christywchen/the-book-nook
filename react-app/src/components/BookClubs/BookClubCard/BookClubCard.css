@@ -1,14 +1,75 @@
 .bookclub__card {
-    width: 15vw;
-    height: 200px;
-    padding: 20px;
+    width: 260px;
+    height: 355px;
+    padding: 25px 20px 15px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
     background-color: var(--sidebar-bg);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
     border-radius: var(--card-radius);
 }
 
+.bookclub__card--body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .bookclub__card--title {
     font-size: var(--h4-size);
     font-weight: 600;
+    margin: 12px 0 6px;
+}
+
+.bookclub__card--icon {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    text-align: center;
+    color: var(--lighter-bg);
+    font-size: var(--h1-size);
+    font-weight: var(--weight-bold);
+    background-color: var(--accent-bg);
+    border-radius: 100%;
+    border: solid 1px var(--input-bg);
+    background-clip: content-box;
+    transition: 0.3s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.bookclub__card--icon-img {
+    width: 75px;
+    height: 75px;
+    padding: 2px;
+    border-radius: 100%;
+    border: solid 1px var(--input-bg);
+    background-clip: content-box;
+}
+
+.bookclub__card--capacity {
+    margin: 0 0 6px;
+}
+
+.bookclub__card--description-title {
+    font-weight: var(--weight-bold);
+    margin: 0 0 6px;
+}
+
+.bookclub__card--description {
+    margin: 0 0 6px;
+}
+
+.bookclub__card--description-none {
+    font-style: italic;
 }
