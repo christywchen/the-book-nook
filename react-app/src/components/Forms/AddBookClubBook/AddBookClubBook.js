@@ -41,19 +41,21 @@ function AddBookClubBook({ book }) {
         }
     }
 
+    // get all book clubs that have this book by filtering all book club books and
+    // mapping to the book club that is on record for that book club book
     let bookClubsWithBookObj;
     let bookClubsWithBook;
     if (allBookClubBooks && allBookClubsObj) {
-        bookClubsWithBookObj = allBookClubBooks.reduce((bookClubs, bookClubBook) => {
+        bookClubsWithBook = allBookClubBooks.reduce((bookClubs, bookClubBook) => {
             if (bookClubBook.book_id === book.id) {
-                bookClubs[bookClubBook.book_club_id] = allBookClubsObj[bookClubBook.book_club_id];
+                bookClubs.push(allBookClubsObj[bookClubBook.book_club_id]);
             }
             return bookClubs;
-        }, {});
-
-        bookClubsWithBook = Object.values(bookClubsWithBookObj)
+        }, []);
     }
 
+    // get all of the book clubs that a user belongs to
+    // so they can be shown in the add book club book form
     let userBookClubs;
     if (userMemberships && allBookClubsObj) {
         userBookClubs = userMemberships.map(membership => {

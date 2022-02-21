@@ -26,6 +26,24 @@ const removeBook = (bookId) => {
 }
 
 // thunk middlewares
+export const getAllBooks = () => async (dispatch) => {
+    const res = await fetch('/api/books');
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBooks(data['books']));
+    }
+}
+
+export const getBook = (id) => async (dispatch) => {
+    const res = await fetch(`/api/books/${id}`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBooks(data['book']));
+    }
+}
+
 export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch('/api/books', {
         method: 'POST',
@@ -61,23 +79,6 @@ export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTi
     }
 }
 
-export const getAllBooks = () => async (dispatch) => {
-    const res = await fetch('/api/books');
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(loadBooks(data['books']));
-    }
-}
-
-export const getBook = (id) => async (dispatch) => {
-    const res = await fetch(`/api/books/${id}`);
-
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(loadBooks(data['book']));
-    }
-}
 
 export const updateBook = (id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch(`/api/books/${id}`, {

@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 function BookClubItem({ bookClub }) {
+    const { id } = useParams();
+    const location = useLocation();
     const [showLinks, setShowLinks] = useState(false);
 
     if (!bookClub) {
