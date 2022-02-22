@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required
-from app.models import db, BookClubChatroom
+
+from app.models import db, BookClubChatroom, ChatroomMessage
 
 chatroom_routes = Blueprint('chatroom', __name__)
 
@@ -40,3 +41,18 @@ def get_chatroom():
     chatroom = BookClubChatroom.query.get(id)
 
     return {'chatroom': [chatroom.to_dict()]}
+
+
+"""
+The routes below are for interacting with the messages of a chatroom.
+"""
+
+@chatroom_routes.route('/<int:id>/messages')
+@login_required
+def get_chatroom_messages(id):
+    """
+    Returns all messages that belong to a given chatroom.
+    """
+    chatroom_messages = ChatroomMessage.query.filter(ChatroomMessage.chatroom_id == id).all()
+
+    return {'chat messages': [chat_message.to_dict() for chat_message in chatroom_messages]}
