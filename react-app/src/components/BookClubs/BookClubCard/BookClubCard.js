@@ -50,7 +50,7 @@ function BookClubCard({ bookClub }) {
 
     return (
         <>
-            <div className="bookclub__card">
+            <section className="bookclub__card">
                 <div className='bookclub__card--body'>
                     <div
                         key={id}
@@ -76,8 +76,7 @@ function BookClubCard({ bookClub }) {
                         <button className='button' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
                     </form>
                 </div>)}
-            </div>
-            {/* </div> */}
+            </section>
         </>
     )
 }

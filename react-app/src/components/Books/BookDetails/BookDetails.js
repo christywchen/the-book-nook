@@ -33,7 +33,7 @@ function BookDetails() {
 
     return (
         <>
-            <div id='wide__container'>
+            <section id='wide__container'>
                 <div id='wide__subcontainer--centered'>
                     <div id='wide__title'>{book.title}</div>
                     <div id='wide__subtitle'>by {book.author}</div>
@@ -87,7 +87,7 @@ function BookDetails() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

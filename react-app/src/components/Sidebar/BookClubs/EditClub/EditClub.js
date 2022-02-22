@@ -10,7 +10,7 @@ function EditClub({ userMemberships }) {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     Need to make an update to your book club? No problem.
                 </p>
@@ -22,7 +22,7 @@ function EditClub({ userMemberships }) {
                         <button className='button button__sidebar--center' type='submit'>Back to Your Club</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

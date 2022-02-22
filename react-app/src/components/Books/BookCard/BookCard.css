@@ -44,6 +44,7 @@
     font-weight: 400;
     background-color: var(--sidebar-bg);
     border-radius: var(--input-radius);
+    white-space: pre-line;
 }
 
 .book__card--body {

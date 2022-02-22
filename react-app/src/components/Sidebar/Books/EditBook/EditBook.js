@@ -10,7 +10,7 @@ function EditBook() {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     See a mistake with the details of this book? Help us fix it!
                 </p>
@@ -22,7 +22,7 @@ function EditBook() {
                         <button className='button button__sidebar--center' type='submit'>Back to the Book</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

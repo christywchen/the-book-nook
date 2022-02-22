@@ -22,7 +22,7 @@ function BookClubList() {
 
     return (
         <>
-            <div id='wide__container'>
+            <section id='wide__container'>
                 <div id='wide__subcontainer--centered'>
                     <div id='wide__title'>Explore Book Clubs</div>
                     <div className='bookclub__card--container'>
@@ -33,7 +33,7 @@ function BookClubList() {
                         ) : (<>No book clubs at the moment. Maybe you start one of your own?</>)}
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

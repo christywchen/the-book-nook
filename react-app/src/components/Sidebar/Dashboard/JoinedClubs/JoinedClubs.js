@@ -40,7 +40,7 @@ function JoinedClubs({ userMemberships }) {
     return (
         <>
             {userMemberships.length && bookClubs.length ?
-                (<div className='sidebar__bookclubs'>
+                (<section className='sidebar__bookclubs'>
                     <div className='sidebar__bookclub--items'> {userBookClubs &&
                         userBookClubs.map(bookClub => (
                             <BookClubItem key={bookClub?.id} bookClub={bookClub} />
@@ -53,9 +53,9 @@ function JoinedClubs({ userMemberships }) {
                             </form>
                         )}
                     </div>
-                </div>) :
+                </section>) :
                 (<>
-                    <div className='sidebar__para'>
+                    <section className='sidebar__para'>
                         <p>
                             You're not a part of any book clubs at the moment. Why not start one of your own or see what's out there?
                         </p>
@@ -70,7 +70,7 @@ function JoinedClubs({ userMemberships }) {
                                 <button className='button button__sidebar--center-second' type='submit'>Explore Book Clubs</button>
                             </form>
                         </div>
-                    </div>
+                    </section>
                 </>)
             }
         </>

@@ -5,10 +5,10 @@ function BookClubCreate() {
 
     return (
         <>
-            <div id='wide__container'>
+            <section id='wide__container'>
                 <div id='wide__title'>Start a Book Club</div>
                 <BookClubForm formType={formType} />
-            </div>
+            </section>
         </>
     )
 }

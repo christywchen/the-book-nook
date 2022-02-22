@@ -57,18 +57,18 @@ function Chatroom() {
 
     if (!chatroom) {
         return (
-            <div id="center__container">
+            <section id="center__container">
                 <div id='center__container--title'>Reading List</div>
                 <div className='readinglist__card--container'>
                     This chatroom does not exist.
                 </div>
-            </div>
+            </section>
         )
     }
 
     return (
         <>
-            <div id="center__container">
+            <section id="center__container">
                 <div id='center__container--title'>{chatroom.name} Chat</div>
                 Book Club: {bookClubId}.
                 <div>
@@ -85,7 +85,7 @@ function Chatroom() {
                         <button type="submit">Send</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

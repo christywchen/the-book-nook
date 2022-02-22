@@ -30,10 +30,10 @@ function BookClubEdit() {
 
     return (
         <>
-            <div id='wide__container'>
+            <section id='wide__container'>
                 <div id='wide__title'>Edit Book Club</div>
                 {bookClub && <BookClubForm formType={formType} formProps={formProps} />}
-            </div>
+            </section>
         </>
     )
 }

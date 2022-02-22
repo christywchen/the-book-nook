@@ -82,7 +82,7 @@ function DetailsBar() {
 
     return (
         <>
-            <div id="details__container">
+            <section id="details__container">
                 {bookClub && (
                     <>
                         <div className='details__heading'>
@@ -157,7 +157,7 @@ function DetailsBar() {
                             )
                         }
                     </>)}
-            </div>
+            </section>
         </>
     )
 }

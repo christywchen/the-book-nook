@@ -29,7 +29,7 @@ function BookClubItem({ bookClub }) {
 
     return (
         <>
-            <div className="book__club--item" key={bookClub.id}>
+            <section className="book__club--item" key={bookClub.id}>
                 <div onClick={() => setShowLinks(!showLinks)} className="sidebar__title">
                     {bookClub.name} <i className="fa-solid fa-angle-down sidebar__caret"></i>
                 </div>
@@ -51,7 +51,7 @@ function BookClubItem({ bookClub }) {
                         ))}
                     </div>
                 ) : ''}
-            </div>
+            </section>
         </>
     )
 }
