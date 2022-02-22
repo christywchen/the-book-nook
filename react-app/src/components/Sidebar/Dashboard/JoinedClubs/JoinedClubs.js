@@ -41,9 +41,9 @@ function JoinedClubs({ userMemberships }) {
         <>
             {userMemberships.length && bookClubs.length ?
                 (<div className='sidebar__bookclubs'>
-                    <div className='sidebar__bookclub--items'> {
-                        userBookClubs?.map(bookClub => (
-                            <BookClubItem key={bookClub.id} bookClub={bookClub} />
+                    <div className='sidebar__bookclub--items'> {userBookClubs &&
+                        userBookClubs.map(bookClub => (
+                            <BookClubItem key={bookClub?.id} bookClub={bookClub} />
                         ))}
                     </div>
                     <div className='create__club--link'>

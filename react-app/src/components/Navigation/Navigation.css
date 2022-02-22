@@ -22,11 +22,13 @@
 .nav__text {
     color: var(--main-color);
     text-decoration: none;
+    transition: 0.3s;
 }
 
 #nav__links a:hover {
+    color: var(--link-hover);
     padding-bottom: 1px;
-    border-bottom: 1px solid var(--main-color);
+    /* border-bottom: 1px solid var(--main-color); */
 }
 
 .nav__mainlink,

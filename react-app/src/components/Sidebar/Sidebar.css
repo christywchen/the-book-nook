@@ -31,10 +31,11 @@
     font-size: var(--body-size);
     font-weight: var(--weight-bold);
     padding: 2px 1px;
+    transition: 0.3s;
 }
 
 .sidebar__links--group a:hover {
-    border-bottom: 1px solid var(--main-color);
+    color: var(--link-hover);
 }
 
 .sidebar__caret {
