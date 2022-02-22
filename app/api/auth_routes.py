@@ -1,9 +1,10 @@
 from flask import Blueprint, jsonify, session, request
+from flask_login import current_user, login_user, logout_user, login_required
+from datetime import datetime
+
 from app.models import db, User
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
-from datetime import datetime
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -41,6 +42,11 @@ def login():
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
         user = User.query.filter(User.email == form.data['email']).first()
+
+        user.is_online = True
+
+        db.session.commit()
+
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
@@ -51,6 +57,12 @@ def logout():
     """
     Logs a user out
     """
+    user = User.query.filter(User.id == current_user.id).first()
+
+    user.is_online = False
+
+    db.session.commit()
+
     logout_user()
     return {'message': 'User logged out'}
 
@@ -69,6 +81,7 @@ def sign_up():
             # last_name=form.data['last_name'],
             email=form.data['email'],
             password=form.data['password'],
+            is_online=True,
             created_at=datetime.now(),
             updated_at=datetime.now()
         )

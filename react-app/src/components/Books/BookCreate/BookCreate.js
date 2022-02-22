@@ -5,10 +5,10 @@ function BookCreate() {
 
     return (
         <>
-            <div id='wide__container'>
+            <section id='wide__container'>
                 <div id='wide__title'>Add a Book</div>
                 <BookForm formType={formType} />
-            </div>
+            </section>
         </>
     )
 }

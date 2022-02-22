@@ -33,10 +33,10 @@ function BookEdit() {
     }
 
     return (
-        <div id='wide__container'>
+        <section id='wide__container'>
             <div id='wide__title'>Edit Book</div>
             {book && <BookForm formType={formType} formProps={formProps} />}
-        </div>
+        </section>
     )
 }
 

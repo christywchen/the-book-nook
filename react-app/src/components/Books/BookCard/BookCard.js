@@ -15,7 +15,7 @@ function BookCard({ book }) {
 
     return (
         <>
-            <div className='book__card'>
+            <section className='book__card'>
                 <Link to={`/books/${id}`}>
                     <div className='book__card--image' style={backgroundImage}>
                     </div>
@@ -40,7 +40,7 @@ function BookCard({ book }) {
                         </form>
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

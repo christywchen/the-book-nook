@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllBookClubs } from "../../../store/book_club";
-import { getBookClubMembers } from "../../../store/book_club_member";
 import { getUsers } from "../../../store/user";
 
 import BookClubCard from "../BookClubCard/BookClubCard";
@@ -23,7 +22,7 @@ function BookClubList() {
 
     return (
         <>
-            <div id='wide__container'>
+            <section id='wide__container'>
                 <div id='wide__subcontainer--centered'>
                     <div id='wide__title'>Explore Book Clubs</div>
                     <div className='bookclub__card--container'>
@@ -34,7 +33,7 @@ function BookClubList() {
                         ) : (<>No book clubs at the moment. Maybe you start one of your own?</>)}
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

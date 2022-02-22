@@ -11,6 +11,8 @@ from app.api.auth_routes import auth_routes
 from app.api.book_club_routes import book_club_routes
 from app.api.book_routes import book_routes
 from app.api.book_club_book_routes import book_club_book_routes
+from app.api.chatroom_routes import chatroom_routes
+from app.api.chat_message_routes import chat_message_routes
 from app.socket import socketio
 
 from app.seeds import seed_commands
@@ -38,6 +40,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(book_club_routes, url_prefix='/api/book-clubs')
 app.register_blueprint(book_routes, url_prefix='/api/books')
 app.register_blueprint(book_club_book_routes, url_prefix='/api/book-club-books')
+app.register_blueprint(chatroom_routes, url_prefix='/api/chatrooms')
+app.register_blueprint(chat_message_routes, url_prefix='/api/chat-messages')
 db.init_app(app)
 Migrate(app, db)
 socketio.init_app(app)

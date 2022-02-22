@@ -50,7 +50,7 @@ class BookForm(FlaskForm):
     title = StringField('title', validators=[DataRequired(), title_length])
     author = StringField('author', validators=[DataRequired(), author_length])
     synopsis = TextAreaField('synopsis')
-    image_url = TextAreaField('image_url', validators=[DataRequired()])
+    image_url = TextAreaField('image_url')
     isbn13 = StringField('isbn13', validators=[Optional(), isbn13_length])
     original_title = StringField('original_title', validators=[Optional(), orig_title_length])
     language = StringField('language', validators=[DataRequired(), lang_length])

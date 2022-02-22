@@ -73,7 +73,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div id='auth__container'>
+      <section id='auth__container'>
 
         <div id='auth__container--title'>Sign Up</div>
         <div id='auth__form'>
@@ -164,7 +164,7 @@ const SignUpForm = () => {
             <button className='button button__auth button__modal' type='submit'>Already have an account?</button>
           </form>
         </div>
-      </div >
+      </section>
     </>
   );
 };

@@ -15,12 +15,11 @@ const Navigation = () => {
   return (
     <nav id="nav__container">
       <div id="nav__title">
-        The Book Nook
+        <NavLink to='/' exact={true} activeClassName='active'>
+          The Book Nook
+        </NavLink>
       </div>
       <div id="nav__links">
-        <NavLink className='nav__mainlink' to='/' exact={true} activeClassName='active'>
-          Home
-        </NavLink>
         <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
           About
         </NavLink>
@@ -55,10 +54,10 @@ const Navigation = () => {
       </div>
       <div className='nav__social'>
         <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
-          <img className='social__icon' src={github} />
+          <img className='social__icon' alt='Github' src={github} />
         </a>
         <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
-          <img className='social__icon' src={linkedin} />
+          <img className='social__icon' alt='LinkedIn' src={linkedin} />
         </a>
       </div>
     </nav>

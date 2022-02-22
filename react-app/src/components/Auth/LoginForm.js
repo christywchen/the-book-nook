@@ -52,7 +52,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div id='auth__container'>
+      <section id='auth__container'>
 
         <div id='auth__container--title'>Log In</div>
         <div id='auth__form'>
@@ -99,7 +99,7 @@ const LoginForm = () => {
             <button className='button button__auth button__modal' type='submit'>Don't have an account?</button>
           </form>
         </div>
-      </div>
+      </section>
     </>
   );
 };

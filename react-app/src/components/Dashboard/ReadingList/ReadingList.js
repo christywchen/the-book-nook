@@ -36,17 +36,16 @@ function ReadingList() {
 
     return (
         <>
-            <div id="center__container">
+            <section id="center__container">
                 <div id='center__container--title'>Reading List</div>
-
                 <div className='readinglist__card--container'>
                     {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
-                        <>
+                        <div key={book.id}>
                             <ReadingListCard bookInfo={book} />
-                        </>
+                        </div>
                     )) : <>No books at the moment. Maybe you could add some to this book club's reading list?</>}
                 </div>
-            </div>
+            </section>
         </>
     )
 }

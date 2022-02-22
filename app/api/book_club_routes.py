@@ -16,7 +16,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field}:{error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 
@@ -73,8 +73,8 @@ def create_book_club():
                 name=data['name'],
                 description=data['description'],
                 host_id=data['host_id'],
+                image_url=data['image_url'],
                 capacity=data['capacity'],
-                public=data['public'],
                 created_at=datetime.now(),
                 updated_at=datetime.now()
             )
@@ -138,10 +138,11 @@ def update_book_club(id):
         if data['capacity'] < member_count:
             return {'errors': ['Member capacity may not be less than the current member count.']}, 401
 
-        book_club.name = data['name'],
-        book_club.description = data['description'],
-        book_club.host_id = data['host_id'],
-        book_club.capacity = data['capacity'],
+        book_club.name = data['name']
+        book_club.description = data['description']
+        book_club.host_id = data['host_id']
+        book_club.image_url = data['image_url']
+        book_club.capacity = data['capacity']
         book_club.updated_at = datetime.now()
 
         db.session.commit()
@@ -313,3 +314,18 @@ def delete_book_club_book(book_club_id, book_id):
     db.session.commit()
 
     return {'message': 'Book club book successfully deleted.', 'book club book id': book_club_book_id}
+
+
+"""
+The below routes are for getting chatrooms associated with a book club.
+"""
+
+@book_club_routes.route('/<int:book_club_id>/chatrooms')
+@login_required
+def get_book_club_chatrooms(book_club_id):
+    """
+    Get all of a book club's chatrooms.
+    """
+    chatrooms = BookClubChatroom.query.filter(BookClubChatroom.book_club_id == book_club_id).all()
+
+    return {'chatrooms': [chatroom.to_dict() for chatroom in chatrooms]}

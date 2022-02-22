@@ -43,7 +43,6 @@ function AddBookClubBook({ book }) {
 
     // get all book clubs that have this book by filtering all book club books and
     // mapping to the book club that is on record for that book club book
-    let bookClubsWithBookObj;
     let bookClubsWithBook;
     if (allBookClubBooks && allBookClubsObj) {
         bookClubsWithBook = allBookClubBooks.reduce((bookClubs, bookClubBook) => {

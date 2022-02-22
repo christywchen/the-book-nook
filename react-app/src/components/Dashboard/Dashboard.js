@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect, useParams } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Chatroom from './Chatroom/Chatroom';
 import DetailsBar from './DetailsBar/DetailsBar';
@@ -17,7 +17,7 @@ function Dashboard() {
                     <ReadingList />
                     <DetailsBar />
                 </Route>
-                <Route path='/dashboard/book-clubs/:bookClubId/rooms/:chatType'>
+                <Route path='/dashboard/book-clubs/:bookClubId/chats/:chatroomId'>
                     <Chatroom />
                     <DetailsBar />
                 </Route>

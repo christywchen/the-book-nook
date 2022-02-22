@@ -40,7 +40,7 @@ function Sidebar() {
 
     return (
         <>
-            <div id="sidebar__container">
+            <section id="sidebar__container">
                 <div className="sidebar__subcontainer">
                     {isDashboard && <JoinedClubs userMemberships={userMemberships} />}
                 </div>
@@ -51,7 +51,7 @@ function Sidebar() {
                 {isBookCreate && <CreateBook />}
                 {isBookEdit && <EditBook />}
                 {isBookDetails && <BookDetails />}
-            </div>
+            </section>
         </>
     )
 }

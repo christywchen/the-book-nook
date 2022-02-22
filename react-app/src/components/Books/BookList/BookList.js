@@ -17,7 +17,7 @@ function BookList() {
     }, [dispatch]);
 
     return (
-        <div id='wide__container'>
+        <section id='wide__container'>
             <div id='wide__subcontainer--centered'>
                 <div id='wide__title'>Explore Books</div>
                 <div className='book__card--container'>
@@ -28,7 +28,7 @@ function BookList() {
                     ) : (<>No books at the moment. Maybe you could help us expand our library?</>)}
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 

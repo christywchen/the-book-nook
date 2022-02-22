@@ -10,7 +10,7 @@ function CreateBook({ membershipCount }) {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     Tell us a little bit about the book you want to share. Title, author, and language are required.
                 </p>
@@ -26,7 +26,7 @@ function CreateBook({ membershipCount }) {
                         <button className='button button__sidebar--center' type='submit'>Browse Books</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

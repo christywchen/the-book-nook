@@ -9,3 +9,18 @@ class ChatroomMessage(db.Model):
     chatroom_id = db.Column(db.Integer, db.ForeignKey('book_club_chatrooms.id'), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
+
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "body": self.body,
+            "user_id": self.user_id,
+            "chatroom_id": self.chatroom_id,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
+        }
+
+
+    def __repr__(self):
+        return f"<class 'Chatroom Message', id: {self.id}, body: {self.body}, chatroom_id: {self.chatroom_id}, created_at: {self.created_at}, updated_at: {self.updated_at}>"

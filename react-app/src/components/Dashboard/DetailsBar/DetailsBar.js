@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
 import { getAllBookClubs, deleteBookClub } from "../../../store/book_club";
@@ -15,7 +15,7 @@ function DetailsBar() {
     const [showDelete, setShowDelete] = useState(false);
     const [showLeave, setShowLeave] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
-    const usersObj = useSelector(state => state.user.byUserId);
+    const usersObj = useSelector(state => state.user.byId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[bookClubId]);
     const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
@@ -61,9 +61,13 @@ function DetailsBar() {
 
     let members, host;
     if (bookClubMembers && users) {
+        console.log(bookClubMembers, 'BOOK CLUB MEMBERS')
         members = bookClubMembers.map(member => {
+            console.log('BOOK CLUB MEMBER', usersObj[member.user_id])
             return usersObj[member.user_id];
         });
+
+        console.log(members, 'MEMBERS LIST')
 
         host = usersObj[bookClub?.host_id];
     }
@@ -77,14 +81,12 @@ function DetailsBar() {
             return allBooksObj[bookId]
 
         });
-
-        // console.log(currentBooks)
     }
 
 
     return (
         <>
-            <div id="details__container">
+            <section id="details__container">
                 {bookClub && (
                     <>
                         <div className='details__heading'>
@@ -104,7 +106,7 @@ function DetailsBar() {
                                 Description
                             </div>
                             <div className='details__subbox details__description'>
-                                {bookClub.description}
+                                {bookClub.description.replace(/\n+/g, '\n\n')}
                             </div>
                         </div>)}
                         <div className='details__subsec'>
@@ -115,9 +117,8 @@ function DetailsBar() {
                                 <div className='details__members--list'>
                                     {members && members.map(member => {
                                         if (member) {
-                                            return (<>
-                                                <div key={member.id}>{member.first_name}</div>
-                                            </>
+                                            return (
+                                                <div key={member.id}>{member.username}</div>
                                             )
                                         }
                                     })}
@@ -131,7 +132,7 @@ function DetailsBar() {
                             <div className='details__subbox details__currentreads'>
                                 <ul>
                                     {currentBooks.map(book => (
-                                        <li>
+                                        <li key={book?.id}>
                                             <span className='details__currentreads--title'>
                                                 {book?.title}
                                             </span> by {book?.author}
@@ -142,7 +143,7 @@ function DetailsBar() {
                         </div>)}
                         {bookClub.host_id === sessionUser.id ?
                             (<>
-                                <Link className='details__deleteleave' onClick={() => setShowDelete(!showDelete)}>Delete Book Club</Link>
+                                <div className='details__deleteleave' onClick={() => setShowDelete(!showDelete)}>Delete Book Club</div>
                                 {showDelete && (
                                     <div className='details__subbox details__description details__deleteleave--confirm'>
                                         Are you sure? This cannot be undone. <span className='details__deleteleave--link' onClick={handleDeleteClub}>Yes</span> // <span className='details__deleteleave--link' onClick={() => setShowDelete(false)}>No</span>
@@ -150,7 +151,7 @@ function DetailsBar() {
                                 )}
                             </>) :
                             (<>
-                                <Link className='details__deleteleave' onClick={() => setShowLeave(!showLeave)}>Leave Book Club</Link>
+                                <div className='details__deleteleave' onClick={() => setShowLeave(!showLeave)}>Leave Book Club</div>
                                 {showLeave && (
                                     <div className='details__subbox details__description details__deleteleave--confirm'>
                                         Are you sure you want to leave? <span className='details__deleteleave--link' onClick={handleLeaveClub}>Yes</span> // <span className='details__deleteleave--link' onClick={() => setShowLeave(false)}>No</span>
@@ -160,7 +161,7 @@ function DetailsBar() {
                             )
                         }
                     </>)}
-            </div>
+            </section>
         </>
     )
 }

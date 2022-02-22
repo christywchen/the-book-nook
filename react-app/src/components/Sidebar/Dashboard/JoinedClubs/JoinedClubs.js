@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllBookClubs } from '../../../../store/book_club';
 
 import BookClubItem from '../BookClubItem/BookClubItem';
+import { getAllBookClubChatrooms } from '../../../../store/chatroom';
 
 function JoinedClubs({ userMemberships }) {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function JoinedClubs({ userMemberships }) {
 
     useEffect(() => {
         dispatch(getAllBookClubs());
+        dispatch(getAllBookClubChatrooms());
     }, [dispatch]);
 
 
@@ -38,10 +40,10 @@ function JoinedClubs({ userMemberships }) {
     return (
         <>
             {userMemberships.length && bookClubs.length ?
-                (<div className='sidebar__bookclubs'>
-                    <div className='sidebar__bookclub--items'> {
-                        userBookClubs?.map(bookClub => (
-                            <BookClubItem key={bookClub.id} bookClub={bookClub} />
+                (<section className='sidebar__bookclubs'>
+                    <div className='sidebar__bookclub--items'> {userBookClubs &&
+                        userBookClubs.map(bookClub => (
+                            <BookClubItem key={bookClub?.id} bookClub={bookClub} />
                         ))}
                     </div>
                     <div className='create__club--link'>
@@ -51,9 +53,9 @@ function JoinedClubs({ userMemberships }) {
                             </form>
                         )}
                     </div>
-                </div>) :
+                </section>) :
                 (<>
-                    <div className='sidebar__para'>
+                    <section className='sidebar__para'>
                         <p>
                             You're not a part of any book clubs at the moment. Why not start one of your own or see what's out there?
                         </p>
@@ -68,7 +70,7 @@ function JoinedClubs({ userMemberships }) {
                                 <button className='button button__sidebar--center-second' type='submit'>Explore Book Clubs</button>
                             </form>
                         </div>
-                    </div>
+                    </section>
                 </>)
             }
         </>

@@ -6,12 +6,16 @@
 #nav__title {
     color: var(--main-color);
     font-size: var(--logo-size);
-    font-weight: 500;
+    font-weight: var(--weight-med);
     text-transform: lowercase;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+#nav__title a {
+    color: var(--main-color);
 }
 
 #nav__links {
@@ -22,11 +26,13 @@
 .nav__text {
     color: var(--main-color);
     text-decoration: none;
+    transition: 0.3s;
 }
 
 #nav__links a:hover {
+    color: var(--link-hover);
     padding-bottom: 1px;
-    border-bottom: 1px solid var(--main-color);
+    /* border-bottom: 1px solid var(--main-color); */
 }
 
 .nav__mainlink,

@@ -10,7 +10,7 @@ function BrowseBooks() {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     Here are some books that have been added by our community members.
                 </p>
@@ -26,7 +26,7 @@ function BrowseBooks() {
                         <button className='button button__sidebar--center' type='submit'>Add a Book</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

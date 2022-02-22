@@ -10,7 +10,7 @@ function BookDetails() {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     To add this to your book club's reading list, use the dropdown to select where you want to add the book.
                 </p>
@@ -25,7 +25,7 @@ function BookDetails() {
                         <button className='button button__sidebar--center' type='submit'>Browse Books</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

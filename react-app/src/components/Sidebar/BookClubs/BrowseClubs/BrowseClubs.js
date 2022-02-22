@@ -10,7 +10,7 @@ function ClubsBrowse({ membershipCount }) {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     Joining a book club is easy! You can join or create up to 5 book clubs at a time.
                 </p>
@@ -28,7 +28,7 @@ function ClubsBrowse({ membershipCount }) {
                         </form>
                     )}
                 </div>
-            </div>
+            </section>
         </>
     )
 }

@@ -9,7 +9,7 @@ function CreateClub({ userMemberships }) {
 
     return (
         <>
-            <div className='sidebar__para'>
+            <section className='sidebar__para'>
                 <p>
                     Tell us and other users a little about the book club you want to create.
                 </p>
@@ -24,7 +24,7 @@ function CreateClub({ userMemberships }) {
                         <button className='button button__sidebar--center' type='submit'>Explore Book Clubs</button>
                     </form>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

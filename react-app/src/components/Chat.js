@@ -31,6 +31,7 @@ function Chat() {
 
     function sendChat(e) {
         e.preventDefault();
+
         console.log(chatInput)
         console.log(messages)
 

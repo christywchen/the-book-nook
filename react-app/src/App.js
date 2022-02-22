@@ -20,8 +20,7 @@ import BookCreate from './components/Books/BookCreate/BookCreate';
 import BookEdit from './components/Books/BookEdit/BookEdit';
 import BookDetails from './components/Books/BookDetails/BookDetails';
 
-import UsersList from './components/UsersList';
-import User from './components/User';
+// import User from './components/User';
 import Chat from './components/Chat';
 
 import { authenticate } from './store/session';
@@ -61,9 +60,6 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
 
         <div id="content__container">
           <Sidebar />

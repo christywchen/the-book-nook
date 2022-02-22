@@ -20,7 +20,7 @@ export const getUsers = () => async (dispatch) => {
 }
 
 // initial state
-const initialState = { byUserId: {}, allUserIds: [] };
+const initialState = { byId: {}, allUserIds: [] };
 
 // book club member reducer
 const userReducer = (state = initialState, action) => {
@@ -29,7 +29,7 @@ const userReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USERS:
             newState = { ...state };
-            newState.byUserId = action.users.reduce((users, user) => {
+            newState.byId = action.users.reduce((users, user) => {
                 newState.allUserIds.push(user.id);
                 users[user.id] = user;
                 return users;
