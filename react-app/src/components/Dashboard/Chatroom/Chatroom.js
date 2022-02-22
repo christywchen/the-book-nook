@@ -18,11 +18,12 @@ function Chatroom() {
         // create connection
         socket = io();
 
-        socket.emit("join", { "user": Date.now(), "room": chatroomId });
-
+        // join chatroom
+        socket.emit('join', { username: sessionUser.username, room: chatroomId });
 
         // listen for chat events
         socket.on('chat', chat => {
+            console.log(messages)
             // add any new messages into the messages array in the state
             setMessages(messages => [...messages, chat])
         });
@@ -30,8 +31,9 @@ function Chatroom() {
         // disconnect on unmount
         return (() => {
             socket.disconnect();
+            setMessages([]);
         })
-    }, []);
+    }, [chatroomId]);
 
     function updateChatInput(e) {
         setChatInput(e.target.value);
@@ -44,8 +46,9 @@ function Chatroom() {
 
         // emit a message
         socket.emit('chat', {
-            user: sessionUser.username,
-            msg: chatInput
+            username: sessionUser.username,
+            msg: chatInput,
+            room: chatroomId
         });
 
         // clear input after sending
@@ -54,9 +57,12 @@ function Chatroom() {
 
     if (!chatroom) {
         return (
-            <>
-                This chatroom does not exist.
-            </>
+            <div id="center__container">
+                <div id='center__container--title'>Reading List</div>
+                <div className='readinglist__card--container'>
+                    This chatroom does not exist.
+                </div>
+            </div>
         )
     }
 
@@ -68,7 +74,7 @@ function Chatroom() {
                 <div>
                     <div>
                         {messages.map((message, ind) => (
-                            <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+                            <div key={ind}>{`${message.username}: ${message.msg}`}</div>
                         ))}
                     </div>
                     <form onSubmit={sendChat}>

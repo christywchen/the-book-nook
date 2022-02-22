@@ -128,7 +128,7 @@ function DetailsBar() {
                             <div className='details__subbox details__currentreads'>
                                 <ul>
                                     {currentBooks.map(book => (
-                                        <li key={book.id}>
+                                        <li key={book?.id}>
                                             <span className='details__currentreads--title'>
                                                 {book?.title}
                                             </span> by {book?.author}
