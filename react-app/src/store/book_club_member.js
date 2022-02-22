@@ -54,7 +54,7 @@ export const removeBookClubMember = (bookClubId, membershipId) => {
     }
 }
 
-// thunk middlewares
+// thunks
 export const getUserMemberships = (bookClubId) => async (dispatch) => {
     const res = await fetch(`/api/users/${bookClubId}/book-clubs`);
 

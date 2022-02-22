@@ -313,3 +313,18 @@ def delete_book_club_book(book_club_id, book_id):
     db.session.commit()
 
     return {'message': 'Book club book successfully deleted.', 'book club book id': book_club_book_id}
+
+
+"""
+The below routes are for getting chatrooms associated with a book club.
+"""
+
+@book_club_routes.route('/<int:book_club_id>/chatrooms')
+@login_required
+def get_book_club_chatrooms(book_club_id):
+    """
+    Get all of a book club's chatrooms.
+    """
+    chatrooms = BookClubChatroom.query.filter(BookClubChatroom.book_club_id == book_club_id).all()
+
+    return {'chatrooms': [chatroom.to_dict() for chatroom in chatrooms]}
