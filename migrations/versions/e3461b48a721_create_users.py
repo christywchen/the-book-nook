@@ -25,6 +25,7 @@ def upgrade():
     sa.Column('first_name', sa.String(length=40), nullable=True),
     sa.Column('last_name', sa.String(length=40), nullable=True),
     sa.Column('dob', sa.Date(), nullable=True),
+    sa.Column('is_online', sa.Boolean(), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),

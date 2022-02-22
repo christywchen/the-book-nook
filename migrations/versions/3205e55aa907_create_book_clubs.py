@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('host_id', sa.Integer(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=True),
-    sa.Column('public', sa.Boolean(), nullable=True),
+    sa.Column('is_public', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['host_id'], ['users.id'], ),

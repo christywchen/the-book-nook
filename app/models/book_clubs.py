@@ -9,7 +9,7 @@ class BookClub(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     image_url = db.Column(db.Text)
     capacity = db.Column(db.Integer)
-    public = db.Column(db.Boolean, nullable=False, default=True)
+    is_public = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)
 
@@ -26,11 +26,11 @@ class BookClub(db.Model):
             "host_id": self.host_id,
             "image_url": self.image_url,
             "capacity": self.capacity,
-            "public": self.public,
+            "is_public": self.is_public,
             "created_at": self.created_at,
             "updated_at": self.updated_at
         }
 
 
     def __repr__(self):
-        return f"<class 'Book Club', id: {self.id}, name: {self.name}, description: {self.description}, host_id: {self.host_id}, image_url: {self.image_url}, capacity: {self.capacity}, public: {self.public}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
+        return f"<class 'Book Club', id: {self.id}, name: {self.name}, description: {self.description}, host_id: {self.host_id}, image_url: {self.image_url}, capacity: {self.capacity}, public: {self.is_public}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
