@@ -4,15 +4,13 @@ The Book Nook is an app for organizing your book clubs. Users can create book cl
 A live demo of this project can be found [here](https://book-nook-app.herokuapp.com/).
 
 This app was created an a two week sprint and has the following core functionalities:
-- **Book Clubs**: Book club creation is the cornerstone feature of The Book Nook. Book club creators can specify details about their club such as maximum member capactiy. Users can browse book clubs and see which ones still have available space for new members.
-- **Book Club Books**: Users can browse the database and add books to their book clubs' reading lists. Books in reading lists can be marked as __upcoming__, __read__, or __reading__. Books can also be removed from reading lists.
-- **Books**: Users can add books to the application's database so that they and other users can browse and begin adding more books to their book clubs.
-- **Book Club Membership**: Users can join or create up to 5 book clubs at a time. Users can browse a list of book clubs in the database and join any that they are interested. Book clubs whose capacity have been met can no longer be joined.
+- **Book Clubs & Memberships**: Creating and joining book clubs. Creators can set a member capacity for their book club. All users can join or create up to five book clubs.
+- **Book Clubs & Book Club Books**: Adding and removing books to and from book clubs' reading lists and setting read status. Users can browse books in the database or create new books if the desired book is not yet in the database.
 
 Visit the [wiki](https://github.com/christywchen/the-book-nook/wiki) for more information about features, database schema, redux state, and routes.
 
 # Implementation
-This app was built using a JavaScript frontend and Python backend.
+This app was built using a **JavaScript** frontend and **Python** backend.
 
 The backend utilizes **Flask** and **SQLAlchemy** along with **PostgreSQL** for data management. The API routes were designed with RESTful architecture in mind. Other libraries used to facilitate data retrieval or processing includes **WTForms**, **Flask-Login**, and **Alembic**.
 
@@ -20,7 +18,7 @@ The frontend utilizes **React**, and **Redux** along with **React Router** for r
 
 # Local Installation
 
-Running this application locally requires Python 3.9, Pipenv, PostgreSQL, and Node.js, and NPM. The root folder holds the backend directory, ``/app`` and the frontend directory, ``/react-app``.
+Running this application locally requires Python 3.9, Pipenv, PostgreSQL, and Node.js, and NPM. The root folder holds the backend directory ``/app`` and the frontend directory ``/react-app``.
 
 ## Step 1: Download
 Clone the project repository.
