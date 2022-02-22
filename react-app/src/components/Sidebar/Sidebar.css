@@ -1,8 +1,8 @@
 #sidebar__container {
     position: relative;
     box-sizing: border-box;
-    min-width: 240px;
-    max-width: 240px;
+    min-width: 260px;
+    max-width: 260px;
     height: 100%;
     padding: 20px 20px;
     background-color: var(--sidebar-bg);
