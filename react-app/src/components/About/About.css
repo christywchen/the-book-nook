@@ -35,10 +35,12 @@
 
 #about__container--description a:hover,
 #about__container--credits a:hover {
-    color: var(--link-hover);
+    color: var(--main-color);
+    opacity: 1;
 }
 
 #about__container--credits {
     margin: 15px 0 0;
     font-size: var(--body-small);
+    opacity: 0.8;
 }
