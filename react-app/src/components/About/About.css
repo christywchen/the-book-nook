@@ -1,17 +1,17 @@
 #about__container {
     position: relative;
-    top: 10vh;
+    top: 12vh;
     width: 45%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 25px 60px;
+    padding: 8px 60px;
     margin: auto auto;
     text-align: center;
 }
 
 #about__container--title {
-    margin: 12px 0 20px 0;
+    margin: 0 0 20px 0;
     font-size: var(--h1-size);
     font-weight: 600;
 }
