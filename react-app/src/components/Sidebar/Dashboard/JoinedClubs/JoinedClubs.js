@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllBookClubs } from '../../../../store/book_club';
 
 import BookClubItem from '../BookClubItem/BookClubItem';
+import { getAllBookClubChatrooms } from '../../../../store/chatroom';
 
 function JoinedClubs({ userMemberships }) {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function JoinedClubs({ userMemberships }) {
 
     useEffect(() => {
         dispatch(getAllBookClubs());
+        dispatch(getAllBookClubChatrooms());
     }, [dispatch]);
 
 

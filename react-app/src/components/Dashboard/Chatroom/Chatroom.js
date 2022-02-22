@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { io } from 'socket.io-client'
+import { io } from 'socket.io-client';
 
 import './Chatroom.css';
 
 let socket;
 
 function Chatroom() {
-    const { bookClubId, chatType } = useParams();
+    const { bookClubId, chatroomId } = useParams();
     const [messages, setMessages] = useState([]);
     const [chatInput, setChatInput] = useState('');
     const user = useSelector(state => state.session.user);
+    const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
 
     useEffect(() => {
         // create connection
         socket = io();
 
         // socket.on('join', () => {
-        //     socket.join('room').emit('hello', room = str());
+        //     socket.join(chatroomId).emit('hello', room = chatroomId);
         // })
 
         // listen for chat events
@@ -52,11 +53,18 @@ function Chatroom() {
         setChatInput('')
     }
 
+    if (!chatroom) {
+        return (
+            <>
+                This chatroom does not exist.
+            </>
+        )
+    }
 
     return (
         <>
             <div id="center__container">
-                <div id='center__container--title'>{chatType.slice(0, 1).toUpperCase() + chatType.slice(1)} Chat</div>
+                <div id='center__container--title'>{chatroom.name} Chat</div>
                 Book Club: {bookClubId}.
                 <div>
                     <div>

@@ -17,7 +17,7 @@ function Dashboard() {
                     <ReadingList />
                     <DetailsBar />
                 </Route>
-                <Route path='/dashboard/book-clubs/:bookClubId/rooms/:chatType'>
+                <Route path='/dashboard/book-clubs/:bookClubId/chats/:chatroomId'>
                     <Chatroom />
                     <DetailsBar />
                 </Route>
