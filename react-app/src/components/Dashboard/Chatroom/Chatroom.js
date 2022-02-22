@@ -19,7 +19,7 @@ function Chatroom() {
         socket = io();
 
         // join chatroom
-        socket.emit('join', { username: sessionUser.username, room: chatroomId });
+        socket.emit('join', { username: sessionUser.username, chatroom_id: chatroomId });
 
         // listen for chat events
         socket.on('chat', chat => {
@@ -46,9 +46,10 @@ function Chatroom() {
 
         // emit a message
         socket.emit('chat', {
+            user_id: sessionUser.id,
             username: sessionUser.username,
-            msg: chatInput,
-            room: chatroomId
+            body: chatInput,
+            chatroom_id: chatroomId
         });
 
         // clear input after sending
@@ -74,7 +75,7 @@ function Chatroom() {
                 <div>
                     <div>
                         {messages.map((message, ind) => (
-                            <div key={ind}>{`${message.username}: ${message.msg}`}</div>
+                            <div key={ind}>{`${message.username}: ${message.body}`}</div>
                         ))}
                     </div>
                     <form onSubmit={sendChat}>
