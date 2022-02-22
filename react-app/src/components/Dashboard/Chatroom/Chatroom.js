@@ -15,17 +15,12 @@ function Chatroom() {
     const [chatInput, setChatInput] = useState('');
     const sessionUser = useSelector(state => state.session.user);
     const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
-    const chatMessages = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId])
+    const prevMessagesObj = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId]);
+    const allUsersObj = useSelector(state => state.user.byId);
 
     useEffect(() => {
         // get previous chat messages
         dispatch(getChatroomMessages(chatroomId));
-
-    }, [dispatch, chatroomId])
-
-    console.log(chatMessages)
-
-    useEffect(() => {
 
         // create connection
         socket = io();
@@ -79,12 +74,27 @@ function Chatroom() {
         )
     }
 
+    // console.log('HERES THE PREV MESSAGES', prevMessages)
+    let prevMessages;
+    if (prevMessagesObj) {
+        prevMessages = Object.values(prevMessagesObj);
+    }
+
     return (
         <>
             <section id="center__container">
                 <div id='center__container--title'>{chatroom.name} Chat</div>
                 Book Club: {bookClubId}.
                 <div>
+                    <div>
+                        {prevMessages && allUsersObj && prevMessages.map((message, ind) => {
+                            const userId = message.user_id;
+                            const user = allUsersObj[userId]?.username;
+                            return (
+                                <div key={ind}>{`${user}: ${message.body}`}</div>
+                            )
+                        })}
+                    </div>
                     <div>
                         {messages.map((message, ind) => (
                             <div key={ind}>{`${message.username}: ${message.body}`}</div>

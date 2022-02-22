@@ -15,7 +15,7 @@ function DetailsBar() {
     const [showDelete, setShowDelete] = useState(false);
     const [showLeave, setShowLeave] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
-    const usersObj = useSelector(state => state.user.byUserId);
+    const usersObj = useSelector(state => state.user.byId);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubMembersObj = useSelector(state => state.bookClubMember.allMembershipsByClubId[bookClubId]);
     const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
