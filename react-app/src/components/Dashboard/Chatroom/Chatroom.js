@@ -1,20 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 
 import './Chatroom.css';
+import { getChatroomMessages } from '../../../store/chat_message';
 
 let socket;
 
 function Chatroom() {
     const { bookClubId, chatroomId } = useParams();
+    const dispatch = useDispatch();
     const [messages, setMessages] = useState([]);
     const [chatInput, setChatInput] = useState('');
     const sessionUser = useSelector(state => state.session.user);
     const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
+    const chatMessages = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId])
 
     useEffect(() => {
+        // get previous chat messages
+        dispatch(getChatroomMessages(chatroomId));
+
+    }, [dispatch, chatroomId])
+
+    console.log(chatMessages)
+
+    useEffect(() => {
+
         // create connection
         socket = io();
 

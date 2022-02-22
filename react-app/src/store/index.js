@@ -5,6 +5,7 @@ import bookClubReducer from './book_club';
 import bookClubBookReducer from './book_club_book';
 import bookClubMemberReducer from './book_club_member';
 import bookClubChatroomReducer from './chatroom';
+import chatroomMessageReducer from './chat_message';
 import session from './session'
 import userReducer from './user';
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   bookClubMember: bookClubMemberReducer,
   book: bookReducer,
   bookClubBook: bookClubBookReducer,
-  bookClubChatroom: bookClubChatroomReducer
+  bookClubChatroom: bookClubChatroomReducer,
+  chatroomMessage: chatroomMessageReducer
 });
 
 

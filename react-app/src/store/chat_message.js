@@ -121,7 +121,7 @@ const chatroomMessageReducer = (state = initialState, action) => {
             newState = { ...state };
             newState.byChatroomId[action.chatroomId] = { ...state.byChatroomId[action.chatroomId], [action.chatMessage.id]: action.chatMessage };
             return newState;
-        case REMOVE_BOOK_CLUB_BOOK:
+        case REMOVE_CHATROOM_MESSAGE:
             newState = { ...state }
             delete newState.byChatroomId[action.chatroomId][action.chatMessageId];
             return newState;
