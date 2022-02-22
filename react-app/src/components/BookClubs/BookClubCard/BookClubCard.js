@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { getBookClubMembers, getUserMemberships, removeUserMembership, deleteBookClubMember, addUserMembership, createBookClubMember } from '../../../store/book_club_member';
+import { getBookClubMembers, getUserMemberships, addUserMembership, createBookClubMember } from '../../../store/book_club_member';
 
 import './BookClubCard.css';
 
 function BookClubCard({ bookClub }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { id, name, description, host_id, image_url, capacity } = bookClub;
-    const backgroundImage = { backgroundImage: `url("${image_url}")` }
+    const { id, image_url, name, description, capacity } = bookClub;
 
     const sessionUser = useSelector(state => state.session.user);
     const userMembershipsObj = useSelector(state => state.bookClubMember.userMembershipsByClubId);
@@ -24,12 +23,12 @@ function BookClubCard({ bookClub }) {
     let memberCount;
     if (bookClubMembersObj) memberCount = Object.values(bookClubMembersObj).length;
 
-    const availableSpace = bookClub.capacity - memberCount;
+    const availableSpace = capacity - memberCount;
 
     useEffect(() => {
         dispatch(getBookClubMembers(id));
         dispatch(getUserMemberships(sessionUser.id));
-    }, [dispatch]);
+    }, [dispatch, id, sessionUser]);
 
     useEffect(() => { }, [availableSpace, memberCount]);
 
@@ -42,6 +41,8 @@ function BookClubCard({ bookClub }) {
             if (!data.errors) {
                 await dispatch(addUserMembership(data));
             }
+
+            setButtonText('Go to Club');
         }
 
         return history.push(`/dashboard/book-clubs/${bookClub.id}`);
@@ -50,23 +51,22 @@ function BookClubCard({ bookClub }) {
     return (
         <>
             <div className="bookclub__card">
-                {/* <div> */}
                 <div className='bookclub__card--body'>
                     <div
-                        key={bookClub.id}
+                        key={id}
                         className="bookclub__card--icon"
-                        title={bookClub.name}>
-                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='bookclub__card--icon-img' />) : bookClub.name.slice(0, 1)}
+                        title={name}>
+                        {image_url ? (<img src={image_url} alt='' className='bookclub__card--icon-img' />) : name.slice(0, 1)}
                     </div>
                     <div className='bookclub__card--title'>
-                        {bookClub.name}
+                        {name}
                     </div>
                     <div className='bookclub__card--capacity'>{availableSpace || 'No'} {availableSpace === 1 ? 'Space' : 'Spaces'} Available</div>
                     <div className='bookclub__card--description-title'>
                         Description:
                     </div>
                     <div className='bookclub__card--description'>
-                        {bookClub.description || (
+                        {description || (
                             <span className='bookclub__card--description-none'>No description provided.</span>
                         )}
                     </div>

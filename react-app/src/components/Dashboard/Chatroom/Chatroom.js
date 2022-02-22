@@ -11,16 +11,15 @@ function Chatroom() {
     const { bookClubId, chatroomId } = useParams();
     const [messages, setMessages] = useState([]);
     const [chatInput, setChatInput] = useState('');
-    const user = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
     const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
 
     useEffect(() => {
         // create connection
         socket = io();
 
-        // socket.on('join', () => {
-        //     socket.join(chatroomId).emit('hello', room = chatroomId);
-        // })
+        socket.emit("join", { "user": Date.now(), "room": chatroomId });
+
 
         // listen for chat events
         socket.on('chat', chat => {
@@ -45,7 +44,7 @@ function Chatroom() {
 
         // emit a message
         socket.emit('chat', {
-            user: user.username,
+            user: sessionUser.username,
             msg: chatInput
         });
 

@@ -20,7 +20,7 @@ import BookCreate from './components/Books/BookCreate/BookCreate';
 import BookEdit from './components/Books/BookEdit/BookEdit';
 import BookDetails from './components/Books/BookDetails/BookDetails';
 
-import User from './components/User';
+// import User from './components/User';
 import Chat from './components/Chat';
 
 import { authenticate } from './store/session';

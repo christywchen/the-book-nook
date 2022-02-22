@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
 import { getAllBookClubs, deleteBookClub } from "../../../store/book_club";
@@ -77,8 +77,6 @@ function DetailsBar() {
             return allBooksObj[bookId]
 
         });
-
-        // console.log(currentBooks)
     }
 
 
@@ -115,9 +113,8 @@ function DetailsBar() {
                                 <div className='details__members--list'>
                                     {members && members.map(member => {
                                         if (member) {
-                                            return (<>
+                                            return (
                                                 <div key={member.id}>{member.first_name}</div>
-                                            </>
                                             )
                                         }
                                     })}
@@ -131,7 +128,7 @@ function DetailsBar() {
                             <div className='details__subbox details__currentreads'>
                                 <ul>
                                     {currentBooks.map(book => (
-                                        <li>
+                                        <li key={book.id}>
                                             <span className='details__currentreads--title'>
                                                 {book?.title}
                                             </span> by {book?.author}
@@ -142,7 +139,7 @@ function DetailsBar() {
                         </div>)}
                         {bookClub.host_id === sessionUser.id ?
                             (<>
-                                <Link className='details__deleteleave' onClick={() => setShowDelete(!showDelete)}>Delete Book Club</Link>
+                                <div className='details__deleteleave' onClick={() => setShowDelete(!showDelete)}>Delete Book Club</div>
                                 {showDelete && (
                                     <div className='details__subbox details__description details__deleteleave--confirm'>
                                         Are you sure? This cannot be undone. <span className='details__deleteleave--link' onClick={handleDeleteClub}>Yes</span> // <span className='details__deleteleave--link' onClick={() => setShowDelete(false)}>No</span>
@@ -150,7 +147,7 @@ function DetailsBar() {
                                 )}
                             </>) :
                             (<>
-                                <Link className='details__deleteleave' onClick={() => setShowLeave(!showLeave)}>Leave Book Club</Link>
+                                <div className='details__deleteleave' onClick={() => setShowLeave(!showLeave)}>Leave Book Club</div>
                                 {showLeave && (
                                     <div className='details__subbox details__description details__deleteleave--confirm'>
                                         Are you sure you want to leave? <span className='details__deleteleave--link' onClick={handleLeaveClub}>Yes</span> // <span className='details__deleteleave--link' onClick={() => setShowLeave(false)}>No</span>

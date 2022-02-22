@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { io } from 'socket.io-client';
+
 import { getBookClubChatrooms } from '../../../../store/chatroom';
-
-let socket;
-
 
 function BookClubItem({ bookClub }) {
     const dispatch = useDispatch();
     const location = useLocation();
     const [showLinks, setShowLinks] = useState(false);
+    const sessionUser = useSelector(state => state.session.user);
     const allBookClubChatroomsObj = useSelector(state => state.bookClubChatroom.byId);
     const allBookClubChatrooms = Object.values(allBookClubChatroomsObj);
 
@@ -18,7 +16,7 @@ function BookClubItem({ bookClub }) {
     //     dispatch(getBookClubChatrooms(id));
     // }, [])
 
-    console.log(allBookClubChatroomsObj);
+    // console.log(allBookClubChatroomsObj);
 
     let bookClubChatrooms;
     if (allBookClubChatrooms && bookClub) {

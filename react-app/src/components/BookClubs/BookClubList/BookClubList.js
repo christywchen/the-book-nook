@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAllBookClubs } from "../../../store/book_club";
-import { getBookClubMembers } from "../../../store/book_club_member";
 import { getUsers } from "../../../store/user";
 
 import BookClubCard from "../BookClubCard/BookClubCard";

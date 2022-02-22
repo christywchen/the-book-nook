@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect, useParams } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Chatroom from './Chatroom/Chatroom';
 import DetailsBar from './DetailsBar/DetailsBar';
