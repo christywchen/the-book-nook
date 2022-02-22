@@ -73,6 +73,7 @@ def create_book_club():
                 name=data['name'],
                 description=data['description'],
                 host_id=data['host_id'],
+                image_url=data['image_url'],
                 capacity=data['capacity'],
                 created_at=datetime.now(),
                 updated_at=datetime.now()
@@ -137,10 +138,11 @@ def update_book_club(id):
         if data['capacity'] < member_count:
             return {'errors': ['Member capacity may not be less than the current member count.']}, 401
 
-        book_club.name = data['name'],
-        book_club.description = data['description'],
-        book_club.host_id = data['host_id'],
-        book_club.capacity = data['capacity'],
+        book_club.name = data['name']
+        book_club.description = data['description']
+        book_club.host_id = data['host_id']
+        book_club.image_url = data['image_url']
+        book_club.capacity = data['capacity']
         book_club.updated_at = datetime.now()
 
         db.session.commit()
