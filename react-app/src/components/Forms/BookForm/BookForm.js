@@ -74,7 +74,7 @@ function BookForm({ formType, formProps }) {
                         </ul>
                     )}
                     <div>
-                        <label>Book Title</label>
+                        <label>Title*</label>
                         <input
                             name='title'
                             type='text'
@@ -83,7 +83,7 @@ function BookForm({ formType, formProps }) {
                         ></input>
                     </div>
                     <div>
-                        <label>Author</label>
+                        <label>Author*</label>
                         <input
                             name='author'
                             type='text'
@@ -143,7 +143,7 @@ function BookForm({ formType, formProps }) {
                     </div> */}
                     <div className='input__split'>
                         <div>
-                            <label>Language</label>
+                            <label>Language*</label>
                             <input
                                 name='language'
                                 type='text'
@@ -163,7 +163,7 @@ function BookForm({ formType, formProps }) {
                     </div>
                     <div className='form__buttons'>
                         <button
-                            disabled={!title || !author || !language || !imageUrl}
+                            disabled={!title || !author || !language}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>

@@ -182,6 +182,7 @@ button {
     border-radius: 3px;
     outline: none;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 button:enabled:hover,

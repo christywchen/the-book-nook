@@ -84,6 +84,7 @@
 }
 
 .details__currentreads {
+    padding: 5px 10px;
     font-size: 0.8em;
     /* padding: 5px 0 5px; */
 }
@@ -94,18 +95,11 @@
 
 .details__currentreads li {
     list-style-type: none;
-    padding: 5px 0;
+    padding: 5px 0 5px;
     border-bottom: 1px solid var(--border-bottom);
 }
 
-.details__currentreads li:first-child {
-    list-style-type: none;
-    padding: 0 0 5px;
-}
-
 .details__currentreads li:last-child {
-    list-style-type: none;
-    padding: 5px 0 0;
     border-bottom: 0px solid var(--border-bottom);
 }
 
@@ -129,6 +123,7 @@
     font-weight: var(--weight-bold);
     color: var(--main-color);
     opacity: 0.8;
+    cursor: pointer;
 }
 
 .details__deleteleave--confirm {

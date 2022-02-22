@@ -8,7 +8,7 @@ class BookClub(db.Model):
     description = db.Column(db.String(100))
     host_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     image_url = db.Column(db.Text)
-    capacity = db.Column(db.Integer)
+    capacity = db.Column(db.Integer, nullable=False)
     is_public = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, nullable=False)
     updated_at = db.Column(db.DateTime, nullable=False)

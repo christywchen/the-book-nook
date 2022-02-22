@@ -74,7 +74,6 @@ def create_book_club():
                 description=data['description'],
                 host_id=data['host_id'],
                 capacity=data['capacity'],
-                public=data['public'],
                 created_at=datetime.now(),
                 updated_at=datetime.now()
             )

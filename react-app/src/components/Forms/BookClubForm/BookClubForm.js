@@ -69,7 +69,7 @@ function BookClubForm({ formType, formProps }) {
                         </ul>
                     )}
                     <div>
-                        <label>Name</label>
+                        <label>Name*</label>
                         <input
                             name='name'
                             type='text'
@@ -96,7 +96,7 @@ function BookClubForm({ formType, formProps }) {
                         ></input>
                     </div>
                     <div>
-                        <label>Member Capacity</label>
+                        <label>Member Capacity*</label>
                         <input
                             name='capacity'
                             type='number'
