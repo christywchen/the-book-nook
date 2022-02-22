@@ -21,7 +21,14 @@ function BookDetails() {
 
     if (!book) {
         return (
-            <>This book does not exist.</>
+            <section id='wide__container'>
+                <div id='wide__subcontainer--centered'>
+                    <div id='wide__title'>Not Found</div>
+                    <div className='book__card--container'>
+                        This book does not exist.
+                    </div>
+                </div>
+            </section >
         )
     }
 
@@ -51,11 +58,11 @@ function BookDetails() {
                         <div className='book__details--text-container'>
                             {book.synopsis && (
                                 <>
-                                    <span className='weight__med book__details--synopsis-title'>
+                                    <div className='weight__med book__details--synopsis-title'>
                                         Synopsis
-                                    </span>
+                                    </div>
                                     <div className='book__details--synopsis'>
-                                        {book.synopsis}
+                                        {book.synopsis.replace(/\n+/g, '\n\n')}
                                     </div>
                                 </>
                             )}

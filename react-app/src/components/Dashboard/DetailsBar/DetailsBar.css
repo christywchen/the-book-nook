@@ -49,6 +49,10 @@
     border-radius: var(--input-radius);
 }
 
+.details__description {
+    white-space: pre-line;
+}
+
 .details__members {
     height: fit-content;
     max-height: 104px;

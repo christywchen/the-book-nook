@@ -102,7 +102,7 @@ function DetailsBar() {
                                 Description
                             </div>
                             <div className='details__subbox details__description'>
-                                {bookClub.description}
+                                {bookClub.description.replace(/\n+/g, '\n\n')}
                             </div>
                         </div>)}
                         <div className='details__subsec'>

@@ -39,6 +39,7 @@
     font-weight: var(--weight-light);
     background-color: var(--sidebar-bg);
     border-radius: var(--input-radius);
+    white-space: pre-line;
 }
 
 .book__details--synopsis-title {
