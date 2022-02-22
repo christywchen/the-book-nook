@@ -15,12 +15,11 @@ const Navigation = () => {
   return (
     <nav id="nav__container">
       <div id="nav__title">
-        The Book Nook
+        <NavLink to='/' exact={true} activeClassName='active'>
+          The Book Nook
+        </NavLink>
       </div>
       <div id="nav__links">
-        <NavLink className='nav__mainlink' to='/' exact={true} activeClassName='active'>
-          Home
-        </NavLink>
         <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
           About
         </NavLink>
