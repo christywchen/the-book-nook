@@ -18,6 +18,8 @@
     --dash-bg: rgba(236, 139, 139, 0.2);
     --error-color: rgba(242, 64, 76, 0.774);
 
+    --standard-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
+
     --body-size: 16px;
     --body-small: 0.9em;
     --logo-size: 1.9em;

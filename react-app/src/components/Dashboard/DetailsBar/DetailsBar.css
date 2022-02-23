@@ -4,6 +4,7 @@
     padding: 0 20px;
     background-color: var(--sidebar-bg);
     border-radius: 12px;
+    box-shadow: var(--standard-shadow);
 }
 
 .details__heading {
