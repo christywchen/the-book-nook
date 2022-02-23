@@ -111,6 +111,7 @@ function Chatroom() {
                         <input
                             value={chatInput}
                             onChange={updateChatInput}
+                            placeholder='Type your message... '
                         />
                         <button type="submit">Send</button>
                     </form>

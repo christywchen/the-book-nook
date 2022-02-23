@@ -6,8 +6,7 @@
     --body-width: calc(100vw - 75px);
 
     --main-color: rgba(255, 255, 255, 1);
-    --background-color: rgba(226, 58, 80, 0.3);
-    --nav-accent: rgba(219, 83, 74, 0.9);
+    --background-color: rgba(207, 44, 66, 0.25);
     --lighter-bg: rgba(255, 255, 255, 0.8);
     --link-hover: rgba(255, 255, 255, 0.65);
     --accent-bg: rgba(255, 255, 255, 0.48);
@@ -16,7 +15,7 @@
     --sidebar-bg: rgba(255, 255, 255, 0.1);
     --button-bg: rgba(221, 221, 221, 0.12);
     --dash-bg: rgba(236, 139, 139, 0.2);
-    --error-color: rgba(242, 64, 76, 0.774);
+    --error-color: rgba(196, 72, 80, 0.774);
 
     --standard-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
 
@@ -240,7 +239,8 @@ select {
 #auth__container input:focus,
 #form__container input:focus,
 #form__container textarea:focus,
-#form__container select:focus {
+#form__container select:focus,
+input:focus {
     background-color: var(--input-bg);
     color: var(--main-color);
     outline: none;
@@ -249,7 +249,8 @@ select {
 
 #auth__container input::placeholder,
 #form__container input::placeholder,
-#form__container textarea::placeholder {
+#form__container textarea::placeholder,
+input::placeholder {
     color: var(--lighter-bg);
     font-style: italic;
 }
