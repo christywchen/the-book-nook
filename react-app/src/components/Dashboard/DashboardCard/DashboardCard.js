@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllBooks } from '../../../store/book';
+import { Link } from 'react-router-dom';
 
 import ReadingListCard from '../ReadingListCard/ReadingListCard';
+
 import './DashboardCard.css';
 
 function DashboardCard({ bookClub, allBooksObj, allBookClubBooks }) {
@@ -24,7 +23,9 @@ function DashboardCard({ bookClub, allBooksObj, allBookClubBooks }) {
     return (
         <>
             <div className='dash__card--subtitle'>
-                {bookClub?.name}
+                <Link to={`/dashboard/book-clubs/${bookClub?.id}/reading-list`}>
+                    {bookClub?.name}
+                </Link>
             </div>
             <div className='readinglist__card--container dash__card--books'>
                 {bookClubBooks.length > 0 ? bookClubBooks.map(book => (

@@ -45,14 +45,16 @@ function DashboardHome() {
             <section id="center__container">
                 <div id='center__container--topbar'>
                     <div className="circular__icon dashboard__icon">
-                        R
+                        B
                     </div>
                     <div id='center__container--title'>
-                        Reading List
+                        Book Club Reading Lists
+                    </div>
+                    <div id='center__container--subtitle'>
+                        Your book clubs at a glance.
                     </div>
                 </div>
                 <div id='center__container--main-content'>
-                    Here's what's on the docket for your book clubs...
                     <div className='readinglist__card--container'>
                         {userBookClubs.length > 0 ? userBookClubs.map(bookClub => (
                             <DashboardCard bookClub={bookClub} allBooksObj={allBooksObj} allBookClubBooks={allBookClubBooks} />

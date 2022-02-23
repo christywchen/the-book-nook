@@ -12,6 +12,13 @@
     position: sticky;
 }
 
+#center__container--subtitle {
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin: 0 10px 3px;
+    font-style: italic;
+}
+
 #center__container--topbar {
     display: flex;
     gap: 7px;
