@@ -18,4 +18,14 @@
 #chatroom__input {
     /* background-color: blue; */
     height: 45px;
+    padding-top: 8px;
+}
+
+#chatroom__input form {
+    display: flex;
+    gap: 10px;
+}
+
+#chatroom__input input {
+    padding: 8px;
 }

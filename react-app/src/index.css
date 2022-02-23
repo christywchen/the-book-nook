@@ -206,7 +206,8 @@ button:active:hover {
 #form__container input,
 #form__container textarea,
 #form__container select,
-select {
+select,
+input {
     width: 100%;
     padding: 6px 10px;
     margin: 6px 0;
