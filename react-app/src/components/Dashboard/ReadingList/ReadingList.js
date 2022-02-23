@@ -58,12 +58,14 @@ function ReadingList() {
                         Reading List
                     </div>
                 </div>
-                <div className='readinglist__card--container'>
-                    {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
-                        <div key={book.id}>
-                            <ReadingListCard bookInfo={book} />
-                        </div>
-                    )) : <>No books at the moment. Maybe you could add some to this book club's reading list?</>}
+                <div id='center__container--main-content'>
+                    <div className='readinglist__card--container'>
+                        {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
+                            <div key={book.id}>
+                                <ReadingListCard bookInfo={book} />
+                            </div>
+                        )) : <>No books at the moment. Maybe you could add some to this book club's reading list?</>}
+                    </div>
                 </div>
             </section>
         </>

@@ -1,7 +1,9 @@
 #center__container {
     width: 80%;
     margin: 20px 0px 20px 20px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    display: flex;
+    flex-direction: column;
 }
 
 #center__container--title {
@@ -13,6 +15,13 @@
 #center__container--topbar {
     display: flex;
     gap: 7px;
+}
+
+#center__container--main-content {
+    margin-top: 8px;
+    position: relative;
+    /* height: calc(100% - 35px); */
+    overflow-y: scroll;
 }
 
 .bookclub__icon {

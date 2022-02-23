@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 
-import './Chatroom.css';
 import { getChatroomMessages } from '../../../store/chat_message';
+
+import './Chatroom.css';
 
 let socket;
 
@@ -92,22 +93,27 @@ function Chatroom() {
                         {chatroom.name} Chat
                     </div>
                 </div>
-                Book Club: {bookClubId}.
-                <div>
-                    <div>
-                        {prevMessages && allUsersObj && prevMessages.map((message, ind) => {
-                            const userId = message.user_id;
-                            const user = allUsersObj[userId]?.username;
-                            return (
-                                <div key={ind}>{`${user}: ${message.body}`}</div>
-                            )
-                        })}
+                <div id='center__container--main-content'>
+                    {/* <div id='chatroom__container'> */}
+                    <div id='chatroom__messages'>
+                        <div>
+                            {prevMessages && allUsersObj && prevMessages.map((message, ind) => {
+                                const userId = message.user_id;
+                                const user = allUsersObj[userId]?.username;
+                                return (
+                                    <div key={ind}>{`${user}: ${message.body}`}</div>
+                                )
+                            })}
+                        </div>
+                        <div>
+                            {messages.map((message, ind) => (
+                                <div key={ind}>{`${message.username}: ${message.body}`}</div>
+                            ))}
+                        </div>
                     </div>
-                    <div>
-                        {messages.map((message, ind) => (
-                            <div key={ind}>{`${message.username}: ${message.body}`}</div>
-                        ))}
-                    </div>
+                    {/* </div> */}
+                </div>
+                <div id='chatroom__input'>
                     <form onSubmit={sendChat}>
                         <input
                             value={chatInput}
