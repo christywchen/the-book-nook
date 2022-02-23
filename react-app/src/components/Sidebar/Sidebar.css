@@ -14,6 +14,7 @@
     margin: 0 0 10px 0;
     font-size: var(--h4-size);
     font-weight: 600;
+    cursor: pointer;
 }
 
 .sidebar__links--group {
