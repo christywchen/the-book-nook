@@ -17,6 +17,7 @@
     align-self: flex-end;
     margin: 0 10px 3px;
     font-style: italic;
+    font-weight: var(--weight-xlight);
 }
 
 #center__container--topbar {

@@ -34,7 +34,7 @@ function BookClubForm({ formType, formProps }) {
 
         if (formType === 'editRecord') {
             let id = formProps.id;
-            let hostId = formProps.host_id
+            let hostId = formProps.host_id;
 
             const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
 
