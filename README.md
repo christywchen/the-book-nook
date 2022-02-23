@@ -1,5 +1,10 @@
 # The Book Nook
-The Book Nook is an app for organizing your book clubs. This project seeks to create an enclave for friends to gather in a space away from their busy, cluttered social media accounts. It's a sleek, no-frills platform intended to help book clubs spend less time getting organized and more time doing what they actually want to do: _read books, then talk about them_.
+
+Read more. Discuss better. Stress less.
+
+The Book Nook is an app for organizing book clubs. This project seeks to create an enclave for friends to gather in a space away from their busy, cluttered social media accounts. 
+
+It's a sleek, no-frills platform intended to help book clubs spend less time getting organized and more time doing what they actually want to do: _read books, then talk about them_.
 
 A live demo of this project can be found [here](https://book-nook-app.herokuapp.com/).
 
