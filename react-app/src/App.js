@@ -38,7 +38,6 @@ function App() {
   return (
     <BrowserRouter>
       <Navigation />
-      {/* <div id="body__container"> */}
       <Switch>
         <Route path='/' exact={true}>
           <Home />
@@ -76,7 +75,6 @@ function App() {
           </ProtectedRoute>
         </div>
       </Switch>
-      {/* </div> */}
     </BrowserRouter>
   );
 }

@@ -27,6 +27,12 @@
     justify-content: flex-end; */
 }
 
+#center__card--container {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+}
+
 .dashboard__icon {
     width: 30px;
     height: 30px;

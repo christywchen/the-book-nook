@@ -66,7 +66,7 @@ function ReadingListCard({ bookInfo }) {
                     </select>
                 </div>
             </div >
-            {(sessionUser.id === bookAdder || sessionUser.id === bookClubHost) && (
+            {bookClubId && (sessionUser.id === bookAdder || sessionUser.id === bookClubHost) && (
                 <div className='readinglist__card--delete'>
                     <Link to='' onClick={handleRemove}>
                         Remove Book

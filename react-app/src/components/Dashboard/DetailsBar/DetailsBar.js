@@ -67,7 +67,7 @@ function DetailsBar() {
             return usersObj[member.user_id];
         });
 
-        console.log(members, 'MEMBERS LIST')
+        // console.log(members, 'MEMBERS LIST')
 
         host = usersObj[bookClub?.host_id];
     }

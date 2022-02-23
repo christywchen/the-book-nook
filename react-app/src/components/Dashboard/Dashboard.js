@@ -11,7 +11,7 @@ function Dashboard() {
     return (
         <>
             <Switch>
-                <Route path='/dashboard/book-clubs/' exact={true}>
+                <Route path='/dashboard' exact={true}>
                     <DashboardHome />
                 </Route>
                 <Route path='/dashboard/book-clubs/:bookClubId' exact={true}>

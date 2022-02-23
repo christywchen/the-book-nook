@@ -96,7 +96,7 @@ hr {
 }
 
 .weight__heavy {
-    font-weight: var(--weight-heavy);
+    font-weight: var(--weight-bold);
 }
 
 .weight__med {
