@@ -6,6 +6,7 @@ A live demo of this project can be found [here](https://book-nook-app.herokuapp.
 This app was created an a two week sprint and has the following core functionalities:
 - **Book Clubs & Memberships**: Creating and joining book clubs. Creators can set a member capacity for their book club. All users can join or create up to five book clubs.
 - **Book Clubs & Book Club Books**: Adding and removing books to and from book clubs' reading lists and setting read status. Users can browse books in the database or create new books if the desired book is not yet in the database.
+- **Book Club Chatrooms**: Each book club comes with a general chat and spoilers chat that its members can participate in.
 
 Visit the [wiki](https://github.com/christywchen/the-book-nook/wiki) for more information about features, database schema, redux state, and routes.
 
