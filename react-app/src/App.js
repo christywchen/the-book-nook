@@ -11,20 +11,12 @@ import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
 import Dashboard from './components/Dashboard/Dashboard';
 import Sidebar from './components/Sidebar/Sidebar';
-
-import BookClubList from './components/BookClubs/BookClubList/BookClubList';
-import BookClubCreate from './components/BookClubs/BookClubCreate/BookClubCreate';
-import BookClubEdit from './components/BookClubs/BookClubEdit/BookClubEdit';
-import BookList from './components/Books/BookList/BookList';
-import BookCreate from './components/Books/BookCreate/BookCreate';
-import BookEdit from './components/Books/BookEdit/BookEdit';
-import BookDetails from './components/Books/BookDetails/BookDetails';
-
+import Books from './components/Books/Books';
+import BookClubs from './components/BookClubs/BookClubs';
 // import User from './components/User';
 import Chat from './components/Chat';
 
 import { authenticate } from './store/session';
-
 
 import './App.css';
 
@@ -63,35 +55,14 @@ function App() {
 
         <div id="content__container">
           <Sidebar />
-          <ProtectedRoute path='/dashboard/*' exact={true} >
+          <ProtectedRoute path='/dashboard*' exact={true} >
             <Dashboard />
           </ProtectedRoute>
-          <ProtectedRoute path='/book-clubs' exact={true} >
-            <Redirect to='/book-clubs/all' />
+          <ProtectedRoute path='/book-clubs*' exact={true} >
+            <BookClubs />
           </ProtectedRoute>
-          <ProtectedRoute path='/book-clubs/all' exact={true} >
-            <BookClubList />
-          </ProtectedRoute>
-          <ProtectedRoute path='/book-clubs/new' exact={true} >
-            <BookClubCreate />
-          </ProtectedRoute>
-          <ProtectedRoute path={'/book-clubs/:id(\\d+)/edit'} exact={true} >
-            <BookClubEdit />
-          </ProtectedRoute>
-          <ProtectedRoute path='/books' exact={true} >
-            <Redirect to='/books/all' />
-          </ProtectedRoute>
-          <ProtectedRoute path='/books/all' exact={true} >
-            <BookList />
-          </ProtectedRoute>
-          <ProtectedRoute path={'/books/:id(\\d+)'} exact={true} >
-            <BookDetails />
-          </ProtectedRoute>
-          <ProtectedRoute path='/books/new' exact={true} >
-            <BookCreate />
-          </ProtectedRoute>
-          <ProtectedRoute path={'/books/:id(\\d+)/edit'} exact={true} >
-            <BookEdit />
+          <ProtectedRoute path='/books*' exact={true} >
+            <Books />
           </ProtectedRoute>
 
           {/* <ProtectedRoute path='/users/:userId' exact={true} >

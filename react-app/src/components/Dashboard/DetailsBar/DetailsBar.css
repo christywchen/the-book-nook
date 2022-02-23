@@ -98,6 +98,7 @@
     list-style-type: none;
     padding: 5px 0 5px;
     border-bottom: 1px solid var(--border-bottom);
+    font-weight: var(--weight-xlight);
 }
 
 .details__currentreads li:last-child {
@@ -106,8 +107,14 @@
 
 .details__currentreads--title {
     margin: 0 2px 0 0;
+    color: var(--lighter-bg);
     font-weight: var(--weight-med);
     font-style: italic;
+    transition: 0.2s;
+}
+
+.details__currentreads--title:hover {
+    color: var(--link-hover);
 }
 
 .button__details--edit {
