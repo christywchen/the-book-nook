@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
 
-import './Chatroom.css';
 import { getChatroomMessages } from '../../../store/chat_message';
+
+import './Chatroom.css';
+import ChatMessage from '../ChatMessage/ChatMessage';
 
 let socket;
 
@@ -16,7 +18,8 @@ function Chatroom() {
     const sessionUser = useSelector(state => state.session.user);
     const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
     const prevMessagesObj = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId]);
-    const allUsersObj = useSelector(state => state.user.byId);
+    // const allUsersObj = useSelector(state => state.user.byId);
+    const bookClub = useSelector(state => state.bookClub.byId[bookClubId]);
 
     useEffect(() => {
         // get previous chat messages
@@ -63,7 +66,7 @@ function Chatroom() {
         setChatInput('')
     }
 
-    if (!chatroom) {
+    if (!chatroom || !bookClub) {
         return (
             <section id="center__container">
                 <div id='center__container--title'>Reading List</div>
@@ -82,33 +85,38 @@ function Chatroom() {
 
     return (
         <>
-            <section id="center__container">
-                <div id='center__container--title'>{chatroom.name} Chat</div>
-                Book Club: {bookClubId}.
-                <div>
-                    <div>
-                        {prevMessages && allUsersObj && prevMessages.map((message, ind) => {
-                            const userId = message.user_id;
-                            const user = allUsersObj[userId]?.username;
-                            return (
-                                <div key={ind}>{`${user}: ${message.body}`}</div>
-                            )
-                        })}
+            <section id='center__container'>
+                <div id='center__container--topbar'>
+                    <div className="circular__icon dashboard__icon">
+                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='circular__icon--img dashboard__icon--img' />) : bookClub.name.slice(0, 1)}
                     </div>
-                    <div>
-                        {messages.map((message, ind) => (
-                            <div key={ind}>{`${message.username}: ${message.body}`}</div>
-                        ))}
+                    <div id='center__container--title'>
+                        {chatroom.name} Chat
                     </div>
+                </div>
+                <div id='center__container--main-content'>
+                    <div id='chatroom__messages'>
+                        <div>
+                            {prevMessages && prevMessages.map((message, ind) => (
+                                <ChatMessage message={message} />
+                            ))}
+                            {messages.map((message, ind) => (
+                                <ChatMessage message={message} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div id='chatroom__input'>
                     <form onSubmit={sendChat}>
                         <input
                             value={chatInput}
                             onChange={updateChatInput}
+                            placeholder='Type your message... '
                         />
                         <button type="submit">Send</button>
                     </form>
                 </div>
-            </section>
+            </section >
         </>
     )
 }

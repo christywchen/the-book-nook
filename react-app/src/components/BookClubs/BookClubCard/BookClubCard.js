@@ -45,7 +45,7 @@ function BookClubCard({ bookClub }) {
             setButtonText('Go to Club');
         }
 
-        return history.push(`/dashboard/book-clubs/${bookClub.id}/reading-list`);
+        return history.push(`/dashboard/book-clubs/${bookClub.id}/`);
     }
 
     return (
@@ -54,9 +54,9 @@ function BookClubCard({ bookClub }) {
                 <div className='bookclub__card--body'>
                     <div
                         key={id}
-                        className="bookclub__card--icon"
+                        className="circular__icon bookclub__icon"
                         title={name}>
-                        {image_url ? (<img src={image_url} alt='' className='bookclub__card--icon-img' />) : name.slice(0, 1)}
+                        {image_url ? (<img src={image_url} alt='' className='circular__icon bookclub__icon--img' />) : name.slice(0, 1)}
                     </div>
                     <div className='bookclub__card--title'>
                         {name}

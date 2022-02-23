@@ -47,6 +47,7 @@ function BookDetails() {
                     <div className='book__details--container'>
                         <div className='book__details--image-container'>
                             <div className='book__details--image' style={backgroundImage}>
+                                {!book.image_url && <>No Cover Image Available</>}
                             </div>
 
                             <div className='create__club--link'>

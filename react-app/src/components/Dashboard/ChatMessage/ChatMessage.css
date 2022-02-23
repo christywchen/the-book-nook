@@ -1,0 +1,32 @@
+.message__container {
+    display: flex;
+    margin: 5px 0;
+    gap: 5px;
+}
+
+.message__text {
+    width: 99%;
+}
+
+.message__author {
+    margin: 0 8px;
+    font-weight: var(--weight-bold);
+}
+
+.message__content {
+    padding: 7px 12px;
+    margin: 4px 0;
+    font-size: var(--body-font);
+    background-color: var(--input-bg);
+    border-radius: 12px;
+    box-shadow: var(--standard-shadow);
+}
+
+.chat__icon--user,
+.chat__icon--user--img {
+    margin-top: 24px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}

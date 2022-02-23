@@ -6,17 +6,18 @@
     --body-width: calc(100vw - 75px);
 
     --main-color: rgba(255, 255, 255, 1);
-    --background-color: rgba(226, 58, 80, 0.3);
-    --nav-accent: rgba(219, 83, 74, 0.9);
-    --border-bottom: rgba(255, 255, 255, 0.25);
-    --lighter-bg: rgba(255, 255, 255, 0.85);
+    --background-color: rgba(207, 44, 66, 0.25);
+    --lighter-bg: rgba(255, 255, 255, 0.8);
     --link-hover: rgba(255, 255, 255, 0.65);
     --accent-bg: rgba(255, 255, 255, 0.48);
-    --input-bg: rgba(255, 255, 255, 0.24);
+    --border-bottom: rgba(255, 255, 255, 0.25);
+    --input-bg: rgba(255, 255, 255, 0.2);
     --sidebar-bg: rgba(255, 255, 255, 0.1);
     --button-bg: rgba(221, 221, 221, 0.12);
-    --dash-bg: rgba(240, 187, 187, 0.2);
-    --error-color: rgba(242, 64, 76, 0.774);
+    --dash-bg: rgba(236, 139, 139, 0.2);
+    --error-color: rgba(196, 72, 80, 0.774);
+
+    --standard-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
 
     --body-size: 16px;
     --body-small: 0.9em;
@@ -206,7 +207,8 @@ button:active:hover {
 #form__container input,
 #form__container textarea,
 #form__container select,
-select {
+select,
+input {
     width: 100%;
     padding: 6px 10px;
     margin: 6px 0;
@@ -237,7 +239,8 @@ select {
 #auth__container input:focus,
 #form__container input:focus,
 #form__container textarea:focus,
-#form__container select:focus {
+#form__container select:focus,
+input:focus {
     background-color: var(--input-bg);
     color: var(--main-color);
     outline: none;
@@ -246,8 +249,10 @@ select {
 
 #auth__container input::placeholder,
 #form__container input::placeholder,
-#form__container textarea::placeholder {
-    color: var(--main-color);
+#form__container textarea::placeholder,
+input::placeholder {
+    color: var(--lighter-bg);
+    font-style: italic;
 }
 
 .input__split {
@@ -263,4 +268,34 @@ select {
 
 .form__textarea--lg {
     height: 70px;
+}
+
+/* circular icons */
+
+.circular__icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    text-align: center;
+    color: var(--main-color);
+    font-weight: var(--weight-bold);
+    text-transform: uppercase;
+    background-color: var(--accent-bg);
+    border-radius: 100%;
+    border: solid 1px var(--input-bg);
+    background-clip: content-box;
+    transition: 0.3s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.circular__icon--img {
+    padding: 2px;
+    border-radius: 100%;
+    border: solid 1px var(--input-bg);
+    background-clip: content-box;
 }

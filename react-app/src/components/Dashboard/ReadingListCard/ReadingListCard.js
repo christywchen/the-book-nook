@@ -41,6 +41,7 @@ function ReadingListCard({ bookInfo }) {
                 <div>
                     <Link to={`/books/${book?.id}`}>
                         <div className='readinglist__card--image' style={backgroundImage}>
+                            {!book?.image_url && <>No Cover Image Available</>}
                         </div>
                     </Link>
                     <div className='readinglist__card--body'>

@@ -4,6 +4,7 @@
     padding: 0 20px;
     background-color: var(--sidebar-bg);
     border-radius: 12px;
+    box-shadow: var(--standard-shadow);
 }
 
 .details__heading {
@@ -121,24 +122,26 @@
 
 .details__deleteleave {
     font-weight: var(--weight-bold);
-    color: var(--main-color);
-    opacity: 0.8;
+    color: var(--lighter-bg);
+    /* opacity: 0.7; */
     cursor: pointer;
 }
 
 .details__deleteleave--confirm {
     margin: 8px 0;
     font-size: 0.8em;
-    opacity: 0.8;
+    /* opacity: 0.7; */
+    color: var(--lighter-bg);
     border: 1px solid var(--error-color);
     background-color: var(--error-color);
 }
 
 .details__deleteleave--link {
     font-weight: var(--weight-bold);
+    transition: 0.3s;
 }
 
 .details__deleteleave--link:hover {
     cursor: pointer;
-    color: var(--link-hover);
+    color: var(--main-color);
 }

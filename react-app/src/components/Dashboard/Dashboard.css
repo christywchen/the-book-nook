@@ -1,11 +1,40 @@
 #center__container {
     width: 80%;
     margin: 20px 0px 20px 20px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    display: flex;
+    flex-direction: column;
 }
 
 #center__container--title {
     font-size: var(--h2-size);
     font-weight: 600;
     position: sticky;
+}
+
+#center__container--topbar {
+    display: flex;
+    gap: 7px;
+}
+
+#center__container--main-content {
+    position: relative;
+    height: 100%;
+    margin-top: 8px;
+    overflow-y: scroll;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-end; */
+}
+
+.dashboard__icon {
+    width: 30px;
+    height: 30px;
+    margin: 3px 0 0;
+    font-size: 0.9em;
+}
+
+.dashboard__icon--img {
+    width: 30px;
+    height: 30px;
 }
