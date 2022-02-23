@@ -27,10 +27,14 @@
     justify-content: flex-end; */
 }
 
-.dashboard__icon,
-.dashboard__icon--img {
+.dashboard__icon {
     width: 30px;
     height: 30px;
     margin: 3px 0 0;
     font-size: 0.9em;
+}
+
+.dashboard__icon--img {
+    width: 30px;
+    height: 30px;
 }
