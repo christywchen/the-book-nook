@@ -8,11 +8,11 @@
     --main-color: rgba(255, 255, 255, 1);
     --background-color: rgba(226, 58, 80, 0.3);
     --nav-accent: rgba(219, 83, 74, 0.9);
-    --border-bottom: rgba(255, 255, 255, 0.25);
     --lighter-bg: rgba(255, 255, 255, 0.8);
     --link-hover: rgba(255, 255, 255, 0.65);
     --accent-bg: rgba(255, 255, 255, 0.48);
-    --input-bg: rgba(255, 255, 255, 0.24);
+    --border-bottom: rgba(255, 255, 255, 0.25);
+    --input-bg: rgba(255, 255, 255, 0.2);
     --sidebar-bg: rgba(255, 255, 255, 0.1);
     --button-bg: rgba(221, 221, 221, 0.12);
     --dash-bg: rgba(236, 139, 139, 0.2);
@@ -247,7 +247,8 @@ select {
 #auth__container input::placeholder,
 #form__container input::placeholder,
 #form__container textarea::placeholder {
-    color: var(--main-color);
+    color: var(--lighter-bg);
+    font-style: italic;
 }
 
 .input__split {
@@ -275,7 +276,6 @@ select {
     padding: 2px;
     text-align: center;
     color: var(--main-color);
-    font-size: 0.8em;
     font-weight: var(--weight-bold);
     text-transform: uppercase;
     background-color: var(--accent-bg);

@@ -97,17 +97,11 @@ function Chatroom() {
                 <div id='center__container--main-content'>
                     <div id='chatroom__messages'>
                         <div>
-                            {prevMessages && prevMessages.map((message, ind) => {
-                                // const userId = message.user_id;
-                                // const user = allUsersObj[userId];
-                                return (<ChatMessage message={message} />
-                                )
-                            })}
-                        </div>
-                        <div>
+                            {prevMessages && prevMessages.map((message, ind) => (
+                                <ChatMessage message={message} />
+                            ))}
                             {messages.map((message, ind) => (
                                 <ChatMessage message={message} />
-                                // <div key={ind}>{`${message.username}: ${message.body}`}</div>
                             ))}
                         </div>
                     </div>
