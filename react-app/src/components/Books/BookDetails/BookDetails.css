@@ -16,7 +16,14 @@
     background-position: center;
     width: 175px;
     height: 270px;
+    display: flex;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     /* margin-bottom: 15px; */
+    font-size: 0.8em;
+    color: var(--lighter-bg);
     overflow: hidden;
     border-radius: 3px 3px 0 0;
     background-color: var(--sidebar-bg);

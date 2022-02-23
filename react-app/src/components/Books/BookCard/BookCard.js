@@ -18,6 +18,7 @@ function BookCard({ book }) {
             <section className='book__card'>
                 <Link to={`/books/${id}`}>
                     <div className='book__card--image' style={backgroundImage}>
+                        {!image_url && <>No Cover Image Available</>}
                     </div>
                 </Link>
                 <div className='book__card--body'>

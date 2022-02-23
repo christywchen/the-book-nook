@@ -17,6 +17,7 @@ function Chatroom() {
     const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
     const prevMessagesObj = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId]);
     const allUsersObj = useSelector(state => state.user.byId);
+    const bookClub = useSelector(state => state.bookClub.byId[bookClubId]);
 
     useEffect(() => {
         // get previous chat messages
@@ -63,7 +64,7 @@ function Chatroom() {
         setChatInput('')
     }
 
-    if (!chatroom) {
+    if (!chatroom || !bookClub) {
         return (
             <section id="center__container">
                 <div id='center__container--title'>Reading List</div>
@@ -83,7 +84,14 @@ function Chatroom() {
     return (
         <>
             <section id="center__container">
-                <div id='center__container--title'>{chatroom.name} Chat</div>
+                <div id='center__container--topbar'>
+                    <div className="bookclub__icon">
+                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='bookclub__icon--img' />) : bookClub.name.slice(0, 1)}
+                    </div>
+                    <div id='center__container--title'>
+                        {chatroom.name} Chat
+                    </div>
+                </div>
                 Book Club: {bookClubId}.
                 <div>
                     <div>

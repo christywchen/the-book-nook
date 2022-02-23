@@ -9,3 +9,41 @@
     font-weight: 600;
     position: sticky;
 }
+
+#center__container--topbar {
+    display: flex;
+    gap: 7px;
+}
+
+.bookclub__icon {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px 0 0;
+    padding: 3px;
+    text-align: center;
+    color: var(--lighter-bg);
+    font-size: 0.8em;
+    font-weight: var(--weight-bold);
+    background-color: var(--accent-bg);
+    border-radius: 100%;
+    border: solid 1px var(--input-bg);
+    background-clip: content-box;
+    transition: 0.3s;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.bookclub__icon--img {
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    border-radius: 100%;
+    border: solid 1px var(--input-bg);
+    background-clip: content-box;
+}
