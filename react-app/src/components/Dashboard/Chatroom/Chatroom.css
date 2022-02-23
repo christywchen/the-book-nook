@@ -12,10 +12,10 @@
     justify-content: flex-end;
     flex-direction: column;
     overflow-y: scroll;
-    background-color: red;
+    /* background-color: red; */
 }
 
 #chatroom__input {
-    background-color: blue;
+    /* background-color: blue; */
     height: 45px;
 }

@@ -25,36 +25,15 @@
     margin: 12px 0 6px;
 }
 
-.bookclub__card--icon {
-    position: relative;
+.bookclub__icon {
     width: 75px;
     height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3px;
-    text-align: center;
-    color: var(--main-color);
     font-size: var(--h1-size);
-    font-weight: var(--weight-bold);
-    background-color: var(--accent-bg);
-    border-radius: 100%;
-    border: solid 1px var(--input-bg);
-    background-clip: content-box;
-    transition: 0.3s;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
-.bookclub__card--icon-img {
+.bookclub__icon--img {
     width: 75px;
     height: 75px;
-    padding: 2px;
-    border-radius: 100%;
-    border: solid 1px var(--input-bg);
-    background-clip: content-box;
 }
 
 .bookclub__card--capacity {

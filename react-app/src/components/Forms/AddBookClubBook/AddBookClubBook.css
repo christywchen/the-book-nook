@@ -4,40 +4,16 @@
     gap: 5px;
 }
 
-.book__club--icon-mini {
+.bookclub__icon--mini,
+.bookclub__icon--mini-img {
     width: 25px;
     height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2px;
-    text-align: center;
-    color: var(--main-color);
     font-size: 0.8em;
-    font-weight: var(--weight-bold);
-    background-color: var(--accent-bg);
-    border-radius: 100%;
-    border: solid 1px var(--input-bg);
-    background-clip: content-box;
-    opacity: 0.5;
-    transition: 0.3s;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+    opacity: 0.6;
 }
 
-.book__club--icon-mini:hover {
+.bookclub__icon--mini:hover {
     opacity: 1;
-}
-
-.book__club--icon-img {
-    width: 25px;
-    height: 25px;
-    padding: 2px;
-    border-radius: 100%;
-    border: solid 1px var(--input-bg);
-    background-clip: content-box;
 }
 
 .book__details--divider {

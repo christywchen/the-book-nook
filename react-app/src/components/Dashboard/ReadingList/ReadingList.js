@@ -51,8 +51,8 @@ function ReadingList() {
         <>
             <section id="center__container">
                 <div id='center__container--topbar'>
-                    <div className="bookclub__icon">
-                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='bookclub__icon--img' />) : bookClub.name.slice(0, 1)}
+                    <div className="circular__icon dashboard__icon">
+                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='circular__icon--img dashboard__icon--img' />) : bookClub.name.slice(0, 1)}
                     </div>
                     <div id='center__container--title'>
                         Reading List

@@ -27,35 +27,10 @@
     justify-content: flex-end; */
 }
 
-.bookclub__icon {
-    position: relative;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0 0;
-    padding: 2px;
-    text-align: center;
-    color: var(--main-color);
-    font-size: 0.8em;
-    font-weight: var(--weight-bold);
-    background-color: var(--accent-bg);
-    border-radius: 100%;
-    border: solid 1px var(--input-bg);
-    background-clip: content-box;
-    transition: 0.3s;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-.bookclub__icon--img {
-    width: 25px;
-    height: 25px;
-    padding: 2px;
-    border-radius: 100%;
-    border: solid 1px var(--input-bg);
-    background-clip: content-box;
+.dashboard__icon,
+.dashboard__icon--img {
+    width: 30px;
+    height: 30px;
+    margin: 3px 0 0;
+    font-size: 0.9em;
 }

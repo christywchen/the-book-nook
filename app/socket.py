@@ -24,6 +24,8 @@ def handle_chat(data):
     body = data['body']
     chatroom_id = str(data['chatroom_id'])
 
+    print('DATAAAAA', data)
+
     if not body:
         return {'error': ['Message cannot be empty']}, 401
 
@@ -55,6 +57,7 @@ def on_join(data):
     print('-----------------')
 
     join_room(chatroom_id)
+    send(username + ' has entered the room.', to=chatroom_id)
 
 # handle room leave
 @socketio.on('leave')
