@@ -49,5 +49,5 @@ ul.form__add--book-to-club--errors,
 .form__add--book-to-club--message,
 .form__add--book-to-club--message a:hover {
     color: var(--main-color);
-    transition: 0.3s;
+    transition: 0.2s;
 }

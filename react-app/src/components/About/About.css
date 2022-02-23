@@ -29,7 +29,7 @@
 #about__container--description a,
 #about__container--credits a {
     color: var(--main-color);
-    transition: 0.3s;
+    transition: 0.2s;
     opacity: 0.8;
 }
 

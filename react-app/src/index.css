@@ -182,7 +182,7 @@ button {
     border: 1px solid var(--accent-bg);
     border-radius: 3px;
     outline: none;
-    transition: 0.3s;
+    transition: 0.2s;
     cursor: pointer;
 }
 
@@ -290,7 +290,7 @@ input::placeholder {
     border-radius: 100%;
     border: solid 1px var(--input-bg);
     background-clip: content-box;
-    transition: 0.3s;
+    transition: 0.2s;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;

@@ -20,7 +20,7 @@
 
 .button__submit--grey:hover {
     background-color: var(--light-grey);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .button__submit--primary {
@@ -29,7 +29,7 @@
 
 .button__submit--primary:hover {
     background-color: var(--accent-color-2-light);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .button__submit--primary:focus {
@@ -42,7 +42,7 @@
 
 .button__submit--secondary:hover {
     background-color: var(--accent-color-1-light);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .button__submit--secondary:focus {

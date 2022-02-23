@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Link, NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
 
 import { getBookClubChatrooms } from '../../../../store/chatroom';
 
@@ -45,16 +45,16 @@ function BookClubItem({ bookClub }) {
                 {showLinks ? (
                     <div className="sidebar__links--group">
                         <div>
-                            <Link to={`/dashboard/book-clubs/${bookClub.id}/reading-list`}>
+                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/reading-list`}>
                                 Reading List
-                            </Link>
+                            </NavLink>
                         </div>
                         {bookClubChatrooms && bookClubChatrooms.map(chatroom => (
                             <>
                                 <div>
-                                    <Link to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
+                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
                                         {chatroom.name} Chat
-                                    </Link>
+                                    </NavLink>
                                 </div>
                             </>
                         ))}
