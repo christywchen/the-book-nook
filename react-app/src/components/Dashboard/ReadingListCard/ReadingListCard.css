@@ -18,6 +18,14 @@
     background-position: center;
     width: 110px;
     height: 170px;
+    text-align: center;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 15px; */
+    font-size: 0.8em;
+    color: var(--lighter-bg);
     overflow: hidden;
     border-radius: 3px 3px 0 0;
     background-color: var(--sidebar-bg);
