@@ -14,7 +14,12 @@ function ReadingListCard({ bookInfo }) {
 
     const [currStatus, setCurrStatus] = useState(bookClubBookRecord.status || '');
 
-    const backgroundImage = { backgroundImage: `url("${book?.image_url}")` }
+    const backgroundImage = { backgroundImage: `url("${book?.image_url}")` };
+
+    let shortCard;
+    if (!bookClubId) {
+        shortCard = { height: '254px' };
+    }
 
     const bookAdder = bookClubBookRecord?.added_by_id;
     const bookClubHost = bookClub?.host_id;
@@ -37,7 +42,7 @@ function ReadingListCard({ bookInfo }) {
 
     return (
         <>
-            <div className='readinglist__card'>
+            <div className='readinglist__card' style={shortCard}>
                 <div>
                     <Link to={`/books/${book?.id}`}>
                         <div className='readinglist__card--image' style={backgroundImage}>
@@ -55,7 +60,7 @@ function ReadingListCard({ bookInfo }) {
                         </div>
                     </div>
                 </div>
-                <div>
+                {bookClubId && (<div>
                     <select
                         name='book-club'
                         value={currStatus}
@@ -64,7 +69,7 @@ function ReadingListCard({ bookInfo }) {
                         <option value={2}>Reading</option>
                         <option value={3}>Finished</option>
                     </select>
-                </div>
+                </div>)}
             </div >
             {bookClubId && (sessionUser.id === bookAdder || sessionUser.id === bookClubHost) && (
                 <div className='readinglist__card--delete'>

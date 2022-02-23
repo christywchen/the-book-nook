@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
+import ScrollToBottom from 'react-scroll-to-bottom';
 
 import { getChatroomMessages } from '../../../store/chat_message';
 
@@ -20,6 +21,8 @@ function Chatroom() {
     const prevMessagesObj = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId]);
     // const allUsersObj = useSelector(state => state.user.byId);
     const bookClub = useSelector(state => state.bookClub.byId[bookClubId]);
+    const chatRef = useRef();
+
 
     useEffect(() => {
         // get previous chat messages
@@ -66,6 +69,11 @@ function Chatroom() {
         setChatInput('')
     }
 
+    // scrollToBottom = () => {
+    //     chatRef.current.scrollTop = chatRef.scrollHeight;
+    // };
+
+
     if (!chatroom || !bookClub) {
         return (
             <section id="center__container">
@@ -96,7 +104,7 @@ function Chatroom() {
                 </div>
                 <div id='center__container--main-content'>
                     <div id='chatroom__messages'>
-                        <div>
+                        <div ref={chatRef}>
                             {prevMessages && prevMessages.map((message, ind) => (
                                 <ChatMessage message={message} />
                             ))}
