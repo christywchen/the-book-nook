@@ -56,15 +56,15 @@ const LoginForm = () => {
 
         <div id='auth__container--title'>Log In</div>
         <div id='auth__form'>
-
           <form onSubmit={handleLogin}>
-            {errors.length > 0 &&
-              (<ul className='auth__container--errors'>
-                <li>
-                  Login credentials invalid.
-                </li>
+            {errors.length > 0 && (
+              <ul className='auth__container--errors'>{
+                errors.map((error, ind) => (
+                  <li key={ind}>{error}</li>
+                ))
+              }
               </ul>
-              )}
+            )}
             <div>
               <label htmlFor='email'>
                 <input

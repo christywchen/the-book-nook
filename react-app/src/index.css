@@ -15,7 +15,7 @@
     --sidebar-bg: rgba(255, 255, 255, 0.1);
     --button-bg: rgba(221, 221, 221, 0.12);
     --dash-bg: rgba(236, 139, 139, 0.2);
-    --error-color: rgba(196, 72, 80, 0.774);
+    --error-color: rgba(218, 68, 78, 0.774);
 
     --standard-shadow: 2px 2px 2px rgba(0, 0, 0, 0.01);
 
@@ -184,6 +184,10 @@ button {
     outline: none;
     transition: 0.3s;
     cursor: pointer;
+}
+
+button:disabled:hover {
+    cursor: default;
 }
 
 button:enabled:hover,

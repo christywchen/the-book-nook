@@ -9,12 +9,14 @@ def name_length(form, field):
     if len(name) > 40:
         raise ValidationError('Name should be 40 characters or less.')
 
+
 def description_length(form, field):
     # Check that description is not more than 100 characters
     description = field.data
 
     if len(description) > 100:
         raise ValidationError('Description should be 100 characters or less.')
+
 
 def minimum_capacity(form, field):
     # Check that capacity is more than 0
