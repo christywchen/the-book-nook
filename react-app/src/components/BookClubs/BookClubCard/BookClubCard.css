@@ -34,7 +34,7 @@
     align-items: center;
     padding: 3px;
     text-align: center;
-    color: var(--lighter-bg);
+    color: var(--main-color);
     font-size: var(--h1-size);
     font-weight: var(--weight-bold);
     background-color: var(--accent-bg);

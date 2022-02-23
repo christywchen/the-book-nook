@@ -70,7 +70,7 @@
 }
 
 .readinglist__card--delete a {
-    color: var(--accent-bg);
+    color: var(--lighter-bg);
     transition: 0.3s;
 }
 

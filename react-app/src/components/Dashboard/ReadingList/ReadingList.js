@@ -12,6 +12,7 @@ import './ReadingList.css';
 function ReadingList() {
     const { bookClubId } = useParams();
     const dispatch = useDispatch();
+    const bookClub = useSelector(state => state.bookClub.byId[bookClubId]);
     const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
     const allBooksObj = useSelector(state => state.book.byId);
     const allBookClubBooks = Object.values(allBookClubBooksObj);
@@ -34,10 +35,29 @@ function ReadingList() {
         }, []);
     }
 
+
+    if (!bookClub) {
+        return (
+            <section id="center__container">
+                <div id='center__container--title'>Reading List</div>
+                <div className='readinglist__card--container'>
+                    This chatroom does not exist.
+                </div>
+            </section>
+        )
+    }
+
     return (
         <>
             <section id="center__container">
-                <div id='center__container--title'>Reading List</div>
+                <div id='center__container--topbar'>
+                    <div className="bookclub__icon">
+                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='bookclub__icon--img' />) : bookClub.name.slice(0, 1)}
+                    </div>
+                    <div id='center__container--title'>
+                        Reading List
+                    </div>
+                </div>
                 <div className='readinglist__card--container'>
                     {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
                         <div key={book.id}>
