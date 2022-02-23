@@ -1,23 +1,19 @@
-#chatroom__container {
+#chatroom__messages {
     position: relative;
-    height: 100%;
-    border: 1px solid black;
-    /* display: flex; */
-    /* justify-content: space-around; */
-    /* flex-direction: column; */
-    /* overflow: none */
-}
-
-/* #chatroom__messages {
-    position: relative;
-    min-height: 400%;
+    min-height: 100%;
     display: flex;
+    /*
     flex-direction: column;
+    justify-content: flex-end; */
+    /* align-items: stretch;
+     */
+    /* align-self: flex-end;
+    justify-self: flex-end; */
     justify-content: flex-end;
-    align-items: stretch;
+    flex-direction: column;
     overflow-y: scroll;
     background-color: red;
-} */
+}
 
 #chatroom__input {
     background-color: blue;

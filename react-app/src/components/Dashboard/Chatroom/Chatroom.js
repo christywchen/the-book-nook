@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
@@ -84,9 +84,9 @@ function Chatroom() {
 
     return (
         <>
-            <section id="center__container">
+            <section id='center__container'>
                 <div id='center__container--topbar'>
-                    <div className="bookclub__icon">
+                    <div className='bookclub__icon'>
                         {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='bookclub__icon--img' />) : bookClub.name.slice(0, 1)}
                     </div>
                     <div id='center__container--title'>
@@ -94,7 +94,6 @@ function Chatroom() {
                     </div>
                 </div>
                 <div id='center__container--main-content'>
-                    {/* <div id='chatroom__container'> */}
                     <div id='chatroom__messages'>
                         <div>
                             {prevMessages && allUsersObj && prevMessages.map((message, ind) => {
@@ -111,7 +110,6 @@ function Chatroom() {
                             ))}
                         </div>
                     </div>
-                    {/* </div> */}
                 </div>
                 <div id='chatroom__input'>
                     <form onSubmit={sendChat}>
@@ -122,7 +120,7 @@ function Chatroom() {
                         <button type="submit">Send</button>
                     </form>
                 </div>
-            </section>
+            </section >
         </>
     )
 }

@@ -18,10 +18,13 @@
 }
 
 #center__container--main-content {
-    margin-top: 8px;
     position: relative;
-    /* height: calc(100% - 35px); */
+    height: 100%;
+    margin-top: 8px;
     overflow-y: scroll;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-end; */
 }
 
 .bookclub__icon {
