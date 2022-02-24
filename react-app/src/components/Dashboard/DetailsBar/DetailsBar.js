@@ -61,13 +61,9 @@ function DetailsBar() {
 
     let members, host;
     if (bookClubMembers && users) {
-        console.log(bookClubMembers, 'BOOK CLUB MEMBERS')
         members = bookClubMembers.map(member => {
-            console.log('BOOK CLUB MEMBER', usersObj[member.user_id])
             return usersObj[member.user_id];
         });
-
-        // console.log(members, 'MEMBERS LIST')
 
         host = usersObj[bookClub?.host_id];
     }
