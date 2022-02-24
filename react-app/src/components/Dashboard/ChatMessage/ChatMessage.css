@@ -9,7 +9,7 @@
 }
 
 .message__author {
-    margin: 0 8px;
+    margin: 0 5px 0 8px;
     font-weight: var(--weight-bold);
 }
 
@@ -24,12 +24,11 @@
 
 .message__at {
     font-weight: var(--weight-xlight);
-    font-size: 0.8em;
+    font-size: 0.75em;
 }
 
 .message__time {
-    font-weight: var(--weight-med);
-    font-size: 0.8em;
+    font-size: 0.75em;
 }
 
 .chat__icon--user {
