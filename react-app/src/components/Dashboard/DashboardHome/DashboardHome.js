@@ -42,7 +42,7 @@ function DashboardHome() {
 
     return (
         <>
-            <section id="center__container">
+            <section id="center__container" className='dashboardhome--readinglist'>
                 <div id='center__container--topbar'>
                     <div className="circular__icon dashboard__icon">
                         B

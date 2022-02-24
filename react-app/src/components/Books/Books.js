@@ -24,6 +24,9 @@ function Books() {
                 <Route path={'/books/:id(\\d+)/edit'} exact={true} >
                     <BookEdit />
                 </Route>
+                <Route path="/books/*">
+                    <Redirect to='/not-found' />
+                </Route>
             </Switch>
         </>
     )

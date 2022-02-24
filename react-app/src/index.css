@@ -300,6 +300,8 @@ input::placeholder {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    background-size: cover;
+    background-position: center;
 }
 
 .circular__icon--img {

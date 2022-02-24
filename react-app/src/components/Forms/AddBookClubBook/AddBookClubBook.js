@@ -110,13 +110,20 @@ function AddBookClubBook({ book }) {
                                 Book Clubs Currently Reading This:
                             </div>
                             <div className='book__details--mini-container book__details--clubs-container'>
-                                {bookClubsWithBook.map(bookClub => (
-                                    <div
-                                        key={bookClub.id}
-                                        className="circular__icon bookclub__icon--mini"
-                                        title={bookClub.name}>
-                                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='circular__icon--img bookclub__icon--mini-img' />) : bookClub.name.slice(0, 1)}
-                                    </div>))}
+                                {bookClubsWithBook.map(bookClub => {
+
+                                    const backgroundImage = { backgroundImage: `url("${bookClub.image_url}")` }
+                                    return (
+                                        <div
+                                            key={bookClub.id}
+                                            style={backgroundImage}
+                                            className="circular__icon bookclub__icon--mini"
+                                            title={bookClub.name}>
+                                            {!bookClub.image_url && bookClub?.name.slice(0, 1)}
+                                        </div>
+                                    )
+                                })
+                                }
                             </div>
                         </>
                     )}

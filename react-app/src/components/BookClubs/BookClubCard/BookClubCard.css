@@ -25,15 +25,13 @@
     margin: 12px 0 6px;
 }
 
-.bookclub__icon {
-    width: 75px;
-    height: 75px;
-    font-size: var(--h1-size);
-}
-
+.bookclub__icon,
 .bookclub__icon--img {
     width: 75px;
     height: 75px;
+    min-width: 75px;
+    min-height: 75px;
+    font-size: var(--h1-size);
 }
 
 .bookclub__card--capacity {

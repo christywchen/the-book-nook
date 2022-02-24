@@ -20,6 +20,9 @@ function BookClubs() {
                 <Route path={'/book-clubs/:id(\\d+)/edit'} exact={true} >
                     <BookClubEdit />
                 </Route>
+                <Route path="/book-clubs/*">
+                    <Redirect to='/not-found' />
+                </Route>
             </Switch>
         </>
     )

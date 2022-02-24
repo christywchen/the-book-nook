@@ -25,6 +25,9 @@ function Dashboard() {
                     <Chatroom />
                     <DetailsBar />
                 </Route>
+                <Route path="/dashboard/*">
+                    <Redirect to='/not-found' />
+                </Route>
             </Switch>
         </>
     )

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import { getAllBooks } from '../../../store/book';
 import { getBookClubBooks } from '../../../store/book_club_book';
+import IconImage from '../IconImage/IconImage';
 
 import ReadingListCard from '../ReadingListCard/ReadingListCard';
 
@@ -39,9 +40,9 @@ function ReadingList() {
     if (!bookClub) {
         return (
             <section id="center__container">
-                <div id='center__container--title'>Reading List</div>
+                <div id='center__container--title'>Reading List Not Found</div>
                 <div className='readinglist__card--container'>
-                    This chatroom does not exist.
+                    This book club does not exist.
                 </div>
             </section>
         )
@@ -51,9 +52,7 @@ function ReadingList() {
         <>
             <section id="center__container">
                 <div id='center__container--topbar'>
-                    <div className="circular__icon dashboard__icon">
-                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='circular__icon--img dashboard__icon--img' />) : bookClub.name.slice(0, 1)}
-                    </div>
+                    <IconImage bookClub={bookClub} />
                     <div id='center__container--title'>
                         Reading List
                     </div>
