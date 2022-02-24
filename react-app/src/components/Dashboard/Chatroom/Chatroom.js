@@ -37,7 +37,6 @@ function Chatroom() {
 
         // listen for chat events
         socket.on('chat', chat => {
-            console.log(messages)
             // add any new messages into the messages array in the state
             setMessages(messages => [...messages, chat])
         });
@@ -47,7 +46,7 @@ function Chatroom() {
             socket.disconnect();
             setMessages([]);
         })
-    }, [chatroomId]);
+    }, [dispatch, chatroomId, sessionUser]);
 
     function updateChatInput(e) {
         setChatInput(e.target.value);
@@ -55,8 +54,6 @@ function Chatroom() {
 
     function sendChat(e) {
         e.preventDefault();
-        console.log(chatInput)
-        console.log(messages)
 
         // emit a message
         socket.emit('chat', {
@@ -86,7 +83,6 @@ function Chatroom() {
         )
     }
 
-    // console.log('HERES THE PREV MESSAGES', prevMessages)
     let prevMessages;
     if (prevMessagesObj) {
         prevMessages = Object.values(prevMessagesObj);

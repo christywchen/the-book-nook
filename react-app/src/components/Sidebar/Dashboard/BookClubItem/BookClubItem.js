@@ -1,27 +1,23 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useHistory, useLocation, useParams } from 'react-router-dom';
-
-import { getBookClubChatrooms } from '../../../../store/chatroom';
+import { useSelector } from 'react-redux';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 
 function BookClubItem({ bookClub }) {
-    const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
     const [showLinks, setShowLinks] = useState(false);
-    const sessionUser = useSelector(state => state.session.user);
     const allBookClubChatroomsObj = useSelector(state => state.bookClubChatroom.byId);
     const allBookClubChatrooms = Object.values(allBookClubChatroomsObj);
 
     const currentLocation = location.pathname.split('/')[3];
 
     useEffect(() => {
-        if (currentLocation != bookClub.id) {
+        if (parseInt(currentLocation) !== bookClub.id) {
             setShowLinks(false)
         } else {
             setShowLinks(true)
         }
-    }, [currentLocation])
+    }, [currentLocation, bookClub])
 
     async function handleClick(e) {
         history.push(`/dashboard/book-clubs/${bookClub.id}/reading-list`);
@@ -52,7 +48,7 @@ function BookClubItem({ bookClub }) {
                         {bookClubChatrooms && bookClubChatrooms.map(chatroom => (
                             <>
                                 <div>
-                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
+                                    <NavLink key={chatroom.id} activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
                                         {chatroom.name} Chat
                                     </NavLink>
                                 </div>

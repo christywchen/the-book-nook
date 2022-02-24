@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllBooks } from '../../../store/book';
-import { getAllBookClubs } from '../../../store/book_club';
 import { getAllBookClubBooks } from '../../../store/book_club_book';
 import DashboardCard from '../DashboardCard/DashboardCard';
 
@@ -56,8 +55,8 @@ function DashboardHome() {
                 </div>
                 <div id='center__container--main-content'>
                     <div className='readinglist__card--container'>
-                        {userBookClubs.length > 0 ? userBookClubs.map(bookClub => (
-                            <DashboardCard bookClub={bookClub} allBooksObj={allBooksObj} allBookClubBooks={allBookClubBooks} />
+                        {userBookClubs.length > 0 ? userBookClubs.map((bookClub, ind) => (
+                            <DashboardCard key={ind} bookClub={bookClub} allBooksObj={allBooksObj} allBookClubBooks={allBookClubBooks} />
                         )) : (<>You need to join a book club to get access to their reading list.</>)}
                     </div>
                 </div>
