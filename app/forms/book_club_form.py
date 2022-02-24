@@ -31,5 +31,5 @@ class BookClubForm(FlaskForm):
     description = TextAreaField('description', validators=[Optional(), description_length])
     host_id = IntegerField('host_id', validators=[DataRequired()])
     image_url = StringField('image_url')
-    capacity = IntegerField('capacity', validators=[DataRequired(), minimum_capacity])
+    capacity = IntegerField('capacity', validators=[minimum_capacity])
     public = BooleanField('public')
