@@ -30,7 +30,7 @@ function Main() {
                     <ProtectedRoute path='/chat' exact={true} >
                         <Chat />
                     </ProtectedRoute>
-                    <Route path="/dashboard/*">
+                    <Route path="/*">
                         <Redirect to='/not-found' />
                     </Route>
                 </Switch>
