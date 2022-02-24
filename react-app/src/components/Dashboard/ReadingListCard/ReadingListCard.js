@@ -18,7 +18,7 @@ function ReadingListCard({ bookInfo }) {
 
     let shortCard;
     if (!bookClubId) {
-        shortCard = { height: '267px' };
+        shortCard = { height: '268px' };
     }
 
     const bookAdder = bookClubBookRecord?.added_by_id;
