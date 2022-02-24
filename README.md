@@ -2,18 +2,15 @@
 
 Read more. Discuss better. Stress less.
 
-The Book Nook is an app for organizing book clubs. This project seeks to create an enclave for friends to gather in a space away from their busy, cluttered social media accounts.
+The Book Nook is an app for book clubs to get organized and chat about books. This project seeks to create an enclave for friends to gather in a space away from their busy, cluttered social media accounts.
 
 It's a sleek, no-frills platform intended to help book clubs spend less time getting organized and more time doing what they actually want to do: _read books, then talk about them_.
 
 A live demo of this project can be found [here](https://book-nook-app.herokuapp.com/).
 
-This app was created an a two week sprint and has the following core functionalities:
-- **Book Clubs & Memberships**: Creating and joining book clubs. Creators can set a member capacity for their book club. All users can join or create up to five book clubs.
-- **Book Clubs & Book Club Books**: Adding and removing books to and from book clubs' reading lists and setting read status. Users can browse books in the database or create new books if the desired book is not yet in the database.
-- **Book Club Chatrooms**: Each book club comes with a general chat and spoilers chat that its members can participate in.
-
 Visit the [wiki](https://github.com/christywchen/the-book-nook/wiki) for more information about features, database schema, redux state, and routes.
+
+![dash](https://user-images.githubusercontent.com/55429132/155458402-ab43716a-4a09-4e0c-a40c-21db8c1db580.jpg)
 
 # Implementation
 This app was built using a **JavaScript** frontend and **Python** backend.
@@ -21,6 +18,15 @@ This app was built using a **JavaScript** frontend and **Python** backend.
 The backend utilizes **Flask** and **SQLAlchemy** along with **PostgreSQL** for data management. The API routes were designed with RESTful architecture in mind. Other libraries used to facilitate data retrieval or processing includes **WTForms**, **Flask-Login**, and **Alembic**.
 
 The frontend utilizes **React**, and **Redux** along with **React Router** for routing. As with the backend, RESTful convention also guided the decisionmaking for frontend routes. The application's **HTML** and **CSS** were written entirely from scratch and uses no external libraries.
+
+The chatroom is powered by **SocketIO**.
+
+# Features Preview
+
+This app was created an a two week sprint and has the following core features:
+- **Book Clubs & Memberships**: Creating and joining book clubs. Creators can set a member capacity for their book club. All users can join or create up to five book clubs.
+- **Book Clubs & Book Club Books**: Adding and removing books to and from book clubs' reading lists and setting read status. Users can browse books in the database or create new books if the desired book is not yet in the database.
+- **Book Club Chatrooms**: Each book club comes with a general chat and spoilers chat that its members can participate in.
 
 # Local Installation
 
