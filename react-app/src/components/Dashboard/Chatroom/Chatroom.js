@@ -78,7 +78,7 @@ function Chatroom() {
     if (!chatroom || !bookClub) {
         return (
             <section id="center__container">
-                <div id='center__container--title'>Reading List</div>
+                <div id='center__container--title'>Chatroom Not Found</div>
                 <div className='readinglist__card--container'>
                     This chatroom does not exist.
                 </div>

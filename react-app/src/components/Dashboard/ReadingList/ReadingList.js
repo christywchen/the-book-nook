@@ -40,9 +40,9 @@ function ReadingList() {
     if (!bookClub) {
         return (
             <section id="center__container">
-                <div id='center__container--title'>Reading List</div>
+                <div id='center__container--title'>Reading List Not Found</div>
                 <div className='readinglist__card--container'>
-                    This chatroom does not exist.
+                    This book club does not exist.
                 </div>
             </section>
         )
