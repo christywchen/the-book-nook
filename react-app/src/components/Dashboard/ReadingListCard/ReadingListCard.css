@@ -69,7 +69,7 @@
 
 .readinglist__card--delete a {
     color: var(--lighter-bg);
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .readinglist__card--delete a:hover {

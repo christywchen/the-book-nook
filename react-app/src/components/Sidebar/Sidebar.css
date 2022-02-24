@@ -14,6 +14,7 @@
     margin: 0 0 10px 0;
     font-size: var(--h4-size);
     font-weight: 600;
+    cursor: pointer;
 }
 
 .sidebar__links--group {
@@ -27,15 +28,19 @@
 }
 
 .sidebar__links--group a {
-    color: var(--main-color);
+    color: var(--link-hover);
     font-size: var(--body-size);
     font-weight: var(--weight-bold);
     padding: 2px 1px;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .sidebar__links--group a:hover {
-    color: var(--link-hover);
+    color: var(--main-color);
+}
+
+.sidebar__link--active {
+    color: var(--main-color) !important;
 }
 
 .sidebar__caret {

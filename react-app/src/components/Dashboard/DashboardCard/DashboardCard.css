@@ -1,0 +1,10 @@
+.dash__card--subtitle {
+    font-size: var(--h3-size);
+    font-weight: var(--weight-bold);
+}
+
+.dash__card--books {
+    background-color: var(--book-cluster-bg);
+    padding: 30px;
+    margin: 0;
+}

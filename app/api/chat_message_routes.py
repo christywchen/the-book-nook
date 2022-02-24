@@ -40,8 +40,8 @@ def create_chat_message():
             body=data['body'],
             user_id=data['user_id'],
             chatroom_id=data['chatroom_id'],
-            created_at=datetime.now(),
-            updated_at=datetime.now()
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
         )
 
         db.session.add(chat_message)
@@ -66,7 +66,7 @@ def update_chat_message():
         data = form.data
 
         chat_message.body = data['body']
-        chat_message.updated_at = datetime.now()
+        chat_message.updated_at = datetime.utcnow()
 
         db.session.commit()
 

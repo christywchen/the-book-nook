@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 
 import { getUsers } from "../../../store/user";
 import { getAllBookClubs, deleteBookClub } from "../../../store/book_club";
@@ -67,7 +67,7 @@ function DetailsBar() {
             return usersObj[member.user_id];
         });
 
-        console.log(members, 'MEMBERS LIST')
+        // console.log(members, 'MEMBERS LIST')
 
         host = usersObj[bookClub?.host_id];
     }
@@ -133,9 +133,10 @@ function DetailsBar() {
                                 <ul>
                                     {currentBooks.map(book => (
                                         <li key={book?.id}>
-                                            <span className='details__currentreads--title'>
+                                            <Link className='details__currentreads--title'
+                                                to={`/books/${book?.id}`}>
                                                 {book?.title}
-                                            </span> by {book?.author}
+                                            </Link> by {book?.author}
                                         </li>
                                     ))}
                                 </ul>

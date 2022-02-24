@@ -5,7 +5,7 @@
     grid-template-columns: 175px 1.5fr;
     margin: 20px 0px;
     padding: 30px;
-    transition: all ease-in-out 0.3s;
+    transition: all ease-in-out 0.2s;
     background-color: var(--button-bg);
     border-radius: var(--input-radius);
     grid-gap: 30px;
@@ -31,7 +31,7 @@
 
 .book__details--title {
     font-size: var(--h2-size);
-    font-weight: var(--weight-heavy);
+    font-weight: var(--weight-bold);
 }
 
 .book__details--subtitle {

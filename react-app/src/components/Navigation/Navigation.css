@@ -26,7 +26,7 @@
 .nav__text {
     color: var(--main-color);
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 #nav__links a:hover {
@@ -69,7 +69,7 @@
     width: 30px;
     height: 30px;
     opacity: 0.6;
-    transition: 0.3s;
+    transition: 0.2s;
     fill: white;
 }
 

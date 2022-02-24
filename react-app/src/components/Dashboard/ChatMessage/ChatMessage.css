@@ -22,11 +22,12 @@
     box-shadow: var(--standard-shadow);
 }
 
-.chat__icon--user,
-.chat__icon--user--img {
-    margin-top: 24px;
-    width: 30px;
-    height: 30px;
-    font-size: 0.9em;
-    text-transform: uppercase;
+.message__at {
+    font-weight: var(--weight-xlight);
+    font-size: 0.8em;
+}
+
+.message__time {
+    font-weight: var(--weight-med);
+    font-size: 0.8em;
 }

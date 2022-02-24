@@ -12,6 +12,14 @@
     position: sticky;
 }
 
+#center__container--subtitle {
+    justify-self: flex-end;
+    align-self: flex-end;
+    margin: 0 10px 3px;
+    font-style: italic;
+    font-weight: var(--weight-xlight);
+}
+
 #center__container--topbar {
     display: flex;
     gap: 7px;
@@ -27,14 +35,24 @@
     justify-content: flex-end; */
 }
 
+#center__card--container {
+    position: relative;
+    height: 100%;
+    overflow-y: scroll;
+}
+
 .dashboard__icon {
-    width: 30px;
-    height: 30px;
-    margin: 3px 0 0;
-    font-size: 0.9em;
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    min-height: 31px;
+    margin: 2px 0 0;
+    font-size: 0.8em;
 }
 
 .dashboard__icon--img {
-    width: 30px;
-    height: 30px;
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    min-height: 31px;
 }

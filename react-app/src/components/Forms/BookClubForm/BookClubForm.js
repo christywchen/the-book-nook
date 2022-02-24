@@ -28,13 +28,13 @@ function BookClubForm({ formType, formProps }) {
                 const bookClub = data;
                 await dispatch(getUserMemberships(sessionUser.id));
                 await dispatch(getAllBookClubs());
-                return history.push(`/dashboard/book-clubs/${bookClub.id}/rooms/general`);
+                return history.push(`/dashboard/book-clubs/${bookClub.id}/reading-list`);
             }
         }
 
         if (formType === 'editRecord') {
             let id = formProps.id;
-            let hostId = formProps.host_id
+            let hostId = formProps.host_id;
 
             const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
 

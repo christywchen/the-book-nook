@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Chatroom from './Chatroom/Chatroom';
 import DetailsBar from './DetailsBar/DetailsBar';
 import ReadingList from './ReadingList/ReadingList';
+import DashboardHome from './DashboardHome/DashboardHome';
 
 import './Dashboard.css';
 
@@ -10,6 +11,9 @@ function Dashboard() {
     return (
         <>
             <Switch>
+                <Route path='/dashboard' exact={true}>
+                    <DashboardHome />
+                </Route>
                 <Route path='/dashboard/book-clubs/:bookClubId' exact={true}>
                     {/* <Redirect to='/dashboard/book-clubs/:bookClubId/reading-list' /> */}
                 </Route>

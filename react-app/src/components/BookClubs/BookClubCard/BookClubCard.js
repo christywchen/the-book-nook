@@ -45,7 +45,7 @@ function BookClubCard({ bookClub }) {
             setButtonText('Go to Club');
         }
 
-        return history.push(`/dashboard/book-clubs/${bookClub.id}/`);
+        return history.push(`/dashboard/book-clubs/${bookClub.id}/reading-list`);
     }
 
     return (
