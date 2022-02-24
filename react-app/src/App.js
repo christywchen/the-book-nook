@@ -19,6 +19,8 @@ import Chat from './components/Chat';
 import { authenticate } from './store/session';
 
 import './App.css';
+import NoMatch from './components/NoMatch/NoMatch';
+import Main from './Main';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,29 +53,15 @@ function App() {
         <Route path='/signup' exact={true}>
           <SignUpForm />
         </Route>
-
-        <div id="content__container">
-          <Sidebar />
-          <ProtectedRoute path='/dashboard*' exact={true} >
-            <Dashboard />
-          </ProtectedRoute>
-          <ProtectedRoute path='/book-clubs*' exact={true} >
-            <BookClubs />
-          </ProtectedRoute>
-          <ProtectedRoute path='/books*' exact={true} >
-            <Books />
-          </ProtectedRoute>
-
-          {/* <ProtectedRoute path='/users/:userId' exact={true} >
-            <User />
-          </ProtectedRoute> */}
-          {/* <ProtectedRoute path='/*' exact={true} >
-            <Main />
-          </ProtectedRoute> */}
-          <ProtectedRoute path='/chat' exact={true} >
-            <Chat />
-          </ProtectedRoute>
-        </div>
+        <Route path="/not-found">
+          <NoMatch />
+        </Route>
+        <Route path='/*' exact={true}>
+          <Main />
+        </Route>
+        <Route path="*">
+          <NoMatch />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
