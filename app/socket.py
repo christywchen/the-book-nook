@@ -1,6 +1,7 @@
 import os
 from flask_socketio import SocketIO, emit, join_room, leave_room, send
 from datetime import datetime
+from json import dumps
 
 from app.models import db, ChatroomMessage
 
@@ -24,8 +25,6 @@ def handle_chat(data):
     body = data['body']
     chatroom_id = str(data['chatroom_id'])
 
-    print('DATAAAAA', data)
-
     if not body:
         return {'error': ['Message cannot be empty']}, 401
 
@@ -33,9 +32,11 @@ def handle_chat(data):
         body=body,
         user_id=user_id,
         chatroom_id=chatroom_id,
-        created_at=datetime.now(),
-        updated_at=datetime.now()
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow()
     )
+
+    data['created_at'] = datetime.utcnow().strftime('%a, %b %d %Y %H:%M:%S GMT')
 
     db.session.add(chat_message)
     db.session.commit()
