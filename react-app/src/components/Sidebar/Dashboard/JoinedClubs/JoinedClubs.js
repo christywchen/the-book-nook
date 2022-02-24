@@ -29,7 +29,6 @@ function JoinedClubs({ userMemberships }) {
         return history.push('/book-clubs');
     }
 
-    // console.log('ALL BOOK CLUBS', allBookClubsObj);
     let userBookClubs;
     if (userMemberships && bookClubs) {
         userBookClubs = userMemberships.map(membership => {

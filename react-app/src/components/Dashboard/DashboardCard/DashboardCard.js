@@ -28,8 +28,8 @@ function DashboardCard({ bookClub, allBooksObj, allBookClubBooks }) {
                 </Link>
             </div>
             <div className='readinglist__card--container dash__card--books'>
-                {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
-                    <div key={book?.id}>
+                {bookClubBooks.length > 0 ? bookClubBooks?.map((book, ind) => (
+                    <div key={ind}>
                         <ReadingListCard bookInfo={book} />
                     </div>
                 )) : <>No books at the moment. Maybe you could add some to this book club's reading list?</>}
