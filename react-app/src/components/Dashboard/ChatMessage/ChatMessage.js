@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 
+import IconImage from '../IconImage/IconImage';
+
 import './ChatMessage.css';
 
 function ChatMessage({ message }) {
@@ -17,9 +19,7 @@ function ChatMessage({ message }) {
     return (
         <>
             <div className='message__container'>
-                <div className='circular__icon dashboard__icon'>
-                    {user.image_url ? (<img src={user.image_url} alt='' className='circular__icon--img dashboard__icon--img' />) : user.username.slice(0, 1)}
-                </div>
+                <IconImage user={user} />
                 <div className='message__text'>
                     <div className='message__author'>{user.username}
                         <span className='message__at'> at </span>

@@ -5,8 +5,10 @@ import { io } from 'socket.io-client';
 
 import { getChatroomMessages } from '../../../store/chat_message';
 
-import './Chatroom.css';
 import ChatMessage from '../ChatMessage/ChatMessage';
+import IconImage from '../IconImage/IconImage';
+
+import './Chatroom.css';
 
 let socket;
 
@@ -94,9 +96,7 @@ function Chatroom() {
         <>
             <section id='center__container'>
                 <div id='center__container--topbar'>
-                    <div className="circular__icon dashboard__icon">
-                        {bookClub.image_url ? (<img src={bookClub.image_url} alt='' className='circular__icon--img dashboard__icon--img' />) : bookClub.name.slice(0, 1)}
-                    </div>
+                    <IconImage bookClub={bookClub} />
                     <div id='center__container--title'>
                         {chatroom.name} Chat
                     </div>

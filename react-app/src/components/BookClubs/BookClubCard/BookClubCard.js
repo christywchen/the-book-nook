@@ -25,6 +25,8 @@ function BookClubCard({ bookClub }) {
 
     const availableSpace = capacity - memberCount;
 
+    const backgroundImage = { backgroundImage: `url("${image_url}")` }
+
     useEffect(() => {
         dispatch(getBookClubMembers(id));
         dispatch(getUserMemberships(sessionUser.id));
@@ -55,8 +57,9 @@ function BookClubCard({ bookClub }) {
                     <div
                         key={id}
                         className="circular__icon bookclub__icon"
+                        style={backgroundImage}
                         title={name}>
-                        {image_url ? (<img src={image_url} alt='' className='circular__icon bookclub__icon--img' />) : name.slice(0, 1)}
+                        {!image_url && name.slice(0, 1)}
                     </div>
                     <div className='bookclub__card--title'>
                         {name}

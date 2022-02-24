@@ -31,3 +31,7 @@
     font-weight: var(--weight-med);
     font-size: 0.8em;
 }
+
+.chat__icon--user {
+    margin-top: 24px !important;
+}
