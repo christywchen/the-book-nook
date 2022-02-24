@@ -10,7 +10,14 @@ function ChatMessage({ message }) {
     const userId = message.user_id;
     const user = allUsersObj[userId];
 
-    const localTime = new Date(message.created_at).toLocaleTimeString()
+    let localTime;
+    if (message.created_at) {
+        const localTimeArr = new Date(message.created_at).toLocaleTimeString().split(' ')
+        const localHoursArr = localTimeArr[0].split(':')
+        const localHoursStr = localHoursArr[0] + ':' + localHoursArr[1]
+        const localAMPM = localTimeArr[1]
+        localTime = localHoursStr + ' ' + localAMPM
+    }
 
     if (!user || !message) {
         return null;
@@ -23,7 +30,7 @@ function ChatMessage({ message }) {
                 <div className='message__text'>
                     <div className='message__author'>{user.username}
                         <span className='message__at'> at </span>
-                        <span className='message__time'>{localTime.slice(0, 5) + ' ' + localTime.slice(8)}</span>
+                        <span className='message__time'>{localTime}</span>
                     </div>
                     <div className='message__content'>{message.body}</div>
                 </div>
