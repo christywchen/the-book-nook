@@ -23,7 +23,7 @@ function ChatMessage({ message }) {
                 <div className='message__text'>
                     <div className='message__author'>{user.username}
                         <span className='message__at'> at </span>
-                        <span className='message__time'>{localTime.slice(0, 4) + ' ' + localTime.slice(8)}</span>
+                        <span className='message__time'>{localTime.slice(0, 5) + ' ' + localTime.slice(8)}</span>
                     </div>
                     <div className='message__content'>{message.body}</div>
                 </div>

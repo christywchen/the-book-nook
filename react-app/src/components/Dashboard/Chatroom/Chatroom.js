@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client';
-import ScrollToBottom from 'react-scroll-to-bottom';
 
 import { getChatroomMessages } from '../../../store/chat_message';
 
