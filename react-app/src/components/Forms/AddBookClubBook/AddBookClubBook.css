@@ -6,6 +6,8 @@
 
 .bookclub__icon--mini,
 .bookclub__icon--mini-img {
+    min-width: 25px;
+    min-height: 25px;
     width: 25px;
     height: 25px;
     font-size: 0.8em;
