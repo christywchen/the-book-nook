@@ -153,7 +153,7 @@ const SignUpForm = () => {
               </label>
             </div>
             <button
-              disabled={!username || !email || !password || !confirmPassword}
+              // disabled={!username || !email || !password || !confirmPassword}
               className='button button__auth' type='submit'>Submit</button>
           </form>
           <hr />
