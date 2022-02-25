@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError, Optional
+from wtforms.validators import DataRequired, Email, ValidationError, StopValidation
 from app.models import User
 
 
@@ -22,12 +22,18 @@ def password_matches(form, field):
     if user and not user.check_password(password):
         raise ValidationError('Password was incorrect.')
 
-def data_req(form, field):
+
+def email_req(form, field):
     if not field.data:
-        raise ValidationError('Both fields must be filled out.')
+        raise StopValidation('Email is required.')
+
+
+def password_req(form, field):
+    if not field.data:
+        raise StopValidation('Password is required.')
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[data_req, Optional(), user_exists, Email()])
+    email = StringField('email', validators=[email_req, user_exists, Email()])
     password = StringField('password', validators=[
-                           data_req, password_matches])
+                           password_req, password_matches])
