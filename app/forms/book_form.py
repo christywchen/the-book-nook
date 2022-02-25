@@ -57,7 +57,7 @@ def page_length(form, field):
     pages = field.data
 
     if pages <= 0:
-        raise ValidationError('Page count must be 0 or more pages.')
+        raise ValidationError('Page count must be at least 1.')
 
 
 class BookForm(FlaskForm):
