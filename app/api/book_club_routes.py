@@ -6,6 +6,8 @@ from app.models import db, BookClub, BookClubChatroom, BookClubMember, Book, Boo
 from app.forms.book_club_form import BookClubForm
 from app.forms.book_club_book_form import BookClubBookForm
 
+from app.services import BookClubService, UserService
+
 book_club_routes = Blueprint('book_clubs', __name__)
 
 
@@ -30,7 +32,7 @@ def get_all_book_clubs():
     """
     Returns all book clubs in the database.
     """
-    all_book_clubs = BookClub.query.all()
+    all_book_clubs = BookClubService.get_all_book_clubs()
 
     return {'book clubs': [book_club.to_dict() for book_club in all_book_clubs]}
 
@@ -41,7 +43,7 @@ def get_book_club(id):
     """
     Returns one book club.
     """
-    book_club = BookClub.query.get(id)
+    book_club = BookClubService.get_one_book_club(id)
 
     return {'book club': [book_club.to_dict()]}
 
@@ -62,10 +64,12 @@ def create_book_club():
     if form.validate_on_submit():
         data = form.data
 
-        book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == data['host_id']).all()
-        joined_club_count = len(book_clubs_joined)
+        user_memberships = UserService.get_user_book_clubs(data['host_id'])
+        user_membership_count = len(user_memberships)
+        # book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == data['host_id']).all()
+        # joined_club_count = len(book_clubs_joined)
 
-        if joined_club_count >= 5:
+        if user_membership_count >= 5:
             return {'errors': ['Users may only join or host up to 5 book clubs.']}, 401
 
         try:
