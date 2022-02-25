@@ -92,7 +92,7 @@ const SignUpForm = () => {
                 <input
                   name='username'
                   type='text'
-                  placeholder='Username'
+                  placeholder='Username*'
                   value={username}
                   onChange={updateUsername}
                 ></input>
@@ -125,7 +125,7 @@ const SignUpForm = () => {
                 <input
                   name='email'
                   type='text'
-                  placeholder='Email'
+                  placeholder='Email*'
                   value={email}
                   onChange={updateEmail}
                 ></input>
@@ -136,7 +136,7 @@ const SignUpForm = () => {
                 <input
                   name='password'
                   type='password'
-                  placeholder='Password'
+                  placeholder='Password*'
                   onChange={updatePassword}
                   value={password}
                 ></input>
@@ -145,7 +145,7 @@ const SignUpForm = () => {
                 <input
                   name='confirm_password'
                   type='password'
-                  placeholder='Confirm Password'
+                  placeholder='Confirm Password*'
                   value={confirmPassword}
                   onChange={updateConfirmPassword}
                   required={true}
