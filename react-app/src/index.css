@@ -56,7 +56,9 @@ body {
     color: var(--main-color);
     font-family: var(--body-font);
     font-size: 15px;
-    background: no-repeat fixed url("./assets/background.jpg");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-image: url("./assets/background.jpg");
     overflow: hidden;
 }
 
