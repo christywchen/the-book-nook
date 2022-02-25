@@ -20,7 +20,6 @@ function BookForm({ formType, formProps }) {
 
     const [titleError, setTitleError] = useState('');
     const [authorError, setAuthorError] = useState('');
-    const [synopsisError, setSynopsisError] = useState('');
     const [isbn13Error, setIsbn13Error] = useState('');
     const [originalTitleError, setOriginalTitleError] = useState('');
     const [languageError, setLanguageError] = useState('');
@@ -77,7 +76,6 @@ function BookForm({ formType, formProps }) {
         }
     }
 
-
     async function handleReset(e) {
         e.preventDefault();
 
@@ -133,7 +131,9 @@ function BookForm({ formType, formProps }) {
                         ></input>
                     </div>
                     <div>
-                        <label>Synopsis</label>
+                        <div className='label__section'>
+                            <label>Synopsis</label>
+                        </div>
                         <textarea
                             className='form__textarea--lg'
                             name='synopsis'
@@ -143,7 +143,9 @@ function BookForm({ formType, formProps }) {
                         ></textarea>
                     </div>
                     <div>
-                        <label>Book Cover Url</label>
+                        <div className='label__section'>
+                            <label>Book Cover URL</label>
+                        </div>
                         <input
                             name='image_url'
                             type='text'

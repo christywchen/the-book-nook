@@ -13,7 +13,22 @@ function BookClubForm({ formType, formProps }) {
     const [description, setDescription] = useState(formProps?.description || '');
     const [imageUrl, setImageUrl] = useState(formProps?.image_url || '');
     const [capacity, setCapacity] = useState(formProps?.capacity || '');
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
+
+    const [nameError, setNameError] = useState('');
+    const [descriptionError, setDescriptionError] = useState('');
+    const [capacityError, setCapacityError] = useState('')
+
+    function setErrors(data) {
+        if (data.errors.name) setNameError(data.errors.name);
+        else setNameError('');
+
+        if (data.errors.description) setDescriptionError(data.errors.description);
+        else setDescriptionError('');
+
+        if (data.errors.capacity) setCapacityError(data.errors.capacity);
+        else setCapacityError('');
+    }
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -23,7 +38,8 @@ function BookClubForm({ formType, formProps }) {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
 
             if (data.errors) {
-                setErrors(data.errors);
+                console.log(data)
+                setErrors(data);
             } else {
                 const bookClub = data;
                 await dispatch(getUserMemberships(sessionUser.id));
@@ -39,7 +55,7 @@ function BookClubForm({ formType, formProps }) {
             const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
 
             if (data.errors) {
-                setErrors(data.errors);
+                setErrors(data);
             } else {
                 return history.goBack();
             }
@@ -53,23 +69,31 @@ function BookClubForm({ formType, formProps }) {
         setDescription('');
         setImageUrl('');
         setCapacity('');
-        setErrors([])
+
+        setNameError('');
+        setDescriptionError('');
+        setCapacityError('')
     }
 
     return (
         <>
             <div id='form__container'>
                 <form onSubmit={handleSubmit} onReset={handleReset}>
-                    {errors.length > 0 && (
+                    {/* {errors.length > 0 && (
                         <ul className='auth__container--errors'>{
                             errors.map((error, ind) => (
                                 <li key={ind}>{error}</li>
                             ))
                         }
                         </ul>
-                    )}
+                    )} */}
                     <div>
-                        <label>Name*</label>
+                        <div className='label__section'>
+                            <label>Name*</label>
+                            <span className='error__message'>
+                                {nameError}
+                            </span>
+                        </div>
                         <input
                             name='name'
                             type='text'
@@ -78,7 +102,12 @@ function BookClubForm({ formType, formProps }) {
                         ></input>
                     </div>
                     <div>
-                        <label>Description</label>
+                        <div className='label__section'>
+                            <label>Description</label>
+                            <span className='error__message'>
+                                {descriptionError}
+                            </span>
+                        </div>
                         <textarea
                             name='description'
                             type='text'
@@ -87,7 +116,9 @@ function BookClubForm({ formType, formProps }) {
                         ></textarea>
                     </div>
                     <div>
-                        <label>Image Url</label>
+                        <div className='label__section'>
+                            <label>Image URL</label>
+                        </div>
                         <input
                             name='image_url'
                             type='text'
@@ -96,7 +127,12 @@ function BookClubForm({ formType, formProps }) {
                         ></input>
                     </div>
                     <div>
-                        <label>Member Capacity*</label>
+                        <div className='label__section'>
+                            <label>Member Capacity*</label>
+                            <span className='error__message'>
+                                {capacityError}
+                            </span>
+                        </div>
                         <input
                             name='capacity'
                             type='number'
@@ -106,7 +142,7 @@ function BookClubForm({ formType, formProps }) {
                     </div>
                     <div className='form__buttons'>
                         <button
-                            disabled={!name || !capacity}
+                            // disabled={!name || !capacity}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>
