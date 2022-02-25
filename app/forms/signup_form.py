@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, ValidationError, EqualTo, Email
+from wtforms.validators import DataRequired, ValidationError, EqualTo, Email, StopValidation
 from app.models import User
 
 
@@ -49,15 +49,21 @@ def username_req(form, field):
         raise ValidationError('Username is required.')
 
 
+def email_req(form, field):
+    if not field.data:
+        raise StopValidation('Email is required.')
+
+
 def conf_password_req(form, field):
     if not field.data:
         raise ValidationError('Confirmed password is required.')
+
 
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[username_req, username_exists, name_length])
     # first_name = StringField('first_name', validators=[DataRequired(), name_length])
     # last_name = StringField('last_name', validators=[DataRequired(), name_length])
-    email = StringField('email', validators=[user_exists, Email()])
+    email = StringField('email', validators=[email_req, user_exists, Email()])
     password = StringField('password', validators=[EqualTo('confirm_password', message='Passwords must match')])
     confirm_password = StringField('confirm_password', validators=[conf_password_req])
