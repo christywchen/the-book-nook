@@ -9,7 +9,7 @@ def name_length(form, field):
     text = field.data
 
     if len(text) > 40:
-        raise ValidationError('Username, first name, and last name each cannot be more than 40 characters.')
+        raise ValidationError('Username should be 40 characters or less.')
 
 
 def email_length(form, field):
@@ -17,7 +17,7 @@ def email_length(form, field):
     email = field.data
 
     if len(email) > 255:
-        raise ValidationError('Email cannot be more than 255 characters.')
+        raise ValidationError('Email should be 255 characters or less.')
 
 
 def user_exists(form, field):
@@ -65,5 +65,5 @@ class SignUpForm(FlaskForm):
     # first_name = StringField('first_name', validators=[DataRequired(), name_length])
     # last_name = StringField('last_name', validators=[DataRequired(), name_length])
     email = StringField('email', validators=[email_req, user_exists, Email()])
-    password = StringField('password', validators=[EqualTo('confirm_password', message='Passwords must match')])
+    password = StringField('password', validators=[EqualTo('confirm_password', message='Passwords must match.')])
     confirm_password = StringField('confirm_password', validators=[conf_password_req])
