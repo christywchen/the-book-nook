@@ -137,7 +137,7 @@ a {
 /* container for internal form pages */
 #form__container {
     position: inherit;
-    width: min(500px, 50%);
+    width: min(570px, 60%);
     display: flex;
     flex-direction: column;
     padding: 20px 60px 0;
@@ -309,4 +309,17 @@ input::placeholder {
     border-radius: 100%;
     border: solid 1px var(--input-bg);
     background-clip: content-box;
+}
+
+/* error messaging */
+.label__section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.error__message {
+    margin-top: 3px;
+    font-style: italic;
+    font-size: 0.75em;
+    font-weight: var(--weight-med);
 }

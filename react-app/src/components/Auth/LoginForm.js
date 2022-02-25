@@ -13,8 +13,10 @@ const LoginForm = () => {
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -70,7 +72,7 @@ const LoginForm = () => {
                 <input
                   name='email'
                   type='text'
-                  placeholder='Email'
+                  placeholder='Email*'
                   value={email}
                   onChange={updateEmail}
                 />
@@ -81,13 +83,13 @@ const LoginForm = () => {
                 <input
                   name='password'
                   type='password'
-                  placeholder='Password'
+                  placeholder='Password*'
                   value={password}
                   onChange={updatePassword}
                 />
               </label>
               <button
-                disabled={!email || !password}
+                // disabled={!email || !password}
                 className='button button__auth' type='submit'>Submit</button>
               <hr />
             </div>

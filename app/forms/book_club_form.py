@@ -22,8 +22,11 @@ def minimum_capacity(form, field):
     # Check that capacity is more than 0
     capacity = field.data
 
-    if capacity <= 0:
-        raise ValidationError('Member capacity must be at least 1.')
+    try:
+        if capacity <= 0:
+            raise ValidationError('Member capacity must be at least 1.')
+    except:
+            raise ValidationError('Member capacity must be a valid integer.')
 
 
 class BookClubForm(FlaskForm):
