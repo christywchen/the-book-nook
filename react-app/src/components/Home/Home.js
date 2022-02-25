@@ -23,7 +23,7 @@ function Home() {
                 {/* </div> */}
                 <img id='home__container--img' alt='' src={openbook} />
                 <div id='home__container--tagline'>Read more. Discuss better. Stress less.</div>
-                <div id='home__container--title'>Your Personal Book Club Manager</div>
+                <div id='home__container--title'>Your Personal Book Club Community</div>
                 <form onSubmit={handleRedirect}>
                     <button className='button button__home--large' type='submit'>Get Started</button>
                 </form>
