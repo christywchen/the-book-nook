@@ -222,7 +222,7 @@ function BookForm({ formType, formProps }) {
                         <div>
                             <div>
                                 <div className='label__section'>
-                                    <label>Page Count</label>
+                                    <label>Pages</label>
                                     <span className='error__message'>
                                         {pagesError}
                                     </span>
