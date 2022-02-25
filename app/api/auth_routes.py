@@ -1,10 +1,10 @@
-from flask import Blueprint, jsonify, session, request
-from flask_login import current_user, login_user, logout_user, login_required
-from datetime import datetime
+from flask import Blueprint, jsonify, request
+from flask_login import current_user, login_user, logout_user
 
-from app.models import db, User
 from app.forms import LoginForm
 from app.forms import SignUpForm
+
+from app.services import UserService
 
 auth_routes = Blueprint('auth', __name__)
 
@@ -41,11 +41,7 @@ def login():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
-
-        user.is_online = True
-
-        db.session.commit()
+        user = UserService.set_user_online(form.data['email'])
 
         login_user(user)
         return user.to_dict()
@@ -57,11 +53,7 @@ def logout():
     """
     Logs a user out
     """
-    user = User.query.filter(User.id == current_user.id).first()
-
-    user.is_online = False
-
-    db.session.commit()
+    UserService.set_user_offline(current_user.id)
 
     logout_user()
     return {'message': 'User logged out'}
@@ -75,18 +67,8 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        user = User(
-            username=form.data['username'],
-            # first_name=form.data['first_name'],
-            # last_name=form.data['last_name'],
-            email=form.data['email'],
-            password=form.data['password'],
-            is_online=True,
-            created_at=datetime.now(),
-            updated_at=datetime.now()
-        )
-        db.session.add(user)
-        db.session.commit()
+        user = UserService.create_user(form.data)
+
         login_user(user)
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
