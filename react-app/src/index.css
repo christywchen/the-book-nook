@@ -321,4 +321,5 @@ input::placeholder {
     margin-top: 3px;
     font-style: italic;
     font-size: 0.75em;
+    font-weight: var(--weight-med);
 }

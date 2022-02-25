@@ -17,7 +17,8 @@ function BookClubForm({ formType, formProps }) {
 
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
-    const [capacityError, setCapacityError] = useState('')
+    const [capacityError, setCapacityError] = useState('');
+    const [errorNotif, setErrorNotif] = useState(false);
 
     function setErrors(data) {
         if (data.errors.name) setNameError(data.errors.name);
@@ -38,7 +39,7 @@ function BookClubForm({ formType, formProps }) {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
 
             if (data.errors) {
-                console.log(data)
+                setErrorNotif(true);
                 setErrors(data);
             } else {
                 const bookClub = data;
@@ -55,6 +56,7 @@ function BookClubForm({ formType, formProps }) {
             const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
 
             if (data.errors) {
+                setErrorNotif(true);
                 setErrors(data);
             } else {
                 return history.goBack();
@@ -72,21 +74,15 @@ function BookClubForm({ formType, formProps }) {
 
         setNameError('');
         setDescriptionError('');
-        setCapacityError('')
+        setCapacityError('');
+
+        setErrorNotif(false);
     }
 
     return (
         <>
             <div id='form__container'>
                 <form onSubmit={handleSubmit} onReset={handleReset}>
-                    {/* {errors.length > 0 && (
-                        <ul className='auth__container--errors'>{
-                            errors.map((error, ind) => (
-                                <li key={ind}>{error}</li>
-                            ))
-                        }
-                        </ul>
-                    )} */}
                     <div>
                         <div className='label__section'>
                             <label>Name*</label>
@@ -140,6 +136,11 @@ function BookClubForm({ formType, formProps }) {
                             onChange={e => setCapacity(e.target.value)}
                         ></input>
                     </div>
+                    {errorNotif && (
+                        <ul className='auth__container--errors'>
+                            <li>Something seems to be missing. Check above to see what went wrong.</li>
+                        </ul>
+                    )}
                     <div className='form__buttons'>
                         <button
                             // disabled={!name || !capacity}

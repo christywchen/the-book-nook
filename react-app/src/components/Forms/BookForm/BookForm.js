@@ -25,6 +25,7 @@ function BookForm({ formType, formProps }) {
     const [languageError, setLanguageError] = useState('');
     const [publicationYearError, setPublicationYearError] = useState('');
     const [pagesError, setPagesError] = useState('');
+    const [errorNotif, setErrorNotif] = useState(false);
 
     function setErrors(data) {
         if (data.errors.title) setTitleError(data.errors.title);
@@ -56,6 +57,7 @@ function BookForm({ formType, formProps }) {
             const data = await dispatch(createBook(title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
 
             if (data.errors) {
+                setErrorNotif(true);
                 setErrors(data);
             } else {
                 const book = data;
@@ -69,6 +71,7 @@ function BookForm({ formType, formProps }) {
             const data = await dispatch(updateBook(id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
 
             if (data.errors) {
+                setErrorNotif(true);
                 setErrors(data);
             } else {
                 return history.goBack();
@@ -96,6 +99,8 @@ function BookForm({ formType, formProps }) {
         setLanguageError('');
         setPublicationYearError('');
         setPagesError('');
+
+        setErrorNotif(false);
     }
 
     return (
@@ -231,6 +236,11 @@ function BookForm({ formType, formProps }) {
                             </div>
                         </div>
                     </div>
+                    {errorNotif && (
+                        <ul className='auth__container--errors'>
+                            <li>Something seems to be missing. Check above to see what went wrong.</li>
+                        </ul>
+                    )}
                     <div className='form__buttons'>
                         <button
                             // disabled={!title || !author || !language}
