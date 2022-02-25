@@ -25,7 +25,7 @@ def orig_title_length(form, field):
     orig_title = field.data
 
     if len(orig_title) > 75:
-        raise ValidationError('Original should be 150 characters or less.')
+        raise ValidationError('Original title should be 150 characters or less.')
 
 
 def lang_length(form, field):
@@ -41,7 +41,7 @@ def isbn13_length(form, field):
     isbn13 = field.data
 
     if len(isbn13) != 13:
-        raise ValidationError('ISBN13 must have 13 digits, no dashes.')
+        raise ValidationError('Must be 13 digits, no dashes.')
 
 
 def check_year(form, field):
@@ -49,7 +49,15 @@ def check_year(form, field):
     year = field.data
 
     if year > datetime.now().year:
-        raise ValidationError('Publication year must be a valid year.')
+        raise ValidationError('Year must be valid.')
+
+
+def page_length(form, field):
+    # Check that value is an integer.
+    pages = field.data
+
+    if pages <= 0:
+        raise ValidationError('Page count must be 0 or more pages.')
 
 
 class BookForm(FlaskForm):
@@ -61,4 +69,4 @@ class BookForm(FlaskForm):
     original_title = StringField('original_title', validators=[Optional(), orig_title_length])
     language = StringField('language', validators=[DataRequired(), lang_length])
     publication_year = IntegerField('publication_year', validators=[Optional(), check_year])
-    pages = IntegerField('pages', validators=[Optional()])
+    pages = IntegerField('pages', validators=[Optional(), page_length])
