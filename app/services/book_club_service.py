@@ -1,11 +1,27 @@
+from datetime import datetime
+
 from app.models import db, BookClub
 
-class BookClubService():
+
+class BookClubService:
     def create_book_club(data):
         """
         Creates a new book club.
         """
+        book_club = BookClub(
+            name=data['name'],
+            description=data['description'],
+            host_id=data['host_id'],
+            image_url=data['image_url'],
+            capacity=data['capacity'],
+            created_at=datetime.now(),
+            updated_at=datetime.now()
+        )
 
+        db.session.add(book_club)
+        db.session.commit()
+
+        return book_club
 
 
     def get_all_book_clubs():

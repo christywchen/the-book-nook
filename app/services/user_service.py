@@ -3,7 +3,7 @@ from datetime import datetime
 from app.models import db, User, BookClubMember
 
 
-class UserService():
+class UserService:
     def create_user(data):
         """
         Create a new user and set them to online.

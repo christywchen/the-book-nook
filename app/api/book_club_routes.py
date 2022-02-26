@@ -6,7 +6,7 @@ from app.models import db, BookClub, BookClubChatroom, BookClubMember, Book, Boo
 from app.forms.book_club_form import BookClubForm
 from app.forms.book_club_book_form import BookClubBookForm
 
-from app.services import BookClubService, UserService
+from app.services import BookClubService, UserService, ChatroomService, BookClubMemberService
 
 book_club_routes = Blueprint('book_clubs', __name__)
 
@@ -71,48 +71,16 @@ def create_book_club():
             return {'errors': {'memberships exceeded': 'Users may only join or host up to 5 book clubs.'}}, 401
 
         try:
-            book_club = BookClub(
-                name=data['name'],
-                description=data['description'],
-                host_id=data['host_id'],
-                image_url=data['image_url'],
-                capacity=data['capacity'],
-                created_at=datetime.now(),
-                updated_at=datetime.now()
-            )
-
-            db.session.add(book_club)
-            db.session.commit()
+            book_club = BookClubService.create_book_club(data)
 
             book_club_id = book_club.to_dict()['id']
 
             # instantiate two chatrooms for the book club
-            general_chat = BookClubChatroom(
-                name='General',
-                book_club_id=book_club_id,
-                created_at=datetime.now(),
-                updated_at=datetime.now()
-            )
-
-            spoilers_chat = BookClubChatroom(
-                name='Spoilers',
-                book_club_id=book_club_id,
-                created_at=datetime.now(),
-                updated_at=datetime.now()
-            )
+            ChatroomService.create_chatroom('General', book_club_id)
+            ChatroomService.create_chatroom('Spoilers', book_club_id)
 
             # add host user as book club member
-            new_member = BookClubMember(
-                book_club_id=book_club_id,
-                user_id=data['host_id'],
-                created_at=datetime.now(),
-                updated_at=datetime.now()
-            )
-
-            db.session.add(general_chat)
-            db.session.add(spoilers_chat)
-            db.session.add(new_member)
-            db.session.commit()
+            BookClubMemberService.create_membership(book_club_id, data['host_id'])
 
             return { 'book club': book_club.to_dict()}
         except:
@@ -138,11 +106,7 @@ def update_book_club(id):
         member_count = len(book_club_members)
 
         if data['capacity'] < member_count:
-<<<<<<< HEAD
-            return {'errors': {'member capacity': 'Member capacity may not be less than the current member count.'}}, 401
-=======
             return {'errors': {'capacity': 'Capacity may not be less than the current member count.'}}, 401
->>>>>>> main
 
         book_club.name = data['name']
         book_club.description = data['description']
@@ -203,11 +167,7 @@ def create_book_club_member(book_club_id, user_id):
     book_club_capacity = book_club.capacity
 
     if book_club_member_count >= book_club_capacity:
-<<<<<<< HEAD
-        return {'errors': {'capacity exceeded': 'This book club has reached maximum capacity.'}}, 401
-=======
         return {'errors': {'capacity': 'This book club has reached maximum capacity.'}}, 401
->>>>>>> main
 
     if joined_club_count >= 5:
         return {'errors': {'memberships exceeded': 'Users may only join or host up to 5 book clubs.'}}, 401
@@ -270,11 +230,7 @@ def add_book_club_book(book_club_id, book_id):
         book_club_book = BookClubBook.query.filter(BookClubBook.book_id == data['book_id'], BookClubBook.book_club_id == data['book_club_id']).first()
 
         if book_club_book:
-<<<<<<< HEAD
-            return {'errors': {'book club exists': 'This book is already on this book club\'s reading list.'}}, 401
-=======
             return {'errors': {'book club book exists': 'This book is already on this book club\'s reading list.'}}, 401
->>>>>>> main
 
         book_club_book = BookClubBook(
             book_club_id=data['book_club_id'],
