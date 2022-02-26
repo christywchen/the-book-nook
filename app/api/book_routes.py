@@ -6,6 +6,8 @@ from app.api.auth_routes import login
 from app.models import db, Book, BookClubBook
 from app.forms.book_form import BookForm
 
+from app.services import BookService
+
 book_routes = Blueprint('books', __name__)
 
 
@@ -30,7 +32,7 @@ def get_all_books():
     """
     Returns all books in the database.
     """
-    all_books = Book.query.all()
+    all_books = BookService.get_all_books()
 
     return {'books': [book.to_dict() for book in all_books] }
 
@@ -41,7 +43,7 @@ def get_book(id):
     """
     Returns one book.
     """
-    book = Book.query.get(id)
+    book = BookService.get_one_book(id)
 
     return {'book': [book.to_dict()]}
 
@@ -58,22 +60,7 @@ def create_book():
     if form.validate_on_submit():
         data = form.data
 
-        book = Book(
-            title=data['title'],
-            author=data['author'],
-            synopsis=data['synopsis'],
-            image_url=data['image_url'],
-            isbn13=data['isbn13'],
-            original_title=data['original_title'],
-            language=data['language'],
-            publication_year=data['publication_year'],
-            pages=data['pages'],
-            created_at=datetime.now(),
-            updated_at=datetime.now()
-        )
-
-        db.session.add(book)
-        db.session.commit()
+        book = BookService.create_book(data)
 
         return {'book': book.to_dict()}
 
@@ -90,21 +77,10 @@ def update_book(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        book = Book.query.get(id)
+        book = BookService.get_one_book(id)
         data = form.data
 
-        book.title = data['title']
-        book.author = data['author']
-        book.synopsis = data['synopsis']
-        book.image_url = data['image_url']
-        book.isbn13 = data['isbn13']
-        book.original_title = data['original_title']
-        book.language = data['language']
-        book.publication_year = data['publication_year']
-        book.pages = data['pages']
-        book.updated_at=datetime.now()
-
-        db.session.commit()
+        book = BookService.update_book(book, data)
 
         return {'book': book.to_dict()}
 
@@ -117,9 +93,6 @@ def delete_book(id):
     """
     Deletes a book record.
     """
-    book = Book.query.get(id)
+    book_id = BookService.delete_book(id)
 
-    db.session.delete(book)
-    db.session.commit()
-
-    return {'message': 'Book successfully deleted.'}
+    return {'message': 'Book successfully deleted.', 'book id': book_id}
