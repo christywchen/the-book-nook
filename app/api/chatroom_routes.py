@@ -1,9 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required
 
-from app.models import db, BookClubChatroom, ChatroomMessage
-
-from app.services import ChatroomService
+from app.services import ChatroomService, ChatroomMessageService
 
 chatroom_routes = Blueprint('chatroom', __name__)
 
@@ -55,6 +53,6 @@ def get_chatroom_messages(id):
     """
     Returns all messages that belong to a given chatroom.
     """
-    chatroom_messages = ChatroomMessage.query.filter(ChatroomMessage.chatroom_id == id).all()
+    chatroom_messages = ChatroomMessageService.get_messages_by_chatroom(id)
 
     return {'chat messages': [chat_message.to_dict() for chat_message in chatroom_messages]}
