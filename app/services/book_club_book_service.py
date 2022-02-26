@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from app.models import book_club_books, db, BookClubBook
+from app.models import db, BookClubBook
 
 
 class BookClubBookService:
@@ -25,6 +25,15 @@ class BookClubBookService:
         db.session.commit()
 
         return book_club_book
+
+
+    def get_all_book_club_books():
+        """
+        Queries for all book club books.
+        """
+        all_book_club_books = BookClubBook.query.all()
+
+        return all_book_club_books
 
 
     def get_book_by_club(book_club_id, book_id):
