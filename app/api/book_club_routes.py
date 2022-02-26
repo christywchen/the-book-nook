@@ -66,8 +66,6 @@ def create_book_club():
 
         user_memberships = UserService.get_user_book_clubs(data['host_id'])
         user_membership_count = len(user_memberships)
-        # book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == data['host_id']).all()
-        # joined_club_count = len(book_clubs_joined)
 
         if user_membership_count >= 5:
             return {'errors': {'memberships exceeded': 'Users may only join or host up to 5 book clubs.'}}, 401
@@ -140,7 +138,11 @@ def update_book_club(id):
         member_count = len(book_club_members)
 
         if data['capacity'] < member_count:
+<<<<<<< HEAD
             return {'errors': {'member capacity': 'Member capacity may not be less than the current member count.'}}, 401
+=======
+            return {'errors': {'capacity': 'Capacity may not be less than the current member count.'}}, 401
+>>>>>>> main
 
         book_club.name = data['name']
         book_club.description = data['description']
@@ -201,7 +203,11 @@ def create_book_club_member(book_club_id, user_id):
     book_club_capacity = book_club.capacity
 
     if book_club_member_count >= book_club_capacity:
+<<<<<<< HEAD
         return {'errors': {'capacity exceeded': 'This book club has reached maximum capacity.'}}, 401
+=======
+        return {'errors': {'capacity': 'This book club has reached maximum capacity.'}}, 401
+>>>>>>> main
 
     if joined_club_count >= 5:
         return {'errors': {'memberships exceeded': 'Users may only join or host up to 5 book clubs.'}}, 401
@@ -264,7 +270,11 @@ def add_book_club_book(book_club_id, book_id):
         book_club_book = BookClubBook.query.filter(BookClubBook.book_id == data['book_id'], BookClubBook.book_club_id == data['book_club_id']).first()
 
         if book_club_book:
+<<<<<<< HEAD
             return {'errors': {'book club exists': 'This book is already on this book club\'s reading list.'}}, 401
+=======
+            return {'errors': {'book club book exists': 'This book is already on this book club\'s reading list.'}}, 401
+>>>>>>> main
 
         book_club_book = BookClubBook(
             book_club_id=data['book_club_id'],

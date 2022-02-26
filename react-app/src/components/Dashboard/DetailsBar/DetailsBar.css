@@ -65,6 +65,7 @@
     padding: 5px;
     height: 100%;
     overflow-y: scroll;
+    scrollbar-color: var(--background-color) #ffffff00;
     height: fit-content;
     max-height: 94px;
 }

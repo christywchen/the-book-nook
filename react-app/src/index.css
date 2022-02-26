@@ -120,7 +120,7 @@ a {
     margin: 5px;
     padding: 15px 0 10px;
     scrollbar-width: auto;
-    scrollbar-color: #727272;
+    scrollbar-color: var(--background-color) #ffffff00;
     overflow-y: scroll;
 }
 
@@ -158,6 +158,7 @@ a {
 }
 
 /* scrollbar styling */
+
 ::-webkit-scrollbar,
 textarea::-webkit-scrollbar {
     width: 10px;
@@ -324,4 +325,17 @@ input::placeholder {
     font-style: italic;
     font-size: 0.75em;
     font-weight: var(--weight-med);
+}
+
+/* color scheme */
+@media (prefers-color-scheme: dark) {
+    select > option {
+        color: white;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    select > option {
+        color: black;
+    }
 }
