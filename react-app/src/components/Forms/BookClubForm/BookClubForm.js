@@ -18,6 +18,7 @@ function BookClubForm({ formType, formProps }) {
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
     const [capacityError, setCapacityError] = useState('');
+    const [membershipError, setMembershipError] = useState('');
     const [errorNotif, setErrorNotif] = useState(false);
 
     function setErrors(data) {
@@ -29,6 +30,16 @@ function BookClubForm({ formType, formProps }) {
 
         if (data.errors.capacity) setCapacityError(data.errors.capacity);
         else setCapacityError('');
+
+        if (data.errors['memberships exceeded']) {
+            setMembershipError(data.errors['memberships exceeded']);
+            setNameError('');
+            setDescriptionError('');
+            setCapacityError('');
+            setErrorNotif(false);
+        } else {
+            setMembershipError('');
+        }
     }
 
     async function handleSubmit(e) {
@@ -37,6 +48,7 @@ function BookClubForm({ formType, formProps }) {
 
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
+            console.log(data.errors)
 
             if (data.errors) {
                 setErrorNotif(true);
@@ -56,6 +68,7 @@ function BookClubForm({ formType, formProps }) {
             const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
 
             if (data.errors) {
+                console.log(data.errors)
                 setErrorNotif(true);
                 setErrors(data);
             } else {
@@ -75,6 +88,7 @@ function BookClubForm({ formType, formProps }) {
         setNameError('');
         setDescriptionError('');
         setCapacityError('');
+        setMembershipError('');
 
         setErrorNotif(false);
     }
@@ -136,6 +150,11 @@ function BookClubForm({ formType, formProps }) {
                             onChange={e => setCapacity(e.target.value)}
                         ></input>
                     </div>
+                    {formType === 'createNew' && membershipError && (
+                        <ul className='auth__container--errors'>
+                            <li>{membershipError}</li>
+                        </ul>
+                    )}
                     {errorNotif && (
                         <ul className='auth__container--errors'>
                             <li>Something seems to be missing. Check above to see what went wrong.</li>
