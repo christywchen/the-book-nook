@@ -23,3 +23,12 @@ class ChatroomService:
         db.session.commit()
 
         return chatroom
+
+
+    def get_chatrooms_by_club(book_club_id):
+        """
+        Queries for all of a book club's chatrooms.
+        """
+        chatrooms = BookClubChatroom.query.filter(BookClubChatroom.book_club_id == book_club_id).all()
+
+        return chatrooms

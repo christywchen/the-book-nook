@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from datetime import datetime
-from app.api.user_routes import user
 
 from app.models import db, BookClub, BookClubChatroom, BookClubMember, Book, BookClubBook
 from app.forms.book_club_form import BookClubForm
@@ -208,22 +207,10 @@ def add_book_club_book(book_club_id, book_id):
         data = form.data
         book_club_book = BookClubBookService.get_book_by_club(book_club_id, book_id)
 
-        print(book_club_book)
-
         if book_club_book:
             return {'errors': ['This book is already on this book club\'s reading list.']}, 401
 
-        book_club_book = BookClubBook(
-            book_club_id=data['book_club_id'],
-            book_id=data['book_id'],
-            added_by_id=data['added_by_id'],
-            status=data['status'],
-            created_at=datetime.now(),
-            updated_at=datetime.now()
-        )
-
-        db.session.add(book_club_book)
-        db.session.commit()
+        book_club_book = BookClubBookService.create_book_club_book(data)
 
         return {'book club book': book_club_book.to_dict()}
 
@@ -240,12 +227,10 @@ def update_book_club_book(book_club_id, book_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        book_club_book = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id, BookClubBook.book_id == book_id).first()
+        book_club_book = BookClubBookService.get_book_by_club(book_club_id, book_id)
         data = form.data
 
-        book_club_book.status = data['status']
-
-        db.session.commit()
+        BookClubBookService.update_book_club_book(book_club_book, data)
 
         return {'book club book': book_club_book.to_dict()}
 
@@ -258,11 +243,7 @@ def delete_book_club_book(book_club_id, book_id):
     """
     Deletes a book club book record.
     """
-    book_club_book = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id, BookClubBook.book_id == book_id).first()
-    book_club_book_id = book_club_book.id
-
-    db.session.delete(book_club_book)
-    db.session.commit()
+    book_club_book_id = BookClubBookService.delete_book_club_book(book_club_id, book_id)
 
     return {'message': 'Book club book successfully deleted.', 'book club book id': book_club_book_id}
 
@@ -277,6 +258,6 @@ def get_book_club_chatrooms(book_club_id):
     """
     Get all of a book club's chatrooms.
     """
-    chatrooms = BookClubChatroom.query.filter(BookClubChatroom.book_club_id == book_club_id).all()
+    chatrooms = ChatroomService.get_chatrooms_by_club(book_club_id)
 
     return {'chatrooms': [chatroom.to_dict() for chatroom in chatrooms]}
