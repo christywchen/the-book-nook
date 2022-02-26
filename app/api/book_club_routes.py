@@ -260,7 +260,7 @@ def add_book_club_book(book_club_id, book_id):
         book_club_book = BookClubBook.query.filter(BookClubBook.book_id == data['book_id'], BookClubBook.book_club_id == data['book_club_id']).first()
 
         if book_club_book:
-            return {'errors': {'book club exists': 'This book is already on this book club\'s reading list.'}}, 401
+            return {'errors': {'book club book exists': 'This book is already on this book club\'s reading list.'}}, 401
 
         book_club_book = BookClubBook(
             book_club_id=data['book_club_id'],
