@@ -1,12 +1,10 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from datetime import datetime
 
-from app.models import db, BookClub, BookClubChatroom, BookClubMember, Book, BookClubBook
 from app.forms.book_club_form import BookClubForm
 from app.forms.book_club_book_form import BookClubBookForm
 
-from app.services import BookClubService, UserService, ChatroomService, BookClubMemberService, BookClubBookService
+from app.services import BookClubService, ChatroomService, BookClubMemberService, BookClubBookService
 
 book_club_routes = Blueprint('book_clubs', __name__)
 
