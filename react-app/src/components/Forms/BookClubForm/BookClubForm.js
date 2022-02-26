@@ -48,7 +48,6 @@ function BookClubForm({ formType, formProps }) {
 
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
-            console.log(data.errors)
 
             if (data.errors) {
                 setErrorNotif(true);
@@ -68,7 +67,6 @@ function BookClubForm({ formType, formProps }) {
             const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
 
             if (data.errors) {
-                console.log(data.errors)
                 setErrorNotif(true);
                 setErrors(data);
             } else {
