@@ -25,6 +25,24 @@ class ChatroomService:
         return chatroom
 
 
+    def get_all_chatrooms():
+        """
+        Queries for all chatrooms in the database.
+        """
+        all_chatrooms = BookClubChatroom.query.all()
+
+        return all_chatrooms
+
+
+    def get_one_chatroom(chatroom_id):
+        """
+        Queries for one chatroom.
+        """
+        chatroom = BookClubChatroom.query.get(chatroom_id)
+
+        return chatroom
+
+
     def get_chatrooms_by_club(book_club_id):
         """
         Queries for all of a book club's chatrooms.

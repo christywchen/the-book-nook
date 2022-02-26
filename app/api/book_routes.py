@@ -1,9 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from datetime import datetime
 
-from app.api.auth_routes import login
-from app.models import db, Book, BookClubBook
 from app.forms.book_form import BookForm
 
 from app.services import BookService
