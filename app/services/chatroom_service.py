@@ -4,6 +4,10 @@ from app.models import db, BookClubChatroom
 
 
 class ChatroomService:
+    """
+    Services the Book Club Chatroom model.
+    """
+
     def create_chatroom(chatroom_name, book_club_id):
         """
         Creates a new chatroom.
@@ -17,3 +21,5 @@ class ChatroomService:
 
         db.session.add(chatroom)
         db.session.commit()
+
+        return chatroom

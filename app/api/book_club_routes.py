@@ -1,12 +1,13 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from datetime import datetime
+from app.api.user_routes import user
 
 from app.models import db, BookClub, BookClubChatroom, BookClubMember, Book, BookClubBook
 from app.forms.book_club_form import BookClubForm
 from app.forms.book_club_book_form import BookClubBookForm
 
-from app.services import BookClubService, UserService, ChatroomService, BookClubMemberService
+from app.services import BookClubService, UserService, ChatroomService, BookClubMemberService, BookClubBookService
 
 book_club_routes = Blueprint('book_clubs', __name__)
 
@@ -64,7 +65,7 @@ def create_book_club():
     if form.validate_on_submit():
         data = form.data
 
-        user_memberships = UserService.get_user_book_clubs(data['host_id'])
+        user_memberships = BookClubMemberService.get_user_book_clubs(data['host_id'])
         user_membership_count = len(user_memberships)
 
         if user_membership_count >= 5:
@@ -99,23 +100,16 @@ def update_book_club(id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        book_club = BookClub.query.get(id)
+        book_club = BookClubService.get_one_book_club(id)
         data = form.data
 
-        book_club_members = BookClubMember.query.filter(BookClubMember.book_club_id == id).all()
-        member_count = len(book_club_members)
+        book_club_memberships = BookClubMemberService.get_memberships_by_club(id)
+        member_count = len(book_club_memberships)
 
         if data['capacity'] < member_count:
             return {'errors': {'capacity': 'Capacity may not be less than the current member count.'}}, 401
 
-        book_club.name = data['name']
-        book_club.description = data['description']
-        book_club.host_id = data['host_id']
-        book_club.image_url = data['image_url']
-        book_club.capacity = data['capacity']
-        book_club.updated_at = datetime.now()
-
-        db.session.commit()
+        BookClubService.update_book_club(book_club, data)
 
         return {'book club': book_club.to_dict()}
 
@@ -128,10 +122,7 @@ def delete_book_club(id):
     """
     Deletes a book club record.
     """
-    book_club = BookClub.query.get(id)
-
-    db.session.delete(book_club)
-    db.session.commit()
+    BookClubService.delete_book_club(id)
 
     return {'message': 'Book Club successfully deleted.'}
 
@@ -146,7 +137,7 @@ def get_book_club_members(book_club_id):
     """
     Gets all members of a book club.
     """
-    book_club_members = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id).all()
+    book_club_members = BookClubMemberService.get_memberships_by_club(book_club_id)
 
     return {'book club members': [member.to_dict() for member in book_club_members]}
 
@@ -157,13 +148,13 @@ def create_book_club_member(book_club_id, user_id):
     """
     Creates a new book club member record and returns the record.
     """
-    book_clubs_joined = BookClubMember.query.filter(BookClubMember.user_id == user_id).all()
+    book_clubs_joined = BookClubMemberService.get_user_book_clubs(user_id)
     joined_club_count = len(book_clubs_joined)
 
-    book_club_members = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id).all()
+    book_club_members = BookClubMemberService.get_memberships_by_club(book_club_id)
     book_club_member_count = len(book_club_members)
 
-    book_club = BookClub.query.get(book_club_id)
+    book_club = BookClubService.get_one_book_club(book_club_id)
     book_club_capacity = book_club.capacity
 
     if book_club_member_count >= book_club_capacity:
@@ -172,15 +163,8 @@ def create_book_club_member(book_club_id, user_id):
     if joined_club_count >= 5:
         return {'errors': {'memberships exceeded': 'Users may only join or host up to 5 book clubs.'}}, 401
 
-    book_club_member = BookClubMember(
-        book_club_id=book_club_id,
-        user_id=user_id,
-        created_at=datetime.now(),
-        updated_at=datetime.now()
-    )
-
-    db.session.add(book_club_member)
-    db.session.commit()
+    # creates book club membership if no errors are found
+    book_club_member = BookClubMemberService.create_membership(book_club_id, user_id)
 
     return {'book club member': book_club_member.to_dict()}
 
@@ -191,11 +175,7 @@ def delete_book_club_member(book_club_id, user_id):
     """
     Deletes a book club member record.
     """
-    book_club_member = BookClubMember.query.filter(BookClubMember.book_club_id == book_club_id, BookClubMember.user_id == user_id).first()
-    membership_id = book_club_member.id
-
-    db.session.delete(book_club_member)
-    db.session.commit()
+    membership_id = BookClubMemberService.delete_membership(book_club_id, user_id)
 
     return {'message': 'Book club member successfully deleted.', 'membership id': membership_id}
 
@@ -210,7 +190,7 @@ def get_book_club_books(book_club_id):
     """
     Gets all of a book club's books.
     """
-    book_club_books = BookClubBook.query.filter(BookClubBook.book_club_id == book_club_id).all()
+    book_club_books = BookClubBookService.get_books_by_club(book_club_id)
 
     return {'book club books': [book_club_book.to_dict() for book_club_book in book_club_books]}
 
@@ -221,16 +201,17 @@ def add_book_club_book(book_club_id, book_id):
     """
     Adds a book to a book club.
     """
-
     form = BookClubBookForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
         data = form.data
-        book_club_book = BookClubBook.query.filter(BookClubBook.book_id == data['book_id'], BookClubBook.book_club_id == data['book_club_id']).first()
+        book_club_book = BookClubBookService.get_book_by_club(book_club_id, book_id)
+
+        print(book_club_book)
 
         if book_club_book:
-            return {'errors': {'book club book exists': 'This book is already on this book club\'s reading list.'}}, 401
+            return {'errors': ['This book is already on this book club\'s reading list.']}, 401
 
         book_club_book = BookClubBook(
             book_club_id=data['book_club_id'],

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
 
-from app.services import UserService
+from app.services import UserService, BookClubMemberService
 
 user_routes = Blueprint('users', __name__)
 
@@ -34,6 +34,6 @@ def user_book_clubs(id):
     """
     Returns all of a user's book club memberships.
     """
-    bookClubMemberships = UserService.get_user_book_clubs(id)
+    bookClubMemberships = BookClubMemberService.get_user_book_clubs(id)
 
     return {'book club memberships': [membership.to_dict() for membership in bookClubMemberships]}

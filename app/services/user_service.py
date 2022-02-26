@@ -1,9 +1,13 @@
 from datetime import datetime
 
-from app.models import db, User, BookClubMember
+from app.models import db, User
 
 
 class UserService:
+    """
+    Services the User model.
+    """
+
     def create_user(data):
         """
         Create a new user and set them to online.
@@ -39,15 +43,6 @@ class UserService:
         user = User.query.get(user_id)
 
         return user
-
-
-    def get_user_book_clubs(user_id):
-        """
-        Query for a user's book club memberships.
-        """
-        memberships = BookClubMember.query.filter(BookClubMember.user_id == user_id).all()
-
-        return memberships
 
 
     def set_user_online(user_email):
