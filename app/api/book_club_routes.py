@@ -206,7 +206,7 @@ def add_book_club_book(book_club_id, book_id):
         book_club_book = BookClubBookService.get_book_by_club(book_club_id, book_id)
 
         if book_club_book:
-            return {'errors': ['This book is already on this book club\'s reading list.']}, 401
+            return {'errors': {'book club book exists': 'This book is already on this book club\'s reading list.'}}, 401
 
         book_club_book = BookClubBookService.create_book_club_book(data)
 
