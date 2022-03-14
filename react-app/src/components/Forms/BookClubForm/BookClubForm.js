@@ -160,7 +160,7 @@ function BookClubForm({ formType, formProps }) {
                     )}
                     <div className='form__buttons'>
                         <button
-                            // disabled={!name || !capacity}
+                            disabled={!name || !capacity}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>

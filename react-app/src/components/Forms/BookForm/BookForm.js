@@ -243,7 +243,7 @@ function BookForm({ formType, formProps }) {
                     )}
                     <div className='form__buttons'>
                         <button
-                            // disabled={!title || !author || !language}
+                            disabled={!title || !author || !language}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>
