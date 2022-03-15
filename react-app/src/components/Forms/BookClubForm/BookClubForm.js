@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom";
 import { createBookClub, getAllBookClubs, updateBookClub } from "../../../store/book_club";
 import { getUserMemberships } from "../../../store/book_club_member";
 
-import '../FormUtils.css';
+import '../ImageUpload.css';
+import loading from '../../../assets/loading.svg'
 
 function BookClubForm({ formType, formProps }) {
     const dispatch = useDispatch();
@@ -20,7 +21,6 @@ function BookClubForm({ formType, formProps }) {
     const [imageLoading, setImageLoading] = useState(false);
     const [imageName, setImageName] = useState(formProps?.image_name || null);
     const [uploadPrompt, setUploadPrompt] = useState(formProps?.image_name || 'No file selected.');
-    // const [validImage, setValidImage] = useState(true);
 
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
@@ -77,14 +77,10 @@ function BookClubForm({ formType, formProps }) {
             }
 
             setImageLoading(false);
-            // setUploadPrompt(file.name);
-            // setImageName(file.name);
-            // setValidImage(validateImage(file.type));
         }
     }
 
     async function handleRemoveFile(e) {
-        // setImage(null);
         setUploadPrompt('No file selected.');
         setImageName(null);
         setImageUrl('');
@@ -185,27 +181,27 @@ function BookClubForm({ formType, formProps }) {
                                 {imageError}
                             </span>
                         </div>
-                        <div className='event__form--upload'>
-                            Upload a PNG, JPG, JPEG, or GIF image.
-                            <label htmlFor='file' className='event__form--upload-inp'>
-                                <input id='file' type="file" onChange={handleFile} />
-                                Choose a File
-                            </label>
-                            <div className='event__form--upload-prompt'>
-                                {uploadPrompt} {imageName && (<i className="fa-solid fa-s fa-xmark event__form--upload-icon" onClick={handleRemoveFile}></i>)}
+                        <div className='form__upload--text'>
+                            Upload a PNG, JPG, or JPEG.
+                        </div>
+                        <div className='form__upload'>
+
+                            {imageLoading && (
+                                <div className='form__upload--loading'>
+                                    <img className='loading__image' src={loading} />
+                                </div>
+
+                            )}
+                            <div className={'form__upload--content' + (imageLoading ? ' loading__opacity' : '')} >
+                                <label htmlFor='file' className='form__upload--inp'>
+                                    <input id='file' accept="image/*" type="file" onChange={handleFile} />
+                                    Choose a File
+                                </label>
+                                <div className='form__upload--prompt' >
+                                    {uploadPrompt} {imageName && (<i className="fa-solid fa-s fa-xmark form__upload--icon" onClick={handleRemoveFile}></i>)}
+                                </div>
                             </div>
                         </div>
-
-
-                        {imageLoading && 'currently uploading image'}
-
-
-                        {/* <input
-                            name='image_url'
-                            type='text'
-                            value={imageUrl}
-                            onChange={e => setImageUrl(e.target.value)}
-                        ></input> */}
                     </div>
                     <div>
                         <div className='label__section'>
