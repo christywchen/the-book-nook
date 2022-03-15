@@ -32,6 +32,7 @@ python-socketio = "==5.5.1"
 eventlet = "==0.30.2"
 dnspython = "==1.16.0"
 email-validator = "*"
+boto3 = "*"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
