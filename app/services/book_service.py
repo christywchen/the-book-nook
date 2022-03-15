@@ -16,6 +16,7 @@ class BookService:
             author=data['author'],
             synopsis=data['synopsis'],
             image_url=data['image_url'],
+            image_name=data['image_name'],
             isbn13=data['isbn13'],
             original_title=data['original_title'],
             language=data['language'],
@@ -57,6 +58,7 @@ class BookService:
         book.author = data['author']
         book.synopsis = data['synopsis']
         book.image_url = data['image_url']
+        book.image_name = data['image_name']
         book.isbn13 = data['isbn13']
         book.original_title = data['original_title']
         book.language = data['language']
