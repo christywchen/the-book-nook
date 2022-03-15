@@ -3,7 +3,7 @@ import botocore
 import os
 import uuid
 
-ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 BUCKET_NAME = os.environ.get("S3_BUCKET")
 S3_LOCATION = f"http://book-nook-app.s3.amazonaws.com/"
 

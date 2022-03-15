@@ -38,7 +38,7 @@ function BookClubForm({ formType, formProps }) {
         if (data.errors.capacity) setCapacityError(data.errors.capacity);
         else setCapacityError('');
 
-        if (data.errors && data.errors['memberships exceeded']) {
+        if (data.errors['memberships exceeded']) {
             setMembershipError(data.errors['memberships exceeded']);
             setNameError('');
             setDescriptionError('');
@@ -83,6 +83,7 @@ function BookClubForm({ formType, formProps }) {
         setUploadPrompt('No file selected.');
         setImageName(null);
         setImageUrl('');
+        setImageError('');
     }
 
     async function handleSubmit(e) {
@@ -181,7 +182,7 @@ function BookClubForm({ formType, formProps }) {
                             </span>
                         </div>
                         <div className='form__upload--text'>
-                            Upload a PNG, JPG, or JPEG.
+                            Upload a PNG, JPG, JPEG, or GIF.
                         </div>
                         <div className='form__upload'>
                             {imageLoading && (
@@ -192,7 +193,7 @@ function BookClubForm({ formType, formProps }) {
                             )}
                             <div className={'form__upload--content' + (imageLoading ? ' loading__opacity' : '')} >
                                 <label htmlFor='file' className='form__upload--inp'>
-                                    <input id='file' accept="image/*" type="file" onChange={handleFile} />
+                                    <input id='file' accept='image/*' type='file' onChange={handleFile} />
                                     Choose a File
                                 </label>
                                 <div className='form__upload--prompt' >

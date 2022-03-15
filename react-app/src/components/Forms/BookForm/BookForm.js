@@ -11,6 +11,8 @@ function BookForm({ formType, formProps }) {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    console.log(formProps)
+
     const [title, setTitle] = useState(formProps?.title || '');
     const [author, setAuthor] = useState(formProps?.author || '');
     const [synopsis, setSynopsis] = useState(formProps?.synopsis || '');
@@ -22,8 +24,8 @@ function BookForm({ formType, formProps }) {
     const [pages, setPages] = useState(formProps?.pages || '');
 
     const [imageLoading, setImageLoading] = useState(false);
-    const [imageName, setImageName] = useState(formProps?.image_name || null);
-    const [uploadPrompt, setUploadPrompt] = useState(formProps?.image_name || 'No file selected.');
+    const [imageName, setImageName] = useState(formProps?.imageName || null);
+    const [uploadPrompt, setUploadPrompt] = useState(formProps?.imageName || 'No file selected.');
     const [imageError, setImageError] = useState('');
 
     const [titleError, setTitleError] = useState('');
@@ -61,6 +63,8 @@ function BookForm({ formType, formProps }) {
     async function handleFile(e) {
         const file = e.target.files[0];
 
+        console.log(file)
+
         if (file) {
             setImageLoading(true);
 
@@ -91,6 +95,7 @@ function BookForm({ formType, formProps }) {
         setUploadPrompt('No file selected.');
         setImageName(null);
         setImageUrl('');
+        setImageError('');
     }
 
     async function handleSubmit(e) {
@@ -205,7 +210,7 @@ function BookForm({ formType, formProps }) {
                             </span>
                         </div>
                         <div className='form__upload--text'>
-                            Upload a PNG, JPG, or JPEG.
+                            Upload a PNG, JPG, JPEG, or GIF.
                         </div>
                         <div className='form__upload'>
                             {imageLoading && (
@@ -216,7 +221,7 @@ function BookForm({ formType, formProps }) {
                             )}
                             <div className={'form__upload--content' + (imageLoading ? ' loading__opacity' : '')} >
                                 <label htmlFor='file' className='form__upload--inp'>
-                                    <input id='file' accept="image/*" type="file" onChange={handleFile} />
+                                    <input id='file' accept='image/*' type='file' onChange={handleFile} />
                                     Choose a File
                                 </label>
                                 <div className='form__upload--prompt' >
@@ -311,13 +316,13 @@ function BookForm({ formType, formProps }) {
                     )}
                     <div className='form__buttons'>
                         <button
-                            disabled={!title || !author || !language}
+                            disabled={!title || !author || !language || imageError || imageLoading}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>
                                 <hr />
                                 <button
-                                    disabled={!(title || author || synopsis || imageUrl || isbn13 || originalTitle || language || publicationYear || pages)}
+                                    disabled={!(title || author || synopsis || imageUrl || isbn13 || originalTitle || language || publicationYear || pages || imageError || imageLoading)}
                                     className='button' type='reset'>Reset</button>
                             </>
                         )}
