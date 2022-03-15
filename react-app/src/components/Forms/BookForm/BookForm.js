@@ -4,6 +4,9 @@ import { useHistory } from 'react-router-dom';
 
 import { createBook, updateBook } from '../../../store/book';
 
+import '../ImageUpload.css';
+import loading from '../../../assets/loading.svg'
+
 function BookForm({ formType, formProps }) {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -17,6 +20,11 @@ function BookForm({ formType, formProps }) {
     const [language, setLanguage] = useState(formProps?.language || '');
     const [publicationYear, setPublicationYear] = useState(formProps?.publicationYear || '');
     const [pages, setPages] = useState(formProps?.pages || '');
+
+    const [imageLoading, setImageLoading] = useState(false);
+    const [imageName, setImageName] = useState(formProps?.image_name || null);
+    const [uploadPrompt, setUploadPrompt] = useState(formProps?.image_name || 'No file selected.');
+    const [imageError, setImageError] = useState('');
 
     const [titleError, setTitleError] = useState('');
     const [authorError, setAuthorError] = useState('');
@@ -50,11 +58,53 @@ function BookForm({ formType, formProps }) {
         else setPagesError('');
     }
 
+    async function handleFile(e) {
+        const file = e.target.files[0];
+
+        if (file) {
+            setImageLoading(true);
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const res = await fetch('/api/images', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                await setImageUrl(data.url);
+                setImageName(file.name);
+                setUploadPrompt(file.name);
+                setImageError('');
+            } else if (data.errors) {
+                setImageError('Image type must be an accepted format.');
+            }
+
+            setImageLoading(false);
+        }
+    }
+
+    async function handleRemoveFile(e) {
+        setUploadPrompt('No file selected.');
+        setImageName(null);
+        setImageUrl('');
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
 
+        if (imageError) {
+            setErrorNotif(true);
+            return;
+        } else {
+            setErrorNotif(false);
+        }
+
         if (formType === 'createNew') {
-            const data = await dispatch(createBook(title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
+            const data = await dispatch(createBook(title, author, synopsis, imageUrl, imageName, isbn13, originalTitle, language, publicationYear, pages));
 
             if (data.errors) {
                 setErrorNotif(true);
@@ -68,7 +118,7 @@ function BookForm({ formType, formProps }) {
         if (formType === 'editRecord') {
             let id = formProps.id;
 
-            const data = await dispatch(updateBook(id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages));
+            const data = await dispatch(updateBook(id, title, author, synopsis, imageUrl, imageName, isbn13, originalTitle, language, publicationYear, pages));
 
             if (data.errors) {
                 setErrorNotif(true);
@@ -149,15 +199,33 @@ function BookForm({ formType, formProps }) {
                     </div>
                     <div>
                         <div className='label__section'>
-                            <label>Book Cover URL</label>
+                            <label>Book Cover Image</label>
+                            <span className='error__message'>
+                                {imageError}
+                            </span>
                         </div>
-                        <input
-                            name='image_url'
-                            type='text'
-                            value={imageUrl}
-                            onChange={e => setImageUrl(e.target.value)}
-                        ></input>
+                        <div className='form__upload--text'>
+                            Upload a PNG, JPG, or JPEG.
+                        </div>
+                        <div className='form__upload'>
+                            {imageLoading && (
+                                <div className='form__upload--loading'>
+                                    <img className='loading__image' src={loading} />
+                                </div>
+
+                            )}
+                            <div className={'form__upload--content' + (imageLoading ? ' loading__opacity' : '')} >
+                                <label htmlFor='file' className='form__upload--inp'>
+                                    <input id='file' accept="image/*" type="file" onChange={handleFile} />
+                                    Choose a File
+                                </label>
+                                <div className='form__upload--prompt' >
+                                    {uploadPrompt} {imageName && (<i className="fa-solid fa-s fa-xmark form__upload--icon" onClick={handleRemoveFile}></i>)}
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div>
                         <div className='label__section'>
                             <label>Original Title</label>

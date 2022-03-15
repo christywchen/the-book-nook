@@ -17,14 +17,13 @@ function BookClubForm({ formType, formProps }) {
     const [imageUrl, setImageUrl] = useState(formProps?.image_url || '');
     const [capacity, setCapacity] = useState(formProps?.capacity || '');
 
-    const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const [imageName, setImageName] = useState(formProps?.image_name || null);
     const [uploadPrompt, setUploadPrompt] = useState(formProps?.image_name || 'No file selected.');
+    const [imageError, setImageError] = useState('');
 
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
-    const [imageError, setImageError] = useState('');
     const [capacityError, setCapacityError] = useState('');
     const [membershipError, setMembershipError] = useState('');
     const [errorNotif, setErrorNotif] = useState(false);
@@ -185,7 +184,6 @@ function BookClubForm({ formType, formProps }) {
                             Upload a PNG, JPG, or JPEG.
                         </div>
                         <div className='form__upload'>
-
                             {imageLoading && (
                                 <div className='form__upload--loading'>
                                     <img className='loading__image' src={loading} />
