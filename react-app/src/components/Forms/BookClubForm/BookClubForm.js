@@ -13,10 +13,11 @@ function BookClubForm({ formType, formProps }) {
     const [description, setDescription] = useState(formProps?.description || '');
     const [imageUrl, setImageUrl] = useState(formProps?.image_url || '');
     const [capacity, setCapacity] = useState(formProps?.capacity || '');
-    // const [errors, setErrors] = useState([]);
+    const [image, setImage] = useState(null);
 
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
+    const [imageError, setImageError] = useState('');
     const [capacityError, setCapacityError] = useState('');
     const [membershipError, setMembershipError] = useState('');
     const [errorNotif, setErrorNotif] = useState(false);
@@ -28,6 +29,9 @@ function BookClubForm({ formType, formProps }) {
         if (data.errors.description) setDescriptionError(data.errors.description);
         else setDescriptionError('');
 
+        if (image === false) setImageError('Image type must be one of the accepted formats.');
+        else setImageError('')
+
         if (data.errors.capacity) setCapacityError(data.errors.capacity);
         else setCapacityError('');
 
@@ -35,6 +39,7 @@ function BookClubForm({ formType, formProps }) {
             setMembershipError(data.errors['memberships exceeded']);
             setNameError('');
             setDescriptionError('');
+            setImageError('');
             setCapacityError('');
             setErrorNotif(false);
         } else {
@@ -42,9 +47,38 @@ function BookClubForm({ formType, formProps }) {
         }
     }
 
+    async function uploadImage(e) {
+        const formData = new FormData();
+        formData.append('image', image);
+
+        const res = await fetch('/api/images', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const data = await res.json();
+        console.log(data)
+
+        if (res.ok) {
+            // console.log('data image', data)
+            return data.image;
+        } else if (data.errors) {
+            console.log(data.errors)
+        }
+    }
+
     async function handleSubmit(e) {
         e.preventDefault();
         const hostId = sessionUser.id;
+
+        // upload image
+        if (image) {
+            const test = await uploadImage();
+            // await setImage(test);
+            // console.log(image)
+            // console.log(imageUrl)
+            return;
+        }
 
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
@@ -128,11 +162,17 @@ function BookClubForm({ formType, formProps }) {
                             <label>Image URL</label>
                         </div>
                         <input
+                            type="file"
+                            accept="image/*"
+                            onChange={e => setImage(e.target.files[0])}
+                        />
+
+                        {/* <input
                             name='image_url'
                             type='text'
                             value={imageUrl}
                             onChange={e => setImageUrl(e.target.value)}
-                        ></input>
+                        ></input> */}
                     </div>
                     <div>
                         <div className='label__section'>
