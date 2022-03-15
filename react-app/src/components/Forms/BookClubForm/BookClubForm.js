@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import { createBookClub, getAllBookClubs, updateBookClub } from "../../../store/book_club";
 import { getUserMemberships } from "../../../store/book_club_member";
 
+import '../FormUtils.css';
+
 function BookClubForm({ formType, formProps }) {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -18,7 +20,7 @@ function BookClubForm({ formType, formProps }) {
     const [imageLoading, setImageLoading] = useState(false);
     const [imageName, setImageName] = useState(formProps?.imageName || null);
     const [uploadPrompt, setUploadPrompt] = useState(formProps?.imageName || 'No file selected.');
-    const [validImage, setValidImage] = useState(true);
+    // const [validImage, setValidImage] = useState(true);
 
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
@@ -67,6 +69,8 @@ function BookClubForm({ formType, formProps }) {
 
             if (res.ok) {
                 await setImageUrl(data.url);
+                setImageName(file.name);
+                setUploadPrompt(file.name);
                 setImageError('');
             } else if (data.errors) {
                 setImageError('Image type must be an accepted format.');
@@ -77,6 +81,12 @@ function BookClubForm({ formType, formProps }) {
             // setImageName(file.name);
             // setValidImage(validateImage(file.type));
         }
+    }
+
+    async function handleRemoveFile(e) {
+        setImage(null);
+        setUploadPrompt('No file selected.');
+        setImageName(null);
     }
 
     async function handleSubmit(e) {
@@ -91,7 +101,7 @@ function BookClubForm({ formType, formProps }) {
         }
 
         if (formType === 'createNew') {
-            const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
+            const data = await dispatch(createBookClub(name, description, hostId, imageUrl, imageName, capacity));
 
             if (data.errors) {
                 setErrorNotif(true);
@@ -108,7 +118,7 @@ function BookClubForm({ formType, formProps }) {
             let id = formProps.id;
             let hostId = formProps.host_id;
 
-            const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, capacity))
+            const data = await dispatch(updateBookClub(id, name, description, hostId, imageUrl, imageName, capacity))
 
             if (data.errors) {
                 setErrorNotif(true);
@@ -174,12 +184,19 @@ function BookClubForm({ formType, formProps }) {
                                 {imageError}
                             </span>
                         </div>
+                        <div className='event__form--upload'>
+                            <label htmlFor='file' className='event__form--upload-inp'>
+                                <input id='file' accept="image/*" type="file" onChange={handleFile} />
+                                Choose a File
+                            </label>
+                            <div className='event__form--upload-prompt'>
+                                {uploadPrompt} {imageName && (<i className="fa-solid fa-s fa-xmark event__form--upload-icon" onClick={handleRemoveFile}></i>)}
+                            </div>
+                        </div>
+
+
                         {imageLoading && 'currently uploading image'}
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleFile}
-                        />
+
 
                         {/* <input
                             name='image_url'

@@ -44,7 +44,7 @@ export const getBookClub = (id) => async (dispatch) => {
     }
 }
 
-export const createBookClub = (name, description, hostId, imageUrl, capacity) => async (dispatch) => {
+export const createBookClub = (name, description, hostId, imageUrl, imageName, capacity) => async (dispatch) => {
     const res = await fetch('/api/book-clubs', {
         method: 'POST',
         headers: {
@@ -55,6 +55,7 @@ export const createBookClub = (name, description, hostId, imageUrl, capacity) =>
             description: description,
             host_id: hostId,
             image_url: imageUrl,
+            image_name: imageName,
             capacity: capacity
         }),
     });
@@ -75,7 +76,7 @@ export const createBookClub = (name, description, hostId, imageUrl, capacity) =>
     }
 }
 
-export const updateBookClub = (id, name, description, hostId, imageUrl, capacity) => async (dispatch) => {
+export const updateBookClub = (id, name, description, hostId, imageUrl, imageName, capacity) => async (dispatch) => {
     const res = await fetch(`/api/book-clubs/${id}`, {
         method: 'PATCH',
         headers: {
@@ -86,6 +87,7 @@ export const updateBookClub = (id, name, description, hostId, imageUrl, capacity
             description: description,
             host_id: hostId,
             image_url: imageUrl,
+            image_name: imageName,
             capacity: capacity
         }),
     });
