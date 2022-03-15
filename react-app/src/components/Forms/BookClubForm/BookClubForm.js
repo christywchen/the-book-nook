@@ -15,6 +15,7 @@ function BookClubForm({ formType, formProps }) {
     const [capacity, setCapacity] = useState(formProps?.capacity || '');
 
     const [image, setImage] = useState(null);
+    const [imageLoading, setImageLoading] = useState(false);
     const [imageName, setImageName] = useState(formProps?.imageName || null);
     const [uploadPrompt, setUploadPrompt] = useState(formProps?.imageName || 'No file selected.');
     const [validImage, setValidImage] = useState(true);
@@ -33,8 +34,6 @@ function BookClubForm({ formType, formProps }) {
         if (data.errors.description) setDescriptionError(data.errors.description);
         else setDescriptionError('');
 
-        // if (image === false) setImageError('Image type must be an accepted format.');
-        // else setImageError('')
 
         if (data.errors.capacity) setCapacityError(data.errors.capacity);
         else setCapacityError('');
@@ -58,7 +57,7 @@ function BookClubForm({ formType, formProps }) {
 
         if (file) {
             // setImage(file);
-
+            setImageLoading(true);
 
             const formData = new FormData();
             formData.append('image', file);
@@ -77,14 +76,12 @@ function BookClubForm({ formType, formProps }) {
             if (res.ok) {
                 // const url = await uploadImage();
                 await setImageUrl(data.url);
-                await setErrorNotif(false);
-                await setImageError('');
-                return;
+                setImageError('');
             } else if (data.errors) {
                 setImageError('Image type must be an accepted format.');
-                return false;
             }
 
+            setImageLoading(false);
             // setUploadPrompt(file.name);
             // setImageName(file.name);
             // setValidImage(validateImage(file.type));
@@ -99,7 +96,9 @@ function BookClubForm({ formType, formProps }) {
         if (imageError) {
             setErrorNotif(true);
             return;
-        };
+        } else {
+            setErrorNotif(false);
+        }
 
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
@@ -185,6 +184,7 @@ function BookClubForm({ formType, formProps }) {
                                 {imageError}
                             </span>
                         </div>
+                        {imageLoading && 'currently uploading image'}
                         <input
                             type="file"
                             // accept="image/*"
@@ -224,7 +224,7 @@ function BookClubForm({ formType, formProps }) {
                     )}
                     <div className='form__buttons'>
                         <button
-                            // disabled={!name || !capacity}
+                            disabled={!name || !capacity || imageError || imageLoading}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>
