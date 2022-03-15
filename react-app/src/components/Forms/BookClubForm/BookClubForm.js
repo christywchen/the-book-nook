@@ -13,7 +13,11 @@ function BookClubForm({ formType, formProps }) {
     const [description, setDescription] = useState(formProps?.description || '');
     const [imageUrl, setImageUrl] = useState(formProps?.image_url || '');
     const [capacity, setCapacity] = useState(formProps?.capacity || '');
+
     const [image, setImage] = useState(null);
+    const [imageName, setImageName] = useState(formProps?.imageName || null);
+    const [uploadPrompt, setUploadPrompt] = useState(formProps?.imageName || 'No file selected.');
+    const [validImage, setValidImage] = useState(true);
 
     const [nameError, setNameError] = useState('');
     const [descriptionError, setDescriptionError] = useState('');
@@ -29,13 +33,13 @@ function BookClubForm({ formType, formProps }) {
         if (data.errors.description) setDescriptionError(data.errors.description);
         else setDescriptionError('');
 
-        if (image === false) setImageError('Image type must be one of the accepted formats.');
-        else setImageError('')
+        // if (image === false) setImageError('Image type must be an accepted format.');
+        // else setImageError('')
 
         if (data.errors.capacity) setCapacityError(data.errors.capacity);
         else setCapacityError('');
 
-        if (data.errors['memberships exceeded']) {
+        if (data.errors && data.errors['memberships exceeded']) {
             setMembershipError(data.errors['memberships exceeded']);
             setNameError('');
             setDescriptionError('');
@@ -47,39 +51,55 @@ function BookClubForm({ formType, formProps }) {
         }
     }
 
-    async function uploadImage(e) {
-        const formData = new FormData();
-        formData.append('image', image);
+    async function handleFile(e) {
+        const file = e.target.files[0];
 
-        const res = await fetch('/api/images', {
-            method: 'POST',
-            body: formData,
-        });
+        console.log('fileeee', file)
 
-        const data = await res.json();
-        console.log(data)
+        if (file) {
+            // setImage(file);
 
-        if (res.ok) {
-            console.log('data image', data.url)
-            return data.image;
-        } else if (data.errors) {
-            console.log(data.errors)
+
+            const formData = new FormData();
+            formData.append('image', file);
+
+
+            const res = await fetch('/api/images', {
+                method: 'POST',
+                body: formData,
+            });
+
+
+            const data = await res.json();
+
+            console.log(data)
+
+            if (res.ok) {
+                // const url = await uploadImage();
+                await setImageUrl(data.url);
+                await setErrorNotif(false);
+                await setImageError('');
+                return;
+            } else if (data.errors) {
+                setImageError('Image type must be an accepted format.');
+                return false;
+            }
+
+            // setUploadPrompt(file.name);
+            // setImageName(file.name);
+            // setValidImage(validateImage(file.type));
         }
+
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         const hostId = sessionUser.id;
 
-        // upload image
-        if (image) {
-            await uploadImage();
-
-            // await setImage(test);
-            // console.log(image)
-            // console.log(imageUrl)
+        if (imageError) {
+            setErrorNotif(true);
             return;
-        }
+        };
 
         if (formType === 'createNew') {
             const data = await dispatch(createBookClub(name, description, hostId, imageUrl, capacity));
@@ -160,12 +180,15 @@ function BookClubForm({ formType, formProps }) {
                     </div>
                     <div>
                         <div className='label__section'>
-                            <label>Image URL</label>
+                            <label>Club Image (PNG, JPG, JPEG, GIF)</label>
+                            <span className='error__message'>
+                                {imageError}
+                            </span>
                         </div>
                         <input
                             type="file"
-                            accept="image/*"
-                            onChange={e => setImage(e.target.files[0])}
+                            // accept="image/*"
+                            onChange={handleFile}
                         />
 
                         {/* <input
@@ -201,7 +224,7 @@ function BookClubForm({ formType, formProps }) {
                     )}
                     <div className='form__buttons'>
                         <button
-                            disabled={!name || !capacity}
+                            // disabled={!name || !capacity}
                             className='button' type='submit'>Submit</button>
                         {formType === 'createNew' && (
                             <>
