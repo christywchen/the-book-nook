@@ -24,6 +24,7 @@ def upgrade():
     sa.Column('description', sa.String(length=100), nullable=True),
     sa.Column('host_id', sa.Integer(), nullable=False),
     sa.Column('image_url', sa.Text(), nullable=True),
+    sa.Column('image_name', sa.Text(), nullable=True),
     sa.Column('capacity', sa.Integer(), nullable=False),
     sa.Column('is_public', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),

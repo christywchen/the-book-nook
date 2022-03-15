@@ -17,6 +17,7 @@ class BookClubService:
             description=data['description'],
             host_id=data['host_id'],
             image_url=data['image_url'],
+            image_name=data['image_name'],
             capacity=data['capacity'],
             created_at=datetime.now(),
             updated_at=datetime.now()
@@ -54,6 +55,7 @@ class BookClubService:
         book_club.description = data['description']
         book_club.host_id = data['host_id']
         book_club.image_url = data['image_url']
+        book_club.image_name = data['image_name']
         book_club.capacity = data['capacity']
         book_club.updated_at = datetime.now()
 

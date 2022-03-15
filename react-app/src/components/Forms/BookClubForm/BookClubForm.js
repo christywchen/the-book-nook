@@ -34,7 +34,6 @@ function BookClubForm({ formType, formProps }) {
         if (data.errors.description) setDescriptionError(data.errors.description);
         else setDescriptionError('');
 
-
         if (data.errors.capacity) setCapacityError(data.errors.capacity);
         else setCapacityError('');
 
@@ -53,28 +52,20 @@ function BookClubForm({ formType, formProps }) {
     async function handleFile(e) {
         const file = e.target.files[0];
 
-        console.log('fileeee', file)
-
         if (file) {
-            // setImage(file);
             setImageLoading(true);
 
             const formData = new FormData();
             formData.append('image', file);
-
 
             const res = await fetch('/api/images', {
                 method: 'POST',
                 body: formData,
             });
 
-
             const data = await res.json();
 
-            console.log(data)
-
             if (res.ok) {
-                // const url = await uploadImage();
                 await setImageUrl(data.url);
                 setImageError('');
             } else if (data.errors) {
@@ -86,7 +77,6 @@ function BookClubForm({ formType, formProps }) {
             // setImageName(file.name);
             // setValidImage(validateImage(file.type));
         }
-
     }
 
     async function handleSubmit(e) {
@@ -187,7 +177,7 @@ function BookClubForm({ formType, formProps }) {
                         {imageLoading && 'currently uploading image'}
                         <input
                             type="file"
-                            // accept="image/*"
+                            accept="image/*"
                             onChange={handleFile}
                         />
 
