@@ -5,7 +5,7 @@ import uuid
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "gif"}
 BUCKET_NAME = os.environ.get("S3_BUCKET")
-S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
+S3_LOCATION = f"http://book-nook-app.s3.amazonaws.com/"
 
 # get s3 environment variables
 s3 = boto3.client(

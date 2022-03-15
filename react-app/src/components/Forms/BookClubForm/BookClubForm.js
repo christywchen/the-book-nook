@@ -60,7 +60,7 @@ function BookClubForm({ formType, formProps }) {
         console.log(data)
 
         if (res.ok) {
-            // console.log('data image', data)
+            console.log('data image', data.url)
             return data.image;
         } else if (data.errors) {
             console.log(data.errors)
@@ -73,7 +73,8 @@ function BookClubForm({ formType, formProps }) {
 
         // upload image
         if (image) {
-            const test = await uploadImage();
+            await uploadImage();
+
             // await setImage(test);
             // console.log(image)
             // console.log(imageUrl)
