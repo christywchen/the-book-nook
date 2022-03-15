@@ -18,8 +18,8 @@ function BookClubForm({ formType, formProps }) {
 
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
-    const [imageName, setImageName] = useState(formProps?.imageName || null);
-    const [uploadPrompt, setUploadPrompt] = useState(formProps?.imageName || 'No file selected.');
+    const [imageName, setImageName] = useState(formProps?.image_name || null);
+    const [uploadPrompt, setUploadPrompt] = useState(formProps?.image_name || 'No file selected.');
     // const [validImage, setValidImage] = useState(true);
 
     const [nameError, setNameError] = useState('');
@@ -84,9 +84,10 @@ function BookClubForm({ formType, formProps }) {
     }
 
     async function handleRemoveFile(e) {
-        setImage(null);
+        // setImage(null);
         setUploadPrompt('No file selected.');
         setImageName(null);
+        setImageUrl('');
     }
 
     async function handleSubmit(e) {
@@ -179,14 +180,15 @@ function BookClubForm({ formType, formProps }) {
                     </div>
                     <div>
                         <div className='label__section'>
-                            <label>Club Image (PNG, JPG, JPEG, GIF)</label>
+                            <label>Book Club Icon</label>
                             <span className='error__message'>
                                 {imageError}
                             </span>
                         </div>
                         <div className='event__form--upload'>
+                            Upload a PNG, JPG, JPEG, or GIF image.
                             <label htmlFor='file' className='event__form--upload-inp'>
-                                <input id='file' accept="image/*" type="file" onChange={handleFile} />
+                                <input id='file' type="file" onChange={handleFile} />
                                 Choose a File
                             </label>
                             <div className='event__form--upload-prompt'>

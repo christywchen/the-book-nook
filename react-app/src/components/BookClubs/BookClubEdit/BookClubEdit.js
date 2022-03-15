@@ -24,6 +24,7 @@ function BookClubEdit() {
             description: bookClub.description,
             host_id: bookClub.host_id,
             image_url: bookClub.image_url,
+            image_name: bookClub.image_name,
             capacity: bookClub.capacity
         };
     }
