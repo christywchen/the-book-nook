@@ -11,8 +11,6 @@ function BookForm({ formType, formProps }) {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    console.log(formProps)
-
     const [title, setTitle] = useState(formProps?.title || '');
     const [author, setAuthor] = useState(formProps?.author || '');
     const [synopsis, setSynopsis] = useState(formProps?.synopsis || '');
@@ -62,8 +60,6 @@ function BookForm({ formType, formProps }) {
 
     async function handleFile(e) {
         const file = e.target.files[0];
-
-        console.log(file)
 
         if (file) {
             setImageLoading(true);
