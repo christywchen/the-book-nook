@@ -55,12 +55,12 @@ function ReadingList() {
                 <div id='center__container--topbar'>
                     <IconImage bookClub={bookClub} />
                     <div id='center__container--title'>
-                        Book Club Reading Lists
+                        Reading List
                     </div>
                     <div id='center__container--subtitle'>
                         {bookClub.host_id === sessionUser.id ?
                             'Update read status or remove books added by members.'
-                            : 'Update read status or remove books you\'ve added.'
+                            : 'Update read status or remove books you\'ve suggested.'
                         }
                     </div>
                 </div>
