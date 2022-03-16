@@ -19,7 +19,7 @@ The backend utilizes **Flask** and **SQLAlchemy** along with **PostgreSQL** for 
 
 The frontend utilizes **React**, and **Redux** along with **React Router** for routing. As with the backend, RESTful convention also guided the decisionmaking for frontend routes. The application's **HTML** and **CSS** were written entirely from scratch and uses no external libraries.
 
-The chatroom is powered by **SocketIO**.
+The chatroom is powered by **SocketIO** and image uploading utilizes **AWS S3** services..
 
 # Features Preview
 
