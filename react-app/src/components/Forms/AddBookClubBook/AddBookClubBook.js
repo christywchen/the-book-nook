@@ -33,7 +33,7 @@ function AddBookClubBook({ book }) {
         const data = await dispatch(createBookClubBook(bookClubId, book.id, sessionUser.id))
 
         if (data.errors) {
-            setErrors(data.errors);
+            setErrors(Object.values(data.errors));
             setMessage('');
         } else {
             setMessage('Successfully added. Go to your book club\'s reading list?')
@@ -61,6 +61,7 @@ function AddBookClubBook({ book }) {
             return allBookClubsObj[membership.book_club_id];
         });
     }
+
 
     return (
         <>
