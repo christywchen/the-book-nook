@@ -24,6 +24,7 @@ function BookEdit() {
             author: book.author,
             synopsis: book.synopsis,
             imageUrl: book.image_url,
+            imageName: book.image_name,
             isbn13: book.isbn13,
             originalTitle: book.original_title,
             language: book.language,

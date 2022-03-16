@@ -5,31 +5,31 @@ from wtforms.validators import DataRequired, Optional
 from datetime import datetime
 
 def title_length(form, field):
-    # Check that title is not more than 75 characters
+    # Check that title is not more than 150 characters
     title = field.data
 
-    if len(title) > 75:
+    if len(title) > 150:
         raise ValidationError('Title should be 150 characters or less.')
 
 
 def author_length(form, field):
-    # Check that author is not more than 75 characters
+    # Check that author is not more than 150 characters
     author = field.data
 
-    if len(author) > 75:
+    if len(author) > 150:
         raise ValidationError('Author should be 150 characters or less.')
 
 
 def orig_title_length(form, field):
-    # Check that original title is not more than 75 characters
+    # Check that original title is not more than 150 characters
     orig_title = field.data
 
-    if len(orig_title) > 75:
+    if len(orig_title) > 150:
         raise ValidationError('Original title should be 150 characters or less.')
 
 
 def lang_length(form, field):
-    # Check that language is not more than 20 characters
+    # Check that language is not more than 50 characters
     lang = field.data
 
     if len(lang) > 20:
@@ -37,7 +37,7 @@ def lang_length(form, field):
 
 
 def isbn13_length(form, field):
-    # Check that isbn13 is 17 characters exactly.
+    # Check that isbn13 is 13 characters exactly.
     isbn13 = field.data
 
     if len(isbn13) != 13:
@@ -65,6 +65,7 @@ class BookForm(FlaskForm):
     author = StringField('author', validators=[DataRequired(), author_length])
     synopsis = TextAreaField('synopsis')
     image_url = TextAreaField('image_url')
+    image_name = TextAreaField('image_name')
     isbn13 = StringField('isbn13', validators=[Optional(), isbn13_length])
     original_title = StringField('original_title', validators=[Optional(), orig_title_length])
     language = StringField('language', validators=[DataRequired(), lang_length])

@@ -25,6 +25,10 @@ function DashboardHome() {
     if (userMemberships && allBookClubsObj) {
         userBookClubs = userMemberships.map(userMembership => {
             return allBookClubsObj[userMembership.book_club_id];
+        }).sort((a, b) => {
+            const x = a.name.toLowerCase();
+            const y = b.name.toLowerCase();
+            return x < y ? -1 : x > y ? 1 : 0;
         });
     }
 

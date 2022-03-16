@@ -13,7 +13,11 @@ function BookClubList() {
     const bookClubsObj = useSelector(state => state.bookClub.byId);
 
     let bookClubs;
-    if (bookClubsObj) bookClubs = Object.values(bookClubsObj);
+    if (bookClubsObj) bookClubs = Object.values(bookClubsObj).sort((a, b) => {
+        const x = a.name.toLowerCase();
+        const y = b.name.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });;
 
     useEffect(() => {
         dispatch(getAllBookClubs());

@@ -8,6 +8,7 @@ class Book(db.Model):
     author = db.Column(db.String(150), nullable=False)
     synopsis = db.Column(db.Text)
     image_url = db.Column(db.Text)
+    image_name = db.Column(db.Text)
     isbn13 = db.Column(db.String(13))
     original_title = db.Column(db.String(150))
     language = db.Column(db.String(50), nullable=False)
@@ -26,6 +27,7 @@ class Book(db.Model):
             "author": self.author,
             "synopsis": self.synopsis,
             "image_url": self.image_url,
+            "image_name": self.image_name,
             "isbn13": self.isbn13,
             "original_title": self.original_title,
             "language": self.language,
@@ -37,4 +39,4 @@ class Book(db.Model):
 
 
     def __repr__(self):
-        return f"<class 'Book', id: {self.id}, name: {self.title}, author: {self.author}, synopsis: {self.synopsis}, image_url: {self.image_url}, isbn13: {self.isbn13}, original_title: {self.original_title}, language: {self.language}, publication_year: {self.publication_year}, pages: {self.pages}, created_at: {self.created_at}, updated_at: {self.updated_at}>"
+        return f"<class 'Book', id: {self.id}, name: {self.title}, author: {self.author}, synopsis: {self.synopsis}, image_url: {self.image_url}, image_name: {self.image_name}, isbn13: {self.isbn13}, original_title: {self.original_title}, language: {self.language}, publication_year: {self.publication_year}, pages: {self.pages}, created_at: {self.created_at}, updated_at: {self.updated_at}>"

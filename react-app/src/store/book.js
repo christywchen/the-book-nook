@@ -44,7 +44,7 @@ export const getBook = (id) => async (dispatch) => {
     }
 }
 
-export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
+export const createBook = (title, author, synopsis, imageUrl, imageName, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch('/api/books', {
         method: 'POST',
         headers: {
@@ -55,6 +55,7 @@ export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTi
             author: author,
             synopsis: synopsis,
             image_url: imageUrl,
+            image_name: imageName,
             isbn13: isbn13,
             original_title: originalTitle,
             language: language,
@@ -80,7 +81,7 @@ export const createBook = (title, author, synopsis, imageUrl, isbn13, originalTi
 }
 
 
-export const updateBook = (id, title, author, synopsis, imageUrl, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
+export const updateBook = (id, title, author, synopsis, imageUrl, imageName, isbn13, originalTitle, language, publicationYear, pages) => async (dispatch) => {
     const res = await fetch(`/api/books/${id}`, {
         method: 'PATCH',
         headers: {
@@ -91,6 +92,7 @@ export const updateBook = (id, title, author, synopsis, imageUrl, isbn13, origin
             author: author,
             synopsis: synopsis,
             image_url: imageUrl,
+            image_name: imageName,
             isbn13: isbn13,
             original_title: originalTitle,
             language: language,

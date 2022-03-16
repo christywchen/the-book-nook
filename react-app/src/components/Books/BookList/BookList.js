@@ -10,8 +10,21 @@ import './BookList.css';
 function BookList() {
     const dispatch = useDispatch();
     const booksObj = useSelector(state => state.book.byId);
-    const books = Object.values(booksObj);
+    const books = Object.values(booksObj).sort((a, b) => {
+        const x = a.title.toLowerCase();
+        const y = b.title.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+    });
 
+    console.log('*****')
+
+    console.log(books)
+
+    books.forEach((book) => {
+        console.log(book.title)
+    })
+
+    console.log('*****')
     useEffect(() => {
         dispatch(getAllBooks());
     }, [dispatch]);

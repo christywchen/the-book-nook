@@ -13,6 +13,7 @@ import './ReadingList.css';
 function ReadingList() {
     const { bookClubId } = useParams();
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const bookClub = useSelector(state => state.bookClub.byId[bookClubId]);
     const allBookClubBooksObj = useSelector(state => state.bookClubBook.byId);
     const allBooksObj = useSelector(state => state.book.byId);
@@ -54,7 +55,13 @@ function ReadingList() {
                 <div id='center__container--topbar'>
                     <IconImage bookClub={bookClub} />
                     <div id='center__container--title'>
-                        Reading List
+                        Book Club Reading Lists
+                    </div>
+                    <div id='center__container--subtitle'>
+                        {bookClub.host_id === sessionUser.id ?
+                            'Update read status or remove books added by members.'
+                            : 'Update read status or remove books you\'ve added.'
+                        }
                     </div>
                 </div>
                 <div id='center__container--main-content'>
