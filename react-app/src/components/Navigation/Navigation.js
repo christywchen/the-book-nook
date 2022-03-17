@@ -8,6 +8,7 @@ import github from '../../assets/github.svg';
 import linkedin from '../../assets/linkedin.svg';
 
 import './Navigation.css';
+import SearchBooks from '../Forms/SearchBooks/SearchBooks';
 
 const Navigation = () => {
   const sessionUser = useSelector(state => state.session.user);
@@ -38,6 +39,11 @@ const Navigation = () => {
                 Books
               </NavLink>
             </span>
+          </>
+        )}
+        {sessionUser && (
+          <>
+            <SearchBooks />
           </>
         )}
         {!sessionUser && (

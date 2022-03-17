@@ -19,8 +19,6 @@ function Home() {
     return (
         <>
             <div id='home__container'>
-                {/* <div id='home__container--img' > */}
-                {/* </div> */}
                 <img id='home__container--img' alt='' src={openbook} />
                 <div id='home__container--tagline'>Read more. Discuss better. Stress less.</div>
                 <div id='home__container--title'>Your Personal Book Club Community</div>
