@@ -7,10 +7,19 @@ class SearchService:
 
     def search_books(query):
         """
+        Returns all book matches for a given search query.
+        Searches by author and title.
+        """
+        books = Book.query.filter(Book.title.ilike(query + '%') | Book.author.ilike(query + '%')).all()
+
+        return books
+
+
+    def search_5_books(query):
+        """
         Returns first five book matches for a given search query.
         Searches by author and title.
         """
-        titles = Book.query.filter(Book.title.ilike(query + '%')).limit(5).all()
-        authors = Book.query.filter(Book.author.ilike(query + '%')).limit(5).all()
+        books = Book.query.filter(Book.title.ilike(query + '%') | Book.author.ilike(query + '%')).limit(5).all()
 
-        return [titles, authors]
+        return books
