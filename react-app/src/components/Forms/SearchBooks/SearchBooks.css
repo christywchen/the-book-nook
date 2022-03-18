@@ -1,5 +1,6 @@
 #search__form {
     display: flex;
     width: 250px;
+    height: fit-content;
     gap: 10px;
 }

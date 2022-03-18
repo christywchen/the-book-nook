@@ -39,10 +39,6 @@ const Navigation = () => {
                 Books
               </NavLink>
             </span>
-          </>
-        )}
-        {sessionUser && (
-          <>
             <SearchBooks />
           </>
         )}

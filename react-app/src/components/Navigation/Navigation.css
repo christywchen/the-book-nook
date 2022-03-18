@@ -19,7 +19,9 @@
 }
 
 #nav__links {
-    margin: 8px 50px 0;
+    display: flex;
+    height: fit-content;
+    margin: 0 50px;
 }
 
 #nav__links a,
@@ -37,7 +39,7 @@
 
 .nav__mainlink,
 .nav__text {
-    margin: 18px;
+    margin: 8px 18px;
     font-weight: 500;
     font-size: var(--h5-size);
 }
