@@ -33,6 +33,10 @@
     z-index: 5;
 }
 
+.search__res:hover {
+    cursor: pointer;
+}
+
 .search__res ul {
     width: 230px;
     border: 1px solid var(--sidebar-bg);
@@ -61,9 +65,28 @@
 }
 
 .res__title {
+    width: 100%;
     font-size: 0.8rem;
+    font-style: italic;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .res__author {
     font-size: 0.7rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.res__more {
+    font-size: 0.85em;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: 0.2s;
+}
+
+.res__more:hover {
+    opacity: 1;
 }
