@@ -54,7 +54,7 @@ const Navigation = () => {
             </>
           )}
         </div>
-        <div className='nav__right'>
+        <div id='nav__right'>
           {sessionUser && (
             <LogoutButton />
           )}
