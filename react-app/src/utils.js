@@ -11,6 +11,19 @@ export function buildURLParams(str) {
     return new URLSearchParams(queryObj).toString();
 }
 
+export function buildURLString(params) {
+    const paramsStr = new URLSearchParams(params).toString();
+    const paramsArr = paramsStr.split('&');
+    const resultArr = [];
+
+    for (let params of paramsArr) {
+        const param = params.split('=')[1];
+        resultArr.push(param);
+    }
+
+    return resultArr.join(' ');
+}
+
 export function convertDate(date) {
     const localTimeArr = new Date(date).toLocaleTimeString().split(' ');
     const localHoursArr = localTimeArr[0].split(':');

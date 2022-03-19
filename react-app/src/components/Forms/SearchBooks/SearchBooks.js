@@ -16,7 +16,7 @@ function SearchBooks() {
 
         const params = buildURLParams(query);
 
-        return history.push(`/books/search/q?=${params}`);
+        return history.push(`/books/search/q?${params}`);
     }
 
     async function handleQuery(e) {

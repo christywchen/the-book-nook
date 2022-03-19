@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import { getAllBooks } from '../../store/book';
+import { buildURLString } from '../../utils';
 
 import BookCard from '../Books/BookCard/BookCard';
 
 // import './BookList.css';
 
 function Results() {
+    const location = useLocation();
     const dispatch = useDispatch();
     const booksObj = useSelector(state => state.book.byId);
     const books = Object.values(booksObj).sort((a, b) => {
@@ -15,6 +18,8 @@ function Results() {
         const y = b.title.toLowerCase();
         return x < y ? -1 : x > y ? 1 : 0;
     });
+
+    buildURLString(location.search);
 
     useEffect(() => {
         dispatch(getAllBooks());
