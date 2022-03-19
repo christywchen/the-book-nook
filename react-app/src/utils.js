@@ -11,7 +11,7 @@ export function buildURLParams(str) {
     return new URLSearchParams(queryObj).toString();
 }
 
-export function buildURLString(params) {
+export function getURLParams(params) {
     const paramsStr = new URLSearchParams(params).toString();
     const paramsArr = paramsStr.split('&');
     const resultArr = [];
@@ -21,7 +21,7 @@ export function buildURLString(params) {
         resultArr.push(param);
     }
 
-    return resultArr.join(' ');
+    return [resultArr.join(' '), paramsStr];
 }
 
 export function convertDate(date) {

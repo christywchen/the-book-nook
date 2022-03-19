@@ -14,6 +14,7 @@ function SearchBooks() {
     async function handleSubmit(e) {
         e.preventDefault();
 
+        setShowResults(false);
         const params = buildURLParams(query);
 
         return history.push(`/books/search/q?${params}`);
@@ -33,7 +34,6 @@ function SearchBooks() {
         if (res.ok) {
             setShowResults(true);
             const data = await res.json();
-            console.log(data.books)
             setResults(data.books);
         }
     }
