@@ -8,6 +8,9 @@ image_routes = Blueprint("images", __name__)
 @image_routes.route("", methods=["POST"])
 @login_required
 def upload_image():
+    """
+    Handles a single image upload to AWS S3 and returns url.
+    """
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 

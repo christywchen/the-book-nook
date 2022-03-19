@@ -14,6 +14,7 @@ import EditBook from './Books/EditBook/EditBook';
 
 import './Sidebar.css';
 import BookDetails from './Books/BookDetails/BookDetails';
+import BookSearch from './Search/BookSearch/BookSearch';
 
 function Sidebar() {
     const location = useLocation();
@@ -29,6 +30,7 @@ function Sidebar() {
     }, [dispatch, sessionUser]);
 
     const isDashboard = location.pathname.startsWith('/dashboard');
+    const isBookSearch = location.pathname.startsWith('/books/search');
     const isBookClubList = location.pathname.match(/\/book-clubs\/all$/);
     const isBookClubCreate = location.pathname.match(/\/book-clubs\/new$/);
     const isBookClubEdit = location.pathname.match(/\/book-clubs\/\d+\/edit$/)
@@ -51,6 +53,7 @@ function Sidebar() {
                 {isBookCreate && <CreateBook />}
                 {isBookEdit && <EditBook />}
                 {isBookDetails && <BookDetails />}
+                {isBookSearch && <BookSearch />}
             </section>
         </>
     )

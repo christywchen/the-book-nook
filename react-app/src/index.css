@@ -6,6 +6,7 @@
     --body-width: calc(100vw - 75px);
 
     --main-color: rgba(255, 255, 255, 1);
+    --default-bg: rgb(228, 88, 88);
     --background-color: rgba(207, 44, 66, 0.25);
     --lighter-bg: rgba(255, 255, 255, 0.8);
     --link-hover: rgba(255, 255, 255, 0.65);
@@ -58,6 +59,7 @@ body {
     font-size: 15px;
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
+    background-color: var(--default-bg);
     background-image: url("./assets/background.jpg");
     overflow: hidden;
 }
@@ -244,7 +246,7 @@ select {
 }
 
 #form__container textarea {
-    resize: none;
+    resize: vertical;
     overflow: auto;
 }
 
@@ -338,4 +340,15 @@ input::placeholder {
     select > option {
         color: black;
     }
+}
+
+/* other */
+.link__bolded {
+    font-weight: 600;
+    opacity: 1;
+    transition: 0.2s;
+}
+
+.link__bolded:hover {
+    opacity: 0.8;
 }

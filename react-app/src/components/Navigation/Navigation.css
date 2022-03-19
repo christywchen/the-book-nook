@@ -1,9 +1,12 @@
 #nav__container {
+    position: relative;
+    width: 100%;
     display: flex;
-    padding-left: 35px;
 }
 
 #nav__title {
+    width: 325px;
+    text-align: center;
     color: var(--main-color);
     font-size: var(--logo-size);
     font-weight: var(--weight-med);
@@ -19,17 +22,26 @@
 }
 
 #nav__links {
-    margin: 8px 50px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
 }
 
-#nav__links a,
+#nav__left {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+#nav__left a,
 .nav__text {
     color: var(--main-color);
     text-decoration: none;
     transition: 0.2s;
 }
 
-#nav__links a:hover {
+#nav__left a:hover {
     color: var(--link-hover);
     padding-bottom: 1px;
     /* border-bottom: 1px solid var(--main-color); */
@@ -37,7 +49,7 @@
 
 .nav__mainlink,
 .nav__text {
-    margin: 18px;
+    margin: 8px 18px;
     font-weight: 500;
     font-size: var(--h5-size);
 }
@@ -55,17 +67,23 @@
     font-weight: 200;
 }
 
+.nav__right {
+    justify-self: flex-end;
+    position: relative;
+    display: flex;
+    right: 0px;
+    /* margin: 0 0 0 40px; */
+    display: flex;
+    /* gap: 40px; */
+}
+
 .nav__social {
-    position: absolute;
     display: flex;
-    right: 50px;
-    margin: 2px 0 0 40px;
-    display: flex;
-    gap: 40px;
+    align-items: center;
+    gap: 10px;
 }
 
 .social__icon {
-    position: absolute;
     width: 30px;
     height: 30px;
     opacity: 0.6;

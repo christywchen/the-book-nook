@@ -10,6 +10,7 @@ import './BookClubList.css'
 
 function BookClubList() {
     const dispatch = useDispatch();
+    const sessionUser = useSelector(state => state.session.user);
     const bookClubsObj = useSelector(state => state.bookClub.byId);
 
     let bookClubs;
@@ -20,8 +21,10 @@ function BookClubList() {
     });;
 
     useEffect(() => {
-        dispatch(getAllBookClubs());
-        dispatch(getUsers());
+        if (sessionUser.id) {
+            dispatch(getAllBookClubs());
+            dispatch(getUsers());
+        }
     }, [dispatch]);
 
     return (
@@ -32,7 +35,7 @@ function BookClubList() {
                     <div className='bookclub__card--container'>
                         {bookClubs.length > 0 ? (
                             <>
-                                {bookClubs.map(bookClub => (<BookClubCard bookClub={bookClub} />))}
+                                {bookClubs.map(bookClub => (<BookClubCard key={bookClub.id} bookClub={bookClub} />))}
                             </>
                         ) : (<>No book clubs at the moment. Maybe you start one of your own?</>)}
                     </div>

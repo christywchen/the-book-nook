@@ -26,6 +26,15 @@ const removeBook = (bookId) => {
 }
 
 // thunks
+export const searchBooks = (query) => async (dispatch) => {
+    const res = await fetch(`/api/search/books/${query}/all`);
+
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(loadBooks(data['books']));
+    }
+}
+
 export const getAllBooks = () => async (dispatch) => {
     const res = await fetch('/api/books');
 

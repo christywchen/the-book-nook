@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Dashboard from './components/Dashboard/Dashboard';
 import BookClubs from './components/BookClubs/BookClubs';
 import Books from './components/Books/Books';
+import Results from './components/Results/Results';
 import Chat from './components/Chat';
 
 import './App.css';
@@ -20,6 +21,9 @@ function Main() {
                     </ProtectedRoute>
                     <ProtectedRoute path='/book-clubs*' exact={true} >
                         <BookClubs />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/books/search*' exact={true} >
+                        <Results />
                     </ProtectedRoute>
                     <ProtectedRoute path='/books*' exact={true} >
                         <Books />

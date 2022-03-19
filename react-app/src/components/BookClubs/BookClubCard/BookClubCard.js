@@ -28,11 +28,11 @@ function BookClubCard({ bookClub }) {
     const backgroundImage = { backgroundImage: `url("${image_url}")` }
 
     useEffect(() => {
-        dispatch(getBookClubMembers(id));
-        dispatch(getUserMemberships(sessionUser.id));
-    }, [dispatch, id, sessionUser]);
-
-    useEffect(() => { }, [availableSpace, memberCount]);
+        if (sessionUser.id) {
+            dispatch(getBookClubMembers(id));
+            dispatch(getUserMemberships(sessionUser.id));
+        }
+    }, [dispatch]);
 
     async function handleMembership(e) {
         e.preventDefault();
@@ -74,11 +74,18 @@ function BookClubCard({ bookClub }) {
                         )}
                     </div>
                 </div>
-                {(availableSpace >= 1 || buttonText === 'Go to Club') && (<div className='no__memberships--links'>
-                    <form onSubmit={handleMembership}>
-                        <button className='button' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
-                    </form>
-                </div>)}
+                {(availableSpace >= 1 || buttonText === 'Go to Club') ? (
+                    <div className='no__memberships--links'>
+                        <form onSubmit={handleMembership}>
+                            <button className='button' disabled={buttonText === 'Join Now' && userMemberships.length >= 5} type='submit'>{buttonText}</button>
+                        </form>
+                    </div>) :
+                    (<div className='no__memberships--links'>
+                        <form onSubmit={handleMembership}>
+                            <button className='button' disabled='true' type='submit'>Join Now</button>
+                        </form>
+                    </div>)
+                }
             </section>
         </>
     )
