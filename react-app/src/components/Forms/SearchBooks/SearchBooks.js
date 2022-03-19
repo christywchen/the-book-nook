@@ -14,6 +14,11 @@ function SearchBooks() {
     async function handleSubmit(e) {
         e.preventDefault();
 
+        if (query === '') {
+            console.log('here')
+            return history.push(`/books/all`);
+        }
+
         setShowResults(false);
         const params = buildURLParams(query);
 

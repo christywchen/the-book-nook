@@ -341,3 +341,14 @@ input::placeholder {
         color: black;
     }
 }
+
+/* other */
+.link__bolded {
+    font-weight: 600;
+    opacity: 1;
+    transition: 0.2s;
+}
+
+.link__bolded:hover {
+    opacity: 0.8;
+}

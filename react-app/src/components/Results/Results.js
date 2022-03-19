@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { getAllBooks, searchBooks } from '../../store/book';
+import { searchBooks } from '../../store/book';
 import { getURLParams } from '../../utils';
 
 import BookCard from '../Books/BookCard/BookCard';
