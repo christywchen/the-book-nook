@@ -51,10 +51,10 @@ function DashboardHome() {
                         B
                     </div>
                     <div id='center__container--title'>
-                        Book Club Reading Lists
+                        Book Clubs
                     </div>
                     <div id='center__container--subtitle'>
-                        Your book clubs at a glance.
+                        Your book clubs' reading lists at a glance.
                     </div>
                 </div>
                 <div id='center__container--main-content'>
