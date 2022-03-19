@@ -16,15 +16,6 @@ function BookList() {
         return x < y ? -1 : x > y ? 1 : 0;
     });
 
-    console.log('*****')
-
-    console.log(books)
-
-    books.forEach((book) => {
-        console.log(book.title)
-    })
-
-    console.log('*****')
     useEffect(() => {
         dispatch(getAllBooks());
     }, [dispatch]);
@@ -36,7 +27,7 @@ function BookList() {
                 <div className='book__card--container'>
                     {books.length ? (
                         <>
-                            {books.length > 0 && books.map(book => (<BookCard book={book} />))}
+                            {books.length > 0 && books.map(book => (<BookCard key={book.id} book={book} />))}
                         </>
                     ) : (<>No books at the moment. Maybe you could help us expand our library?</>)}
                 </div>
