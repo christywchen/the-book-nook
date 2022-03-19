@@ -74,7 +74,7 @@ function SearchBooks() {
                                     <li key={book.id} onMouseDown={() => handleClick(book.id)}>
                                         <div className='res__info'>
                                             <div className='res__title'>
-                                                {book.title.length > 34 ? book.title.slice(0, 34) + '...' : book.title}
+                                                {book.title}
                                             </div>
                                             <div className='res__author'>
                                                 by {book.author}
@@ -83,8 +83,8 @@ function SearchBooks() {
                                     </li>
                                 ))}
                                 <li>
-                                    <div className='res__info' onMouseDown={handleSubmit}>
-                                        See more
+                                    <div className='res__info res__more' onMouseDown={handleSubmit}>
+                                        See all search results
                                     </div>
                                 </li>
                             </ul>

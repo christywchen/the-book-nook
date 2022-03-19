@@ -60,10 +60,33 @@
     border-bottom: none;
 }
 
+.res__info:hover {
+    cursor: pointer;
+}
+
 .res__title {
+    width: 100%;
     font-size: 0.8rem;
+    font-style: italic;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .res__author {
     font-size: 0.7rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.res__more {
+    font-size: 0.85em;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: 0.2s;
+}
+
+.res__more:hover {
+    opacity: 1;
 }

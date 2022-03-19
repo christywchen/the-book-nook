@@ -24,14 +24,16 @@ function BookCard({ book }) {
                 <div className='book__card--body'>
                     <div>
                         <div className='book__card--title'>
-                            {title.length > 40 ? title.slice(0, 40) + '...' : title}
+                            {title}
                         </div>
                         <div className='book__card--author'>
-                            by {author.length > 30 ? author.slice(0, 30) + '...' : author}
+                            by {author}
                         </div>
                         {synopsis && (
                             <div className='book__card--synopsis'>
-                                {synopsis.length > 110 ? synopsis.slice(0, 90) + '...' : synopsis}
+                                <span className='synopsis__text'>
+                                    {synopsis}
+                                </span>
                             </div>
                         )}
                     </div>
