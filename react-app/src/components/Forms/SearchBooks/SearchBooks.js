@@ -37,7 +37,6 @@ function SearchBooks() {
     return (
         <>
             <form id='search__form' onSubmit={handleSubmit}>
-                {/* <div id='search__form'> */}
                 <label form='search'>
                     <input
                         name='search'
@@ -50,9 +49,8 @@ function SearchBooks() {
                     />
                 </label>
                 <span>
-                    <button type='submit'>Search</button>
+                    <button className='search__button' type='submit'><i className="fa-solid fa-magnifying-glass"></i></button>
                 </span>
-                {/* </div> */}
                 {results.length > 0 && showResults && (
                     <div className='search__res'>
                         <ul>

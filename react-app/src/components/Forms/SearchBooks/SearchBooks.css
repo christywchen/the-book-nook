@@ -1,6 +1,17 @@
 #search__form {
+    position: relative;
     display: flex;
-    width: 250px;
     height: fit-content;
-    gap: 10px;
+    margin-left: 18px;
+    gap: 5px;
+}
+
+#search__form input {
+    width: 200px;
+}
+
+#search__form button {
+    position: absolute;
+    border: none;
+    background: none;
 }
