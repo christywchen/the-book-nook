@@ -27,6 +27,8 @@ This app was created an a two week sprint and has the following core features:
 - **Book Clubs & Memberships**: Creating and joining book clubs. Creators can set a member capacity for their book club. All users can join or create up to five book clubs.
 - **Book Clubs & Book Club Books**: Adding and removing books to and from book clubs' reading lists and setting read status. Users can browse books in the database or create new books if the desired book is not yet in the database.
 - **Book Club Chatrooms**: Each book club comes with a general chat and spoilers chat that its members can participate in.
+- **Book Search**: Users can search for books based on title or author. Search bar displays query results as users input text as well as an option to see the results page.
+- **Image Uploading**: Users can upload images for book clubs or books via AWS S3 bucket.
 
 # Local Installation
 
@@ -87,5 +89,5 @@ npm start
 - Book genre tagging
 - Book club invitations
 - Book club joining requests/approvals
-- Book club and book search
+- Book club and user search
 - Book club reading list voting
