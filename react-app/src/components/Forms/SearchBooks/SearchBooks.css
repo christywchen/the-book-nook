@@ -33,6 +33,10 @@
     z-index: 5;
 }
 
+.search__res:hover {
+    cursor: pointer;
+}
+
 .search__res ul {
     width: 230px;
     border: 1px solid var(--sidebar-bg);
@@ -58,10 +62,6 @@
 
 .search__res > ul > li:last-child > .res__info {
     border-bottom: none;
-}
-
-.res__info:hover {
-    cursor: pointer;
 }
 
 .res__title {

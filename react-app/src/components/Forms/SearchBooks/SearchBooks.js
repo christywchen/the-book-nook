@@ -18,9 +18,10 @@ function SearchBooks() {
             console.log('here')
             return history.push(`/books/all`);
         }
-
-        setShowResults(false);
         const params = buildURLParams(query);
+        setResults([]);
+        setQuery('');
+        setShowResults(false);
 
         return history.push(`/books/search/q?${params}`);
     }
@@ -44,6 +45,8 @@ function SearchBooks() {
     }
 
     async function handleClick(id) {
+        setQuery('');
+        setResults([]);
         setShowResults(false);
         return history.push(`/books/${id}`)
     }
