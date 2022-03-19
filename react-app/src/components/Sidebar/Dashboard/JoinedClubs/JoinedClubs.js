@@ -46,7 +46,7 @@ function JoinedClubs({ userMemberships }) {
                 (<section className='sidebar__bookclubs'>
                     <div className='sidebar__bookclub--items'> {userBookClubs &&
                         userBookClubs.map(bookClub => (
-                            <BookClubItem key={bookClub?.id} bookClub={bookClub} />
+                            <BookClubItem key={bookClub.id} bookClub={bookClub} />
                         ))}
                     </div>
                     <div className='create__club--link'>

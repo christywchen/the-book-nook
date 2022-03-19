@@ -47,8 +47,8 @@ function BookClubItem({ bookClub }) {
                         </div>
                         {bookClubChatrooms && bookClubChatrooms.map(chatroom => (
                             <>
-                                <div>
-                                    <NavLink key={chatroom.id} activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
+                                <div key={chatroom.id}>
+                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
                                         {chatroom.name} Chat
                                     </NavLink>
                                 </div>

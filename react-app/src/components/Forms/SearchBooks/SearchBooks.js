@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 
 import './SearchBooks.css';
 
+import { buildURLParams } from '../../../utils';
+
 function SearchBooks() {
     const history = useHistory();
     const [query, setQuery] = useState('');
@@ -11,9 +13,10 @@ function SearchBooks() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        return history.push(`/search/books/${query}`)
-        console.log(query)
-        console.log('send search')
+
+        const params = buildURLParams(query);
+
+        return history.push(`/books/search/q?=${params}`);
     }
 
     async function handleQuery(e) {
