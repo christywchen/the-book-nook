@@ -171,4 +171,8 @@ ul#nav__menu--links-mobile li {
     #nav__title {
         min-width: 260px;
     }
+
+    .nav__social {
+        padding: 0 20px;
+    }
 }

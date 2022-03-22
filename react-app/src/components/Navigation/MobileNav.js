@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux';
 import LogoutButton from '../Auth/LogoutButton';
 import SearchBooks from '../Forms/SearchBooks/SearchBooks';
 
+import github from '../../assets/github.svg';
+import linkedin from '../../assets/linkedin.svg';
+
 function TabletNav() {
     const sessionUser = useSelector(state => state.session.user);
     const [showMenu, setShowMenu] = useState(false);
@@ -18,10 +21,26 @@ function TabletNav() {
             <div id='nav__mobile' className='nav__links--mobile'>
                 <div className='nav__menu--mobile'>
                     {!sessionUser && (
-                        <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
-                            About
-                        </NavLink>
+                        <>
+                            <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
+                                About
+                            </NavLink>
+                            <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active'>
+                                Get Started
+                            </NavLink>
+                            <NavLink className='nav__mainlink' to='/login' exact={true} activeClassName='active'>
+                                Log In
+                            </NavLink>
+                        </>
                     )}
+                    <div className='nav__social nav__social'>
+                        <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
+                            <img className='social__icon' alt='Github' src={github} />
+                        </a>
+                        <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
+                            <img className='social__icon' alt='LinkedIn' src={linkedin} />
+                        </a>
+                    </div>
                     {sessionUser && (
                         <>
                             <div className='nav__menu--button-mobile'>
@@ -68,7 +87,7 @@ function TabletNav() {
                             )}
                         </>
                     )}
-                    {!sessionUser && (
+                    {/* {!sessionUser && (
                         <>
                             <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active'>
                                 Get Started
@@ -77,7 +96,18 @@ function TabletNav() {
                                 Log In
                             </NavLink>
                         </>
-                    )}
+                    )} */}
+
+                    {/* <div id='nav__right'>
+                        <div className='nav__social'>
+                            <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
+                                <img className='social__icon' alt='Github' src={github} />
+                            </a>
+                            <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
+                                <img className='social__icon' alt='LinkedIn' src={linkedin} />
+                            </a>
+                        </div>
+                    </div> */}
                 </div>
 
 
