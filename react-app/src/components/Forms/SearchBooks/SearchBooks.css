@@ -44,6 +44,7 @@
     background-color: var(--sidebar-bg);
     backdrop-filter: blur(10px);
     border-radius: var(--input-radius);
+    box-shadow: var(--standard-shadow);
 }
 
 .search__res li:hover {

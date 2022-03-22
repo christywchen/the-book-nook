@@ -31,13 +31,13 @@ function TabletNav() {
                                 <>
                                     <ul id="nav__menu--links-mobile">
                                         <li>
-                                            <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
+                                            <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active' onClick={handleMenu}>
                                                 About
                                             </NavLink>
                                         </li>
                                         <hr className='mobile__divider' />
                                         <li>
-                                            <NavLink className='nav__mainlink' to='/dashboard' exact={true} activeClassName='active'>
+                                            <NavLink className='nav__mainlink' to='/dashboard' exact={true} activeClassName='active' onClick={handleMenu}>
                                                 My Book Clubs
                                             </NavLink>
                                         </li>
@@ -46,18 +46,18 @@ function TabletNav() {
                                             <span className='nav__text--heavy'>Explore</span>
                                         </li>
                                         <li>
-                                            <NavLink className='nav__mainlink' to='/book-clubs/all' exact={true} activeClassName='active'>
+                                            <NavLink className='nav__mainlink' to='/book-clubs/all' exact={true} activeClassName='active' onClick={handleMenu}>
                                                 Book Clubs
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className='nav__mainlink' to='/books/all' exact={true} activeClassName='active'>
+                                            <NavLink className='nav__mainlink' to='/books/all' exact={true} activeClassName='active' onClick={handleMenu}>
                                                 Books
                                             </NavLink>
                                         </li>
                                         <hr className='mobile__divider' />
                                         <li>
-                                            <SearchBooks />
+                                            <SearchBooks setShowMenu={setShowMenu} />
                                         </li>
                                         <hr className='mobile__divider' />
                                         <li>

@@ -46,22 +46,40 @@ ul#nav__menu--links-mobile {
     list-style-type: none;
     position: fixed;
     top: 66px;
-    left: 0;
-    width: 100%;
-    padding: 6px;
+    left: 40px;
+    width: calc(100% - 75px);
+    height: calc(100% - 110px);
+    /* margin: 0 40px; */
+    padding: 24px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid var(--sidebar-bg);
     background-color: var(--book-cluster-bg);
     backdrop-filter: blur(10px);
+    /* background-color: blue; */
+    border-radius: 12px;
+}
+
+#nav__menu--links-mobile {
+    animation: growDown 400ms ease-in-out forwards;
+    transform-origin: top center;
 }
 
 ul#nav__menu--links-mobile li {
     /* background-color: aqua; */
-    padding: 10px;
+    padding: 6px;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2em;
+}
+
+@keyframes growDown {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(1);
+    }
 }
 
 .mobile__divider {
