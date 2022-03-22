@@ -353,6 +353,7 @@ input::placeholder {
     opacity: 0.8;
 }
 
+/* media queries */
 @media only screen and (max-width: 672px) {
     .input__split {
         display: block;

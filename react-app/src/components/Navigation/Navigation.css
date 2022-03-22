@@ -173,6 +173,7 @@ ul#nav__menu--links-mobile li {
     opacity: 0.9;
 }
 
+/* media queries */
 @media only screen and (max-width: 992px) {
     .desktop__logo {
         display: none;

@@ -35,6 +35,7 @@
     font-size: var(--h5-size);
 }
 
+/* media queries */
 @media only screen and (max-width: 672px) {
     #home__container {
         top: 4vh;

@@ -46,6 +46,7 @@ ul.auth__container--errors li {
     list-style-type: none;
 }
 
+/* media queries */
 @media only screen and (max-width: 672px) {
     #auth__container {
         top: 4vh;
