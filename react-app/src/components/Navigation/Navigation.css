@@ -85,6 +85,12 @@ ul#nav__menu--links-mobile li {
 .mobile__divider {
     width: 90%;
 }
+
+.mobile__social {
+    display: none;
+    gap: 10px;
+}
+
 /* desktop menu */
 .nav__links--desktop {
     width: 100%;
@@ -174,5 +180,20 @@ ul#nav__menu--links-mobile li {
 
     .nav__social {
         padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    #nav__title {
+        text-align: left;
+        min-width: 190px;
+    }
+
+    .nav__social {
+        display: none;
+    }
+
+    .mobile__social {
+        display: flex;
     }
 }
