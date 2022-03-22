@@ -87,40 +87,8 @@ function TabletNav() {
                             )}
                         </>
                     )}
-                    {/* {!sessionUser && (
-                        <>
-                            <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active'>
-                                Get Started
-                            </NavLink>
-                            <NavLink className='nav__mainlink' to='/login' exact={true} activeClassName='active'>
-                                Log In
-                            </NavLink>
-                        </>
-                    )} */}
-
-                    {/* <div id='nav__right'>
-                        <div className='nav__social'>
-                            <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
-                                <img className='social__icon' alt='Github' src={github} />
-                            </a>
-                            <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
-                                <img className='social__icon' alt='LinkedIn' src={linkedin} />
-                            </a>
-                        </div>
-                    </div> */}
                 </div>
 
-
-                {/* <div id='nav__right'>
-          <div className='nav__social'>
-            <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
-              <img className='social__icon' alt='Github' src={github} />
-            </a>
-            <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
-              <img className='social__icon' alt='LinkedIn' src={linkedin} />
-            </a>
-          </div>
-        </div> */}
             </div>
         </>
     )
