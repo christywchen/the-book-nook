@@ -1,3 +1,7 @@
+.mobile__sidebar--cta {
+    display: none;
+}
+
 #sidebar__container {
     position: relative;
     box-sizing: border-box;
@@ -52,7 +56,7 @@
     margin: 60px 25px 0;
 }
 
-.create__club--link {
+.sidebar__cta--link {
     display: flex;
     justify-content: center;
 }
@@ -86,5 +90,26 @@
 }
 
 /* media queries */
-@media only screen and (max-width: 672px) {
+@media only screen and (max-width: 992px) {
+    #sidebar__container {
+        min-width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 0;
+        height: fit-content;
+        margin: 10px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .sidebar__para {
+        text-align: center;
+        margin: 17px 20px 17px;
+    }
+
+    .mobile__sidebar--cta {
+        display: block;
+        margin: -5px 0;
+        font-size: 0.9em;
+        font-style: italic;
+    }
 }

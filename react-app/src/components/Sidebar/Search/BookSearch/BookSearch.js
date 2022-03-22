@@ -17,7 +17,7 @@ function BookSearch() {
                 <p>
                     If you don't see what you're looking for, consider <Link className='link__bolded' to='/books/new'>adding it</Link> to our library or browsing our community library of awesome books.
                 </p>
-                <div className='create__club--link'>
+                <div className='sidebar__cta--link'>
                     <form onSubmit={handleBrowseBooks}>
                         <button className='button button__sidebar--center' type='submit'>Browse Books</button>
                     </form>

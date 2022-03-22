@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,6 +10,7 @@ import { getAllBookClubChatrooms } from '../../../../store/chatroom';
 function JoinedClubs({ userMemberships }) {
     const dispatch = useDispatch();
     const history = useHistory();
+    const [showMore, setShowMore] = useState(true);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubs = Object.values(allBookClubsObj);
 
@@ -44,19 +45,25 @@ function JoinedClubs({ userMemberships }) {
         <>
             {userMemberships.length && bookClubs.length ?
                 (<section className='sidebar__bookclubs'>
-                    <div className='sidebar__bookclub--items'> {userBookClubs &&
-                        userBookClubs.map(bookClub => (
-                            <BookClubItem key={bookClub.id} bookClub={bookClub} />
-                        ))}
-                    </div>
-                    <div className='create__club--link'>
-                        {userMemberships.length < 5 && (
-                            <form onSubmit={handleCreateClub}>
-                                <button className='button button__sidebar--center' type='submit'>Start a Book Club</button>
-                            </form>
-                        )}
-                    </div>
-                </section>) :
+                    {showMore && (
+                        <>
+                            <div className='sidebar__bookclub--items'> {userBookClubs &&
+                                userBookClubs.map(bookClub => (
+                                    <BookClubItem key={bookClub.id} bookClub={bookClub} />
+                                ))}
+                            </div>
+                            <div className='sidebar__cta--link'>
+                                {userMemberships.length < 5 && (
+                                    <form onSubmit={handleCreateClub}>
+                                        <button className='button button__sidebar--center' type='submit'>Start a Book Club</button>
+                                    </form>
+                                )}
+                            </div>
+                        </>
+                    )}
+                    <div className='mobile__sidebar--cta' onClick={() => setShowMore(!showMore)}>{showMore ? 'Less Info' : 'More Info'}</div>
+                </section>
+                ) :
                 (<>
                     <section className='sidebar__para'>
                         <p>

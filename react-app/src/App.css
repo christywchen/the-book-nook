@@ -8,3 +8,10 @@
     border-radius: 12px;
     box-shadow: var(--standard-shadow);
 }
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    #content__container {
+        flex-direction: column;
+    }
+}
