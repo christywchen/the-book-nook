@@ -7,12 +7,16 @@ import LogoutButton from '../Auth/LogoutButton';
 import github from '../../assets/github.svg';
 import linkedin from '../../assets/linkedin.svg';
 import SocialLinks from './SocialLinks';
+import NavLogo from './NavLogo';
 
 function DesktopNav() {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
         <>
+            <span className='desktop__logo'>
+                <NavLogo />
+            </span>
             <div id='nav__desktop' className='nav__links--desktop'>
                 <div id="nav__left">
                     <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>

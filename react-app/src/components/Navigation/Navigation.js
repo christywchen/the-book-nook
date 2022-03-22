@@ -9,11 +9,6 @@ import './Navigation.css';
 const Navigation = () => {
   return (
     <nav id="nav__container">
-      <div id="nav__title">
-        <NavLink to='/' exact={true} activeClassName='active'>
-          The Book Nook
-        </NavLink>
-      </div>
       <DesktopNav />
       <MobileNav />
     </nav >

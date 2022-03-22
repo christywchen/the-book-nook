@@ -6,6 +6,7 @@ import LogoutButton from '../Auth/LogoutButton';
 import SearchBooks from '../Forms/SearchBooks/SearchBooks';
 
 import SocialLinks from './SocialLinks';
+import NavLogo from './NavLogo';
 
 function TabletNav() {
     const sessionUser = useSelector(state => state.session.user);
@@ -15,10 +16,11 @@ function TabletNav() {
         setShowMenu(!showMenu);
     }
 
-    console.log('menu stat', showMenu)
-
     return (
         <>
+            <span className='mobile__logo'>
+                <NavLogo setShowMenu={setShowMenu} />
+            </span>
             <div id='nav__mobile' className='nav__links--mobile'>
                 <div className='nav__menu--mobile'>
                     {!sessionUser && (
