@@ -354,6 +354,16 @@ input::placeholder {
 }
 
 /* media queries */
+@media only screen and (max-width: 992px) {
+    #wide__container {
+        width: calc(100% - 10px);
+        margin: 5px;
+    }
+
+    .input__split {
+        display: block;
+    }
+}
 @media only screen and (max-width: 672px) {
     .input__split {
         display: block;

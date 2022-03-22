@@ -70,3 +70,15 @@
     background-color: var(--sidebar-bg);
     border-radius: var(--input-radius);
 }
+
+/* media queries */
+@media only screen and (max-width: 672px) {
+    .bookclub__card {
+        width: 100%;
+        height: 245px;
+        padding: 5px 20px 10px;
+    }
+    .bookclub__icon {
+        display: none;
+    }
+}
