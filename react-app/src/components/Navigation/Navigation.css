@@ -166,16 +166,17 @@ ul#nav__menu--links-mobile li {
 }
 
 @media only screen and (max-width: 992px) {
+    #nav__title {
+        text-align: left;
+        min-width: 190px;
+    }
+
     #nav__desktop {
         display: none;
     }
 
     #nav__mobile {
         display: flex;
-    }
-
-    #nav__title {
-        min-width: 260px;
     }
 
     .nav__social {
