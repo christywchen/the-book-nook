@@ -1,6 +1,6 @@
 .book__card--container {
     position: relative;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,6 +13,6 @@
 /* media queries */
 @media only screen and (max-width: 992px) {
     .book__card--container {
-        grid-gap: 20px;
+        grid-gap: 25px;
     }
 }
