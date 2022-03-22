@@ -10,7 +10,7 @@ import { getAllBookClubChatrooms } from '../../../../store/chatroom';
 function JoinedClubs({ userMemberships }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [showMore, setShowMore] = useState(true);
+    const [showMore, setShowMore] = useState(false);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubs = Object.values(allBookClubsObj);
 

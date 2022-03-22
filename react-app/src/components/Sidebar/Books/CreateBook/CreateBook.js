@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function CreateBook({ membershipCount }) {
     const history = useHistory();
-    const [showMore, setShowMore] = useState(true);
+    const [showMore, setShowMore] = useState(false);
 
     async function handleBrowseBooks(e) {
         e.preventDefault();

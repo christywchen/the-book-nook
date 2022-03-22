@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function BrowseClubs() {
     const history = useHistory();
-    const [showMore, setShowMore] = useState(true);
+    const [showMore, setShowMore] = useState(false);
 
     async function handleCreateClub(e) {
         e.preventDefault();

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function EditClub() {
     const history = useHistory();
-    const [showMore, setShowMore] = useState(true);
+    const [showMore, setShowMore] = useState(false);
 
     async function handleReturn(e) {
         e.preventDefault();

@@ -9,3 +9,10 @@
     border-radius: 3px;
     grid-gap: 50px;
 }
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    .book__card--container {
+        grid-gap: 20px;
+    }
+}

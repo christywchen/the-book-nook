@@ -2,8 +2,6 @@
     width: 350px;
     height: fit-content;
     display: flex;
-    /* flex-direction: column; */
-    /* align-items: center; */
     padding: 10px;
     text-align: center;
     background-color: var(--sidebar-bg);
@@ -22,7 +20,6 @@
     padding: 20px;
     justify-content: center;
     align-items: center;
-    /* margin-bottom: 15px; */
     font-size: 0.8em;
     color: var(--lighter-bg);
     overflow: hidden;
@@ -31,8 +28,6 @@
 }
 
 .book__card--title {
-    /* border: 1px solid black; */
-    /* background-color: BLACK; */
     height: fit-content;
     max-height: 620px;
     margin: 10px 0;
@@ -48,8 +43,6 @@
 }
 
 .book__card--author {
-    /* border: 1px solid black; */
-    /* background-color: BLACK; */
     height: fit-content;
     max-height: 34px;
     margin: 5px 0;
@@ -64,7 +57,6 @@
 }
 
 .book__card--synopsis {
-    /* border: 1px solid black; */
     height: fit-content;
     margin: 10px 5px 5px;
     padding: 10px;
@@ -90,4 +82,61 @@
     justify-content: space-between;
     inline-size: 145px;
     overflow-wrap: break-word;
+}
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    .book__card {
+        width: 290px;
+        height: fit-content;
+    }
+
+    .book__card--image {
+        width: 125px;
+        height: 192px;
+    }
+
+    .book__card--title {
+        height: fit-content;
+        max-height: 51px;
+        margin: 5px 0;
+        font-size: 0.95em;
+        font-weight: 600;
+    }
+
+    .book__card--author {
+        max-height: 16px;
+        margin: 0;
+        font-size: 0.85em;
+        -webkit-line-clamp: 1;
+    }
+
+    .book__card--synopsis {
+        height: fit-content;
+        margin: 10px 5px 5px;
+        padding: 10px;
+        font-size: 0.75em;
+        font-weight: 400;
+        background-color: var(--sidebar-bg);
+        border-radius: var(--input-radius);
+    }
+
+    .synopsis__text {
+        -webkit-line-clamp: 3;
+    }
+
+    .book__card--body button {
+        margin: 6px 0 3px;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    .book__card--image,
+    .book__card--link {
+        display: none;
+    }
+
+    .book__card--body {
+        inline-size: auto;
+    }
 }

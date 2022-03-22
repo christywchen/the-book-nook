@@ -16,7 +16,7 @@ function BookCard({ book }) {
     return (
         <>
             <section className='book__card'>
-                <Link to={`/books/${id}`}>
+                <Link className='book__card--link' to={`/books/${id}`}>
                     <div className='book__card--image' style={backgroundImage}>
                         {!image_url && <>No Cover Image Available</>}
                     </div>
