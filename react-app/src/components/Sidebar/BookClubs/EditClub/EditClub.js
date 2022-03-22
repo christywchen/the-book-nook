@@ -1,9 +1,19 @@
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function EditClub() {
     const history = useHistory();
-    const [showMore, setShowMore] = useState(false);
+    const [showMore, setShowMore] = useState('');
+
+    useEffect(() => {
+        let width = window.innerWidth;
+
+        if (width > 992) {
+            setShowMore(true)
+        } else {
+            setShowMore(false)
+        }
+    }, []);
 
     async function handleReturn(e) {
         e.preventDefault();

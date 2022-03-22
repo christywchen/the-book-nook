@@ -1,9 +1,19 @@
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function BrowseClubs() {
     const history = useHistory();
-    const [showMore, setShowMore] = useState(false);
+    const [showMore, setShowMore] = useState('');
+
+    useEffect(() => {
+        let width = window.innerWidth;
+
+        if (width > 992) {
+            setShowMore(true)
+        } else {
+            setShowMore(false)
+        }
+    }, []);
 
     async function handleCreateClub(e) {
         e.preventDefault();

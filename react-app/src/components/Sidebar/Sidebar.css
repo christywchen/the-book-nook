@@ -96,7 +96,7 @@
         max-width: 100%;
         padding: 0;
         height: fit-content;
-        margin: 5px;
+        margin: 10px;
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
     }
@@ -104,6 +104,10 @@
     .sidebar__para {
         text-align: center;
         margin: 17px 20px 17px;
+    }
+
+    .sidebar__para .sidebar__cta--link button {
+        margin: 3px 0 18px;
     }
 
     .mobile__sidebar--cta {

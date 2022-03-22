@@ -10,9 +10,19 @@ import { getAllBookClubChatrooms } from '../../../../store/chatroom';
 function JoinedClubs({ userMemberships }) {
     const dispatch = useDispatch();
     const history = useHistory();
-    const [showMore, setShowMore] = useState(false);
     const allBookClubsObj = useSelector(state => state.bookClub.byId);
     const bookClubs = Object.values(allBookClubsObj);
+    const [showMore, setShowMore] = useState('');
+
+    useEffect(() => {
+        let width = window.innerWidth;
+
+        if (width > 992) {
+            setShowMore(true)
+        } else {
+            setShowMore(false)
+        }
+    }, []);
 
     async function handleCreateClub(e) {
         e.preventDefault();
