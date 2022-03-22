@@ -374,6 +374,10 @@ input::placeholder {
         font-size: var(--h4-size);
     }
 
+    #wide__subtitle {
+        padding: 10px 0;
+    }
+
     .input__split {
         display: block;
     }
