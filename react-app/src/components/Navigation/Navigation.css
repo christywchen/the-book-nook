@@ -43,15 +43,30 @@
 }
 
 ul#nav__menu--links-mobile {
+    list-style-type: none;
     position: fixed;
     top: 66px;
     left: 0;
     width: 100%;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: 1px solid var(--sidebar-bg);
-    background-color: var(--sidebar-bg);
+    background-color: var(--book-cluster-bg);
     backdrop-filter: blur(10px);
 }
 
+ul#nav__menu--links-mobile li {
+    /* background-color: aqua; */
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.mobile__divider {
+    width: 90%;
+}
 /* desktop menu */
 .nav__links--desktop {
     width: 100%;

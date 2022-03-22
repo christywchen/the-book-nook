@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import LogoutButton from '../Auth/LogoutButton';
+import SearchBooks from '../Forms/SearchBooks/SearchBooks';
 
 function TabletNav() {
     const sessionUser = useSelector(state => state.session.user);
@@ -16,6 +17,11 @@ function TabletNav() {
         <>
             <div id='nav__mobile' className='nav__links--mobile'>
                 <div className='nav__menu--mobile'>
+                    {!sessionUser && (
+                        <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
+                            About
+                        </NavLink>
+                    )}
                     {sessionUser && (
                         <>
                             <div className='nav__menu--button-mobile'>
@@ -29,24 +35,31 @@ function TabletNav() {
                                                 About
                                             </NavLink>
                                         </li>
+                                        <hr className='mobile__divider' />
                                         <li>
                                             <NavLink className='nav__mainlink' to='/dashboard' exact={true} activeClassName='active'>
                                                 My Book Clubs
                                             </NavLink>
                                         </li>
+                                        <hr className='mobile__divider' />
                                         <li>
-                                            <span className='nav__text--heavy'>Explore:</span>
+                                            <span className='nav__text--heavy'>Explore</span>
                                         </li>
                                         <li>
-                                            <NavLink className='nav__sublink' to='/book-clubs/all' exact={true} activeClassName='active'>
+                                            <NavLink className='nav__mainlink' to='/book-clubs/all' exact={true} activeClassName='active'>
                                                 Book Clubs
                                             </NavLink>
                                         </li>
                                         <li>
-                                            <NavLink className='nav__sublink' to='/books/all' exact={true} activeClassName='active'>
+                                            <NavLink className='nav__mainlink' to='/books/all' exact={true} activeClassName='active'>
                                                 Books
                                             </NavLink>
                                         </li>
+                                        <hr className='mobile__divider' />
+                                        <li>
+                                            <SearchBooks />
+                                        </li>
+                                        <hr className='mobile__divider' />
                                         <li>
                                             <LogoutButton />
                                         </li>
