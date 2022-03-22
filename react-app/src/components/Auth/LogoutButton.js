@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 
-const LogoutButton = () => {
+const LogoutButton = ({ setShowMenu }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -11,6 +11,7 @@ const LogoutButton = () => {
     e.preventDefault();
     await dispatch(logout());
 
+    if (setShowMenu) setShowMenu(false);
     return history.push('/');
   };
 

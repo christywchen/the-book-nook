@@ -5,8 +5,7 @@ import { useSelector } from 'react-redux';
 import LogoutButton from '../Auth/LogoutButton';
 import SearchBooks from '../Forms/SearchBooks/SearchBooks';
 
-import github from '../../assets/github.svg';
-import linkedin from '../../assets/linkedin.svg';
+import SocialLinks from './SocialLinks';
 
 function TabletNav() {
     const sessionUser = useSelector(state => state.session.user);
@@ -15,6 +14,8 @@ function TabletNav() {
     async function handleMenu() {
         setShowMenu(!showMenu);
     }
+
+    console.log('menu stat', showMenu)
 
     return (
         <>
@@ -36,18 +37,13 @@ function TabletNav() {
                         </>
                     )}
                     <div className='nav__social'>
-                        <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
-                            <img className='social__icon' alt='Github' src={github} />
-                        </a>
-                        <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
-                            <img className='social__icon' alt='LinkedIn' src={linkedin} />
-                        </a>
+                        <SocialLinks />
                     </div>
 
                     {!sessionUser && (
                         <>
-                            <div className='nav__menu--button-mobile'>
-                                <i class="fa-solid fa-bars fa-xl" onClick={handleMenu}></i>
+                            <div className='nav__menu--button-mobile home__menu--mobile'>
+                                <i className="fa-solid fa-bars fa-xl" onClick={handleMenu}></i>
                             </div>
                             {showMenu && (
                                 <>
@@ -77,7 +73,7 @@ function TabletNav() {
                     {sessionUser && (
                         <>
                             <div className='nav__menu--button-mobile'>
-                                <i class="fa-solid fa-bars fa-xl" onClick={handleMenu}></i>
+                                <i className="fa-solid fa-bars fa-xl" onClick={handleMenu}></i>
                             </div>
                             {sessionUser && showMenu && (
                                 <>
@@ -113,16 +109,11 @@ function TabletNav() {
                                         </li>
                                         <hr className='mobile__divider' />
                                         <li>
-                                            <LogoutButton />
+                                            <LogoutButton setShowMenu={setShowMenu} />
                                         </li>
                                         <hr className='mobile__divider' />
                                         <li className='mobile__social'>
-                                            <a href='https://github.com/christywchen/' target="_blank" rel="noreferrer noopener">
-                                                <img className='social__icon' alt='Github' src={github} />
-                                            </a>
-                                            <a href='https://www.linkedin.com/in/christy-chen/' target="_blank" rel="noreferrer noopener">
-                                                <img className='social__icon' alt='LinkedIn' src={linkedin} />
-                                            </a>
+                                            <SocialLinks onClick={handleMenu} />
                                         </li>
                                     </ul>
                                 </>

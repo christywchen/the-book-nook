@@ -182,6 +182,14 @@ ul#nav__menu--links-mobile li {
     .nav__social {
         padding: 0 20px;
     }
+
+    .mobile__social {
+        display: none;
+    }
+
+    .home__menu--mobile {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 672px) {
@@ -200,5 +208,9 @@ ul#nav__menu--links-mobile li {
 
     .mobile__social {
         display: flex;
+    }
+
+    .home__menu--mobile {
+        display: block;
     }
 }
