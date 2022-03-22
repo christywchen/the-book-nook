@@ -22,15 +22,17 @@ function TabletNav() {
                 <div className='nav__menu--mobile'>
                     {!sessionUser && (
                         <>
-                            <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
-                                About
-                            </NavLink>
-                            <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active'>
-                                Get Started
-                            </NavLink>
-                            <NavLink className='nav__mainlink' to='/login' exact={true} activeClassName='active'>
-                                Log In
-                            </NavLink>
+                            <div className='nav__menu--tab'>
+                                <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active'>
+                                    About
+                                </NavLink>
+                                <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active'>
+                                    Get Started
+                                </NavLink>
+                                <NavLink className='nav__mainlink' to='/login' exact={true} activeClassName='active'>
+                                    Log In
+                                </NavLink>
+                            </div>
                         </>
                     )}
                     <div className='nav__social'>
@@ -41,6 +43,37 @@ function TabletNav() {
                             <img className='social__icon' alt='LinkedIn' src={linkedin} />
                         </a>
                     </div>
+
+                    {!sessionUser && (
+                        <>
+                            <div className='nav__menu--button-mobile'>
+                                <i class="fa-solid fa-bars fa-xl" onClick={handleMenu}></i>
+                            </div>
+                            {showMenu && (
+                                <>
+                                    <ul id="nav__menu--links-mobile">
+                                        <li>
+                                            <NavLink className='nav__mainlink' to='/about' exact={true} activeClassName='active' onClick={handleMenu}>
+                                                About
+                                            </NavLink>
+                                        </li>
+                                        <hr className='mobile__divider' />
+                                        <li>
+                                            <NavLink className='nav__mainlink' to='/signup' exact={true} activeClassName='active' onClick={handleMenu}>
+                                                Get Started
+                                            </NavLink>
+                                        </li>
+                                        <hr className='mobile__divider' />
+                                        <li>
+                                            <NavLink className='nav__mainlink' to='/login' exact={true} activeClassName='active' onClick={handleMenu}>
+                                                Log In
+                                            </NavLink>
+                                        </li>
+                                    </ul>
+                                </>
+                            )}
+                        </>
+                    )}
                     {sessionUser && (
                         <>
                             <div className='nav__menu--button-mobile'>

@@ -189,6 +189,10 @@ ul#nav__menu--links-mobile li {
         min-width: 190px;
     }
 
+    .nav__menu--tab {
+        display: none;
+    }
+
     .nav__social {
         display: none;
     }
