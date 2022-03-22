@@ -99,7 +99,6 @@ ul#nav__menu--links-mobile li {
     gap: 60px;
 }
 
-/* link styling for mobile and desktop */
 #nav__left {
     height: fit-content;
     display: flex;
@@ -120,6 +119,14 @@ ul#nav__menu--links-mobile li {
     padding-bottom: 1px;
 }
 
+#nav__right {
+    justify-self: flex-end;
+    position: relative;
+    display: flex;
+    display: flex;
+}
+
+/* additional link styling */
 .nav__mainlink,
 .nav__text {
     margin: 8px 18px;
@@ -138,13 +145,6 @@ ul#nav__menu--links-mobile li {
 .nav__sublink {
     margin: 5px;
     font-weight: 200;
-}
-
-#nav__right {
-    justify-self: flex-end;
-    position: relative;
-    display: flex;
-    display: flex;
 }
 
 .nav__social {
