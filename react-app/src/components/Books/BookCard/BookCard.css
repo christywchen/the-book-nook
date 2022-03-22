@@ -89,6 +89,7 @@
     .book__card {
         width: 290px;
         height: fit-content;
+        justify-content: center;
     }
 
     .book__card--image {
@@ -114,7 +115,7 @@
 
     .book__card--synopsis {
         height: fit-content;
-        margin: 10px 5px 5px;
+        margin: 10px 5px 0;
         padding: 10px;
         font-size: 0.9em;
         font-weight: 400;
@@ -143,5 +144,9 @@
 
     .book__card--body {
         inline-size: auto;
+    }
+
+    .book__card--body button {
+        margin: 12px 0 3px;
     }
 }

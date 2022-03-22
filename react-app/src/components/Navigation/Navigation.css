@@ -12,6 +12,7 @@
     font-weight: var(--weight-med);
     text-transform: lowercase;
     user-select: none;
+    white-space: nowrap;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
