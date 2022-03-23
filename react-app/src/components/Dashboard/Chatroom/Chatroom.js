@@ -20,10 +20,7 @@ function Chatroom() {
     const sessionUser = useSelector(state => state.session.user);
     const chatroom = useSelector(state => state.bookClubChatroom.byId[chatroomId]);
     const prevMessagesObj = useSelector(state => state.chatroomMessage.byChatroomId[chatroomId]);
-    // const allUsersObj = useSelector(state => state.user.byId);
     const bookClub = useSelector(state => state.bookClub.byId[bookClubId]);
-    const chatRef = useRef();
-
 
     useEffect(() => {
         // get previous chat messages
@@ -39,6 +36,7 @@ function Chatroom() {
         socket.on('chat', chat => {
             // add any new messages into the messages array in the state
             setMessages(messages => [...messages, chat])
+            scrollToBottom();
         });
 
         // disconnect on unmount
@@ -46,6 +44,7 @@ function Chatroom() {
             socket.disconnect();
             setMessages([]);
         })
+
     }, [dispatch, chatroomId, sessionUser]);
 
     function updateChatInput(e) {
@@ -67,10 +66,14 @@ function Chatroom() {
         setChatInput('')
     }
 
-    // scrollToBottom = () => {
-    //     chatRef.current.scrollTop = chatRef.scrollHeight;
-    // };
+    function scrollToBottom() {
+        console.log('SCROOOOLL')
+        const element = document.getElementById("center__container--main-content");
 
+        if (element) {
+            element.scrollTop = element.scrollHeight;
+        }
+    }
 
     if (!chatroom || !bookClub) {
         return (
@@ -86,7 +89,13 @@ function Chatroom() {
     let prevMessages;
     if (prevMessagesObj) {
         prevMessages = Object.values(prevMessagesObj);
+
+        // if (prevMessages.length) {
+        //     console.log(prevMessages.length)
+        //     scrollToBottom();
+        // }
     }
+
 
     return (
         <>
@@ -99,15 +108,14 @@ function Chatroom() {
                 </div>
                 <div id='center__container--main-content'>
                     <div id='chatroom__messages'>
-                        <div ref={chatRef}>
-                            {prevMessages && prevMessages.map((message, ind) => (
-                                <ChatMessage message={message} />
-                            ))}
-                            {messages.map((message, ind) => (
-                                <ChatMessage message={message} />
-                            ))}
-                        </div>
+                        {prevMessages && prevMessages.map((message, ind) => (
+                            <ChatMessage message={message} />
+                        ))}
+                        {messages.map((message, ind) => (
+                            <ChatMessage message={message} />
+                        ))}
                     </div>
+                    {/* <div className='chatroom__footer' ref={chatRef}></div> */}
                 </div>
                 <div id='chatroom__input'>
                     <form onSubmit={sendChat}>
