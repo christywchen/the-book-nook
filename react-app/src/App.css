@@ -12,7 +12,7 @@
 /* media queries */
 @media only screen and (max-width: 992px) {
     #content__container {
-        height: calc(100% - 110px);
+        height: calc(100vh - 110px);
         flex-direction: column;
     }
 }
