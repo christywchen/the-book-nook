@@ -14,6 +14,14 @@
     #content__container {
         position: fixed;
         height: calc(100% - 110px);
+        margin: 20px 0;
         flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    #content__container {
+        width: calc(100% - 35px);
+        margin-left: -22px;
     }
 }

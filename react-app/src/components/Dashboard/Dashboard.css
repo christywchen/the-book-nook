@@ -159,4 +159,8 @@
         text-align: center;
         font-weight: 400;
     }
+
+    #center__container--main-content {
+        height: max-content;
+    }
 }

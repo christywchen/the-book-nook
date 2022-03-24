@@ -254,5 +254,6 @@ input::placeholder {
     .content__unavail {
         background-color: var(--book-cluster-bg);
         padding: 20px !important;
+        border-radius: var(--input-radius);
     }
 }

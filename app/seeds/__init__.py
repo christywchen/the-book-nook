@@ -16,8 +16,8 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    # seed_users()
-    # seed_book_clubs()
+    seed_users()
+    seed_book_clubs()
     seed_book_club_members()
     seed_book_club_chatrooms()
     seed_chatroom_messages()
@@ -57,3 +57,13 @@ def reset():
     seed_chatroom_messages()
     seed_books()
     seed_book_club_books()
+
+
+# Creates the `flask seed reset chat` command
+@seed_commands.command('reset chat')
+def reset():
+    # Undo seeds
+    undo_chatroom_messages()
+
+    # Redo seeds
+    seed_chatroom_messages()
