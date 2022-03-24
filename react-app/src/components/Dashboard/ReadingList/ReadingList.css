@@ -10,20 +10,20 @@
     transition: all ease-in-out 0.2s;
     border-radius: 3px;
     grid-gap: 20px 35px;
+    box-shadow: var(--standard-shadow);
 }
 
 /* media queries */
 @media only screen and (max-width: 672px) {
-    .readinglist__card--container {
-        display: block;
-        margin: 10px 0px;
+    .dash__card--books {
         padding: 0 10px 0 0;
-        text-align: center;
     }
 
     .readinglist__card--container {
         width: 100%;
         display: block;
+        margin: 10px 0px;
+        text-align: center;
     }
 
     .readinglist__card--container > div {

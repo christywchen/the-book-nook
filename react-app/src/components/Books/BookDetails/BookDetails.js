@@ -52,7 +52,7 @@ function BookDetails() {
 
                             <div className='sidebar__cta--link'>
                                 <form onSubmit={handleEditBook}>
-                                    <button className='button button__sidebar--center' type='submit'>Edit Book</button>
+                                    <button className='button button__main--center' type='submit'>Edit Book</button>
                                 </form>
                             </div>
                         </div>

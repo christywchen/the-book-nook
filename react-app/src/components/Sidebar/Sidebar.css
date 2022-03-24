@@ -105,6 +105,7 @@
         text-align: center;
         margin: 17px 20px 17px;
     }
+
     .button__sidebar--center,
     .button__sidebar--center-first {
         margin: 0 0 20px;
@@ -137,7 +138,6 @@
     }
 
     .sidebar__bookclub--items .book__club--item:first-child {
-        /* background-color: black; */
         border-top: none;
         margin-bottom: 0;
         padding-top: 0;
@@ -159,5 +159,11 @@
         margin-bottom: 0;
         padding-top: 0;
         padding-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    .sidebar__title {
+        font-size: var(--h5-size);
     }
 }

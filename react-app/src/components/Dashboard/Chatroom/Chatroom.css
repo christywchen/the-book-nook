@@ -4,7 +4,7 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-color: var(--background-color) #ffffff00;
 }
 

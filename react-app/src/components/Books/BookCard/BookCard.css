@@ -133,6 +133,10 @@
 }
 
 @media only screen and (max-width: 672px) {
+    .book__card {
+        padding: 10px 10px 0 0;
+    }
+
     .book__card--image {
         display: none;
     }
@@ -146,6 +150,6 @@
     }
 
     .book__card--body button {
-        margin: 12px 0 3px;
+        margin: 12px 0;
     }
 }

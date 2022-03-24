@@ -59,7 +59,7 @@ function JoinedClubs({ userMemberships }) {
                         <>
                             <div className='sidebar__bookclub--items'> {userBookClubs &&
                                 userBookClubs.map(bookClub => (
-                                    <BookClubItem key={bookClub.id} bookClub={bookClub} />
+                                    <BookClubItem key={bookClub.id} bookClub={bookClub} setShowMore={setShowMore} />
                                 ))}
                             </div>
                             <hr className='mobile__divider book__clubs--divider' />

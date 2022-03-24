@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useHistory, useLocation } from 'react-router-dom';
 
-function BookClubItem({ bookClub }) {
+function BookClubItem({ bookClub, setShowMore }) {
     const location = useLocation();
     const history = useHistory();
     const [showLinks, setShowLinks] = useState(false);
@@ -41,19 +41,24 @@ function BookClubItem({ bookClub }) {
                 {showLinks ? (
                     <div className="sidebar__links--group">
                         <div>
-                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/reading-list`}>
+                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/reading-list`} onClick={() => setShowMore(false)}>
                                 Reading List
                             </NavLink>
                         </div>
                         {bookClubChatrooms && bookClubChatrooms.map(chatroom => (
                             <>
                                 <div key={chatroom.id}>
-                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`}>
+                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`} onClick={() => setShowMore(false)}>
                                         {chatroom.name} Chat
                                     </NavLink>
                                 </div>
                             </>
                         ))}
+                        <div>
+                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/info`} onClick={() => setShowMore(false)}>
+                                About the Club
+                            </NavLink>
+                        </div>
                     </div>
                 ) : ''}
             </section>

@@ -151,6 +151,11 @@ input::placeholder {
     height: 70px;
 }
 
+.button__main--center {
+    position: relative;
+    margin: 20px auto;
+}
+
 /* circular icons */
 
 .circular__icon {
@@ -206,16 +211,21 @@ input::placeholder {
     .input__split {
         display: block;
     }
+
+    #wide__subcontainer--centered {
+        margin-left: 20px;
+    }
 }
 
 @media only screen and (max-width: 672px) {
     #wide__container {
+        margin: 0 0 10px;
         padding: 0 10px;
         text-align: center;
     }
 
     #wide__title {
-        font-size: var(--h3-size);
+        font-size: var(--h4-size);
     }
 
     #wide__subtitle {
@@ -228,7 +238,7 @@ input::placeholder {
 
     #form__container {
         width: 100%;
-        padding: 5px 10px 0;
+        padding: 5px 10px 0 20px;
         overflow-x: clip;
     }
 

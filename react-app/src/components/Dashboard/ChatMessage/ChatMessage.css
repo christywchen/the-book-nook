@@ -1,6 +1,6 @@
 .message__container {
     display: flex;
-    margin: 3px 0;
+    margin: 3px 10px 0;
     gap: 5px;
 }
 
@@ -20,6 +20,7 @@
     background-color: var(--input-bg);
     border-radius: 12px;
     box-shadow: var(--standard-shadow);
+    word-break: break-all;
 }
 
 .message__at {

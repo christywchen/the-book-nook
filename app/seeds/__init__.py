@@ -16,8 +16,8 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    seed_users()
-    seed_book_clubs()
+    # seed_users()
+    # seed_book_clubs()
     seed_book_club_members()
     seed_book_club_chatrooms()
     seed_chatroom_messages()
