@@ -103,6 +103,9 @@ function Chatroom() {
                 <div id='center__container--topbar'>
                     <IconImage bookClub={bookClub} />
                     <div id='center__container--title'>
+                        {bookClub.name}
+                    </div>
+                    <div id='center__container--subtitle'>
                         {chatroom.name} Chat
                     </div>
                 </div>
