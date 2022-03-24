@@ -8,7 +8,7 @@ import SearchBooks from '../Forms/SearchBooks/SearchBooks';
 import SocialLinks from './SocialLinks';
 import NavLogo from './NavLogo';
 
-function TabletNav() {
+function MobileNav() {
     const sessionUser = useSelector(state => state.session.user);
     const [showMenu, setShowMenu] = useState(false);
 
@@ -129,4 +129,4 @@ function TabletNav() {
     )
 }
 
-export default TabletNav;
+export default MobileNav;

@@ -116,4 +116,42 @@
         font-size: 0.9em;
         font-style: italic;
     }
+
+    .sidebar__subcontainer {
+        text-align: center;
+        margin: 17px 20px 17px;
+    }
+
+    .sidebar__bookclubs {
+        align-items: center;
+    }
+
+    .sidebar__bookclub--items .book__club--item:last-child div:last-child {
+        border-bottom: none;
+        margin-bottom: 0px;
+    }
+
+    .sidebar__bookclub--items .book__club--item:first-child {
+        /* background-color: black; */
+        border-top: none;
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+
+    .sidebar__bookclub--items .book__club--item {
+        border-top: 1px solid var(--border-bottom);
+        margin-bottom: 0;
+        padding-top: 10px;
+    }
+
+    .book__clubs--divider {
+        margin-bottom: 15px;
+    }
+
+    .sidebar__links--group {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
 }

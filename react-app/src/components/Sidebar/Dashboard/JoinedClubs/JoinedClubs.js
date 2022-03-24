@@ -69,6 +69,7 @@ function JoinedClubs({ userMemberships }) {
                                     </form>
                                 )}
                             </div>
+                            <hr className='mobile__divider book__clubs--divider' />
                         </>
                     )}
                     <div className='mobile__sidebar--cta' onClick={() => setShowMore(!showMore)}>{showMore ? 'Less Info' : 'More Info'}</div>
