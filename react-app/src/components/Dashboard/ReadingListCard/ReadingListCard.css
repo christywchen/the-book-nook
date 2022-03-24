@@ -100,6 +100,7 @@
     .readinglist__card {
         width: 100%;
         height: auto;
+        border-radius: 5px;
     }
 
     .readinglist__card--image {
@@ -111,16 +112,6 @@
         justify-content: center;
         width: 100%;
     }
-
-    .readinglist__card--container {
-        width: 100%;
-        display: block;
-    }
-
-    .readinglist__card--container > div {
-        margin: 15px 0;
-    }
-
     .readinglist__card--text {
         min-height: auto;
     }
@@ -133,10 +124,6 @@
     .readinglist__card--author {
         margin: 3px 0;
         font-size: 0.9em;
-    }
-
-    .readinglist__card > div {
-        gap: 10px;
     }
 
     .readinglist__form--mobile {

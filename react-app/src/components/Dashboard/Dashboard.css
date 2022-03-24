@@ -107,13 +107,21 @@
 
     #center__container--desc {
         width: 100%;
-        margin: -10px 40px 0;
+        margin: -10px 40px 1px;
+    }
+
+    .hide__subtitle {
+        display: none;
     }
 }
 
 @media only screen and (max-width: 672px) {
     #center__container--topbar {
         display: block;
+    }
+
+    #center__container--title {
+        font-size: var(--h4-size);
     }
 
     #center__container--subtitle {
@@ -127,6 +135,14 @@
     }
 
     .dash__card--subtitle {
-        font-size: var(--h4-size);
+        font-size: var(--h5-size);
+    }
+
+    #center__container--desc {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-weight: 400;
     }
 }

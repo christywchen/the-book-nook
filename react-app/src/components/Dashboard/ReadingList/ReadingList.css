@@ -20,4 +20,14 @@
         padding: 0 10px 0 0;
         text-align: center;
     }
+
+    .readinglist__card--container {
+        width: 100%;
+        display: block;
+    }
+
+    .readinglist__card--container > div {
+        margin: 15px 0;
+        padding: 1px 8px;
+    }
 }
