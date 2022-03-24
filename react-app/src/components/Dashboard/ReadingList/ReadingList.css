@@ -17,6 +17,7 @@
 @media only screen and (max-width: 672px) {
     .readinglist__card--container {
         width: 100%;
+        height: inherit;
         display: block;
         margin: 10px 0px;
         text-align: center;
