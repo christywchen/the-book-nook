@@ -1,4 +1,8 @@
 @media only screen and (max-width: 992px) {
+    .details__subdesc {
+        margin-bottom: 0;
+    }
+
     .details__subsec {
         margin: 5px 0;
     }
