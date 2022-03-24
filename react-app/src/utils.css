@@ -211,6 +211,7 @@ input::placeholder {
 @media only screen and (max-width: 672px) {
     #wide__container {
         padding: 0 10px;
+        text-align: center;
     }
 
     #wide__title {

@@ -62,6 +62,7 @@ function JoinedClubs({ userMemberships }) {
                                     <BookClubItem key={bookClub.id} bookClub={bookClub} />
                                 ))}
                             </div>
+                            <hr className='mobile__divider book__clubs--divider' />
                             <div className='sidebar__cta--link'>
                                 {userMemberships.length < 5 && (
                                     <form onSubmit={handleCreateClub}>
@@ -69,7 +70,6 @@ function JoinedClubs({ userMemberships }) {
                                     </form>
                                 )}
                             </div>
-                            <hr className='mobile__divider book__clubs--divider' />
                         </>
                     )}
                     <div className='mobile__sidebar--cta' onClick={() => setShowMore(!showMore)}>{showMore ? 'Less Info' : 'More Info'}</div>

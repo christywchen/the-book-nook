@@ -105,14 +105,19 @@
         text-align: center;
         margin: 17px 20px 17px;
     }
-
-    .sidebar__para .sidebar__cta--link button {
+    .button__sidebar--center,
+    .button__sidebar--center-first {
         margin: 0 0 20px;
     }
 
+    .button__sidebar--center-second {
+        margin: -3px 0 5px;
+    }
+
     .mobile__sidebar--cta {
-        display: block;
+        width: 100%;
         margin: -5px 0;
+        display: block;
         font-size: 0.9em;
         font-style: italic;
     }
@@ -146,6 +151,7 @@
 
     .book__clubs--divider {
         margin-bottom: 15px;
+        padding-bottom: 5px;
     }
 
     .sidebar__links--group {
