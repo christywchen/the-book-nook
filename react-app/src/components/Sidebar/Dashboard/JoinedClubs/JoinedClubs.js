@@ -15,7 +15,7 @@ function JoinedClubs({ userMemberships }) {
     const [showMore, setShowMore] = useState('');
 
     useEffect(() => {
-        let width = window.innerWidth;
+        const width = window.innerWidth;
 
         if (width > 992) {
             setShowMore(true)

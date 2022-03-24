@@ -19,6 +19,14 @@ function BookClubItem({ bookClub, setShowMore }) {
         }
     }, [currentLocation, bookClub])
 
+    async function handleShowLess() {
+        const width = window.innerWidth;
+
+        if (width <= 992) {
+            setShowMore(false)
+        }
+    }
+
     async function handleClick(e) {
         history.push(`/dashboard/book-clubs/${bookClub.id}/reading-list`);
     }
@@ -41,21 +49,21 @@ function BookClubItem({ bookClub, setShowMore }) {
                 {showLinks ? (
                     <div className="sidebar__links--group">
                         <div>
-                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/reading-list`} onClick={() => setShowMore(false)}>
+                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/reading-list`} onClick={handleShowLess}>
                                 Reading List
                             </NavLink>
                         </div>
                         {bookClubChatrooms && bookClubChatrooms.map(chatroom => (
                             <>
                                 <div key={chatroom.id}>
-                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`} onClick={() => setShowMore(false)}>
+                                    <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/chats/${chatroom.id}`} onClick={handleShowLess}>
                                         {chatroom.name} Chat
                                     </NavLink>
                                 </div>
                             </>
                         ))}
                         <div>
-                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/info`} onClick={() => setShowMore(false)}>
+                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/info`} onClick={handleShowLess}>
                                 About the Club
                             </NavLink>
                         </div>

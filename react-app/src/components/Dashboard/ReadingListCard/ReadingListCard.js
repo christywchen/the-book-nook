@@ -17,7 +17,7 @@ function ReadingListCard({ bookInfo }) {
 
     let shortCard;
 
-    let width = window.innerWidth;
+    const width = window.innerWidth;
 
     if (width > 672 && !bookClubId) {
         shortCard = { height: '268px' };

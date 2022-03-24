@@ -108,7 +108,7 @@ function AddBookClubBook({ book }) {
                         <>
                             <hr className='book__details--divider' />
                             <div className='book__details--mini-title'>
-                                Book Clubs Currently Reading This:
+                                Currently Being Read By:
                             </div>
                             <div className='book__details--mini-container book__details--clubs-container'>
                                 {bookClubsWithBook.map(bookClub => {
