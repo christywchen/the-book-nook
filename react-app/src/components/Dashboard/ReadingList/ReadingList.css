@@ -15,10 +15,6 @@
 
 /* media queries */
 @media only screen and (max-width: 672px) {
-    .dash__card--books {
-        padding: 0 10px 0 0;
-    }
-
     .readinglist__card--container {
         width: 100%;
         display: block;

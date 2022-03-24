@@ -139,6 +139,6 @@
     }
 
     .dash__card--books {
-        padding: 1px 15px;
+        padding: 0 10px 0 0;
     }
 }

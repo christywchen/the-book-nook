@@ -250,4 +250,9 @@ input::placeholder {
         padding: 0 5px;
         font-size: 0.8em;
     }
+
+    .content__unavail {
+        background-color: var(--book-cluster-bg);
+        padding: 20px !important;
+    }
 }

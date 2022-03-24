@@ -37,7 +37,11 @@ function BookClubList() {
                             <>
                                 {bookClubs.map(bookClub => (<BookClubCard key={bookClub.id} bookClub={bookClub} />))}
                             </>
-                        ) : (<>No book clubs at the moment. Maybe you start one of your own?</>)}
+                        ) : (
+                            <div className='content__unavail'>
+                                No book clubs at the moment. Maybe you start one of your own?
+                            </div>
+                        )}
                     </div>
                 </div>
             </section>
