@@ -65,3 +65,35 @@
     margin-right: 5px !important;
     margin-bottom: 5px !important;
 }
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    #center__container {
+        width: calc(100% - 40px);
+        height: 100%;
+        overflow-y: clip;
+        margin: 5px 20px 10px 20px;
+        /* display: flex;
+        flex-direction: column; */
+    }
+
+    #center__container--title {
+        font-size: var(--h4-size);
+    }
+
+    #details__container {
+        display: none;
+    }
+
+    .dashboard__icon {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        min-height: 22px;
+        font-size: 0.6em;
+    }
+
+    .circular__icon {
+        padding: 1px;
+    }
+}

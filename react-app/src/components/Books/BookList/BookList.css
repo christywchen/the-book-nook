@@ -13,6 +13,7 @@
 /* media queries */
 @media only screen and (max-width: 992px) {
     .book__card--container {
-        grid-gap: 25px;
+        margin: 10px 0;
+        grid-gap: 20px;
     }
 }
