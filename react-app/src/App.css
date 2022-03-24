@@ -12,7 +12,8 @@
 /* media queries */
 @media only screen and (max-width: 992px) {
     #content__container {
-        height: calc(100vh - 110px);
+        position: fixed;
+        height: calc(100% - 110px);
         flex-direction: column;
     }
 }
