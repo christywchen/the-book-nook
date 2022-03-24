@@ -100,7 +100,7 @@
     .readinglist__card {
         width: 100%;
         height: auto;
-        border-radius: 5px;
+        border-radius: var(--input-radius);
     }
 
     .readinglist__card--image {
