@@ -214,7 +214,7 @@ input::placeholder {
     }
 
     #wide__title {
-        font-size: var(--h4-size);
+        font-size: var(--h3-size);
     }
 
     #wide__subtitle {

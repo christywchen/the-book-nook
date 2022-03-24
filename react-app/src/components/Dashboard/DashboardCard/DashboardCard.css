@@ -8,3 +8,11 @@
     padding: 30px;
     margin: 0;
 }
+
+/* media queries */
+@media only screen and (max-width: 672px) {
+    .dash__card--books {
+        /* margin: */
+        padding: 20px 10px;
+    }
+}

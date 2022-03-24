@@ -75,3 +75,28 @@
 .readinglist__card--delete a:hover {
     color: var(--sidebar-color);
 }
+
+/* media queries */
+@media only screen and (max-width: 672px) {
+    .readinglist__card {
+        width: auto;
+        height: auto;
+    }
+
+    .readinglist__card--image {
+        width: 50px;
+        height: auto;
+    }
+
+    .readinglist__card > div {
+        display: flex;
+    }
+
+    .readinglist__card--container {
+        display: block;
+    }
+
+    .readinglist__card--container > div {
+        margin-bottom: 20px;
+    }
+}
