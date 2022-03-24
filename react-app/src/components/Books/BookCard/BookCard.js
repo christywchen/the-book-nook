@@ -23,9 +23,11 @@ function BookCard({ book }) {
                 </Link>
                 <div className='book__card--body'>
                     <div>
-                        <div className='book__card--title'>
-                            {title}
-                        </div>
+                        <Link className='book__card--link' to={`/books/${id}`}>
+                            <div className='book__card--title'>
+                                {title}
+                            </div>
+                        </Link>
                         <div className='book__card--author'>
                             by {author}
                         </div>

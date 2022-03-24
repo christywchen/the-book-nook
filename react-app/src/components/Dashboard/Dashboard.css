@@ -100,4 +100,8 @@
     .dashboard__icon {
         display: none;
     }
+
+    .dash__card--subtitle {
+        font-size: var(--h4-size);
+    }
 }

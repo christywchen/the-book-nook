@@ -34,13 +34,24 @@
     font-style: italic;
     font-size: var(--body-small);
     font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .readinglist__card--author {
     margin: 5px 0;
     font-size: 0.8em;
     font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
     overflow-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .book__card--synopsis {
@@ -76,27 +87,63 @@
     color: var(--sidebar-color);
 }
 
+.readinglist__form--mobile {
+    display: none;
+}
+
 /* media queries */
 @media only screen and (max-width: 672px) {
     .readinglist__card {
-        width: auto;
+        width: 100%;
         height: auto;
     }
 
     .readinglist__card--image {
-        width: 50px;
-        height: auto;
+        display: none;
     }
 
-    .readinglist__card > div {
+    .readinglist__card--content {
         display: flex;
+        justify-content: center;
+        width: 100%;
     }
 
     .readinglist__card--container {
+        width: 100%;
         display: block;
     }
 
     .readinglist__card--container > div {
-        margin-bottom: 20px;
+        margin: 15px 0;
+    }
+
+    .readinglist__card--title {
+        margin: 0;
+        font-size: 1em;
+    }
+
+    .readinglist__card--author {
+        margin: 3px 0;
+        font-size: 0.9em;
+    }
+
+    .readinglist__card > div {
+        gap: 10px;
+    }
+
+    .readinglist__form--mobile {
+        display: block;
+    }
+
+    .readinglist__form--mobile > select {
+        margin-bottom: 0;
+    }
+
+    .readinglist__form--desktop {
+        display: none;
+    }
+
+    .dash__card--books {
+        padding: 1px 15px;
     }
 }
