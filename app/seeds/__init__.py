@@ -59,8 +59,8 @@ def reset():
     seed_book_club_books()
 
 
-# Creates the `flask seed reset chat` command
-@seed_commands.command('reset chat')
+# Creates the `flask seed chat` command
+@seed_commands.command('chat')
 def reset():
     # Undo seeds
     undo_chatroom_messages()
