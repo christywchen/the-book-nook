@@ -160,7 +160,7 @@
         font-weight: 400;
     }
 
-    #center__container--main-content {
-        height: calc(100% - 180px);
+    #readinglist__card--container {
+        height: inherit;
     }
 }

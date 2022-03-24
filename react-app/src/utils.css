@@ -5,7 +5,8 @@
     padding: 15px 0 10px;
     scrollbar-width: auto;
     scrollbar-color: var(--background-color) #ffffff00;
-    overflow-y: scroll;
+    overflow-y: auto;
+    overflow-x: clip;
 }
 
 #wide__title {

@@ -1,6 +1,6 @@
 #chatroom__messages {
     position: relative;
-    /* min-height: 100%; */
+    height: inherit;
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
