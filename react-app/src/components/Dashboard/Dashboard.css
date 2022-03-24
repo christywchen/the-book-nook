@@ -159,8 +159,4 @@
         text-align: center;
         font-weight: 400;
     }
-
-    #readinglist__card--container {
-        height: inherit;
-    }
 }

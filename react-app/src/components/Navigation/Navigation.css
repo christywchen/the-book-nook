@@ -173,7 +173,7 @@ ul#nav__menu--links-mobile li {
 }
 
 /* media queries */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1180px) {
     #nav__title {
         font-weight: 800;
     }
