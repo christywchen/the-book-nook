@@ -29,6 +29,10 @@
     background-color: var(--sidebar-bg);
 }
 
+.readinglist__card--text {
+    min-height: 70px;
+}
+
 .readinglist__card--title {
     margin: 10px 0 0;
     font-style: italic;
@@ -115,6 +119,10 @@
 
     .readinglist__card--container > div {
         margin: 15px 0;
+    }
+
+    .readinglist__card--text {
+        min-height: auto;
     }
 
     .readinglist__card--title {
