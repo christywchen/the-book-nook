@@ -31,4 +31,8 @@
     #chatroom__input input {
         margin-bottom: 0;
     }
+
+    .send__chat {
+        display: none;
+    }
 }
