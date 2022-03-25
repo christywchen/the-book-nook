@@ -1,23 +1,16 @@
 #chatroom__messages {
     position: relative;
-    min-height: 100%;
+    height: inherit;
     display: flex;
-    /*
-    flex-direction: column;
-    justify-content: flex-end; */
-    /* align-items: stretch;
-     */
-    /* align-self: flex-end;
-    justify-self: flex-end; */
     justify-content: flex-end;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
+    grid-gap: 5px;
+    gap: 5px;
     scrollbar-color: var(--background-color) #ffffff00;
-    /* background-color: red; */
 }
 
 #chatroom__input {
-    /* background-color: blue; */
     height: 45px;
     padding-top: 8px;
 }
@@ -29,4 +22,19 @@
 
 #chatroom__input input {
     padding: 8px;
+}
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    #chatroom__input {
+        padding-top: 0;
+    }
+
+    #chatroom__input input {
+        margin-bottom: 0;
+    }
+
+    .send__chat {
+        display: none;
+    }
 }

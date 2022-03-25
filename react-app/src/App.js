@@ -8,7 +8,6 @@ import SignUpForm from './components/Auth/SignUpForm';
 import About from './components/About/About';
 import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
-// import User from './components/User';
 
 import { authenticate } from './store/session';
 

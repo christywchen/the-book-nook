@@ -5,7 +5,7 @@ import './SearchBooks.css';
 
 import { buildURLParams } from '../../../utils';
 
-function SearchBooks() {
+function SearchBooks({ setShowMenu }) {
     const history = useHistory();
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
@@ -15,19 +15,24 @@ function SearchBooks() {
         e.preventDefault();
 
         if (query === '') {
-            console.log('here')
+            if (setShowMenu) setShowMenu(false);
             return history.push(`/books/all`);
         }
+
         const params = buildURLParams(query);
         setResults([]);
         setQuery('');
         setShowResults(false);
+
+        if (setShowMenu) setShowMenu(false);
 
         return history.push(`/books/search/q?${params}`);
     }
 
     async function handleQuery(e) {
         setQuery(e.target.value);
+
+        if (setShowMenu) return;
 
         if (e.target.value === '') {
             setResults([]);

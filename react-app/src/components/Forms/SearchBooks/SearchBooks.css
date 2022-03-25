@@ -44,6 +44,7 @@
     background-color: var(--sidebar-bg);
     backdrop-filter: blur(10px);
     border-radius: var(--input-radius);
+    box-shadow: var(--standard-shadow);
 }
 
 .search__res li:hover {
@@ -89,4 +90,18 @@
 
 .res__more:hover {
     opacity: 1;
+}
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    .search__button {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    #search__form input {
+        width: 220px;
+        margin-left: -30px;
+    }
 }

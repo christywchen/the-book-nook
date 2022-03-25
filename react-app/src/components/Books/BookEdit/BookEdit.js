@@ -36,7 +36,7 @@ function BookEdit() {
     return (
         <section id='wide__container'>
             <div id='wide__title'>Edit Book</div>
-            {book && <BookForm formType={formType} formProps={formProps} />}
+            {book ? <BookForm formType={formType} formProps={formProps} /> : 'Uh oh. This book does not exist.'}
         </section>
     )
 }

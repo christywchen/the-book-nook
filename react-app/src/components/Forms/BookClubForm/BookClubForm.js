@@ -149,9 +149,9 @@ function BookClubForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Name*</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {nameError}
-                            </span>
+                            </div>
                         </div>
                         <input
                             name='name'
@@ -163,9 +163,9 @@ function BookClubForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Description</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {descriptionError}
-                            </span>
+                            </div>
                         </div>
                         <textarea
                             name='description'
@@ -177,9 +177,9 @@ function BookClubForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Book Club Icon</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {imageError}
-                            </span>
+                            </div>
                         </div>
                         <div className='form__upload--text'>
                             Upload a PNG, JPG, JPEG, or GIF.
@@ -205,9 +205,9 @@ function BookClubForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Member Capacity*</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {capacityError}
-                            </span>
+                            </div>
                         </div>
                         <input
                             name='capacity'

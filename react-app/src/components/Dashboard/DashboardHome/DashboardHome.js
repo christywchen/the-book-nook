@@ -51,14 +51,17 @@ function DashboardHome() {
                         B
                     </div>
                     <div id='center__container--title'>
-                        Book Clubs
+                        My Book Clubs
                     </div>
-                    <div id='center__container--subtitle'>
+                    <div id='center__container--subtitle' class='hide__subtitle'>
+                        My Book Clubs
+                    </div>
+                    <div id='center__container--desc'>
                         Your book clubs' reading lists at a glance.
                     </div>
                 </div>
                 <div id='center__container--main-content'>
-                    <div className='readinglist__card--container'>
+                    <div className='center__container--desc'>
                         {userBookClubs.length > 0 ? userBookClubs.map((bookClub, ind) => (
                             <DashboardCard key={ind} bookClub={bookClub} allBooksObj={allBooksObj} allBookClubBooks={allBookClubBooks} />
                         )) : (<>You need to join a book club to get access to their reading list.</>)}

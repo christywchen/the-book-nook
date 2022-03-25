@@ -50,9 +50,9 @@ function BookDetails() {
                                 {!book.image_url && <>No Cover Image Available</>}
                             </div>
 
-                            <div className='create__club--link'>
+                            <div className='sidebar__cta--link'>
                                 <form onSubmit={handleEditBook}>
-                                    <button className='button button__sidebar--center' type='submit'>Edit Book</button>
+                                    <button className='button button__main--center' type='submit'>Edit Book</button>
                                 </form>
                             </div>
                         </div>

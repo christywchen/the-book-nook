@@ -1,7 +1,20 @@
 import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-function CreateClub({ userMemberships }) {
+function CreateClub() {
     const history = useHistory();
+    const [showMore, setShowMore] = useState('');
+
+    useEffect(() => {
+        const width = window.innerWidth;
+
+        if (width > 992) {
+            setShowMore(true)
+        } else {
+            setShowMore(false)
+        }
+    }, []);
+
     async function handleBrowseClubs(e) {
         e.preventDefault();
         return history.push('/book-clubs');
@@ -10,20 +23,25 @@ function CreateClub({ userMemberships }) {
     return (
         <>
             <section className='sidebar__para'>
-                <p>
-                    Tell us and other users a little about the book club you want to create.
-                </p>
-                <p>
-                    As the host, you'll be in charge of making sure the book club runs smoothly.
-                </p>
-                <p>
-                    Or, you can simply browse existing book clubs and join one that you like.
-                </p>
-                <div className='create__club--link'>
-                    <form onSubmit={handleBrowseClubs}>
-                        <button className='button button__sidebar--center' type='submit'>Explore Book Clubs</button>
-                    </form>
-                </div>
+                {showMore && (
+                    <>
+                        <p>
+                            Tell us and other users a little about the book club you want to create.
+                        </p>
+                        <p>
+                            As the host, you'll be in charge of making sure the book club runs smoothly.
+                        </p>
+                        <p>
+                            Or, you can simply browse existing book clubs and join one that you like.
+                        </p>
+                        <div className='sidebar__cta--link'>
+                            <form onSubmit={handleBrowseClubs}>
+                                <button className='button button__sidebar--center' type='submit'>Explore Book Clubs</button>
+                            </form>
+                        </div>
+                    </>
+                )}
+                <div className='mobile__sidebar--cta' onClick={() => setShowMore(!showMore)}>{showMore ? 'Less Info' : 'More Info'}</div>
             </section>
         </>
     )

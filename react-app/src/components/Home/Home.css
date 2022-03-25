@@ -34,3 +34,28 @@
     padding: 10px 18px;
     font-size: var(--h5-size);
 }
+
+/* media queries */
+@media only screen and (max-width: 672px) {
+    #home__container {
+        top: 4vh;
+        width: 100%;
+        padding: 25px 0;
+    }
+
+    #home__container--title {
+        margin: 0 0 20px 0;
+        font-size: var(--h3-size);
+        font-weight: var(--weight-xlight);
+    }
+
+    #home__container--tagline {
+        margin: 0 0 20px 0;
+        font-size: 2.5em;
+        font-weight: 600;
+    }
+
+    #home__container--img {
+        width: 250px;
+    }
+}

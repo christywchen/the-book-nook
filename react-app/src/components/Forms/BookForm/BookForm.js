@@ -161,9 +161,9 @@ function BookForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Title*</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {titleError}
-                            </span>
+                            </div>
                         </div>
                         <input
                             name='title'
@@ -175,9 +175,9 @@ function BookForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Author*</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {authorError}
-                            </span>
+                            </div>
                         </div>
                         <input
                             name='author'
@@ -201,9 +201,9 @@ function BookForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Book Cover Image</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {imageError}
-                            </span>
+                            </div>
                         </div>
                         <div className='form__upload--text'>
                             Upload a PNG, JPG, JPEG, or GIF.
@@ -230,9 +230,9 @@ function BookForm({ formType, formProps }) {
                     <div>
                         <div className='label__section'>
                             <label>Original Title</label>
-                            <span className='error__message'>
+                            <div className='error__message'>
                                 {originalTitleError}
-                            </span>
+                            </div>
                         </div>
                         <input
                             name='original_title'
@@ -245,9 +245,9 @@ function BookForm({ formType, formProps }) {
                         <div>
                             <div className='label__section'>
                                 <label>ISBN13</label>
-                                <span className='error__message'>
+                                <div className='error__message'>
                                     {isbn13Error}
-                                </span>
+                                </div>
                             </div>
                             <input
                                 name='isbn13'
@@ -260,9 +260,9 @@ function BookForm({ formType, formProps }) {
                         <div>
                             <div className='label__section'>
                                 <label>Publication Year</label>
-                                <span className='error__message'>
+                                <div className='error__message'>
                                     {publicationYearError}
-                                </span>
+                                </div>
                             </div>
                             <input
                                 name='publication_year'
@@ -277,9 +277,9 @@ function BookForm({ formType, formProps }) {
                         <div>
                             <div className='label__section'>
                                 <label>Language*</label>
-                                <span className='error__message'>
+                                <div className='error__message'>
                                     {languageError}
-                                </span>
+                                </div>
                             </div>
                             <input
                                 name='language'
@@ -292,9 +292,9 @@ function BookForm({ formType, formProps }) {
                             <div>
                                 <div className='label__section'>
                                     <label>Pages</label>
-                                    <span className='error__message'>
+                                    <div className='error__message'>
                                         {pagesError}
-                                    </span>
+                                    </div>
                                 </div>
                                 <input
                                     name='page_count'

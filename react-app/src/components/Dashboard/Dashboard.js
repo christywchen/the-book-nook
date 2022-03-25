@@ -4,6 +4,7 @@ import Chatroom from './Chatroom/Chatroom';
 import DetailsBar from './DetailsBar/DetailsBar';
 import ReadingList from './ReadingList/ReadingList';
 import DashboardHome from './DashboardHome/DashboardHome';
+import Details from './Details/Details';
 
 import './Dashboard.css';
 
@@ -14,8 +15,8 @@ function Dashboard() {
                 <Route path='/dashboard' exact={true}>
                     <DashboardHome />
                 </Route>
-                <Route path='/dashboard/book-clubs/:bookClubId' exact={true}>
-                    {/* <Redirect to='/dashboard/book-clubs/:bookClubId/reading-list' /> */}
+                <Route path='/dashboard/book-clubs/:bookClubId/info' exact={true}>
+                    <Details />
                 </Route>
                 <Route path='/dashboard/book-clubs/:bookClubId/reading-list'>
                     <ReadingList />

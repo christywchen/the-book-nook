@@ -8,3 +8,17 @@
     border-radius: 12px;
     box-shadow: var(--standard-shadow);
 }
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    #content__container {
+        display: flex;
+        position: fixed;
+        top: 76px;
+        left: 18px;
+        width: calc(100% - 35px);
+        height: calc(100% - 100px);
+        margin: 0 0 50px;
+        flex-direction: column;
+    }
+}

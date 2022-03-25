@@ -1,3 +1,7 @@
+.mobile__sidebar--cta {
+    display: none;
+}
+
 #sidebar__container {
     position: relative;
     box-sizing: border-box;
@@ -52,7 +56,7 @@
     margin: 60px 25px 0;
 }
 
-.create__club--link {
+.sidebar__cta--link {
     display: flex;
     justify-content: center;
 }
@@ -83,4 +87,91 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.sidebar__link--about {
+    display: none;
+}
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    .sidebar__link--about {
+        display: block;
+    }
+
+    #sidebar__container {
+        min-width: calc(100% - 20px);
+        max-width: 100%;
+        padding: 0;
+        height: fit-content;
+        margin: 10px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .sidebar__para {
+        text-align: center;
+        margin: 17px 20px 17px;
+    }
+
+    .button__sidebar--center,
+    .button__sidebar--center-first {
+        margin: 0 0 20px;
+    }
+
+    .button__sidebar--center-second {
+        margin: -3px 0 5px;
+    }
+
+    .mobile__sidebar--cta {
+        width: 100%;
+        margin: -5px 0;
+        display: block;
+        font-size: 0.9em;
+        font-style: italic;
+    }
+
+    .sidebar__subcontainer {
+        text-align: center;
+        margin: 17px 20px 17px;
+    }
+
+    .sidebar__bookclubs {
+        align-items: center;
+    }
+
+    .sidebar__bookclub--items .book__club--item:last-child div:last-child {
+        border-bottom: none;
+        margin-bottom: 0px;
+    }
+
+    .sidebar__bookclub--items .book__club--item:first-child {
+        border-top: none;
+        margin-bottom: 0;
+        padding-top: 0;
+    }
+
+    .sidebar__bookclub--items .book__club--item {
+        border-top: 1px solid var(--border-bottom);
+        margin-bottom: 0;
+        padding-top: 10px;
+    }
+
+    .book__clubs--divider {
+        margin-bottom: 15px;
+        padding-bottom: 5px;
+    }
+
+    .sidebar__links--group {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    .sidebar__title {
+        font-size: var(--h5-size);
+    }
 }

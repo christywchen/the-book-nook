@@ -70,7 +70,7 @@ function AddBookClubBook({ book }) {
                     <>
                         <hr className='book__details--divider' />
                         <div className='book__details--mini-title'>
-                            Recommend this to Your Book Club:
+                            Recommend to Your Book Club:
                         </div>
                         <form className='form__add--book-to-club' onSubmit={handleSubmit}>
                             <div>
@@ -108,7 +108,7 @@ function AddBookClubBook({ book }) {
                         <>
                             <hr className='book__details--divider' />
                             <div className='book__details--mini-title'>
-                                Book Clubs Currently Reading This:
+                                Currently Being Read By:
                             </div>
                             <div className='book__details--mini-container book__details--clubs-container'>
                                 {bookClubsWithBook.map(bookClub => {

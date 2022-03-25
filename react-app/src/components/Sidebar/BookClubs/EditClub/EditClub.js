@@ -1,7 +1,19 @@
 import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-function EditClub({ userMemberships }) {
+function EditClub() {
     const history = useHistory();
+    const [showMore, setShowMore] = useState('');
+
+    useEffect(() => {
+        let width = window.innerWidth;
+
+        if (width > 992) {
+            setShowMore(true)
+        } else {
+            setShowMore(false)
+        }
+    }, []);
 
     async function handleReturn(e) {
         e.preventDefault();
@@ -11,17 +23,22 @@ function EditClub({ userMemberships }) {
     return (
         <>
             <section className='sidebar__para'>
-                <p>
-                    Need to make an update to your book club? No problem.
-                </p>
-                <p>
-                    Note that member capacity cannot be below your current member count.
-                </p>
-                <div className='create__club--link'>
-                    <form onSubmit={handleReturn}>
-                        <button className='button button__sidebar--center' type='submit'>Back to Your Club</button>
-                    </form>
-                </div>
+                {showMore && (
+                    <>
+                        <p>
+                            Need to make an update to your book club? No problem.
+                        </p>
+                        <p>
+                            Note that member capacity cannot be below your current member count.
+                        </p>
+                        <div className='sidebar__cta--link'>
+                            <form onSubmit={handleReturn}>
+                                <button className='button button__sidebar--center' type='submit'>Back to Your Club</button>
+                            </form>
+                        </div>
+                    </>
+                )}
+                <div className='mobile__sidebar--cta' onClick={() => setShowMore(!showMore)}>{showMore ? 'Less Info' : 'More Info'}</div>
             </section>
         </>
     )

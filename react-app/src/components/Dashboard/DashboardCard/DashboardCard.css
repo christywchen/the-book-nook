@@ -1,4 +1,5 @@
 .dash__card--subtitle {
+    text-align: center;
     font-size: var(--h3-size);
     font-weight: var(--weight-bold);
 }
@@ -7,4 +8,11 @@
     background-color: var(--book-cluster-bg);
     padding: 30px;
     margin: 0;
+}
+
+/* media queries */
+@media only screen and (max-width: 672px) {
+    .dash__card--books {
+        padding: 0px 10px;
+    }
 }

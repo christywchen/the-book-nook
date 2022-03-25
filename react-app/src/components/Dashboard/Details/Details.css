@@ -1,0 +1,19 @@
+@media only screen and (max-width: 992px) {
+    .details__subdesc {
+        margin-bottom: 0;
+    }
+
+    .details__subsec {
+        margin: 5px 0;
+    }
+
+    .details__members--list {
+        position: inherit;
+        padding: 5px;
+        height: fit-content;
+    }
+
+    .details__heading {
+        margin: 0 0 2px;
+    }
+}

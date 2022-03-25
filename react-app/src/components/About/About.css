@@ -44,3 +44,19 @@
     font-size: var(--body-small);
     opacity: 0.8;
 }
+
+/* media queries */
+@media only screen and (max-width: 992px) {
+    #about__container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    #about__container {
+        top: 4vh;
+        width: 100%;
+        padding: 8px 20px;
+        font-size: 0.9em;
+    }
+}

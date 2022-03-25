@@ -34,7 +34,11 @@ function Results() {
                         <>
                             {books.length > 0 && books.map(book => (<BookCard key={book.id} book={book} />))}
                         </>
-                    ) : (<>We couldn't find a book that matches your search. Maybe you could help us expand our library?</>)}
+                    ) : (
+                        <div className='content__unavail'>
+                            We couldn't find a book that matches your search. Maybe you could help us expand our library?
+                        </div>
+                    )}
                 </div>
             </div>
         </section>

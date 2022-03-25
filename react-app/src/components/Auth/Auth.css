@@ -45,3 +45,31 @@ ul.auth__container--errors li {
     margin: 0 0 4px 0;
     list-style-type: none;
 }
+
+/* media queries */
+@media only screen and (max-width: 672px) {
+    #auth__container {
+        top: 4vh;
+        /*
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column; */
+        padding: 25px 0;
+        /* margin: auto auto;
+        text-align: center; */
+    }
+
+    #auth__form {
+        width: 300px;
+        /*
+        height: 500px;
+        height: fit-content;
+        margin: 0 auto; */
+        padding: 30px 45px;
+        /* border-radius: var(--border-radius);
+        background-color: var(--dash-bg);
+        box-shadow: var(--standard-shadow); */
+    }
+}
