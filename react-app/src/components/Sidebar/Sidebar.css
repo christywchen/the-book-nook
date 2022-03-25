@@ -89,8 +89,16 @@
     justify-content: space-between;
 }
 
+.sidebar__link--about {
+    display: none;
+}
+
 /* media queries */
 @media only screen and (max-width: 992px) {
+    .sidebar__link--about {
+        display: block;
+    }
+
     #sidebar__container {
         min-width: calc(100% - 20px);
         max-width: 100%;

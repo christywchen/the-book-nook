@@ -63,7 +63,7 @@ function BookClubItem({ bookClub, setShowMore }) {
                             </>
                         ))}
                         <div>
-                            <NavLink activeClassName='sidebar__link--active' to={`/dashboard/book-clubs/${bookClub.id}/info`} onClick={handleShowLess}>
+                            <NavLink activeClassName='sidebar__link--active' className='sidebar__link--about' to={`/dashboard/book-clubs/${bookClub.id}/info`} onClick={handleShowLess}>
                                 About the Club
                             </NavLink>
                         </div>

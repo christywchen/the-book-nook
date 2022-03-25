@@ -58,4 +58,13 @@ ul.form__add--book-to-club--errors,
     .book__details--clubs-container {
         justify-content: center;
     }
+
+    .form__add--book-to-club {
+        display: block;
+    }
+
+    .form__add--book-to-club button,
+    .form__add--book-to-club select {
+        width: 100%;
+    }
 }

@@ -177,14 +177,6 @@ ul#nav__menu--links-mobile li {
         font-weight: 800;
     }
 
-    .desktop__logo {
-        display: none;
-    }
-
-    .mobile__logo {
-        display: inline;
-    }
-
     #nav__title {
         text-align: left;
         min-width: 190px;
@@ -198,6 +190,10 @@ ul#nav__menu--links-mobile li {
         display: flex;
     }
 
+    .desktop__logo {
+        margin-left: 40px;
+    }
+
     .nav__social {
         padding: 0 20px;
     }
@@ -208,6 +204,16 @@ ul#nav__menu--links-mobile li {
 
     .home__menu--mobile {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .desktop__logo {
+        display: none;
+    }
+
+    .mobile__logo {
+        display: inline;
     }
 }
 
