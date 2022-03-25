@@ -32,6 +32,10 @@
     margin: auto auto;
 }
 
+#form__container form {
+    overflow-x: clip;
+}
+
 #form__container button {
     width: 100%;
     margin: 6px 0;

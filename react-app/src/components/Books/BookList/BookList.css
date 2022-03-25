@@ -7,13 +7,13 @@
     margin: 30px 0px;
     transition: all ease-in-out 0.2s;
     border-radius: 3px;
-    grid-gap: 50px;
+    gap: 50px;
 }
 
 /* media queries */
 @media only screen and (max-width: 992px) {
     .book__card--container {
         margin: 10px 0;
-        grid-gap: 20px;
+        gap: 20px;
     }
 }

@@ -7,7 +7,7 @@
     margin: 30px 0;
     transition: all ease-in-out 0.2s;
     border-radius: 3px;
-    grid-gap: 50px;
+    gap: 50px;
 }
 
 /* media queries */
@@ -15,6 +15,6 @@
     .bookclub__card--container {
         width: 100%;
         margin: 10px 0;
-        grid-gap: 20px;
+        gap: 20px;
     }
 }

@@ -158,8 +158,8 @@ textarea::-webkit-scrollbar {
 }
 
 /* media queries */
-@media only screen and (max-width: 672) {
+@media only screen and (max-width: 99) {
     body {
-        margin: 25px 10px;
+        /* margin: 0px 0px; */
     }
 }

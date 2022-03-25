@@ -8,7 +8,7 @@
     transition: all ease-in-out 0.2s;
     background-color: var(--button-bg);
     border-radius: var(--input-radius);
-    grid-gap: 30px;
+    gap: 30px;
 }
 
 .book__details--image {
