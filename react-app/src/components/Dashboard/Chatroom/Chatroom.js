@@ -110,15 +110,17 @@ function Chatroom() {
                     </div>
                 </div>
                 <div id='center__container--main-content'>
-                    <div id='chatroom__messages'>
-                        {prevMessages && prevMessages.map((message, ind) => (
-                            <ChatMessage message={message} />
-                        ))}
-                        {messages.map((message, ind) => (
-                            <ChatMessage message={message} />
-                        ))}
+                    <div className='chatroom__content'>
+                        <div id='chatroom__messages'>
+                            {prevMessages && prevMessages.map((message, ind) => (
+                                <ChatMessage message={message} />
+                            ))}
+                            {messages.map((message, ind) => (
+                                <ChatMessage message={message} />
+                            ))}
+                        </div>
+                        {/* <div className='chatroom__footer' ref={chatRef}></div> */}
                     </div>
-                    {/* <div className='chatroom__footer' ref={chatRef}></div> */}
                 </div>
                 <div id='chatroom__input'>
                     <form onSubmit={sendChat}>
@@ -130,7 +132,7 @@ function Chatroom() {
                         <button className='send__chat' type="submit">Send</button>
                     </form>
                 </div>
-            </section >
+            </section>
         </>
     )
 }

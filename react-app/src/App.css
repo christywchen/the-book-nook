@@ -12,12 +12,13 @@
 /* media queries */
 @media only screen and (max-width: 992px) {
     #content__container {
-        position: absolute;
-        top: 51px;
-        left: -21px;
-        width: calc(100% + 38px);
-        height: calc(100% + 1px);
-        margin: 0;
+        display: flex;
+        position: fixed;
+        top: 76px;
+        left: 18px;
+        width: calc(100% - 35px);
+        height: calc(100% - 100px);
+        margin: 0 0 50px;
         flex-direction: column;
     }
 }

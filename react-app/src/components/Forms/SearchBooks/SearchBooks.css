@@ -93,6 +93,12 @@
 }
 
 /* media queries */
+@media only screen and (max-width: 992px) {
+    .search__button {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 672px) {
     #search__form input {
         width: 220px;

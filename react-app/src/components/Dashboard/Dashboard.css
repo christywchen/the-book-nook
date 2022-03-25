@@ -29,7 +29,7 @@
 
 #center__container--main-content {
     position: relative;
-    /* height: 100%; */
+    height: 100%;
     margin-top: 8px;
     overflow-y: auto;
     scrollbar-color: var(--background-color) #ffffff00;

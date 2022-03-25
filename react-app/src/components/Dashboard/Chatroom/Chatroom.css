@@ -5,6 +5,7 @@
     justify-content: flex-end;
     flex-direction: column;
     overflow-y: auto;
+    grid-gap: 5px;
     gap: 5px;
     scrollbar-color: var(--background-color) #ffffff00;
 }

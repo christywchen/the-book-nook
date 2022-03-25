@@ -156,10 +156,3 @@ textarea::-webkit-scrollbar {
 .link__bolded:hover {
     opacity: 0.8;
 }
-
-/* media queries */
-@media only screen and (max-width: 99) {
-    body {
-        /* margin: 0px 0px; */
-    }
-}
