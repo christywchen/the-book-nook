@@ -20,7 +20,7 @@
     background-color: var(--input-bg);
     border-radius: 12px;
     box-shadow: var(--standard-shadow);
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .message__at {
