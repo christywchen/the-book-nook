@@ -72,6 +72,9 @@
     display: none;
 }
 
+.center__container--desc {
+}
+
 /* media queries */
 @media only screen and (max-width: 1180px) {
     #center__container,

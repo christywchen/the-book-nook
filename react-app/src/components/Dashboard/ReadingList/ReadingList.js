@@ -42,7 +42,7 @@ function ReadingList() {
         return (
             <section id="center__container">
                 <div id='center__container--title'>Reading List Not Found</div>
-                <div className='readinglist__card--container content__unavail'>
+                <div className='center__container--desc content__unavail'>
                     This book club does not exist.
                 </div>
             </section>
@@ -67,19 +67,21 @@ function ReadingList() {
                         }
                     </div>
                 </div>
-                <div id='center__container--main-content' className='readinglist__content'>
-                    <div className='readinglist__card--container'>
-                        {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
-                            <>
-                                <div key={book.id}>
-                                    <ReadingListCard bookInfo={book} />
+                <div id='center__container--main-content'>
+                    <div className='center__container--desc'>
+                        <div className='readinglist__card--container'>
+                            {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
+                                <>
+                                    <div>
+                                        <ReadingListCard bookInfo={book} key={book.id} />
+                                    </div>
+                                </>
+                            )) : (
+                                <div className='content__unavail'>
+                                    No books at the moment. Maybe you could add some to this book club's reading list?
                                 </div>
-                            </>
-                        )) : (
-                            <div className='content__unavail'>
-                                No books at the moment. Maybe you could add some to this book club's reading list?
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
             </section>

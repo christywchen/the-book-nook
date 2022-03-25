@@ -79,7 +79,7 @@ function Chatroom() {
         return (
             <section id="center__container">
                 <div id='center__container--title'>Chatroom Not Found</div>
-                <div className='readinglist__card--container'>
+                <div className='center__container--desc'>
                     This chatroom does not exist.
                 </div>
             </section>
