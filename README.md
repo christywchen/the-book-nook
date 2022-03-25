@@ -12,6 +12,10 @@ Visit the [wiki](https://github.com/christywchen/the-book-nook/wiki) for more in
 
 ![dash](https://user-images.githubusercontent.com/55429132/155458402-ab43716a-4a09-4e0c-a40c-21db8c1db580.jpg)
 
+The Book Nook is also available on mobile and tablet view!
+
+![bn-mobile](https://user-images.githubusercontent.com/55429132/160201725-98585cee-d726-4f5f-8f2f-c3168b0c4c41.jpg)
+
 # Implementation
 This app was built using a **JavaScript** frontend and **Python** backend.
 
