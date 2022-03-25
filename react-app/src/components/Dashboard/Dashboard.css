@@ -27,12 +27,16 @@
     gap: 7px;
 }
 
-#center__container--main-content {
+#center__container--main-content,
+#center__container--chat__content {
     position: relative;
-    height: 100%;
     margin-top: 8px;
     overflow-y: auto;
     scrollbar-color: var(--background-color) #ffffff00;
+}
+
+#center__container--chat__content {
+    height: 100%;
 }
 
 #center__card--container {

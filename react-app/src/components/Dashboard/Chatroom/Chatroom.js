@@ -109,7 +109,7 @@ function Chatroom() {
                         {chatroom.name} Chat
                     </div>
                 </div>
-                <div id='center__container--main-content'>
+                <div id='center__container--chat__content'>
                     <div className='chatroom__content'>
                         <div id='chatroom__messages'>
                             {prevMessages && prevMessages.map((message, ind) => (

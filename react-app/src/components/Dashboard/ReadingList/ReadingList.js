@@ -67,7 +67,7 @@ function ReadingList() {
                         }
                     </div>
                 </div>
-                <div id='center__container--main-content'>
+                <div id='center__container--main-content' className='readinglist__content'>
                     <div className='readinglist__card--container'>
                         {bookClubBooks.length > 0 ? bookClubBooks.map(book => (
                             <>
